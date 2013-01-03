@@ -1,19 +1,28 @@
 (function() {
     var $ = C.selector,
         $dl = $('#main dl'),
-        e = new C.Event();
+        e = new C.Event(),
+        i = 0,
+        len = $dl.length;
 
-    $dl.on(e.switchclick, function() {
-        var $this = $(this),
-            $init = $this.find('.init'),
-            cls = 'oepn';
+    for (; i < len; i++) {
+        bind($dl[i]);
+    }
 
-        $this.toggleClass(cls);
-        if ($this.hasClass(cls)) {
-            $init.show();
-        }
-        else {
-            $init.hide();
-        }
-    });
+    function bind(element) {
+        var $dl = $(element),
+            $dt = $dl.find('dt'),
+            $init = $dl.find('.init'),
+            cls = 'open';
+
+        $dt.on(e.switchclick, function() {
+            $dl.toggleClass(cls);
+            if ($dl.hasClass(cls)) {
+                $init.show();
+            }
+            else {
+                $init.hide();
+            }
+        });
+    }
 }());
