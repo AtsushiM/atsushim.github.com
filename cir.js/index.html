@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:mixi="http://mixi-platform.com/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta charset="UTF-8" />
+<title>title</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" sizes="16x16" href="/favicon.ico" />
+<!--[if lte IE 9]><script src="js/lib/html5.js"></script><![endif]-->
+<link href="css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+<header id="header">
+    <h1>CIR.js</h1>
+    <h2>Cool is Right.</h2>
+</header>
+
+<p class="lead">CIR.jsはスマートフォンメインのWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
+ほとんどの機能は使わない場合排除可能で、カスタマイズできます。<br />
+jQueryライクなセレクター機能も搭載していますが、それすら排除し軽量化&amp;実行速度のアップも可能です。</p>
+
+<div id="content">
+    <div id="main">
+        <dl id="utility">
+            <dt>utility</dt>
+            <dd>
+                <pre class="init">var util = C.utility;</pre>
+                <ul>
+                    <li>$(selector)</li>
+                    <li>$$(selector)</li>
+                    <li>$child(selector, element)</li>
+                    <li>$$child(selector, element)</li>
+                    <li>$id(id)</li>
+                    <li>pageTop()</li>
+                    <li>onEvent(element, eventname, handler)</li>
+                    <li>offEvent(element, eventname, handler)</li>
+                    <li>makeElement(tagname [, attr])</li>
+                    <li>showElement(element)</li>
+                    <li>hideElement(element)</li>
+                    <li>opacityElement(element, value)</li>
+                    <li>hasClass(element, value)</li>
+                    <li>addClass(element, value)</li>
+                    <li>removeClass(element, value)</li>
+                    <li>toggleClass(element, value)</li>
+                    <li>styleElement(element, object)</li>
+                    <li>attrElement(element, property, value)</li>
+                    <li>computedStyleElement(element)</li>
+                    <li>appendElement(_parent, element)</li>
+                    <li>innerHTML(element, text)</li>
+                    <li>override(targetObj, varObj)</li>
+                    <li>replaceAll(targetext, needle, replacetext)</li>
+                    <li>windowOpen(url, windowname)</li>
+                    <li>typeCast(string)</li>
+                    <li>makeQueryString(object)</li>
+                    <li>parseQueryString(string)</li>
+                    <li>is(string, vars)</li>
+                    <li>isObject(vars)</li>
+                    <li>isNumber(vars)</li>
+                    <li>isString(vars)</li>
+                    <li>isFunction(vars)</li>
+                    <li>isBoolean(vars)</li>
+                    <li>nullFunction()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="extend">
+            <dt>extend</dt>
+            <dd>
+                <pre class="init">var extend = C.extend;</pre>
+            </dd>
+        </dl>
+        <dl id="klass">
+            <dt>klass</dt>
+            <dd>
+                <pre class="init">var klass = C.klass;</pre>
+            </dd>
+        </dl>
+        <dl id="selector">
+            <dt>selector</dt>
+            <dd>
+<pre class="init">var $ = C.selector;
+$p = $('p');</pre>
+                <ul>
+                    <li>.querySelectorAll(query)</li>
+                    <li>.find(selector)</li>
+                    <li>.on(eventname, handler)</li>
+                    <li>.off(eventname, handler)</li>
+                    <li>.show()</li>
+                    <li>.hide()</li>
+                    <li>.opacity(value)</li>
+                    <li>.hasClass(value)</li>
+                    <li>.addClass(value)</li>
+                    <li>.removeClass(value)</li>
+                    <li>.toggleClass(value)</li>
+                    <li>.css(object)</li>
+                    <li>.append(value)</li>
+                    <li>.html(value)</li>
+                    <li>.attr(value)</li>
+                    <li>.animate(value)</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="easing">
+            <dt>easing</dt>
+            <dd>
+                <pre class="init">var dragflick = new C.DragFlick();</pre>
+                <ul>
+                    <li>easeInCubic()</li>
+                    <li>easeOutCubic()</li>
+                    <li>easeInOutCubic()</li>
+                    <li>easeInQuart()</li>
+                    <li>easeOutQuart()</li>
+                    <li>easeInOutQuart()</li>
+                    <li>easeInQuint()</li>
+                    <li>easeOutQuint()</li>
+                    <li>easeInOutQuint()</li>
+                    <li>easeInSine()</li>
+                    <li>easeOutSine()</li>
+                    <li>easeInOutSine()</li>
+                    <li>easeInExpo()</li>
+                    <li>easeOutExpo()</li>
+                    <li>easeInOutExpo()</li>
+                    <li>easeInCirc()</li>
+                    <li>easeOutCirc()</li>
+                    <li>easeInOutCirc()</li>
+                    <li>easeInQuad()</li>
+                    <li>easeOutQuad()</li>
+                    <li>easeInOutQuad()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Ajax">
+            <dt>Ajax</dt>
+            <dd>
+                <pre class="init">var ajax = new C.Ajax();</pre>
+                <ul>
+                    <li>request({url, callback})</li>
+                    <li>request({url, cash: true, callback})</li>
+                    <li>request({url, type: "POST", callback})</li>
+                    <li>getJSON({url, callback})</li>
+                    <li>abort()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Bind">
+            <dt>Bind</dt>
+            <dd>
+                <pre class="init">var bind = new C.Bind();</pre>
+                <ul>
+                    <li>add({element: element, events: {event: function}})</li>
+                    <li>remove({element: element, events: {event: function})</li>
+                    <li>exe({element: element, events: {event: function}, bool)</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="CanvasImage">
+            <dt>CanvasImage</dt>
+            <dd>
+                <pre class="init">var canvasImage = new C.CanvasImage();</pre>
+            </dd>
+        </dl>
+        <dl id="CanvasRender">
+            <dt>CanvasRender</dt>
+            <dd>
+                <pre class="init">var canvasRender = new C.CanvasRender();</pre>
+                <ul>
+                    <li>setSize({width, height})</li>
+                    <li>draw([{image, x, y}])</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="DataStore">
+            <dt>DataStore</dt>
+            <dd>
+                <pre class="init">var store = new C.DataStore();</pre>
+                <ul>
+                    <li>set(key, val)</li>
+                    <li>get(key)</li>
+                    <li>get()</li>
+                    <li>remove(key)</li>
+                    <li>reset()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Deferred">
+            <dt>Deferred</dt>
+            <dd>
+                <pre class="init">var deferred = new C.Deferred();</pre>
+                <ul>
+                    <li>isResolve()</li>
+                    <li>done(function)</li>
+                    <li>resolve()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="DragFlick">
+            <dt>DragFlick</dt>
+            <dd>
+                <pre class="init">var dragflick = new C.DragFlick();</pre>
+                <ul>
+                    <li>amount({element, callback})</li>
+                    <li>direction({element, boundary, callback})</li>
+                    <li>bind({element, boundary, direction, start, move, end})</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Event">
+            <dt>Event</dt>
+        </dl>
+        <dl id="ExternalInterface">
+            <dt>ExternalInterface</dt>
+            <dd>
+                <dl>
+                    <dt>ExternalInterface.Android</dt>
+                    <dd>
+                        <pre class="init">var external = new C.ExternalInterface.Android();</pre>
+                        <ul>
+                            <li>call({mode: string, vars: {key: val}})</li>
+                            <li>addCallback(name, function)</li>
+                            <li>removeCallback(name)</li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>ExternalInterface.IOS</dt>
+                    <dd>
+                        <pre class="init">var external = new C.ExternalInterface.IOS();</pre>
+                        <ul>
+                            <li>call({mode: string, vars: {key: val}})</li>
+                            <li>addCallback(name, function)</li>
+                            <li>removeCallback(name)</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </dd>
+        </dl>
+        <dl id="FPS">
+            <dt>FPS</dt>
+            <dd>
+                <pre class="init">var fps = new C.FPS();</pre>
+                <ul>
+                    <li>getCriterion()</li>
+                    <li>getSurver()</li>
+                    <li>getFrameTime()</li>
+                    <li>enter()</li>
+                    <li>start()</li>
+                    <li>stop()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Facebook">
+            <dt>Facebook</dt>
+            <dd>
+                <pre class="init">var facebook = new C.Facebook();</pre>
+                <ul>
+                    <li>getShareURL(options)</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="HashController">
+            <dt>HashController</dt>
+            <dd>
+                <pre class="init">var hashCtrl = new C.HashController();</pre>
+                <ul>
+                    <li>makeHash({mode: string, contents: {key: val}})</li>
+                    <li>setHash({mode: string, contents: {key: val}})</li>
+                    <li>parseHash(hashvar)</li>
+                    <li>getHash()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="ImgLoad">
+            <dt>ImgLoad</dt>
+            <dd>
+                <pre class="init">var imgload = new C.ImgLoad();</pre>
+                <ul>
+                    <li>start()</li>
+                    <li>getProgress()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Loading">
+            <dt>Loading</dt>
+            <dd>
+                <pre class="init">var loading = new C.Loading();</pre>
+            </dd>
+        </dl>
+        <dl id="LocalStorage">
+            <dt>LocalStorage</dt>
+            <dd>
+                <pre class="init">var storage = new C.LocalStorage();</pre>
+                <ul>
+                    <li>set(key, value)</li>
+                    <li>get(key)</li>
+                    <li>get()</li>
+                    <li>remove(key)</li>
+                    <li>reset(key)</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Mobile">
+            <dt>Mobile</dt>
+            <dd>
+                <pre class="init">var mobile = new C.Mobile();</pre>
+                <ul>
+                    <li>isAndroid()</li>
+                    <li>isIOS()</li>
+                    <li>isWindows()</li>
+                    <li>isFBAPP()</li>
+                    <li>isMobile()</li>
+                    <li>hideAddress()</li>
+                    <li>killScroll()</li>
+                    <li>revivalScroll()</li>
+                    <li>orientationCheck()</li>
+                    <li>orientationChange()</li>
+                    <li>orientationChange()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="NumberImage">
+            <dt>NumberImage</dt>
+            <dd>
+                <pre class="init">var numberImg = new C.NumberImage();</pre>
+                <ul>
+                    <li>make(x)</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Observer">
+            <dt>Observer</dt>
+            <dd>
+                <pre class="init">var observer = new C.Observer();</pre>
+                <ul>
+                    <li>getObserved()</li>
+                    <li>on()</li>
+                    <li>one()</li>
+                    <li>off()</li>
+                    <li>fire()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="PreRender">
+            <dt>PreRender</dt>
+            <dd>
+                <pre class="init">var preRender = new C.PreRender();</pre>
+                <ul>
+                    <li>start()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="ScriptLoad">
+            <dt>ScriptLoad</dt>
+            <dd>
+                <pre class="init">var scriptload = new C.ScriptLoad();</pre>
+                <ul>
+                    <li>request({src, callback})</li>
+                    <li>requests([{src, callback}])</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="ServerMeta">
+            <dt>ServerMeta</dt>
+            <dd>
+                <pre class="init">var server = new C.ServerMeta();</pre>
+                <ul>
+                    <li>date()</li>
+                    <li>connection()</li>
+                    <li>contentLength()</li>
+                    <li>lastModified()</li>
+                    <li>server()</li>
+                    <li>contentType()</li>
+                    <li>acceptRanges()</li>
+                    <li>keepAlive()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="SessionStorage">
+            <dt>SessionStorage</dt>
+            <dd>
+                <pre class="init">var storage = new C.SessionStorage();</pre>
+                <ul>
+                    <li>set(key, value)</li>
+                    <li>get(key)</li>
+                    <li>remove(key)</li>
+                    <li>reset(key)</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Surrogate">
+            <dt>Surrogate</dt>
+            <dd>
+                <pre class="init">var surrogate = new C.Surrogate();</pre>
+                <ul>
+                    <li>flush()</li>
+                    <li>request()</li>
+                    <li>clear()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Throttle">
+            <dt>Throttle</dt>
+            <dd>
+                <pre class="init">var throttle = new C.Throttle();</pre>
+                <ul>
+                    <li>request(arg)</li>
+                    <li>lock()</li>
+                    <li>unlock()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Timer">
+            <dt>Timer</dt>
+            <dd>
+                <pre class="init">var timer = new C.Timer();</pre>
+                <ul>
+                    <li>getLimit()</li>
+                    <li>getTime()</li>
+                    <li>setUpdate(function)</li>
+                    <li>getProgress()</li>
+                    <li>countDown()</li>
+                    <li>countDown()</li>
+                    <li>stop()</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Tweener">
+            <dt>Tweener</dt>
+            <dd>
+                <pre class="init">var tweener = new C.Tweener();</pre>
+            </dd>
+        </dl>
+        <dl id="Twitter">
+            <dt>Twitter</dt>
+            <dd>
+                <pre class="init">var twitter = new C.Twitter();</pre>
+                <ul>
+                    <li>getShareURL(options)</li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="XML">
+            <dt>XML</dt>
+            <dd>
+                <pre class="init">var xml = new C.XML();</pre>
+                <ul>
+                    <li>getData()</li>
+                    <li>setData()</li>
+                    <li>$(selector)</li>
+                    <li>$$(selector)</li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+    <div id="sub">
+        <ul>
+            <li><a href="#utility">utility</a></li>
+            <li><a href="#klass">klass</a></li>
+            <li><a href="#extend">extend</a></li>
+            <li><a href="#selector">selector</a></li>
+            <li><a href="#Ajax">Ajax</a></li>
+            <li><a href="#Bind">Bind</a></li>
+            <li><a href="#CanvasImage">CanvasImage</a></li>
+            <li><a href="#CanvasRender">CanvasRender</a></li>
+            <li><a href="#DataStore">DataStore</a></li>
+            <li><a href="#Deferred">Deferred</a></li>
+            <li><a href="#DragFlick">DragFlick</a></li>
+            <li><a href="#Easing">Easing</a></li>
+            <li><a href="#Event">Event</a></li>
+            <li><a href="#ExternalInterface">ExternalInterface</a></li>
+            <li><a href="#FPS">FPS</a></li>
+            <li><a href="#Facebook">Facebook</a></li>
+            <li><a href="#HashController">HashController</a></li>
+            <li><a href="#ImgLoad">ImgLoad</a></li>
+            <li><a href="#Loading">Loading</a></li>
+            <li><a href="#LocalStorage">LocalStorage</a></li>
+            <li><a href="#Mobile">Mobile</a></li>
+            <li><a href="#NumberImage">NumberImage</a></li>
+            <li><a href="#Observer">Observer</a></li>
+            <li><a href="#PreRender">PreRender</a></li>
+            <li><a href="#ScriptLoad">ScriptLoad</a></li>
+            <li><a href="#ServerMeta">ServerMeta</a></li>
+            <li><a href="#SessionStorage">SessionStorage</a></li>
+            <li><a href="#Surrogate">Surrogate</a></li>
+            <li><a href="#Throttle">Throttle</a></li>
+            <li><a href="#Timer">Timer</a></li>
+            <li><a href="#Tweener">Tweener</a></li>
+            <li><a href="#Twitter">Twitter</a></li>
+            <li><a href="#XML">XML</a></li>
+        </ul>
+    </div>
+</div>
+
+<footer id="footer">
+<p class="copyright"><small>Copyright &copy; <a href="https://www.facebook.com/atsushi.mizoue" target="_blank">Atsushi Mizoue</a>. All Rights Reserved.</small></p>
+</footer>
+</div>
+
+<script src="js/lib/cir.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
