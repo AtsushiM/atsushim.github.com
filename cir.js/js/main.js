@@ -11,8 +11,8 @@
 
     function bind(element) {
         var $dl = $(element),
-            $dt = $dl.find('dt'),
-            $init = $dl.find('.init'),
+            $dt = $dl.find('> dt'),
+            $init = $dl.find('> .init'),
             cls = 'open';
 
         $dt.on(e.switchclick, function() {
