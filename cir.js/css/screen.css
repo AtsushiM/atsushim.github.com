@@ -214,26 +214,36 @@ dl dd .init {
   border-radius: 2px;
 }
 /* line 129, ../scss/screen.scss */
+dl dd .init pre {
+  padding-bottom: 10px;
+}
+/* line 132, ../scss/screen.scss */
+dl dd .init p {
+  padding: 10px;
+  border-top: 1px solid #005F6B;
+  font-size: 14px;
+}
+/* line 138, ../scss/screen.scss */
 dl dd ul {
   margin-left: 10px;
 }
-/* line 136, ../scss/screen.scss */
+/* line 145, ../scss/screen.scss */
 dl.open dt:before {
   content: '▲';
 }
-/* line 141, ../scss/screen.scss */
+/* line 150, ../scss/screen.scss */
 dl.open dd .init {
   display: block;
 }
 
-/* line 148, ../scss/screen.scss */
+/* line 157, ../scss/screen.scss */
 #footer {
   padding: 14px 30px;
   font-size: 16px;
   color: #AAA;
   text-shadow: #333333 3px 3px 3px;
 }
-/* line 154, ../scss/screen.scss */
+/* line 163, ../scss/screen.scss */
 #footer a {
   color: #CCC;
 }

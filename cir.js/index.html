@@ -25,7 +25,10 @@
         <dl id="utility">
             <dt>utility</dt>
             <dd>
-                <pre class="init">var util = C.utility;</pre>
+                <div class="init">
+                    <pre>var util = C.utility;</pre>
+                    <p>ほぼすべてのクラスから呼び出されるユーティリティです。</p>
+                </div>
                 <ul>
                     <li>$(selector)</li>
                     <li>$$(selector)</li>
@@ -84,6 +87,7 @@ var $p = $('p');</pre>
                 <ul>
                     <li>.querySelectorAll(query)</li>
                     <li>.find(selector)</li>
+                    <li>.parent()</li>
                     <li>.on(eventname, handler)</li>
                     <li>.off(eventname, handler)</li>
                     <li>.show()</li>
