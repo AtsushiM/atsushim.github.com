@@ -70,20 +70,41 @@
         <dl id="extend">
             <dt>extend</dt>
             <dd>
-                <pre class="init">var extend = C.extend;</pre>
+                <div class="init">
+                    <pre>var extend = C.extend;</pre>
+                    <p>プロトタイプを継承するためのメソッドです。<br />
+                    klassメソッドから呼び出されます。</p>
+                </div>
             </dd>
         </dl>
         <dl id="klass">
             <dt>klass</dt>
             <dd>
-                <pre class="init">var klass = C.klass;</pre>
+                <div class="init">
+<pre>var Test = C.klass({
+    init: function() {
+        // write code.
+    },
+    extend: cls,
+    properties: {
+        // write method &amp; property
+    }
+});</pre>
+                    <p>クラス作成用のメソッドです。<br />
+                    上記の場合、<br />
+                    var test = new Test();<br />
+                    でインスタンスを生成できます。</p>
+                </div>
             </dd>
         </dl>
         <dl id="selector">
             <dt>selector</dt>
             <dd>
-<pre class="init">var $ = C.selector;
+                <div class="init">
+<pre>var $ = C.selector;
 var $p = $('p');</pre>
+                    <p>jQueryライクなセレクターメソッドです。</p>
+                </div>
                 <ul>
                     <li>.querySelectorAll(query)</li>
                     <li>.find(selector)</li>
@@ -108,7 +129,11 @@ var $p = $('p');</pre>
         <dl id="easing">
             <dt>easing</dt>
             <dd>
-                <pre class="init">var easing = C.easing;</pre>
+                <div class="init">
+                    <pre>var easing = C.easing;</pre>
+                    <p>イージング処理を行うメソッドです。<br />
+                    主な使い方はTweenerクラスのeasingオプションに対して参照を渡すことになります。</p>
+                </div>
                 <ul>
                     <li>easeInCubic()</li>
                     <li>easeOutCubic()</li>
@@ -137,7 +162,10 @@ var $p = $('p');</pre>
         <dl id="Ajax">
             <dt>Ajax</dt>
             <dd>
-                <pre class="init">var ajax = new C.Ajax();</pre>
+                <div class="init">
+                    <pre>var ajax = new C.Ajax();</pre>
+                    <p>Ajax処理を行うクラスです。</p>
+                </div>
                 <ul>
                     <li>request({url:string, type:'POST' || 'GET' cash:bool, callback:function})</li>
                     <li>getJSON({url, callback})</li>
@@ -148,7 +176,10 @@ var $p = $('p');</pre>
         <dl id="Bind">
             <dt>Bind</dt>
             <dd>
-                <pre class="init">var bind = new C.Bind();</pre>
+                <div class="init">
+                    <pre>var bind = new C.Bind();</pre>
+                    <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
+                </div>
                 <ul>
                     <li>add({element: element, events: {event: function}})</li>
                     <li>remove({element: element, events: {event: function})</li>
@@ -159,7 +190,8 @@ var $p = $('p');</pre>
         <dl id="CanvasImage">
             <dt>CanvasImage</dt>
             <dd>
-<pre class="init">var canvasImage = new C.CanvasImage({
+                <div class="init">
+<pre>var canvasImage = new C.CanvasImage({
     src: '/img/canvas.png',
     width: 100,
     height: 100,
@@ -167,16 +199,23 @@ var $p = $('p');</pre>
         // write code.
     }
 });</pre>
+                    <p>canvasエレメントとimgエレメントを生成し、canvasに対してimgをdrawImageするクラスです。<br />
+                    煩雑になりがちなcanvasとimgの処理を簡略化します。</p>
+                </div>
             </dd>
         </dl>
         <dl id="CanvasRender">
             <dt>CanvasRender</dt>
             <dd>
-<pre class="init">var canvasRender = new C.CanvasRender({
+                <div class="init">
+<pre>var canvasRender = new C.CanvasRender({
     canvas: canvasElement,
     width: 100,
     height: 100
 });</pre>
+                    <p>canvasエレメントに対して、複数のimg・canvasエレメントをdrawImageするクラスです。<br />
+                    煩雑になりがちなcanvasのレイヤー構造を簡略化します。</p>
+                </div>
                 <ul>
                     <li>setSize({width, height})</li>
                     <li>draw([{image, x, y}])</li>
@@ -186,11 +225,15 @@ var $p = $('p');</pre>
         <dl id="DataStore">
             <dt>DataStore</dt>
             <dd>
-<pre class="init">var store = new C.DataStore();
+                <div class="init">
+<pre>var store = new C.DataStore();
 // singleton
 var storeSingle = new C.DataStore({
     single: true
 })</pre>
+                    <p>アプリの一時的な情報を保存するためのクラスです。<br />
+                    ブラウザのリロードなどが行われた場合、初期化されます。</p>
+                </div>
                 <ul>
                     <li>set(key, val)</li>
                     <li>get(key)</li>
@@ -202,7 +245,10 @@ var storeSingle = new C.DataStore({
         <dl id="Deferred">
             <dt>Deferred</dt>
             <dd>
-                <pre class="init">var deferred = new C.Deferred();</pre>
+                <div class="init">
+                    <pre>var deferred = new C.Deferred();</pre>
+                    <p>遅延処理を簡易に実行するためのメソッドを提供するクラスです。</p>
+                </div>
                 <ul>
                     <li>isResolve()</li>
                     <li>done(function)</li>
@@ -213,7 +259,10 @@ var storeSingle = new C.DataStore({
         <dl id="DragFlick">
             <dt>DragFlick</dt>
             <dd>
-                <pre class="init">var dragflick = new C.DragFlick();</pre>
+                <div class="init">
+                    <pre>var dragflick = new C.DragFlick();</pre>
+                    <p>ドラッグ＆フリック用の処理を提供するクラスです。</p>
+                </div>
                 <ul>
                     <li>amount({element, callback})</li>
                     <li>direction({element, boundary, callback})</li>
@@ -224,11 +273,16 @@ var storeSingle = new C.DataStore({
         <dl id="Event">
             <dt>Event</dt>
             <dd>
-<pre class="init">var e = new C.Event();
+                <div class="init">
+<pre>var e = new C.Event();
 // singleton
 var eSingle = new C.Event({
     single: true
 });</pre>
+                    <p>エレメント用の各イベントを纏めたクラスです。<br />
+                    switchclick, switchdown, switchmove, switchupは<br />
+                    実行環境がタッチパネルかどうか判定し、最適な値に変更されます。</p>
+                </div>
                 <ul>
                     <li>switchclick</li>
                     <li>switchdown</li>
@@ -251,11 +305,14 @@ var eSingle = new C.Event({
         <dl id="ExternalInterface">
             <dt>ExternalInterface</dt>
             <dd>
-<pre class="init">// Androidの場合、window直下にメソッドを含んだオブジェクトを作っておく
-// iOSの場合、そのオブジェクトを作らなければ自動的にiOS用の処理になる
-var external = new C.ExternalInterface({
+                <div class="init">
+<pre>var external = new C.ExternalInterface({
     android: window.AndroidMethod
 });</pre>
+                    <p>ハイブリッドアプリ用にネイティブとのやり取りを行うためのメソッドを提供するクラスです。<br />
+                    Androidの場合、window直下にメソッドを含んだオブジェクトを作っておく必要があります。<br />
+                    iOSの場合、そのオブジェクトを作らなければ自動的にiOS用の処理になります。</p>
+                </div>
                 <ul>
                     <li>call({mode: string, vars: {key: val}})</li>
                     <li>addCallback(name, function)</li>
@@ -266,13 +323,16 @@ var external = new C.ExternalInterface({
         <dl id="FPS">
             <dt>FPS</dt>
             <dd>
-<pre class="init">var fps = new C.FPS({
+                <div class="init">
+<pre>var fps = new C.FPS({
     single: false, // singleton
     criterion: 10,
     enterframe: function() {
         // write code.
     }
 });</pre>
+                    <p>指定したcriterion(msec)ごとにenterframeを実行するクラスです。</p>
+                </div>
                 <ul>
                     <li>getCriterion()</li>
                     <li>getSurver()</li>
@@ -286,7 +346,10 @@ var external = new C.ExternalInterface({
         <dl id="Facebook">
             <dt>Facebook</dt>
             <dd>
-                <pre class="init">var facebook = new C.Facebook();</pre>
+                <div class="init">
+                    <pre>var facebook = new C.Facebook();</pre>
+                    <p>Facebook用のユーティリティクラスです。</p>
+                </div>
                 <ul>
                     <li>getShareURL(options)</li>
                 </ul>
@@ -295,7 +358,10 @@ var external = new C.ExternalInterface({
         <dl id="HashController">
             <dt>HashController</dt>
             <dd>
-                <pre class="init">var hashCtrl = new C.HashController();</pre>
+                <div class="init">
+                    <pre>var hashCtrl = new C.HashController();</pre>
+                    <p>location.hashの操作を行うメソッドを提供するクラスです。</p>
+                </div>
                 <ul>
                     <li>makeHash({mode: string, contents: {key: val}})</li>
                     <li>setHash({mode: string, contents: {key: val}})</li>
@@ -307,7 +373,8 @@ var external = new C.ExternalInterface({
         <dl id="ImgLoad">
             <dt>ImgLoad</dt>
             <dd>
-<pre class="init">var imgload = new C.ImgLoad({
+                <div class="init">
+<pre>var imgload = new C.ImgLoad({
     srcs: [
         '/img/test1.png',
         '/img/test2.png',
@@ -320,6 +387,8 @@ var external = new C.ExternalInterface({
         // write code.
     }
 });</pre>
+                    <p>画像をまとめてロードするクラスです。</p>
+                </div>
                 <ul>
                     <li>start()</li>
                     <li>getProgress()</li>
@@ -329,17 +398,24 @@ var external = new C.ExternalInterface({
         <dl id="Loading">
             <dt>Loading</dt>
             <dd>
-<pre class="init">var loading = new C.Loading({
+                <div class="init">
+<pre>var loading = new C.Loading({
     onload: function() {
         // write code.
     }
 });</pre>
+                    <p>画像を含むページの読み込みが完了したタイミングでonloadを実行するクラスです。</p>
+                </div>
             </dd>
         </dl>
         <dl id="LocalStorage">
             <dt>LocalStorage</dt>
             <dd>
-                <pre class="init">var storage = new C.LocalStorage();</pre>
+                <div class="init">
+                    <pre>var storage = new C.LocalStorage();</pre>
+                    <p>localStorageの操作を行うメソッドを提供するクラスです。<br />
+                    オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。</p>
+                </div>
                 <ul>
                     <li>set(key, value)</li>
                     <li>get(key)</li>
@@ -351,7 +427,10 @@ var external = new C.ExternalInterface({
         <dl id="Mobile">
             <dt>Mobile</dt>
             <dd>
-                <pre class="init">var mobile = new C.Mobile();</pre>
+                <div class="init">
+                    <pre>var mobile = new C.Mobile();</pre>
+                    <p>モバイル端末用のユーティリティクラスです。</p>
+                </div>
                 <ul>
                     <li>isAndroid()</li>
                     <li>isIOS()</li>
@@ -369,9 +448,13 @@ var external = new C.ExternalInterface({
         <dl id="NumberImage">
             <dt>NumberImage</dt>
             <dd>
-<pre class="init">var numberImg = new C.NumberImage({
+                <div class="init">
+<pre>var numberImg = new C.NumberImage({
     type: 'white' // element.className == 'num_white_X'
 });</pre>
+                    <p>CSSスプライト用のHTMLタグを生成するクラスです。<br />
+                    typeに指定された文字列が生成されるタグのclassの一部になります。</p>
+                </div>
                 <ul>
                     <li>make(x)</li>
                 </ul>
@@ -380,11 +463,14 @@ var external = new C.ExternalInterface({
         <dl id="Observer">
             <dt>Observer</dt>
             <dd>
-<pre class="init">var observer = new C.Observer();
+                <div class="init">
+<pre>var observer = new C.Observer();
 // singleton
 var observerSingle = new C.Observer({
     single: true
 });</pre>
+                    <p>オブザーバーパターンを提供するクラスです。</p>
+                </div>
                 <ul>
                     <li>getObserved()</li>
                     <li>on()</li>
@@ -397,7 +483,8 @@ var observerSingle = new C.Observer({
         <dl id="PreRender">
             <dt>PreRender</dt>
             <dd>
-<pre class="init">var preRender = new C.PreRender({
+                <div class="init">
+<pre>var preRender = new C.PreRender({
     elements: [
         element1,
         element2,
@@ -410,6 +497,10 @@ var observerSingle = new C.Observer({
         // write code.
     }
 });</pre>
+                    <p>HTMLエレメントは初めて画面上に表示される際にかなりの負荷がかかります。<br />
+                    (※display: none; や opacity: 0;、もしくは画面外にpositionで設置するなど)<br />
+                    ゲームなどでは負荷が邪魔になる場合も有るため、これらの要素の上に不透明な背景を持つエレメントをpositionで設置し、PreRenderクラスで予め表示しておくことが有効です。</p>
+                </div>
                 <ul>
                     <li>start()</li>
                 </ul>
@@ -418,7 +509,10 @@ var observerSingle = new C.Observer({
         <dl id="ScriptLoad">
             <dt>ScriptLoad</dt>
             <dd>
-                <pre class="init">var scriptload = new C.ScriptLoad();</pre>
+                <div class="init">
+                    <pre>var scriptload = new C.ScriptLoad();</pre>
+                    <p>scriptファイルを動的に読み込むメソッドを提供するクラスです。</p>
+                </div>
                 <ul>
                     <li>request({src, callback})</li>
                     <li>requests([{src, callback}])</li>
@@ -428,11 +522,15 @@ var observerSingle = new C.Observer({
         <dl id="ServerMeta">
             <dt>ServerMeta</dt>
             <dd>
-<pre class="init">var server = new C.ServerMeta({
+                <div class="init">
+<pre>var server = new C.ServerMeta({
     callback: function() {
         // write code.
     }
 });</pre>
+                    <p>サーバーから渡される情報を取得するクラスです。<br />
+                    初期化時にサーバ情報を取得するため、時間がかかります。</p>
+                </div>
                 <ul>
                     <li>date()</li>
                     <li>connection()</li>
@@ -448,7 +546,11 @@ var observerSingle = new C.Observer({
         <dl id="SessionStorage">
             <dt>SessionStorage</dt>
             <dd>
-                <pre class="init">var storage = new C.SessionStorage();</pre>
+                <div class="init">
+                    <pre>var storage = new C.SessionStorage();</pre>
+                    <p>sessionStorageの操作を行うメソッドを提供するクラスです。<br />
+                    オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。</p>
+                </div>
                 <ul>
                     <li>set(key, value)</li>
                     <li>get(key)</li>
@@ -460,12 +562,18 @@ var observerSingle = new C.Observer({
         <dl id="Surrogate">
             <dt>Surrogate</dt>
             <dd>
-<pre class="init">var surrogate = new C.Surrogate({
+                <div class="init">
+<pre>var surrogate = new C.Surrogate({
     delay: 20,
     callback: function() {
         // write code.
     }
 });</pre>
+                    <p>連続実行される処理をまとめて実行するメソッドを提供するクラスです。<br />
+                    delay(msec)だけ処理待ちを行い、遅延実行します。<br />
+                    処理待ち中に新たに処理が呼び出された場合、以前の処理をキャンセルし、再び処理待ちを行います。<br />
+                    キーボード入力から自動でAjax処理を行い結果を表示する場合などに有効です。</p>
+                </div>
                 <ul>
                     <li>flush()</li>
                     <li>request()</li>
@@ -476,12 +584,17 @@ var observerSingle = new C.Observer({
         <dl id="Throttle">
             <dt>Throttle</dt>
             <dd>
-<pre class="init">var throttle = new C.Throttle({
+                <div class="init">
+<pre>var throttle = new C.Throttle({
     waittime: 100,
     callback: function() {
         // write code.
     }
 });</pre>
+                    <p>連続実行される処理を間引くメソッドを提供するクラスです。<br />
+                    一度処理が実行された場合、waittime(msec)だけ新たな処理を受け付けなくなります。<br />
+                    ウィンドウサイズの変更による処理などに有効です。</p>
+                </div>
                 <ul>
                     <li>request(arg)</li>
                     <li>lock()</li>
@@ -492,7 +605,8 @@ var observerSingle = new C.Observer({
         <dl id="Timer">
             <dt>Timer</dt>
             <dd>
-<pre class="init">var timer = new C.Timer({
+                <div class="init">
+<pre>var timer = new C.Timer({
     template: 'xxx.xxx',
     limit: 20,
     interval: 0.05,
@@ -503,6 +617,8 @@ var observerSingle = new C.Observer({
         // write code.
     }
 });</pre>
+                    <p>タイマー処理を行うクラスです。</p>
+                </div>
                 <ul>
                     <li>getLimit()</li>
                     <li>getTime()</li>
@@ -516,7 +632,8 @@ var observerSingle = new C.Observer({
         <dl id="Tweener">
             <dt>Tweener</dt>
             <dd>
-<pre class="init">var tweener = new C.Tweener(
+                <div class="init">
+<pre>var tweener = new C.Tweener(
     element.style,
     {
         width: {
@@ -537,12 +654,18 @@ var observerSingle = new C.Observer({
         }
     }
 );</pre>
+                    <p>シンプルなアニメーション用クラスです。<br />
+                    easingオプションにC.easingの各メソッドを指定すれば、様々なイージング処理をさせることが可能です</p>
+                </div>
             </dd>
         </dl>
         <dl id="Twitter">
             <dt>Twitter</dt>
             <dd>
-                <pre class="init">var twitter = new C.Twitter();</pre>
+                <div class="init">
+                    <pre>var twitter = new C.Twitter();</pre>
+                    <p>Twitter用のユーティリティクラスです。</p>
+                </div>
                 <ul>
                     <li>getShareURL(options)</li>
                 </ul>
@@ -551,9 +674,12 @@ var observerSingle = new C.Observer({
         <dl id="XML">
             <dt>XML</dt>
             <dd>
-<pre class="init">var xml = new C.XML({
+                <div class="init">
+<pre>var xml = new C.XML({
     data: xmlText
 });</pre>
+                    <p>XMLデータの操作を簡易にするメソッドを提供するクラスです。</p>
+                </div>
                 <ul>
                     <li>getData()</li>
                     <li>setData()</li>
