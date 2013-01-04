@@ -17,8 +17,8 @@
 </header>
 
 <p class="lead">CIR.jsはスマートフォンメインのWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
-ほとんどの機能は使わない場合排除可能で、カスタマイズできます。<br />
-<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">src</a></p>
+ほとんどの機能は使わない場合排除可能で、カスタマイズできます。</p>
+<p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a></p>
 
 <div id="content">
     <div id="main">
@@ -80,7 +80,7 @@
             <dt>selector</dt>
             <dd>
 <pre class="init">var $ = C.selector;
-$p = $('p');</pre>
+var $p = $('p');</pre>
                 <ul>
                     <li>.querySelectorAll(query)</li>
                     <li>.find(selector)</li>
@@ -135,9 +135,7 @@ $p = $('p');</pre>
             <dd>
                 <pre class="init">var ajax = new C.Ajax();</pre>
                 <ul>
-                    <li>request({url, callback})</li>
-                    <li>request({url, cash: true, callback})</li>
-                    <li>request({url, type: "POST", callback})</li>
+                    <li>request({url:string, type:'POST' || 'GET' cash:bool, callback:function})</li>
                     <li>getJSON({url, callback})</li>
                     <li>abort()</li>
                 </ul>
@@ -157,13 +155,24 @@ $p = $('p');</pre>
         <dl id="CanvasImage">
             <dt>CanvasImage</dt>
             <dd>
-                <pre class="init">var canvasImage = new C.CanvasImage();</pre>
+<pre class="init">var canvasImage = new C.CanvasImage({
+    src: '/img/canvas.png',
+    width: 100,
+    height: 100,
+    onload: function(canvas, img) {
+        // write code.
+    }
+});</pre>
             </dd>
         </dl>
         <dl id="CanvasRender">
             <dt>CanvasRender</dt>
             <dd>
-                <pre class="init">var canvasRender = new C.CanvasRender();</pre>
+<pre class="init">var canvasRender = new C.CanvasRender({
+    canvas: canvasElement,
+    width: 100,
+    height: 100
+});</pre>
                 <ul>
                     <li>setSize({width, height})</li>
                     <li>draw([{image, x, y}])</li>
@@ -173,11 +182,14 @@ $p = $('p');</pre>
         <dl id="DataStore">
             <dt>DataStore</dt>
             <dd>
-                <pre class="init">var store = new C.DataStore();</pre>
+<pre class="init">var store = new C.DataStore();
+// singleton
+var storeSingle = new C.DataStore({
+    single: true
+})</pre>
                 <ul>
                     <li>set(key, val)</li>
                     <li>get(key)</li>
-                    <li>get()</li>
                     <li>remove(key)</li>
                     <li>reset()</li>
                 </ul>
@@ -208,41 +220,55 @@ $p = $('p');</pre>
         <dl id="Event">
             <dt>Event</dt>
             <dd>
-                <pre class="init">var e = new C.Event();</pre>
+<pre class="init">var e = new C.Event();
+// singleton
+var eSingle = new C.Event({
+    single: true
+});</pre>
+                <ul>
+                    <li>switchclick</li>
+                    <li>switchdown</li>
+                    <li>switchmove</li>
+                    <li>switchup</li>
+                    <li>load</li>
+                    <li>hashchange</li>
+                    <li>click</li>
+                    <li>mousedown</li>
+                    <li>mousemove</li>
+                    <li>mouseup</li>
+                    <li>touchstart</li>
+                    <li>touchmove</li>
+                    <li>touchend</li>
+                    <li>orientationchange</li>
+                    <li>resize</li>
+                </ul>
             </dd>
         </dl>
         <dl id="ExternalInterface">
             <dt>ExternalInterface</dt>
             <dd>
-                <pre class="init">var external = new C.ExternalInterface.Android();</pre>
-                <dl>
-                    <dt>ExternalInterface.Android</dt>
-                    <dd>
-                        <pre class="init">var external = new C.ExternalInterface.Android();</pre>
-                        <ul>
-                            <li>call({mode: string, vars: {key: val}})</li>
-                            <li>addCallback(name, function)</li>
-                            <li>removeCallback(name)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>ExternalInterface.IOS</dt>
-                    <dd>
-                        <pre class="init">var external = new C.ExternalInterface.IOS();</pre>
-                        <ul>
-                            <li>call({mode: string, vars: {key: val}})</li>
-                            <li>addCallback(name, function)</li>
-                            <li>removeCallback(name)</li>
-                        </ul>
-                    </dd>
-                </dl>
+<pre class="init">// Androidの場合、window直下にメソッドを含んだオブジェクトを作っておく
+// iOSの場合、そのオブジェクトを作らなければ自動的にiOS用の処理になる
+var external = new C.ExternalInterface({
+    android: window.AndroidMethod
+});</pre>
+                <ul>
+                    <li>call({mode: string, vars: {key: val}})</li>
+                    <li>addCallback(name, function)</li>
+                    <li>removeCallback(name)</li>
+                </ul>
             </dd>
         </dl>
         <dl id="FPS">
             <dt>FPS</dt>
             <dd>
-                <pre class="init">var fps = new C.FPS();</pre>
+<pre class="init">var fps = new C.FPS({
+    single: false, // singleton
+    criterion: 10,
+    enterframe: function() {
+        // write code.
+    }
+});</pre>
                 <ul>
                     <li>getCriterion()</li>
                     <li>getSurver()</li>
@@ -277,7 +303,19 @@ $p = $('p');</pre>
         <dl id="ImgLoad">
             <dt>ImgLoad</dt>
             <dd>
-                <pre class="init">var imgload = new C.ImgLoad();</pre>
+<pre class="init">var imgload = new C.ImgLoad({
+    srcs: [
+        '/img/test1.png',
+        '/img/test2.png',
+        '/img/test3.png'
+    ],
+    onprogress: function(num) {
+        // write code.
+    },
+    onload: function() {
+        // write code.
+    }
+});</pre>
                 <ul>
                     <li>start()</li>
                     <li>getProgress()</li>
@@ -287,7 +325,11 @@ $p = $('p');</pre>
         <dl id="Loading">
             <dt>Loading</dt>
             <dd>
-                <pre class="init">var loading = new C.Loading();</pre>
+<pre class="init">var loading = new C.Loading({
+    onload: function() {
+        // write code.
+    }
+});</pre>
             </dd>
         </dl>
         <dl id="LocalStorage">
@@ -297,7 +339,6 @@ $p = $('p');</pre>
                 <ul>
                     <li>set(key, value)</li>
                     <li>get(key)</li>
-                    <li>get()</li>
                     <li>remove(key)</li>
                     <li>reset(key)</li>
                 </ul>
@@ -318,14 +359,15 @@ $p = $('p');</pre>
                     <li>revivalScroll()</li>
                     <li>orientationCheck()</li>
                     <li>orientationChange()</li>
-                    <li>orientationChange()</li>
                 </ul>
             </dd>
         </dl>
         <dl id="NumberImage">
             <dt>NumberImage</dt>
             <dd>
-                <pre class="init">var numberImg = new C.NumberImage();</pre>
+<pre class="init">var numberImg = new C.NumberImage({
+    type: 'white' // element.className == 'num_white_X'
+});</pre>
                 <ul>
                     <li>make(x)</li>
                 </ul>
@@ -334,7 +376,11 @@ $p = $('p');</pre>
         <dl id="Observer">
             <dt>Observer</dt>
             <dd>
-                <pre class="init">var observer = new C.Observer();</pre>
+<pre class="init">var observer = new C.Observer();
+// singleton
+var observerSingle = new C.Observer({
+    single: true
+});</pre>
                 <ul>
                     <li>getObserved()</li>
                     <li>on()</li>
@@ -347,7 +393,19 @@ $p = $('p');</pre>
         <dl id="PreRender">
             <dt>PreRender</dt>
             <dd>
-                <pre class="init">var preRender = new C.PreRender();</pre>
+<pre class="init">var preRender = new C.PreRender({
+    elements: [
+        element1,
+        element2,
+        element3
+    ],
+    guesslimit: 10,
+    looptime: 10,
+    loopblur: 5,
+    onrendered: function() {
+        // write code.
+    }
+});</pre>
                 <ul>
                     <li>start()</li>
                 </ul>
@@ -366,7 +424,11 @@ $p = $('p');</pre>
         <dl id="ServerMeta">
             <dt>ServerMeta</dt>
             <dd>
-                <pre class="init">var server = new C.ServerMeta();</pre>
+<pre class="init">var server = new C.ServerMeta({
+    callback: function() {
+        // write code.
+    }
+});</pre>
                 <ul>
                     <li>date()</li>
                     <li>connection()</li>
@@ -394,7 +456,12 @@ $p = $('p');</pre>
         <dl id="Surrogate">
             <dt>Surrogate</dt>
             <dd>
-                <pre class="init">var surrogate = new C.Surrogate();</pre>
+<pre class="init">var surrogate = new C.Surrogate({
+    delay: 20,
+    callback: function() {
+        // write code.
+    }
+});</pre>
                 <ul>
                     <li>flush()</li>
                     <li>request()</li>
@@ -405,7 +472,12 @@ $p = $('p');</pre>
         <dl id="Throttle">
             <dt>Throttle</dt>
             <dd>
-                <pre class="init">var throttle = new C.Throttle();</pre>
+<pre class="init">var throttle = new C.Throttle({
+    waittime: 100,
+    callback: function() {
+        // write code.
+    }
+});</pre>
                 <ul>
                     <li>request(arg)</li>
                     <li>lock()</li>
@@ -416,13 +488,22 @@ $p = $('p');</pre>
         <dl id="Timer">
             <dt>Timer</dt>
             <dd>
-                <pre class="init">var timer = new C.Timer();</pre>
+<pre class="init">var timer = new C.Timer({
+    template: 'xxx.xxx',
+    limit: 20,
+    interval: 0.05,
+    onupdate: function() {
+        // write code.
+    },
+    ontimeup: function() {
+        // write code.
+    }
+});</pre>
                 <ul>
                     <li>getLimit()</li>
                     <li>getTime()</li>
                     <li>setUpdate(function)</li>
                     <li>getProgress()</li>
-                    <li>countDown()</li>
                     <li>countDown()</li>
                     <li>stop()</li>
                 </ul>
@@ -431,7 +512,27 @@ $p = $('p');</pre>
         <dl id="Tweener">
             <dt>Tweener</dt>
             <dd>
-                <pre class="init">var tweener = new C.Tweener();</pre>
+<pre class="init">var tweener = new C.Tweener(
+    element.style,
+    {
+        width: {
+            from: 0,
+            to: 100
+        },
+        height: {
+            from: 0,
+            to: 100,
+            prefix: '',
+            suffix: 'px'
+        }
+    },
+    {
+        easing: null,
+        onComplete: function() {
+            // write code.
+        }
+    }
+);</pre>
             </dd>
         </dl>
         <dl id="Twitter">
@@ -446,7 +547,9 @@ $p = $('p');</pre>
         <dl id="XML">
             <dt>XML</dt>
             <dd>
-                <pre class="init">var xml = new C.XML();</pre>
+<pre class="init">var xml = new C.XML({
+    data: xmlText
+});</pre>
                 <ul>
                     <li>getData()</li>
                     <li>setData()</li>

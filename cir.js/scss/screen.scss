@@ -48,13 +48,20 @@ h2 {
     color: #00BDDA;
 }
 .lead {
-    padding: 14px 30px;
+    padding: 14px 30px 0;
     font-size: 16px;
     @include text-shadow(#333 3px 3px 3px);
 
     .src {
         font-size: 18px;
     }
+}
+.download {
+    padding: 14px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    @include text-shadow(#333 3px 3px 3px);
 }
 #content {
     overflow: hidden;

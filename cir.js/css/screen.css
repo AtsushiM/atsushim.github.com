@@ -112,7 +112,7 @@ h2 {
 
 /* line 50, ../scss/screen.scss */
 .lead {
-  padding: 14px 30px;
+  padding: 14px 30px 0;
   font-size: 16px;
   text-shadow: #333333 3px 3px 3px;
 }
@@ -122,18 +122,27 @@ h2 {
 }
 
 /* line 59, ../scss/screen.scss */
+.download {
+  padding: 14px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: #333333 3px 3px 3px;
+}
+
+/* line 66, ../scss/screen.scss */
 #content {
   overflow: hidden;
   padding: 15px;
 }
 
-/* line 63, ../scss/screen.scss */
+/* line 70, ../scss/screen.scss */
 #main {
   float: right;
   width: 80%;
 }
 
-/* line 68, ../scss/screen.scss */
+/* line 75, ../scss/screen.scss */
 #sub ul, dl {
   padding: 15px 15px 5px;
   border: 1px solid #004E5A;
@@ -149,21 +158,21 @@ h2 {
   text-shadow: #222222 1px 1px 3px;
 }
 
-/* line 76, ../scss/screen.scss */
+/* line 83, ../scss/screen.scss */
 #sub {
   float: left;
   width: 20%;
 }
-/* line 80, ../scss/screen.scss */
+/* line 87, ../scss/screen.scss */
 #sub ul {
   margin: 0 15px;
 }
 
-/* line 86, ../scss/screen.scss */
+/* line 93, ../scss/screen.scss */
 dl {
   margin-bottom: 15px;
 }
-/* line 91, ../scss/screen.scss */
+/* line 98, ../scss/screen.scss */
 dl dt {
   margin-bottom: 10px;
   padding: 4px 10px;
@@ -176,7 +185,7 @@ dl dt {
   -o-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 100, ../scss/screen.scss */
+/* line 107, ../scss/screen.scss */
 dl dt:before {
   padding-right: 5px;
   font-size: 5px;
@@ -184,12 +193,12 @@ dl dt:before {
   vertical-align: middle;
   color: #00ACC9;
 }
-/* line 108, ../scss/screen.scss */
+/* line 115, ../scss/screen.scss */
 dl dd {
   font-size: 16px;
   color: #00B4CC;
 }
-/* line 112, ../scss/screen.scss */
+/* line 119, ../scss/screen.scss */
 dl dd .init {
   display: none;
   margin-bottom: 10px;
@@ -204,27 +213,27 @@ dl dd .init {
   -o-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 122, ../scss/screen.scss */
+/* line 129, ../scss/screen.scss */
 dl dd ul {
   margin-left: 10px;
 }
-/* line 129, ../scss/screen.scss */
+/* line 136, ../scss/screen.scss */
 dl.open dt:before {
   content: '▲';
 }
-/* line 134, ../scss/screen.scss */
+/* line 141, ../scss/screen.scss */
 dl.open dd .init {
   display: block;
 }
 
-/* line 141, ../scss/screen.scss */
+/* line 148, ../scss/screen.scss */
 #footer {
   padding: 14px 30px;
   font-size: 16px;
   color: #AAA;
   text-shadow: #333333 3px 3px 3px;
 }
-/* line 147, ../scss/screen.scss */
+/* line 154, ../scss/screen.scss */
 #footer a {
   color: #CCC;
 }
