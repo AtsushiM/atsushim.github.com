@@ -1,19 +1,17 @@
 (function() {
     var $ = C.selector,
-        $dt = $('#main dl dt'),
+        $main = $('#main'),
+        $click = $main.find('dt, h3'),
         e = new C.Event();
 
-    $dt.on(e.switchclick, function() {
-        var $dl = $(this).parent(),
-            $init = $dl.find('.init'),
+    $click.on(e.switchclick, function() {
+        open(this);
+    });
+
+    function open(_this) {
+        var $parent = $(_this).parent(),
             cls = 'open';
 
-        $dl.toggleClass(cls);
-        if ($dl.hasClass(cls)) {
-            $init.show();
-        }
-        else {
-            $init.hide();
-        }
-    });
+        $parent.toggleClass(cls);
+    }
 }());

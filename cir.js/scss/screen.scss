@@ -116,15 +116,19 @@ dl {
         font-size: 16px;
         color: #00B4CC;
 
-        .init {
+        %none {
             display: none;
-            margin-bottom: 10px;
             padding: 10px;
-            font-family: monospace;
             border: 1px dashed #005F6B;
-            font-size: 18px;
+            font-family: monospace;
             color: #BBB;
             @include border-radius(2px);
+        }
+        .sample {
+            @extend %none;
+
+            margin-bottom: 10px;
+            font-size: 18px;
 
             pre {
                 padding-bottom: 10px;
@@ -135,8 +139,26 @@ dl {
                 font-size: 14px;
             }
         }
+
         ul {
             margin-left: 10px;
+        }
+        .detail {
+            @extend %none;
+
+            margin: 10px 0 15px 15px;
+
+            pre {
+                margin: 10px;
+                font-style: italic;
+                font-size: 14px;
+                color: #999;
+            }
+        }
+        .open {
+            .detail {
+                display: block;
+            }
         }
     }
 
@@ -147,7 +169,7 @@ dl {
             }
         }
         dd {
-            .init {
+            .sample {
                 display: block;
             }
         }
