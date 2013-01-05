@@ -22,205 +22,31 @@
 
 <div id="content">
     <div id="main">
+        <dl id="c">
+            <dt>C</dt>
+            <dd>
+                <div class="sample">
+<pre>var ajax = new C.Ajax(); // ajax
+var mobile = new C.Mobile(); // Mobile</pre>
+                    <p>CIR.jsのネームスペースです。<br />
+                    すべてのクラス、メソッドはC以下に存在します。</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="utility">
-            <dt>utility</dt>
+            <dt>C.utility</dt>
             <dd>
                 <div class="sample">
                     <pre>var util = C.utility;</pre>
-                    <p>ほぼすべてのクラスから呼び出されるユーティリティです。</p>
+                    <p>様々なクラスから呼び出されるユーティリティオブジェクトです。</p>
                 </div>
                 <ul>
-                    <li>
-                        <h3>$(selector)</h3>
-                        <div class="detail">
-                            <p>document.querySelectorのショートハンドです。</p>
-<pre>var $ = util.$;
-var $p = $('p'); // HTML Element</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>$$(selector)</h3>
-                        <div class="detail">
-                            <p>document.querySelectorAllのショートハンドです。<br />
-                            返り値はNodeListではなくArrayに変換されています。</p>
-<pre>var $$ = util.$$;
-var $$p = $$('p'); // array</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>$child(selector, element)</h3>
-                        <div class="detail">
-                            <p>element.querySelectorのショートハンドです。</p>
-<pre>var $child = util.$child;
-var $p = $child('p', document.body); // HTML Element</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>$$child(selector, element)</h3>
-                        <div class="detail">
-                            <p>element.querySelectorAllのショートハンドです。<br />
-                            返り値はNodeListではなくArrayに変換されています。</p>
-<pre>var $$child = util.$$child;
-var $$p = $$('p', document.body); // array</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>$id(selector)</h3>
-                        <div class="detail">
-                            <p>document.getElementByIdのショートハンドです。</p>
-<pre>var $id = util.$id;
-var $sample = $id('sample'); // HTML Element</pre>
-                        </div>
-                    </li>
                     <li>
                         <h3>pageTop()</h3>
                         <div class="detail">
                             <p>ページ上部へスクロールを移動させます。<br />
                             iPhoneなどのスマートフォンの場合、スクロールバーを表示しません。</p>
 <pre>util.pageTop();</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>onEvent(element, eventname, handler)</h3>
-                        <div class="detail">
-                            <p>element.addEventListnerを実行します。</p>
-<pre>var $sample = util.$('#sample');
-var e = new C.Event();
-util.onEvent($sample, e.click, function() {
-    alert('sample click!');
-});</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>offEvent(element, eventname, handler)</h3>
-                        <div class="detail">
-                            <p>element.removeEventListnerを実行します。</p>
-<pre>var $sample = util.$('#sample');
-var e = new C.Event();
-var func = function() {
-    alert('sample click!');
-};
-util.onEvent($sample, e.click, func);
-util.offEvent($sample, e.click, func);
-</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>makeElement(tagname [, attr])</h3>
-                        <div class="detail">
-                            <p>document.createElementのエイリアスです。</p>
-<pre>var div = util.makeElement('div'); // div element</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>showElement(element)</h3>
-                        <div class="detail">
-                            <p>element.style.displayに'block'を指定します。</p>
-<pre>var $sample = util.$('#sample');
-util.showElement($sample);</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>hideElement(element)</h3>
-                        <div class="detail">
-                            <p>element.style.displayに'none'を指定します。</p>
-<pre>var $sample = util.$('#sample');
-util.hideElement($sample);</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>opacityElement(element, value)</h3>
-                        <div class="detail">
-                            <p>element.style.opacityにvalueを指定します。</p>
-<pre>var $sample = util.$('#sample');
-util.opacityElement($sample, 0.5);</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>hasClass(element, value)</h3>
-                        <div class="detail">
-                            <p>elementのclassにvalueがあるかBooleanで返します。</p>
-<pre>var $sample = util.$('#sample');
-util.hasClass($sample, 'sample');</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>addClass(element, value)</h3>
-                        <div class="detail">
-                            <p>elementのclassにvalueを追加します。</p>
-<pre>var $sample = util.$('#sample');
-util.addClass($sample, 'sample');</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>removeClass(element, value)</h3>
-                        <div class="detail">
-                            <p>elementのclassからvalueを削除します。</p>
-<pre>var $sample = util.$('#sample');
-util.removeClass($sample, 'sample');</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>toggleClass(element, value)</h3>
-                        <div class="detail">
-                            <p>elementのclassにvalueがある場合は削除を、<br />
-                            無い場合は追加します。</p>
-<pre>var $sample = util.$('#sample');
-util.toggleClass($sample, 'sample'); // sampleクラスを追加
-util.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>styleElement(element, object)</h3>
-                        <div class="detail">
-                            <p>element.styleにobjectの内容を反映します。</p>
-<pre>var $sample = util.$('#sample');
-util.styleElement({
-    width: '100px',
-    height: '200px'
-});</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>attrElement(element, property, value)</h3>
-                        <div class="detail">
-                            <p>elementの属性の取得、設定を行います。</p>
-<pre>var $img = util.$('#img');
-var src = util.attrElement($img, 'src'); // src取得
-util.attrElement($img, 'src', '/img/test.png'); // src設定
-util.attrElement($img, {
-    width: '100px',
-    height: '100px'
-}); // まとめて設定</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>computedStyleElement(element)</h3>
-                        <div class="detail">
-                            <p>elementに適用されているcssのスタイルを取得する。<br />
-                            (style属性に適用されていないものも取得する)</p>
-<pre>var $sample = util.$('#sample');
-var computed = util.computedStyleElement($sample);
-var width = computed.width;
-var height = computed.getPropertyValue('height');</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>appendElement(_parent, element)</h3>
-                        <div class="detail">
-                            <p>_parentに対してelementを追加します。</p>
-<pre>var div = util.makeElement('div');
-var $sample = util.$('#sample');
-util.appendElement($sample, div);</pre>
-                        </div>
-                    </li>
-                    <li>
-                        <h3>innerHTML(element, text)</h3>
-                        <div class="detail">
-                            <p>element.innerHTMLを取得・設定します。</p>
-<pre>var $sample = util.$('#sample');
-util.innerHTML($sample); // 取得
-util.innerHTML($sample, 'rewrite innerHTML.'); // 設定</pre>
                         </div>
                     </li>
                     <li>
@@ -360,18 +186,214 @@ check = util.is('Number', '123'); // false</pre>
                             <p>nullを返却するメソッドです。<br />
                             実質的に何もしませんが、メソッドの引数で渡すcallbackが必須でない場合等で使うと効果的です。</p>
 <pre>function anyAction(callback) {
-    callback = callback || util.nullFunction;
     // any action...
-
-    callback(); // callbackの有無に限らず実行できるようになる
-}</pre>
+    callback();
+}
+anyAction(util.nullFunction); // anyActionは常にcallbackを必要とするのでnullFunctionを渡し処理の簡略
+</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="element">
+            <dt>C.element</dt>
+            <dd>
+                <div class="sample">
+                    <pre>var el = C.element;</pre>
+                    <p>HTMLエレメントに関するメソッドをまとめたオブジェクトです。</p>
+                </div>
+                <ul>
+                    <li>
+                        <h3>$(selector)</h3>
+                        <div class="detail">
+                            <p>document.querySelectorのショートハンドです。</p>
+<pre>var $ = el.$;
+var $p = $('p'); // HTML Element</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>$$(selector)</h3>
+                        <div class="detail">
+                            <p>document.querySelectorAllのショートハンドです。<br />
+                            返り値はNodeListではなくArrayに変換されています。</p>
+<pre>var $$ = el.$$;
+var $$p = $$('p'); // array</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>$child(selector, element)</h3>
+                        <div class="detail">
+                            <p>element.querySelectorのショートハンドです。</p>
+<pre>var $child = el.$child;
+var $p = $child('p', document.body); // HTML Element</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>$$child(selector, element)</h3>
+                        <div class="detail">
+                            <p>element.querySelectorAllのショートハンドです。<br />
+                            返り値はNodeListではなくArrayに変換されています。</p>
+<pre>var $$child = el.$$child;
+var $$p = $$('p', document.body); // array</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>$id(selector)</h3>
+                        <div class="detail">
+                            <p>document.getElementByIdのショートハンドです。</p>
+<pre>var $id = el.$id;
+var $sample = $id('sample'); // HTML Element</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>on(element, eventname, handler)</h3>
+                        <div class="detail">
+                            <p>element.addEventListnerを実行します。</p>
+<pre>var $sample = el.$('#sample');
+var e = new C.Event();
+el.on($sample, e.click, function() {
+    alert('sample click!');
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>off(element, eventname, handler)</h3>
+                        <div class="detail">
+                            <p>element.removeEventListnerを実行します。</p>
+<pre>var $sample = el.$('#sample');
+var e = new C.Event();
+var func = function() {
+    alert('sample click!');
+};
+el.on($sample, e.click, func);
+el.off($sample, e.click, func);
+</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>create(tagname [, attr])</h3>
+                        <div class="detail">
+                            <p>document.createElementのエイリアスです。</p>
+<pre>var div = el.create('div'); // div element</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>show(element)</h3>
+                        <div class="detail">
+                            <p>element.style.displayに'block'を指定します。</p>
+<pre>var $sample = el.$('#sample');
+el.show($sample);</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>hide(element)</h3>
+                        <div class="detail">
+                            <p>element.style.displayに'none'を指定します。</p>
+<pre>var $sample = el.$('#sample');
+el.hide($sample);</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>opacity(element, value)</h3>
+                        <div class="detail">
+                            <p>element.style.opacityにvalueを指定します。</p>
+<pre>var $sample = el.$('#sample');
+el.opacity($sample, 0.5);</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>hasClass(element, value)</h3>
+                        <div class="detail">
+                            <p>elementのclassにvalueがあるかBooleanで返します。</p>
+<pre>var $sample = el.$('#sample');
+el.hasClass($sample, 'sample');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>addClass(element, value)</h3>
+                        <div class="detail">
+                            <p>elementのclassにvalueを追加します。</p>
+<pre>var $sample = el.$('#sample');
+el.addClass($sample, 'sample');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>removeClass(element, value)</h3>
+                        <div class="detail">
+                            <p>elementのclassからvalueを削除します。</p>
+<pre>var $sample = el.$('#sample');
+el.removeClass($sample, 'sample');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>toggleClass(element, value)</h3>
+                        <div class="detail">
+                            <p>elementのclassにvalueがある場合は削除を、<br />
+                            無い場合は追加します。</p>
+<pre>var $sample = el.$('#sample');
+el.toggleClass($sample, 'sample'); // sampleクラスを追加
+el.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>style(element, object)</h3>
+                        <div class="detail">
+                            <p>element.styleにobjectの内容を反映します。</p>
+<pre>var $sample = el.$('#sample');
+el.style({
+    width: '100px',
+    height: '200px'
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>computedStyle(element)</h3>
+                        <div class="detail">
+                            <p>elementに適用されているcssのスタイルを取得する。<br />
+                            (style属性に適用されていないものも取得する)</p>
+<pre>var $sample = el.$('#sample');
+var computed = el.computedStyle($sample);
+var width = computed.width;
+var height = computed.getPropertyValue('height');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>attr(element, property, value)</h3>
+                        <div class="detail">
+                            <p>elementの属性の取得、設定を行います。</p>
+<pre>var $img = el.$('#img');
+var src = el.attrElement($img, 'src'); // src取得
+el.attr($img, 'src', '/img/test.png'); // src設定
+el.attr($img, {
+    width: '100px',
+    height: '100px'
+}); // まとめて設定</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>append(_parent, element)</h3>
+                        <div class="detail">
+                            <p>_parentに対してelementを追加します。</p>
+<pre>var div = el.create('div');
+var $sample = el.$('#sample');
+el.append($sample, div);</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>html(element, text)</h3>
+                        <div class="detail">
+                            <p>element.innerHTMLを取得・設定します。</p>
+<pre>var $sample = el.$('#sample');
+el.innerHTML($sample); // 取得
+el.innerHTML($sample, 'rewrite innerHTML.'); // 設定</pre>
                         </div>
                     </li>
                 </ul>
             </dd>
         </dl>
         <dl id="extend">
-            <dt>extend</dt>
+            <dt>C.extend</dt>
             <dd>
                 <div class="sample">
 <pre>var extend = C.extend;
@@ -390,7 +412,7 @@ alert(Sample2.prototype.test); //test extend.
             </dd>
         </dl>
         <dl id="klass">
-            <dt>klass</dt>
+            <dt>C.klass</dt>
             <dd>
                 <div class="sample">
 <pre>var Test = C.klass({
@@ -411,7 +433,7 @@ alert(Sample2.prototype.test); //test extend.
             </dd>
         </dl>
         <dl id="selector">
-            <dt>selector</dt>
+            <dt>C.selector</dt>
             <dd>
                 <div class="sample">
 <pre>var $ = C.selector;
@@ -440,7 +462,7 @@ var $p = $('p');</pre>
             </dd>
         </dl>
         <dl id="easing">
-            <dt>easing</dt>
+            <dt>C.easing</dt>
             <dd>
                 <div class="sample">
                     <pre>var easing = C.easing;</pre>
@@ -472,8 +494,37 @@ var $p = $('p');</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="_event">
+            <dt>C.event</dt>
+            <dd>
+                <div class="sample">
+                    <pre>var event = C.event;</pre>
+                    <p>エレメント用の各イベントを纏めたオブジェクトです。<br />
+                    switchclick, switchdown, switchmove, switchupは<br />
+                    実行環境がタッチパネルかどうか判定し、最適な値に変更されます。<br />
+                    このオブジェクトは<a href="#Event">C.Event</a>クラスを使用して設定されます。</p>
+                </div>
+                <ul>
+                    <li>switchclick</li>
+                    <li>switchdown</li>
+                    <li>switchmove</li>
+                    <li>switchup</li>
+                    <li>load</li>
+                    <li>hashchange</li>
+                    <li>click</li>
+                    <li>mousedown</li>
+                    <li>mousemove</li>
+                    <li>mouseup</li>
+                    <li>touchstart</li>
+                    <li>touchmove</li>
+                    <li>touchend</li>
+                    <li>orientationchange</li>
+                    <li>resize</li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Ajax">
-            <dt>Ajax</dt>
+            <dt>C.Ajax</dt>
             <dd>
                 <div class="sample">
                     <pre>var ajax = new C.Ajax();</pre>
@@ -487,7 +538,7 @@ var $p = $('p');</pre>
             </dd>
         </dl>
         <dl id="Bind">
-            <dt>Bind</dt>
+            <dt>C.Bind</dt>
             <dd>
                 <div class="sample">
                     <pre>var bind = new C.Bind();</pre>
@@ -501,7 +552,7 @@ var $p = $('p');</pre>
             </dd>
         </dl>
         <dl id="CanvasImage">
-            <dt>CanvasImage</dt>
+            <dt>C.CanvasImage</dt>
             <dd>
                 <div class="sample">
 <pre>var canvasImage = new C.CanvasImage({
@@ -518,7 +569,7 @@ var $p = $('p');</pre>
             </dd>
         </dl>
         <dl id="CanvasRender">
-            <dt>CanvasRender</dt>
+            <dt>C.CanvasRender</dt>
             <dd>
                 <div class="sample">
 <pre>var canvasRender = new C.CanvasRender({
@@ -536,7 +587,7 @@ var $p = $('p');</pre>
             </dd>
         </dl>
         <dl id="DataStore">
-            <dt>DataStore</dt>
+            <dt>C.DataStore</dt>
             <dd>
                 <div class="sample">
 <pre>var store = new C.DataStore();
@@ -556,7 +607,7 @@ var storeSingle = new C.DataStore({
             </dd>
         </dl>
         <dl id="Deferred">
-            <dt>Deferred</dt>
+            <dt>C.Deferred</dt>
             <dd>
                 <div class="sample">
                     <pre>var deferred = new C.Deferred();</pre>
@@ -570,7 +621,7 @@ var storeSingle = new C.DataStore({
             </dd>
         </dl>
         <dl id="DragFlick">
-            <dt>DragFlick</dt>
+            <dt>C.DragFlick</dt>
             <dd>
                 <div class="sample">
                     <pre>var dragflick = new C.DragFlick();</pre>
@@ -584,7 +635,7 @@ var storeSingle = new C.DataStore({
             </dd>
         </dl>
         <dl id="Event">
-            <dt>Event</dt>
+            <dt>C.Event</dt>
             <dd>
                 <div class="sample">
 <pre>var e = new C.Event();
@@ -616,7 +667,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="ExternalInterface">
-            <dt>ExternalInterface</dt>
+            <dt>C.ExternalInterface</dt>
             <dd>
                 <div class="sample">
 <pre>var external = new C.ExternalInterface({
@@ -634,7 +685,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="FPS">
-            <dt>FPS</dt>
+            <dt>C.FPS</dt>
             <dd>
                 <div class="sample">
 <pre>var fps = new C.FPS({
@@ -657,7 +708,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="Facebook">
-            <dt>Facebook</dt>
+            <dt>C.Facebook</dt>
             <dd>
                 <div class="sample">
                     <pre>var facebook = new C.Facebook();</pre>
@@ -669,7 +720,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="HashController">
-            <dt>HashController</dt>
+            <dt>C.HashController</dt>
             <dd>
                 <div class="sample">
                     <pre>var hashCtrl = new C.HashController();</pre>
@@ -684,7 +735,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="ImgLoad">
-            <dt>ImgLoad</dt>
+            <dt>C.ImgLoad</dt>
             <dd>
                 <div class="sample">
 <pre>var imgload = new C.ImgLoad({
@@ -709,7 +760,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="Loading">
-            <dt>Loading</dt>
+            <dt>C.Loading</dt>
             <dd>
                 <div class="sample">
 <pre>var loading = new C.Loading({
@@ -722,7 +773,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="LocalStorage">
-            <dt>LocalStorage</dt>
+            <dt>C.LocalStorage</dt>
             <dd>
                 <div class="sample">
                     <pre>var storage = new C.LocalStorage();</pre>
@@ -738,7 +789,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="Mobile">
-            <dt>Mobile</dt>
+            <dt>C.Mobile</dt>
             <dd>
                 <div class="sample">
                     <pre>var mobile = new C.Mobile();</pre>
@@ -758,12 +809,12 @@ var eSingle = new C.Event({
                 </ul>
             </dd>
         </dl>
-        <dl id="NumberImage">
-            <dt>NumberImage</dt>
+        <dl id="FontImage">
+            <dt>C.FontImage</dt>
             <dd>
                 <div class="sample">
-<pre>var numberImg = new C.NumberImage({
-    type: 'white' // element.className == 'num_white_X'
+<pre>var font = new C.FontImage({
+    type: 'white' // element.className == 'font_white_X'
 });</pre>
                     <p>CSSスプライト用のHTMLタグを生成するクラスです。<br />
                     typeに指定された文字列が生成されるタグのclassの一部になります。</p>
@@ -774,7 +825,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="Observer">
-            <dt>Observer</dt>
+            <dt>C.Observer</dt>
             <dd>
                 <div class="sample">
 <pre>var observer = new C.Observer();
@@ -794,7 +845,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="PreRender">
-            <dt>PreRender</dt>
+            <dt>C.PreRender</dt>
             <dd>
                 <div class="sample">
 <pre>var preRender = new C.PreRender({
@@ -820,7 +871,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="ScriptLoad">
-            <dt>ScriptLoad</dt>
+            <dt>C.ScriptLoad</dt>
             <dd>
                 <div class="sample">
                     <pre>var scriptload = new C.ScriptLoad();</pre>
@@ -833,7 +884,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="ServerMeta">
-            <dt>ServerMeta</dt>
+            <dt>C.ServerMeta</dt>
             <dd>
                 <div class="sample">
 <pre>var server = new C.ServerMeta({
@@ -857,7 +908,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="SessionStorage">
-            <dt>SessionStorage</dt>
+            <dt>C.SessionStorage</dt>
             <dd>
                 <div class="sample">
                     <pre>var storage = new C.SessionStorage();</pre>
@@ -873,7 +924,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="Surrogate">
-            <dt>Surrogate</dt>
+            <dt>C.Surrogate</dt>
             <dd>
                 <div class="sample">
 <pre>var surrogate = new C.Surrogate({
@@ -895,7 +946,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="Throttle">
-            <dt>Throttle</dt>
+            <dt>C.Throttle</dt>
             <dd>
                 <div class="sample">
 <pre>var throttle = new C.Throttle({
@@ -916,7 +967,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="Timer">
-            <dt>Timer</dt>
+            <dt>C.Timer</dt>
             <dd>
                 <div class="sample">
 <pre>var timer = new C.Timer({
@@ -943,7 +994,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="Tweener">
-            <dt>Tweener</dt>
+            <dt>C.Tweener</dt>
             <dd>
                 <div class="sample">
 <pre>var tweener = new C.Tweener(
@@ -973,7 +1024,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="Twitter">
-            <dt>Twitter</dt>
+            <dt>C.Twitter</dt>
             <dd>
                 <div class="sample">
                     <pre>var twitter = new C.Twitter();</pre>
@@ -985,7 +1036,7 @@ var observerSingle = new C.Observer({
             </dd>
         </dl>
         <dl id="XML">
-            <dt>XML</dt>
+            <dt>C.XML</dt>
             <dd>
                 <div class="sample">
 <pre>var xml = new C.XML({
@@ -1009,6 +1060,7 @@ var observerSingle = new C.Observer({
             <li><a href="#extend">extend</a></li>
             <li><a href="#selector">selector</a></li>
             <li><a href="#easing">easing</a></li>
+            <li><a href="#_event">event</a></li>
             <li><a href="#Ajax">Ajax</a></li>
             <li><a href="#Bind">Bind</a></li>
             <li><a href="#CanvasImage">CanvasImage</a></li>
@@ -1025,7 +1077,7 @@ var observerSingle = new C.Observer({
             <li><a href="#Loading">Loading</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
             <li><a href="#Mobile">Mobile</a></li>
-            <li><a href="#NumberImage">NumberImage</a></li>
+            <li><a href="#FontImage">FontImage</a></li>
             <li><a href="#Observer">Observer</a></li>
             <li><a href="#PreRender">PreRender</a></li>
             <li><a href="#ScriptLoad">ScriptLoad</a></li>

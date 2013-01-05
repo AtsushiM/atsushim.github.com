@@ -196,9 +196,8 @@ dl dt:before {
 /* line 115, ../scss/screen.scss */
 dl dd {
   font-size: 16px;
-  color: #00B4CC;
 }
-/* line 119, ../scss/screen.scss */
+/* line 118, ../scss/screen.scss */
 dl dd .sample, dl dd .detail {
   display: none;
   padding: 10px;
@@ -211,57 +210,85 @@ dl dd .sample, dl dd .detail {
   -o-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 127, ../scss/screen.scss */
+/* line 126, ../scss/screen.scss */
 dl dd .sample {
   margin-bottom: 10px;
   font-size: 18px;
 }
-/* line 133, ../scss/screen.scss */
+/* line 132, ../scss/screen.scss */
 dl dd .sample pre {
   padding-bottom: 10px;
 }
-/* line 136, ../scss/screen.scss */
+/* line 135, ../scss/screen.scss */
 dl dd .sample p {
   padding: 10px;
   border-top: 1px solid #005F6B;
   font-size: 14px;
 }
-/* line 143, ../scss/screen.scss */
+/* line 142, ../scss/screen.scss */
 dl dd ul {
   margin-left: 10px;
 }
-/* line 146, ../scss/screen.scss */
+/* line 145, ../scss/screen.scss */
+dl dd li {
+  padding-bottom: 5px;
+}
+/* line 148, ../scss/screen.scss */
+dl dd h3 {
+  cursor: pointer;
+  color: #00B4CC;
+  vertical-align: middle;
+}
+/* line 153, ../scss/screen.scss */
+dl dd h3:before {
+  content: '+';
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  width: 1.5em;
+  margin-right: 10px;
+  border-radius: 2px;
+  background-color: rgba(0, 95, 107, 0.3);
+  text-align: center;
+  font-size: 12px;
+  color: #BBB;
+}
+/* line 167, ../scss/screen.scss */
 dl dd .detail {
   margin: 10px 0 15px 15px;
 }
-/* line 151, ../scss/screen.scss */
+/* line 172, ../scss/screen.scss */
 dl dd .detail pre {
   margin: 10px;
   font-style: italic;
   font-size: 14px;
   color: #999;
 }
-/* line 159, ../scss/screen.scss */
+/* line 181, ../scss/screen.scss */
+dl dd .open h3:before {
+  content: '-';
+}
+/* line 185, ../scss/screen.scss */
 dl dd .open .detail {
   display: block;
 }
-/* line 167, ../scss/screen.scss */
+/* line 193, ../scss/screen.scss */
 dl.open dt:before {
   content: '▲';
 }
-/* line 172, ../scss/screen.scss */
+/* line 198, ../scss/screen.scss */
 dl.open dd .sample {
   display: block;
 }
 
-/* line 179, ../scss/screen.scss */
+/* line 206, ../scss/screen.scss */
 #footer {
   padding: 14px 30px;
   font-size: 16px;
   color: #AAA;
   text-shadow: #333333 3px 3px 3px;
 }
-/* line 185, ../scss/screen.scss */
+/* line 212, ../scss/screen.scss */
 #footer a {
   color: #CCC;
 }
