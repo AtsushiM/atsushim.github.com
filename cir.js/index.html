@@ -58,7 +58,8 @@ var $p = $child('p', document.body); // HTML Element</pre>
                     <li>
                         <h3>$$child(selector, element)</h3>
                         <div class="detail">
-                            <p>element.querySelectorAllのショートハンドです。</p>
+                            <p>element.querySelectorAllのショートハンドです。<br />
+                            返り値はNodeListではなくArrayに変換されています。</p>
 <pre>var $$child = util.$$child;
 var $$p = $$('p', document.body); // array</pre>
                         </div>
@@ -213,20 +214,159 @@ var $sample = util.$('#sample');
 util.appendElement($sample, div);</pre>
                         </div>
                     </li>
-                    <li>innerHTML(element, text)</li>
-                    <li>override(targetObj, varObj)</li>
-                    <li>replaceAll(targetext, needle, replacetext)</li>
-                    <li>windowOpen(url, windowname)</li>
-                    <li>typeCast(string)</li>
-                    <li>makeQueryString(object)</li>
-                    <li>parseQueryString(string)</li>
-                    <li>is(string, vars)</li>
-                    <li>isObject(vars)</li>
-                    <li>isNumber(vars)</li>
-                    <li>isString(vars)</li>
-                    <li>isFunction(vars)</li>
-                    <li>isBoolean(vars)</li>
-                    <li>nullFunction()</li>
+                    <li>
+                        <h3>innerHTML(element, text)</h3>
+                        <div class="detail">
+                            <p>element.innerHTMLを取得・設定します。</p>
+<pre>var $sample = util.$('#sample');
+util.innerHTML($sample); // 取得
+util.innerHTML($sample, 'rewrite innerHTML.'); // 設定</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>override(targetObj, varObj)</h3>
+                        <div class="detail">
+                            <p>targetObjに対してvarObjのプロパティを上書きします。<br />
+                            返り値は上書きされたtargetObjになります。</p>
+<pre>var target = {};
+var over = {sample: 'override property'};
+util.override(target, over);
+alert(target.sample); // override property</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>replaceAll(targetext, needle, replacetext)</h3>
+                        <div class="detail">
+                            <p>targettext内にあるneedleを全てreplacetextに書き換えます。<br />
+                            正規表現は使えません。</p>
+<pre>var text = util.replaceAll('cir.js', 'cir', 'Cool is Right');
+alert(text); // Cool is Right.js
+
+text = util.relaceAll(text, 's', 'a');
+alert(text); // Cool ia Right.ja
+</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>windowOpen(url, windowname)</h3>
+                        <div class="detail">
+                            <p>新しいウィンドウを開きます</p>
+<pre>var subwindow = util.windowOpen('/sub.html', 'sub');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>typeCast(string)</h3>
+                        <div class="detail">
+                            <p>渡された文字列を内容に合わせて型変換します。</p>
+<pre>var obj = '{"a":"objtext"}';
+var num = '123';
+var boolTrue = 'true';
+var boolFalse = 'false';
+var str = 'sample';
+
+obj = util.typeCast(obj); // { a: 'objtext'}
+num = util.typeCast(num); // 123
+boolTrue = util.typeCast(boolTrue); // true
+boolFalse = util.typeCast(boolFalse); // false
+str = util.typeCast(str); // 'sample'
+</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>makeQueryString(object)</h3>
+                        <div class="detail">
+                            <p>オブジェクトのプロパティをlocation.search、もしくはlocation.hash用に使えるクエリーストリング形式に変換します。</p>
+<pre>var hashquery = util.makeQueryString({
+    c: 'Cool',
+    i: 'is',
+    r: 'Right'
+}); // c=Cool&i=is&r=Right</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>parseQueryString(string)</h3>
+                        <div class="detail">
+                            <p>location.search、もしくはlocation.hashの値をオブジェクトに変換します。</p>
+<pre>var hashquery = util.makeQueryString({
+    c: 'Cool',
+    i: 'is',
+    r: 'Right'
+}); // c=Cool&i=is&r=Right
+location.hash = hashquery;
+
+var obj = util.parseQueryString(location.hash);
+alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');
+</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>isObject(vars)</h3>
+                        <div class="detail">
+                            <p>varsがObjectかBooleanで返します。</p>
+<pre>var check;
+check = util.isObject({}); // true
+check = util.isObjext(''); // false</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>isNumber(vars)</h3>
+                        <div class="detail">
+                            <p>varsがNumberかBooleanで返します。</p>
+<pre>var check;
+check = util.isNumber(123); // true
+check = util.isNumber('123'); // false</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>isString(vars)</h3>
+                        <div class="detail">
+                            <p>varsがStringかBooleanで返します。</p>
+<pre>var check;
+check = util.isString(''); // true
+check = util.isString(12); // false</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>isFunction(vars)</h3>
+                        <div class="detail">
+                            <p>varsがFunctionかBooleanで返します。</p>
+<pre>var check;
+check = util.isFunction((function() {})); // true
+check = util.isFunction(12); // false</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>isBoolean(vars)</h3>
+                        <div class="detail">
+                            <p>varsがBooleanかBooleanで返します。</p>
+<pre>var check;
+check = util.isBoolean(true); // true
+check = util.isBoolean(false); // true
+check = util.isBoolean(1); // false</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>is(type, vars)</h3>
+                        <div class="detail">
+                            <p>varsがtypeで指定された形式になっているかBooleanで返します。</p>
+<pre>var check;
+check = util.is('String', ''); // true
+check = util.is('Number', '123'); // false</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>nullFunction()</h3>
+                        <div class="detail">
+                            <p>nullを返却するメソッドです。<br />
+                            実質的に何もしませんが、メソッドの引数で渡すcallbackが必須でない場合等で使うと効果的です。</p>
+<pre>function anyAction(callback) {
+    callback = callback || util.nullFunction;
+    // any action...
+
+    callback(); // callbackの有無に限らず実行できるようになる
+}</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -234,7 +374,16 @@ util.appendElement($sample, div);</pre>
             <dt>extend</dt>
             <dd>
                 <div class="sample">
-                    <pre>var extend = C.extend;</pre>
+<pre>var extend = C.extend;
+function Sample1() {
+}
+Sample1.prototype.test = 'test extend.';
+
+function Sample2() {
+}
+extend(Sample2, Sample1);
+alert(Sample2.prototype.test); //test extend.
+</pre>
                     <p>プロトタイプを継承するためのメソッドです。<br />
                     klassメソッドから呼び出されます。</p>
                 </div>
@@ -248,7 +397,7 @@ util.appendElement($sample, div);</pre>
     init: function() {
         // write code.
     },
-    extend: cls,
+    extend: SuperTest,
     properties: {
         // write method &amp; property
     }
@@ -256,7 +405,8 @@ util.appendElement($sample, div);</pre>
                     <p>クラス作成用のメソッドです。<br />
                     上記の場合、<br />
                     var test = new Test();<br />
-                    でインスタンスを生成できます。</p>
+                    でインスタンスを生成できます。<br />
+                    extendオプションに別クラスを指定すれば継承できます。</p>
                 </div>
             </dd>
         </dl>
@@ -294,7 +444,7 @@ var $p = $('p');</pre>
             <dd>
                 <div class="sample">
                     <pre>var easing = C.easing;</pre>
-                    <p>イージング処理を行うメソッドです。<br />
+                    <p>イージング処理をまとめたオブジェクトです。<br />
                     主な使い方はTweenerクラスのeasingオプションに対して参照を渡すことになります。</p>
                 </div>
                 <ul>
