@@ -251,8 +251,7 @@ var $sample = $id('sample'); // HTML Element</pre>
                         <div class="detail">
                             <p>element.addEventListnerを実行します。</p>
 <pre>var $sample = el.$('#sample');
-var e = new C.Event();
-el.on($sample, e.click, function() {
+el.on($sample, C.event.click, function() {
     alert('sample click!');
 });</pre>
                         </div>
@@ -262,12 +261,11 @@ el.on($sample, e.click, function() {
                         <div class="detail">
                             <p>element.removeEventListnerを実行します。</p>
 <pre>var $sample = el.$('#sample');
-var e = new C.Event();
 var func = function() {
     alert('sample click!');
 };
-el.on($sample, e.click, func);
-el.off($sample, e.click, func);
+el.on($sample, C.event.click, func);
+el.off($sample, C.event.click, func);
 </pre>
                         </div>
                     </li>
@@ -438,26 +436,188 @@ alert(Sample2.prototype.test); //test extend.
                 <div class="sample">
 <pre>var $ = C.selector;
 var $p = $('p');</pre>
-                    <p>jQueryライクなセレクターメソッドです。</p>
+                    <p>jQueryライクなセレクターメソッドです。<br />
+                    戻り値は便宜上セレクターオブジェクトとします。</p>
                 </div>
                 <ul>
-                    <li>.querySelectorAll(query)</li>
-                    <li>.find(selector)</li>
-                    <li>.parent()</li>
-                    <li>.on(eventname, handler)</li>
-                    <li>.off(eventname, handler)</li>
-                    <li>.show()</li>
-                    <li>.hide()</li>
-                    <li>.opacity(value)</li>
-                    <li>.hasClass(value)</li>
-                    <li>.addClass(value)</li>
-                    <li>.removeClass(value)</li>
-                    <li>.toggleClass(value)</li>
-                    <li>.css(object)</li>
-                    <li>.append(value)</li>
-                    <li>.html(value)</li>
-                    <li>.attr(value)</li>
-                    <li>.animate(value)</li>
+                    <li>
+                        <h3>.querySelectorAll(query)</h3>
+                        <div class="detail">
+                            <p>セレクターオブジェクトの対象になっているHTMLエレメントに対して、element.querySelectorAllを実行します。<br />
+                            このメソッドは他のselector.methodから呼ばれるための関数であり、意図的に呼びだす必要はないはずです。</p>
+<pre>var $sample = $('#sample');
+var nodelist = $sample.querySelectorAll('.sample');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.find(selector)</h3>
+                        <div class="detail">
+                            <p>セレクターオブジェクトから子要素を取得します。</p>
+<pre>var $sample = $('#sample');
+var $sample_child = $sample.find('.sample');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.parent()</h3>
+                        <div class="detail">
+                            <p>セレクターオブジェクトの親要素を取得します。</p>
+<pre>var $sample = $('#sample');
+var $sample_parent = $sample.parent();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.on(eventname, handler)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントに対して、addEventListnerを実行します。</p>
+<pre>var $sample = $('#sample');
+$sample.on(C.event.click, function(){
+    alert('click!');
+    // this = HTML element
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.off(eventname, handler)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントに対して、removeEventListnerを実行します。</p>
+<pre>var $sample = $('#sample');
+var handler = function() {
+    alert('click!');
+    // this = HTML element
+};
+$sample.on(C.event.click, handler);
+
+// onで設定したものを外す
+$sample.off(C.event.click, handler);</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.show()</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントのdisplayに'block'を指定します。</p>
+<pre>var $sample = $('#sample');
+$sample.show();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.hide()</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントのdisplayに'none'を指定します。</p>
+<pre>var $sample = $('#sample');
+$sample.hide();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.opacity(value)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントのopacityを設定します。</p>
+<pre>var $sample = $('#sample');
+$sample.opacity(0.5);</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.hasClass(value)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントのclassNameにvalueが存在するかBooleanで返します。</p>
+<pre>var $sample = $('#sample');
+var has = $sample.hasClass('.sample'); // Boolean</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.addClass(value)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントのclassNameにvalueを追加します。</p>
+<pre>var $sample = $('#sample');
+$sample.addClass('sample');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.removeClass(value)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントのclassNameからvalueを削除します。</p>
+<pre>var $sample = $('#sample');
+$sample.removeClass('sample');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.toggleClass(value)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントに対して<br />
+                            ・classNameにvalueがない場合は追加<br />
+                            ・classNameにvalueがある場合は削除<br />
+                            を実行します。</p>
+<pre>var $sample = $('#sample');
+$sample.toggleClass('sample'); // 追加
+$sample.toggleClass('sample'); // 削除</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.css(object)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントにまとめてstyleを適用します。</p>
+<pre>var $sample = $('#sample');
+$sample.css({
+    width: 100,
+    height: 100,
+    paddingTop: 10
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.append(value)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントにHTMLエレメントを追加します。</p>
+<pre>var $sample = $('#sample');
+var div = C.element.create('div');
+$sample.append(div);</pre>
+                    </li>
+                    <li>
+                        <h3>.html(value)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントのinnerHTMLを取得・設定します。</p>
+<pre>var $sample = $('#sample');
+var html = $sample.html(); // 取得
+$sample.html('Cool is Right.'); // 設定</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.attr(value)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントの属性を取得：設定します。</p>
+<pre>var $img = $('img');
+var src = $img.attr('src'); // 取得
+$img.attr('src', '/img/test.png'); // 設定
+$img.attr({
+    width: 100,
+    height: 200
+}); // まとめて設定</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>.animate(value)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントをアニメーションします。</p>
+<pre>var $sample = $('#sample');
+
+$sample.animate({
+    width: 100
+}); // widthを100pxに変更
+
+$sample.animate({
+    height: '50%'
+}, 1000); // 1000msでheightを50%に変更
+
+$sample.animate({
+        opacity: 0.5
+    }, 300, {
+        easing: C.easing.easeInCubic,
+        onComplete: function() {
+            // write code.
+        }
+}); // 300msでopacityを0.5にイージング処理し、コールバックを実行
+</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
