@@ -23,7 +23,7 @@
 <div id="content">
     <div id="main">
         <dl id="c">
-            <dt>C</dt>
+            <dt>C<span>[ namespaece ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var ajax = new C.Ajax(); // ajax
@@ -34,7 +34,7 @@ var mobile = new C.Mobile(); // Mobile</pre>
             </dd>
         </dl>
         <dl id="utility">
-            <dt>C.utility</dt>
+            <dt>C.utility<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var util = C.utility;</pre>
@@ -197,7 +197,7 @@ anyAction(util.nullFunction); // anyActionは常にcallbackを必要とするの
             </dd>
         </dl>
         <dl id="element">
-            <dt>C.element</dt>
+            <dt>C.element<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var el = C.element;</pre>
@@ -257,7 +257,7 @@ el.on($sample, C.event.click, function() {
                         </div>
                     </li>
                     <li>
-                        <h3>off(element, eventname, handler)</h3>
+                        <h3>off(element, eventname, [handler])</h3>
                         <div class="detail">
                             <p>element.removeEventListnerを実行します。</p>
 <pre>var $sample = el.$('#sample');
@@ -270,10 +270,14 @@ el.off($sample, C.event.click, func);
                         </div>
                     </li>
                     <li>
-                        <h3>create(tagname [, attr])</h3>
+                        <h3>create(tagname, [attr])</h3>
                         <div class="detail">
                             <p>document.createElementのエイリアスです。</p>
-<pre>var div = el.create('div'); // div element</pre>
+<pre>var div = el.create('div'); // div element
+var p = el.create('p', {
+    width: 100,
+    height: 100
+}); // set attr</pre>
                         </div>
                     </li>
                     <li>
@@ -357,7 +361,7 @@ var height = computed.getPropertyValue('height');</pre>
                         </div>
                     </li>
                     <li>
-                        <h3>attr(element, property, value)</h3>
+                        <h3>attr(element, property, [value])</h3>
                         <div class="detail">
                             <p>elementの属性の取得、設定を行います。</p>
 <pre>var $img = el.$('#img');
@@ -379,7 +383,7 @@ el.append($sample, div);</pre>
                         </div>
                     </li>
                     <li>
-                        <h3>html(element, text)</h3>
+                        <h3>html(element, [text])</h3>
                         <div class="detail">
                             <p>element.innerHTMLを取得・設定します。</p>
 <pre>var $sample = el.$('#sample');
@@ -391,7 +395,7 @@ el.innerHTML($sample, 'rewrite innerHTML.'); // 設定</pre>
             </dd>
         </dl>
         <dl id="extend">
-            <dt>C.extend</dt>
+            <dt>C.extend<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var extend = C.extend;
@@ -410,7 +414,7 @@ alert(Sample2.prototype.test); //test extend.
             </dd>
         </dl>
         <dl id="klass">
-            <dt>C.klass</dt>
+            <dt>C.klass<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var Test = C.klass({
@@ -426,12 +430,13 @@ alert(Sample2.prototype.test); //test extend.
                     上記の場合、<br />
                     var test = new Test();<br />
                     でインスタンスを生成できます。<br />
-                    extendオプションに別クラスを指定すれば継承できます。</p>
+                    extendオプションに別クラスを指定すれば継承できます。<br />
+                    継承させたいクラスがない場合、extendオプションは省略可能です。</p>
                 </div>
             </dd>
         </dl>
         <dl id="selector">
-            <dt>C.selector</dt>
+            <dt>C.selector<span>[ required: <a href="#Tweener">Tweener</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var $ = C.selector;
@@ -477,18 +482,11 @@ $sample.on(C.event.click, function(){
                         </div>
                     </li>
                     <li>
-                        <h3>.off(eventname, handler)</h3>
+                        <h3>.off(eventname, [handler])</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントに対して、removeEventListnerを実行します。</p>
 <pre>var $sample = $('#sample');
-var handler = function() {
-    alert('click!');
-    // this = HTML element
-};
-$sample.on(C.event.click, handler);
-
-// onで設定したものを外す
-$sample.off(C.event.click, handler);</pre>
+$sample.off(C.event.click); // remove click event</pre>
                         </div>
                     </li>
                     <li>
@@ -516,7 +514,7 @@ $sample.opacity(0.5);</pre>
                         </div>
                     </li>
                     <li>
-                        <h3>.hasClass(value)</h3>
+                        <h3>.hasClass(className)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのclassNameにvalueが存在するかBooleanで返します。</p>
 <pre>var $sample = $('#sample');
@@ -524,7 +522,7 @@ var has = $sample.hasClass('.sample'); // Boolean</pre>
                         </div>
                     </li>
                     <li>
-                        <h3>.addClass(value)</h3>
+                        <h3>.addClass(className)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのclassNameにvalueを追加します。</p>
 <pre>var $sample = $('#sample');
@@ -532,7 +530,7 @@ $sample.addClass('sample');</pre>
                         </div>
                     </li>
                     <li>
-                        <h3>.removeClass(value)</h3>
+                        <h3>.removeClass(className)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのclassNameからvalueを削除します。</p>
 <pre>var $sample = $('#sample');
@@ -540,7 +538,7 @@ $sample.removeClass('sample');</pre>
                         </div>
                     </li>
                     <li>
-                        <h3>.toggleClass(value)</h3>
+                        <h3>.toggleClass(className)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントに対して<br />
                             ・classNameにvalueがない場合は追加<br />
@@ -564,7 +562,7 @@ $sample.css({
                         </div>
                     </li>
                     <li>
-                        <h3>.append(value)</h3>
+                        <h3>.append(element)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントにHTMLエレメントを追加します。</p>
 <pre>var $sample = $('#sample');
@@ -572,7 +570,7 @@ var div = C.element.create('div');
 $sample.append(div);</pre>
                     </li>
                     <li>
-                        <h3>.html(value)</h3>
+                        <h3>.html(text)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのinnerHTMLを取得・設定します。</p>
 <pre>var $sample = $('#sample');
@@ -581,7 +579,7 @@ $sample.html('Cool is Right.'); // 設定</pre>
                         </div>
                     </li>
                     <li>
-                        <h3>.attr(value)</h3>
+                        <h3>.attr(property, [value])</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントの属性を取得：設定します。</p>
 <pre>var $img = $('img');
@@ -594,9 +592,10 @@ $img.attr({
                         </div>
                     </li>
                     <li>
-                        <h3>.animate(value)</h3>
+                        <h3>.animate(params, [duration], [easing], [callback])</h3>
                         <div class="detail">
-                            <p>セレクターで指定されたHTMLエレメントをアニメーションします。</p>
+                            <p>セレクターで指定されたHTMLエレメントをアニメーションします。<br />
+                            easingにはC.easingの各メソッド名をStringで指定できます。</p>
 <pre>var $sample = $('#sample');
 
 $sample.animate({
@@ -608,13 +607,14 @@ $sample.animate({
 }, 1000); // 1000msでheightを50%に変更
 
 $sample.animate({
-        opacity: 0.5
-    }, 300, {
-        easing: C.easing.easeInCubic,
-        onComplete: function() {
-            // write code.
-        }
-}); // 300msでopacityを0.5にイージング処理し、コールバックを実行
+    opacity: 0.5
+}, 300, 'easeInCubic'); // 300msでopacityを0.5に'easeInCubic'でイージング
+
+$sample.animate({
+    opacity: 0.5
+}, function() {
+    // write code.
+}); // durationとeasingは省略可能
 </pre>
                         </div>
                     </li>
@@ -627,35 +627,35 @@ $sample.animate({
                 <div class="sample">
                     <pre>var easing = C.easing;</pre>
                     <p>イージング処理をまとめたオブジェクトです。<br />
-                    主な使い方はTweenerクラスのeasingオプションに対して参照を渡すことになります。</p>
+                    主な使い方は<a href="#Tweener">C.Tweener</a>クラスや<a href="#selector">selector</a>メソッドのeasingオプションに対して参照を渡すことになります。</p>
                 </div>
                 <ul>
-                    <li>easeInCubic()</li>
-                    <li>easeOutCubic()</li>
-                    <li>easeInOutCubic()</li>
-                    <li>easeInQuart()</li>
-                    <li>easeOutQuart()</li>
-                    <li>easeInOutQuart()</li>
-                    <li>easeInQuint()</li>
-                    <li>easeOutQuint()</li>
-                    <li>easeInOutQuint()</li>
-                    <li>easeInSine()</li>
-                    <li>easeOutSine()</li>
-                    <li>easeInOutSine()</li>
-                    <li>easeInExpo()</li>
-                    <li>easeOutExpo()</li>
-                    <li>easeInOutExpo()</li>
-                    <li>easeInCirc()</li>
-                    <li>easeOutCirc()</li>
-                    <li>easeInOutCirc()</li>
-                    <li>easeInQuad()</li>
-                    <li>easeOutQuad()</li>
-                    <li>easeInOutQuad()</li>
+                    <li>easeInCubic</li>
+                    <li>easeOutCubic</li>
+                    <li>easeInOutCubic</li>
+                    <li>easeInQuart</li>
+                    <li>easeOutQuart</li>
+                    <li>easeInOutQuart</li>
+                    <li>easeInQuint</li>
+                    <li>easeOutQuint</li>
+                    <li>easeInOutQuint</li>
+                    <li>easeInSine</li>
+                    <li>easeOutSine</li>
+                    <li>easeInOutSine</li>
+                    <li>easeInExpo</li>
+                    <li>easeOutExpo</li>
+                    <li>easeInOutExpo</li>
+                    <li>easeInCirc</li>
+                    <li>easeOutCirc</li>
+                    <li>easeInOutCirc</li>
+                    <li>easeInQuad</li>
+                    <li>easeOutQuad</li>
+                    <li>easeInOutQuad</li>
                 </ul>
             </dd>
         </dl>
-        <dl id="_event">
-            <dt>C.event</dt>
+        <dl id="event_">
+            <dt>C.event<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var event = C.event;</pre>
@@ -665,10 +665,50 @@ $sample.animate({
                     このオブジェクトは<a href="#Event">C.Event</a>クラスを使用して設定されます。</p>
                 </div>
                 <ul>
-                    <li>switchclick</li>
-                    <li>switchdown</li>
-                    <li>switchmove</li>
-                    <li>switchup</li>
+                    <li>
+                        <h3>switchclick</h3>
+                        <div class="detail">
+                            <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
+                            タッチパネル非対応の場合、'click'になるプロパティです。</p>
+<pre>var $sample = C.selector('#selector');
+$sample.on(C.event.switchclick, function() {
+    // write code.
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>switchdown</h3>
+                        <div class="detail">
+                            <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
+                            タッチパネル非対応の場合、'mousedown'になるプロパティです。</p>
+<pre>var $sample = C.selector('#selector');
+$sample.on(C.event.switchdown, function() {
+    // write code.
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>switchmove</h3>
+                        <div class="detail">
+                            <p>実行している環境がタッチパネル対応の場合、'touchmove'に、<br />
+                            タッチパネル非対応の場合、'mousemove'になるプロパティです。</p>
+<pre>var $sample = C.selector('#selector');
+$sample.on(C.event.switchmove, function() {
+    // write code.
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>switchup</h3>
+                        <div class="detail">
+                            <p>実行している環境がタッチパネル対応の場合、'touchend'に、<br />
+                            タッチパネル非対応の場合、'mouseup'になるプロパティです。</p>
+<pre>var $sample = C.selector('#selector');
+$sample.on(C.event.switchup, function() {
+    // write code.
+});</pre>
+                        </div>
+                    </li>
                     <li>load</li>
                     <li>hashchange</li>
                     <li>click</li>
@@ -691,9 +731,62 @@ $sample.animate({
                     <p>Ajax処理を行うクラスです。</p>
                 </div>
                 <ul>
-                    <li>request({url:string, type:'POST' || 'GET' cash:bool, callback:function})</li>
-                    <li>getJSON({url, callback})</li>
-                    <li>abort()</li>
+                    <li>
+                        <h3>request({url:string, [type: 'GET' || 'POST'], [query: object], [cash: bool], [callback: function], [error: function]})</h3>
+                        <div class="detail">
+                            <p>Ajaxでリクエストを行います。<br />
+                            typeオプションを省略した場合、自動的にGETでリクエストを行います。<br />
+                            queryオプションにはajax処理に渡したい値をオブジェクト形式で指定できます。<br />
+                            cashオプションはデフォルトでfalseになっており、常に最新の情報を取得します。</p>
+<pre>ajax.request({
+    url: '/news',
+    callback: function(data) {
+        // write code.
+        console.log(data);
+    }
+}); // newsの内容を取得
+
+ajax.request({
+    url: '/archive',
+    query: {
+        date: 20120101
+    },
+    cash: true,
+    callback: function(data) {
+        // write code.
+        console.log(data);
+    }
+}); // archive?date=20120101の内容をキャッシュ有効で取得</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>getJSON({url:string, [type: 'GET' || 'POST'], [query: object], [cash: bool], [callback: function], [error: function]})</h3>
+                        <div class="detail">
+                            <p>AjaxでJSONに対するリクエストを行います。<br />
+                            オプションは全てrequestメソッドと同じですが、<br />
+                            callbackの引数はJSON.parseでオブジェクト化されたものになります。</p>
+<pre>ajax.getJSON({
+    url: '/news.json',
+    callback: function(data) {
+        // write code.
+        console.log(data);
+    }
+}); // news.jsonの内容を取得</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>abort()</h3>
+                        <div class="detail">
+                            <p>request,getJSONメソッドでリクエストした処理を停止します。</p>
+<pre>ajax.request({
+    url: '/news',
+    callback: function(data) {
+        alert('Not Run!');
+    }
+});
+ajax.abort(); // 直前のrequest処理を停止</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -705,9 +798,46 @@ $sample.animate({
                     <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
                 </div>
                 <ul>
-                    <li>add({element: element, events: {event: function}})</li>
-                    <li>remove({element: element, events: {event: function})</li>
-                    <li>exe({element: element, events: {event: function}, bool)</li>
+                    <li>
+                        <h3>add({element: element, events: {event: function}})</h3>
+                        <div class="detail">
+                            <p>elementに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。</p>
+<pre>var $sample = C.selector('#sample');
+var handlerObj = {
+    element: $sample[0],
+    events: {
+        click: function() {
+            // write code.
+        },
+        mouseover: function(){
+            // write code.
+        }
+    }
+};
+bind.add(hadlerObj); // addEvent
+bind.remove(hadlerObj); // removeEvent</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>remove({element: element, events: {event: function})</h3>
+                        <div class="detail">
+                            <p>elementに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
+<pre>var $sample = C.selector('#sample');
+var handlerObj = {
+    element: $sample[0],
+    events: {
+        click: function() {
+            // write code.
+        },
+        mouseover: function(){
+            // write code.
+        }
+    }
+};
+bind.add(hadlerObj); // addEvent
+bind.remove(hadlerObj); // removeEvent</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -732,7 +862,7 @@ $sample.animate({
             <dt>C.CanvasRender</dt>
             <dd>
                 <div class="sample">
-<pre>var canvasRender = new C.CanvasRender({
+<pre>var render = new C.CanvasRender({
     canvas: canvasElement,
     width: 100,
     height: 100
@@ -741,8 +871,31 @@ $sample.animate({
                     煩雑になりがちなcanvasのレイヤー構造を簡略化します。</p>
                 </div>
                 <ul>
-                    <li>setSize({width, height})</li>
-                    <li>draw([{image, x, y}])</li>
+                    <li>
+                        <h3>setSize({[width: string], [height: string]})</h3>
+                        <div class="detail">
+                            <p>canvasのwidth,heightを調整します。</p>
+<pre>render.setSize({
+    width: '100%',
+    height: 100
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>draw([{image: element, x: number, y: number}])</h3>
+                        <div class="detail">
+                            <p>canvasに対してimageをdrawImageします。<br />
+                            imageにはimgエレメントかcanvasエレメントを指定できます。<br />
+                            引数の配列の順に上に重なっていきます。<br />
+                            canvasに描画されている場合、消去してから追加されます。</p>
+<pre>var $prerender = C.selector('.prerender');
+render.draw([
+    {image: $prerender[0], x: 0, y: 0},
+    {image: $prerender[1], x: 100, y: 0},
+    {image: $prerender[2], x: 0, y: 100}
+]);</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -755,14 +908,56 @@ $sample.animate({
 var storeSingle = new C.DataStore({
     single: true
 })</pre>
-                    <p>アプリの一時的な情報を保存するためのクラスです。<br />
+                    <p>一時的な情報を保存するためのクラスです。<br />
                     ブラウザのリロードなどが行われた場合、初期化されます。</p>
                 </div>
                 <ul>
-                    <li>set(key, val)</li>
-                    <li>get(key)</li>
-                    <li>remove(key)</li>
-                    <li>reset()</li>
+                    <li>
+                        <h3>set(key, val)</h3>
+                        <div class="detail">
+                            <p>データを保存します。</p>
+<pre>store.set('cir', 'Cool is Right.'); // String
+store.set('obj', {
+    c: 'Cool',
+    i: ' is ',
+    r: 'Right.'
+}); // Object
+store.set('num', 123); // Number</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>get([key])</h3>
+                        <div class="detail">
+                            <p>データを取り出します。</p>
+<pre>store.set('cir', 'Cool is Right.'); // set
+var text = store.get('cir'); // Cool is Right.
+var obj = store.get(); // {cir: 'Cool is Right.'}</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>remove(key)</h3>
+                        <div class="detail">
+                            <p>データを削除します。</p>
+<pre>store.set('cir', 'Cool is Right.'); // set
+if (store.remove('cir')) {
+    alert('remove.');
+}</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>reset()</h3>
+                        <div class="detail">
+                            <p>データを全て削除します。</p>
+<pre>store.set('c', 'Cool'); // set
+store.set('i', ' is '); // set
+store.set('r', 'Right.'); // set
+store.reset();
+
+var c = store.get('c'); // undefind
+var i = store.get('i'); // undefind
+var r = store.get('r'); // undefind</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -774,9 +969,57 @@ var storeSingle = new C.DataStore({
                     <p>遅延処理を簡易に実行するためのメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>isResolve()</li>
-                    <li>done(function)</li>
-                    <li>resolve()</li>
+                    <li>
+                        <h3>isResolve()</h3>
+                        <div class="detail">
+                            <p>遅延処理が実行済みかどうかBooleanで返します。</p>
+<pre>if (!deferred.isResolve()) {
+    alert('No Resolve.');
+}
+deferred.resolve();
+if (deferred.isResolve()) {
+    alert('Resolve.');
+}</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>done(function)</h3>
+                        <div class="detail">
+                            <p>遅延処理を登録します。</p>
+<pre>deferred.done(function() {
+    // write code.
+})
+.done(function() {
+    // write code.
+});
+
+deferre.resolve(); // まとめて実行
+
+deferred.done(function() {
+    // write code.
+}); // resolve()後は即座に実行
+</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>resolve()</h3>
+                        <div class="detail">
+                            <p>登録された遅延処理を実行します。</p>
+<pre>deferred.done(function() {
+    // write code.
+})
+.done(function() {
+    // write code.
+});
+
+deferre.resolve(); // まとめて実行
+
+deferred.done(function() {
+    // write code.
+}); // resolve()後は即座に実行
+</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -788,14 +1031,75 @@ var storeSingle = new C.DataStore({
                     <p>ドラッグ＆フリック用の処理を提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>amount({element, callback})</li>
-                    <li>direction({element, boundary, callback})</li>
-                    <li>bind({element, boundary, direction, start, move, end})</li>
+                    <li>
+                        <h3>amount({element: element, callback: function})</h3>
+                        <div class="detail">
+                            <p>ドラッグもしくはフリック開始から終了までに移動した距離をcallbackに渡します。</p>
+<pre>var $sample = C.selector('#sample');
+dragflick.amount({
+    element: $sample[0],
+    callback: function(amount) {
+        // write code.
+        console.log('x:' amount.x);
+        console.log('y:' amount.y);
+    }
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>direction({element: element, callback: function, [boundary: number]})</h3>
+                        <div class="detail">
+                            <p>ドラッグもしくはフリックした場合、どの方向に移動したかをcallbackに渡します。<br />
+                            boundaryを指定すると指定した値以上になった場合、移動したことになります。</p>
+<pre>var $sample = C.selector('#sample');
+dragflick.direction({
+    element: $sample[0],
+    boundary: 100,
+    callback: function(direction) {
+        // write code.
+        console.log('change:' direction.change); //boolean
+        console.log('top:' direction.top); //boolean
+        console.log('right:' direction.right); //boolean
+        console.log('bottom:' direction.bottom); //boolean
+        console.log('left:' direction.left); //boolean
+        console.log('amount:' direction.amount); // {x: number, y: number}
+    }
+});
+</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>bind({element: element, [direction: function], [boundary: number], [start: function], [move: function], [end: function]})</h3>
+                        <div class="detail">
+                            <p>ドラッグもしくはフリック用のイベントをまとめて設定します。<br />
+                            directionとboundaryはdirectionメソッド用のオプションです</p>
+<pre>var $sample = C.selector('#sample');
+dragflick.bind({
+    element: $sample[0],
+    direction: function(direction) {
+        // write code.
+    },
+    boundary: 100,
+    start: function(e) {
+        // write code.
+        console.log(e); // {e: mouseevent, move: {x: number, y: number}}
+    },
+    move: function(e) {
+        // write code.
+        console.log(e); // {e: mouseevent, move: {x: number, y: number}}
+    },
+    end: function(e) {
+        // write code.
+        console.log(e); // {e: mouseevent, move: {x: number, y: number}}
+    },
+});</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
         <dl id="Event">
-            <dt>C.Event</dt>
+            <dt>C.Event<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var e = new C.Event();
@@ -808,10 +1112,50 @@ var eSingle = new C.Event({
                     実行環境がタッチパネルかどうか判定し、最適な値に変更されます。</p>
                 </div>
                 <ul>
-                    <li>switchclick</li>
-                    <li>switchdown</li>
-                    <li>switchmove</li>
-                    <li>switchup</li>
+                    <li>
+                        <h3>switchclick</h3>
+                        <div class="detail">
+                            <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
+                            タッチパネル非対応の場合、'click'になるプロパティです。</p>
+<pre>var $sample = C.selector('#selector');
+$sample.on(C.event.switchclick, function() {
+    // write code.
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>switchdown</h3>
+                        <div class="detail">
+                            <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
+                            タッチパネル非対応の場合、'mousedown'になるプロパティです。</p>
+<pre>var $sample = C.selector('#selector');
+$sample.on(C.event.switchdown, function() {
+    // write code.
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>switchmove</h3>
+                        <div class="detail">
+                            <p>実行している環境がタッチパネル対応の場合、'touchmove'に、<br />
+                            タッチパネル非対応の場合、'mousemove'になるプロパティです。</p>
+<pre>var $sample = C.selector('#selector');
+$sample.on(C.event.switchmove, function() {
+    // write code.
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>switchup</h3>
+                        <div class="detail">
+                            <p>実行している環境がタッチパネル対応の場合、'touchend'に、<br />
+                            タッチパネル非対応の場合、'mouseup'になるプロパティです。</p>
+<pre>var $sample = C.selector('#selector');
+$sample.on(C.event.switchup, function() {
+    // write code.
+});</pre>
+                        </div>
+                    </li>
                     <li>load</li>
                     <li>hashchange</li>
                     <li>click</li>
@@ -827,7 +1171,7 @@ var eSingle = new C.Event({
             </dd>
         </dl>
         <dl id="ExternalInterface">
-            <dt>C.ExternalInterface</dt>
+            <dt>C.ExternalInterface<span>[ required: <a href="#HashController">HashController</a> ExternalInterface.Android ExternalInterface.IOS ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var external = new C.ExternalInterface({
@@ -838,32 +1182,53 @@ var eSingle = new C.Event({
                     iOSの場合、そのオブジェクトを作らなければ自動的にiOS用の処理になります。</p>
                 </div>
                 <ul>
-                    <li>call({mode: string, vars: {key: val}})</li>
-                    <li>addCallback(name, function)</li>
-                    <li>removeCallback(name)</li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="FPS">
-            <dt>C.FPS</dt>
-            <dd>
-                <div class="sample">
-<pre>var fps = new C.FPS({
-    single: false, // singleton
-    criterion: 10,
-    enterframe: function() {
-        // write code.
+                    <li>
+                        <h3>call({mode: string, vars: {key: val}})</h3>
+                        <div class="detail">
+                            <p>ネイティブ側から提供されたメソッドを実行します。<br />
+                            iOSの場合はlocation.hashに特定の形式の文字列を設定します。<br />
+                            Androidの場合、インスタンス生成時に渡したオブジェクト内のメソッドを呼び出します。</p>
+<pre>external.call({
+    mode: 'nativeMethod', // ネイティブ側の呼び出す機能名
+    vars: {
+        str: 'Cool is Right.',
+        num: 123
     }
-});</pre>
-                    <p>指定したcriterion(msec)ごとにenterframeを実行するクラスです。</p>
-                </div>
-                <ul>
-                    <li>getCriterion()</li>
-                    <li>getSurver()</li>
-                    <li>getFrameTime()</li>
-                    <li>enter()</li>
-                    <li>start()</li>
-                    <li>stop()</li>
+});
+// iOSの場合、location.hashに [ #nativeMethod?str=%22Cool%20is%20Right.%22&num=123 ]
+// Androidの場合、関数の引数に"nativeMethod?str=%22Cool%20is%20Right.%22&num=123"</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>addCallback(name, function)</h3>
+                        <div class="detail">
+                            <p>ウェブビューからネイティブにメソッドを提供します。<br />
+                            iOSの場合はlocation.hashに#メソッド名?変数1=値&変数2=値...<br />
+                            Androidの場合も同様にメソッドに'メソッド名?変数1=値&変数2=値...'
+                            を引数として渡せばメソッドを呼び出します。</p>
+<pre>external.addCallback('webviewMethod', function(vars) {
+    // write code.
+    console.log(vars); // {text: 'Coll is Right.'}
+});
+
+// iOSモードの場合
+location.hash = 'webviewMethod?text=Cool%20is%20Right.';</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>removeCallback(name)</h3>
+                        <div class="detail">
+                            <p>addCallbackで登録したメソッドを削除します。</p>
+<pre>external.addCallback('webviewMethod', function(vars) {
+    // write code.
+    console.log(vars); // {text: 'Coll is Right.'}
+}); // 登録
+external.removeCallback('webviewMethod'); // 削除
+
+// iOSモードの場合
+location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除しているため呼び出されない</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -875,7 +1240,109 @@ var eSingle = new C.Event({
                     <p>Facebook用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li>getShareURL(options)</li>
+                    <li>
+                        <h3>getShareURL({app_id, redirect_uri, [link], [picture], [name], [caption], [description]})</h3>
+                        <div class="detail">
+                            <p>シェア画面を開くためのURLを取得します。</p>
+<pre>var fbshare = facebook.getShareURL({
+    app_id: '123456789012345',
+    redirect_uri: 'http://atsushim.github.com/cir.js',
+    link: 'http://atsushim.github.com/cir.js',
+    picture: 'http://atsushim.github.com/cir.js/logo.png',
+    name: 'CIR.js',
+    caption: 'Cool is Right.',
+    description: 'Web application development libraries for smartphones.'
+}); // String</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="FontImage">
+            <dt>C.FontImage</dt>
+            <dd>
+                <div class="sample">
+<pre>var font = new C.FontImage(); //element.className == 'font_X'
+var fontWhite = new C.FontImage({
+    type: 'white' // element.className == 'font_white_X'
+});</pre>
+                    <p>CSSスプライト用のHTMLタグを生成するクラスです。<br />
+                    typeに指定された文字列が生成されるタグのclassの一部になります。</p>
+                </div>
+                <ul>
+                    <li>
+                        <h3>make(text)</h3>
+                        <div class="detail">
+                            <p>CSSスプライト用のspanタグを生成します。</p>
+<pre>var tag_1 = font.make(1); // &lt;span class="font_1"&gt;&amp;nbsp;&lt;/span&gt;
+var tag_abc = font.make(abc);
+// &lt;span class="font_a"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="font_b"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="font_c"&gt;&amp;nbsp;&lt;/span&gt;
+var tag_white = font.make('A');
+// &lt;span class="font_white_A"&gt;&amp;nbsp;&lt;/span&gt;</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="FPS">
+            <dt>C.FPS</dt>
+            <dd>
+                <div class="sample">
+<pre>var fps = new C.FPS({
+    single: false, // singleton
+    criterion: 10,
+    enterframe: function(fps) {
+        // write code.
+        console.log(fps); // {criterion: number, surver: number}
+    }
+});
+
+fps.start(); // start enterframe.</pre>
+                    <p>指定したcriterion(fps)ごとにenterframeを実行するクラスです。</p>
+                </div>
+                <ul>
+                    <li>
+                        <h3>getCriterion()</h3>
+                        <div class="detail">
+                            <p>初期化時に指定したFPS目標値(criterion)を取得します。</p>
+<pre>var criterion = fps.getCriterion(); // Number</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>getSurver()</h3>
+                        <div class="detail">
+                            <p>現在のFPSを取得します。</p>
+<pre>var surver = fps.getSurver(); // Number</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>getFrameTime()</h3>
+                        <div class="detail">
+                            <p>FPS目標値の1フレームあたりのミリ秒を取得します。</p>
+<pre>var frametime = fps.getFrameTime(); // Number</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>enter()</h3>
+                        <div class="detail">
+                            <p>間隔実行される処理を強制的に発火します。</p>
+<pre>fps.enter();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>start()</h3>
+                        <div class="detail">
+                            <p>間隔実行を開始します。</p>
+<pre>fps.start();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>stop()</h3>
+                        <div class="detail">
+                            <p>間隔実行を停止します。</p>
+<pre>fps.stop();</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -887,10 +1354,65 @@ var eSingle = new C.Event({
                     <p>location.hashの操作を行うメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>makeHash({mode: string, contents: {key: val}})</li>
-                    <li>setHash({mode: string, contents: {key: val}})</li>
-                    <li>parseHash(hashvar)</li>
-                    <li>getHash()</li>
+                    <li>
+                        <h3>makeHash({mode: string, contents: {key: val}})</h3>
+                        <div class="detail">
+                            <p>location.hashに設定するための値を作成します。</p>
+<pre>var hashtxt = hashCtrl.makeHash({
+    mode: 'hashName',
+    contents: {
+        cir: 'Cool is Right.',
+        id: 123
+    }
+}); // hashName?cir=Cool%20is%20Right.&id=123</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>setHash({mode: string, contents: {key: val}})</h3>
+                        <div class="detail">
+                            <p>location.hashに値を設定します。</p>
+<pre>var hashtxt = hashCtrl.setHash({
+    mode: 'hashName',
+    contents: {
+        cir: 'Cool is Right.',
+        id: 123
+    }
+}); // location.hash = '#hashName?cir=Cool%20is%20Right.&id=123'</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>parseHash(querystring)</h3>
+                        <div class="detail">
+                            <p>クエリーストリング形式の文字列をオブジェクトに変換します。</p>
+<pre>var hashvar = hashCtrl.parseHash('#hashName?cir=Cool%20is%20Right.&id=123');
+/*
+{
+    mode: 'hashName',
+    contents: {
+        cir: 'Cool is Right.',
+        id: 123
+    }
+}
+*/</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>getHash()</h3>
+                        <div class="detail">
+                            <p>location.hashから値を取得します。</p>
+<pre>location.hash = 'hashName?cir=Cool%20is%20Right.&id=123';
+var hashobj = hashCtrl.getHash();
+/*
+{
+    mode: 'hashName',
+    contents: {
+        cir: 'Cool is Right.',
+        id: 123
+    }
+}
+*/</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -910,12 +1432,26 @@ var eSingle = new C.Event({
     onload: function() {
         // write code.
     }
-});</pre>
+});
+
+imgload.start(); // start loading.</pre>
                     <p>画像をまとめてロードするクラスです。</p>
                 </div>
                 <ul>
-                    <li>start()</li>
-                    <li>getProgress()</li>
+                    <li>
+                        <h3>start()</h3>
+                        <div class="detail">
+                            <p>読み込みを開始します。</p>
+<pre>imgload.start();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>getProgress()</h3>
+                        <div class="detail">
+                            <p>読込状況を取得します。</p>
+<pre>var progress = imgload.getProgress(); // Number</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -937,14 +1473,60 @@ var eSingle = new C.Event({
             <dd>
                 <div class="sample">
                     <pre>var storage = new C.LocalStorage();</pre>
-                    <p>localStorageの操作を行うメソッドを提供するクラスです。<br />
+                    <p>localStorageに値を設定します。<br />
                     オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。</p>
                 </div>
                 <ul>
-                    <li>set(key, value)</li>
-                    <li>get(key)</li>
-                    <li>remove(key)</li>
-                    <li>reset(key)</li>
+                    <li>
+                        <h3>set(key, value)</h3>
+                        <div class="detail">
+                            <p>locatlStorage.setItemのエイリアスです。<br />
+                            保存される値はStringに変換されて保存されます。</p>
+<pre>storage.set('cir', {
+    c: 'Cool',
+    i: 'is',
+    r: 'Right'
+}); // localStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>get([key])</h3>
+                        <div class="detail">
+                            <p>localStorageから値を取得します。</p>
+<pre>localStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';
+var cir = storage.get('cir'); // {c: 'Cool', i: 'is', r: 'Right'}
+
+cir = storage.get(); // まとめて取得
+/*
+    cir == {cir: {c: 'Cool', i: 'is', r: 'Right'}}
+*/
+</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>remove(key)</h3>
+                        <div class="detail">
+                            <p>localStorageから値を削除します。</p>
+<pre>storage.set('cir', 'Cool is Right.'); // 追加
+storage.remove('cir'); // 削除
+
+var cir = storage.get('cir'); // null</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>reset(key)</h3>
+                        <div class="detail">
+                            <p>localStorageに設定された値をリセットします。<br />
+                            インスタンス以外から直接localStorageに設定された値も削除されます。</p>
+<pre>storage.set('txt', 'Cool is Right.');
+storage.set('num', 123);
+
+storage.reset();
+
+var txt = storage.get('txt'); // null
+var num = storage.get('num'); // null</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -956,31 +1538,88 @@ var eSingle = new C.Event({
                     <p>モバイル端末用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li>isAndroid()</li>
-                    <li>isIOS()</li>
-                    <li>isWindows()</li>
-                    <li>isFBAPP()</li>
-                    <li>isMobile()</li>
-                    <li>hideAddress()</li>
-                    <li>killScroll()</li>
-                    <li>revivalScroll()</li>
-                    <li>orientationCheck()</li>
-                    <li>orientationChange()</li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="FontImage">
-            <dt>C.FontImage</dt>
-            <dd>
-                <div class="sample">
-<pre>var font = new C.FontImage({
-    type: 'white' // element.className == 'font_white_X'
+                    <li>
+                        <h3>isAndroid()</h3>
+                        <div class="detail">
+                            <p>端末OSがAndroidかどうかBooleanで返します。</p>
+<pre>var check = mobile.isAndroid(); // boolean</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>isIOS()</h3>
+                        <div class="detail">
+                            <p>端末OSがiOSかどうかBooleanで返します。</p>
+<pre>var check = mobile.isIOS(); // boolean</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>isWindows()</h3>
+                        <div class="detail">
+                            <p>端末OSがWindowsかどうかBooleanで返します。</p>
+<pre>var check = mobile.isWindows(); // boolean</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>isFBAPP()</h3>
+                        <div class="detail">
+                            <p>Facebookアプリで閲覧してるかどうかBooleanで返します。</p>
+<pre>var check = mobile.isFBAPP(); // boolean</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>isMobile()</h3>
+                        <div class="detail">
+                            <p>モバイル端末かどうかBooleanで返します。</p>
+<pre>var check = mobile.isMobile(); // boolean</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>hideAddress()</h3>
+                        <div class="detail">
+                            <p>アドレスバーを非表示にします。</p>
+<pre>mobile.hideAddress();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>killScroll(noTop)</h3>
+                        <div class="detail">
+                            <p>ブラウザスクロールを不可にします。<br />
+                            noTopをtrueにした場合、その場でスクロールを固定します。</p>
+<pre>mobile.killScroll(); // スクロールを最上にし、停止
+mobile.killScroll(true); // スクロールをその場で停止</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>revivalScroll(noTop)</h3>
+                        <div class="detail">
+                            <p>ブラウザスクロールを可能にします。<br />
+                            noTopをtrueにした場合、その場でスクロールを固定します。</p>
+<pre>mobile.revivalScroll(); // スクロールを最上にし、停止
+mobile.revivalScroll(true); // スクロールをその場で停止</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>orientationCheck()</h3>
+                        <div class="detail">
+                            <p>端末の向きを取得します。</p>
+<pre>var orient = mobile.orientationCheck();
+// {landscape: boolean, portrait: boolean}</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>orientationChange({portrait: function, landscape: function})</h3>
+                        <div class="detail">
+                            <p>端末の向きに合わせて処理を実行します。</p>
+<pre>mobile.orientationChange({
+    portrait: function() {
+        // write code.
+    },
+    landscape: function() {
+        // write code.
+    }
 });</pre>
-                    <p>CSSスプライト用のHTMLタグを生成するクラスです。<br />
-                    typeに指定された文字列が生成されるタグのclassの一部になります。</p>
-                </div>
-                <ul>
-                    <li>make(x)</li>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -996,11 +1635,78 @@ var observerSingle = new C.Observer({
                     <p>オブザーバーパターンを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>getObserved()</li>
-                    <li>on()</li>
-                    <li>one()</li>
-                    <li>off()</li>
-                    <li>fire()</li>
+                    <li>
+                        <h3>getObserved()</h3>
+                        <div class="detail">
+                            <p>onもしくはoneメソッドで追加されたfunctionを保持しているオブジェクトを返します。<br />
+                            基本的に使用することは無いはずです。</p>
+<pre>var observeObj = observer.getObserved();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>on(key, func)</h3>
+                        <div class="detail">
+                            <p>イベントを登録します。<br />
+                            登録されたイベントはfireメソッドで呼び出されます。</p>
+<pre>observer.on('jsonloaded', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('jsonloaded', {
+    cir: 'Cool is Right.'
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>one(key, func)</h3>
+                        <div class="detail">
+                            <p>一度だけ実行されるイベントを登録します。<br />
+                            登録されたイベントはfireメソッドで呼び出されます。</p>
+<pre>var func = observer.one('jsonloaded', function(vars){
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('jsonloaded', 'fire1');
+observer.fire('jsonloaded', 'fire2');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>off(key, [func])</h3>
+                        <div class="detail">
+                            <p>登録されたイベントを削除します。</p>
+<pre>var func1 = function() {
+    console.log('func1');
+};
+var func2 = function() {
+    console.log('func2');
+};
+
+observer.on('jsonloaded', func1);
+observer.on('jsonloaded', func2);
+
+observer.off('jsonloaded', func1);
+
+observer.fire('jsonloaded'); // exe func2.
+
+observer.off('jsonloaded'); // remove 'jsonloaded' event.</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>fire([vars])</h3>
+                        <div class="detail">
+                            <p>onメソッドで登録されたイベントを実行します。</p>
+<pre>observer.on('jsonloaded', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('jsonloaded', {
+    cir: 'Cool is Right.'
+});</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1008,7 +1714,7 @@ var observerSingle = new C.Observer({
             <dt>C.PreRender</dt>
             <dd>
                 <div class="sample">
-<pre>var preRender = new C.PreRender({
+<pre>var render = new C.PreRender({
     elements: [
         element1,
         element2,
@@ -1020,13 +1726,22 @@ var observerSingle = new C.Observer({
     onrendered: function() {
         // write code.
     }
-});</pre>
+});
+
+render.start(); // start prerender.
+</pre>
                     <p>HTMLエレメントは初めて画面上に表示される際にかなりの負荷がかかります。<br />
                     (※display: none; や opacity: 0;、もしくは画面外にpositionで設置するなど)<br />
                     ゲームなどでは負荷が邪魔になる場合も有るため、これらの要素の上に不透明な背景を持つエレメントをpositionで設置し、PreRenderクラスで予め表示しておくことが有効です。</p>
                 </div>
                 <ul>
-                    <li>start()</li>
+                    <li>
+                        <h3>start()</h3>
+                        <div class="detail">
+                            <p>プリレンダリングを開始します。</p>
+<pre>render.start();</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1038,8 +1753,29 @@ var observerSingle = new C.Observer({
                     <p>scriptファイルを動的に読み込むメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>request({src, callback})</li>
-                    <li>requests([{src, callback}])</li>
+                    <li>
+                        <h3>request({src, [callback]})</h3>
+                        <div class="detail">
+                            <p>jsファイルの動的読み込みを行います。</p>
+<pre>scriptload.request({
+    src: '/js/dynamic.js',
+    callback: function() {
+        // write code.
+    }
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>requests([{src, [callback]}])</h3>
+                        <div class="detail">
+                            <p>複数ファイルの動的読み込みを行います。</p>
+<pre>scriptload.requests([
+    { src: '/js/c.js', callback: function() { /* write code. */}},
+    { src: '/js/i.js', callback: function() { /* write code. */}},
+    { src: '/js/r.js', callback: function() { /* write code. */}}
+]);</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1053,17 +1789,70 @@ var observerSingle = new C.Observer({
     }
 });</pre>
                     <p>サーバーから渡される情報を取得するクラスです。<br />
+                    javascriptのみでサーバーから情報を取得します。<br />
                     初期化時にサーバ情報を取得するため、時間がかかります。</p>
                 </div>
                 <ul>
-                    <li>date()</li>
-                    <li>connection()</li>
-                    <li>contentLength()</li>
-                    <li>lastModified()</li>
-                    <li>server()</li>
-                    <li>contentType()</li>
-                    <li>acceptRanges()</li>
-                    <li>keepAlive()</li>
+                    <li>
+                        <h3>date(callback)</h3>
+                        <div class="detail">
+                            <p>サーバから日付を取得します。<br />
+                            このメソッドのみ、非同期で実行されるためcallbackが必要です</p>
+<pre>server.date(function(date) {
+    // write code.
+    console.log(date);
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>connection()</h3>
+                        <div class="detail">
+                            <p>サーバーからConnectionを取得します。</p>
+<pre>var connection = server.connection();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>contentLength()</h3>
+                        <div class="detail">
+                            <p>サーバーからContent-Lengthを取得します。</p>
+<pre>var contentLength = server.ContentLength();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>lastModified()</h3>
+                        <div class="detail">
+                            <p>サーバーからLast-Modifiedを取得します。</p>
+<pre>var lastModified = server.lastModified();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>server()</h3>
+                        <div class="detail">
+                            <p>サーバーからServerを取得します。</p>
+<pre>var _server = server.server();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>contentType()</h3>
+                        <div class="detail">
+                            <p>サーバーからContent-Typeを取得します。</p>
+<pre>var contentType = server.contentType();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>acceptRanges()</h3>
+                        <div class="detail">
+                            <p>サーバーからAccept-Rangesを取得します。</p>
+<pre>var acceptRanges = server.acceptRanges();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>keepAlive()</h3>
+                        <div class="detail">
+                            <p>サーバーからKeep-Aliveを取得します。</p>
+<pre>var keepAlive = server.keepAlive();</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1076,10 +1865,56 @@ var observerSingle = new C.Observer({
                     オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。</p>
                 </div>
                 <ul>
-                    <li>set(key, value)</li>
-                    <li>get(key)</li>
-                    <li>remove(key)</li>
-                    <li>reset(key)</li>
+                    <li>
+                        <h3>set(key, value)</h3>
+                        <div class="detail">
+                            <p>locatlStorage.setItemのエイリアスです。<br />
+                            保存される値はStringに変換されて保存されます。</p>
+<pre>storage.set('cir', {
+    c: 'Cool',
+    i: 'is',
+    r: 'Right'
+}); // sessionStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>get([key])</h3>
+                        <div class="detail">
+                            <p>sessionStorageから値を取得します。</p>
+<pre>sessionStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';
+var cir = storage.get('cir'); // {c: 'Cool', i: 'is', r: 'Right'}
+
+cir = storage.get(); // まとめて取得
+/*
+    cir == {cir: {c: 'Cool', i: 'is', r: 'Right'}}
+*/
+</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>remove(key)</h3>
+                        <div class="detail">
+                            <p>sessionStorageから値を削除します。</p>
+<pre>storage.set('cir', 'Cool is Right.'); // 追加
+storage.remove('cir'); // 削除
+
+var cir = storage.get('cir'); // null</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>reset(key)</h3>
+                        <div class="detail">
+                            <p>sessionStorageに設定された値をリセットします。<br />
+                            インスタンス以外から直接sessionStorageに設定された値も削除されます。</p>
+<pre>storage.set('txt', 'Cool is Right.');
+storage.set('num', 123);
+
+storage.reset();
+
+var txt = storage.get('txt'); // null
+var num = storage.get('num'); // null</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1089,19 +1924,42 @@ var observerSingle = new C.Observer({
                 <div class="sample">
 <pre>var surrogate = new C.Surrogate({
     delay: 20,
-    callback: function() {
+    callback: function(vars) {
         // write code.
+        console.log(vars); // Cool is Right.
     }
-});</pre>
+});
+
+surrogate.request('Cool is Right.');</pre>
                     <p>連続実行される処理をまとめて実行するメソッドを提供するクラスです。<br />
                     delay(msec)だけ処理待ちを行い、遅延実行します。<br />
                     処理待ち中に新たに処理が呼び出された場合、以前の処理をキャンセルし、再び処理待ちを行います。<br />
                     キーボード入力から自動でAjax処理を行い結果を表示する場合などに有効です。</p>
                 </div>
                 <ul>
-                    <li>flush()</li>
-                    <li>request()</li>
-                    <li>clear()</li>
+                    <li>
+                        <h3>request([vars])</h3>
+                        <div class="detail">
+                            <p>処理をリクエストします。</p>
+<pre>surrogate.request('Cool is Right.'); // delayオプションだけ待機</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>flush()</h3>
+                        <div class="detail">
+                            <p>処理を強制的に実行します。</p>
+<pre>surrogate.request('Cool is Right.');
+surrogate.flush();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>clear()</h3>
+                        <div class="detail">
+                            <p>処理待ちを解除します。</p>
+<pre>surrogate.request('Cool is Right.');
+surrogate.clear();</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1111,18 +1969,44 @@ var observerSingle = new C.Observer({
                 <div class="sample">
 <pre>var throttle = new C.Throttle({
     waittime: 100,
-    callback: function() {
+    callback: function(vars) {
         // write code.
+        console.log(vars); // Cool is Right.
     }
-});</pre>
+});
+
+throttle.request('Cool is Right.');</pre>
                     <p>連続実行される処理を間引くメソッドを提供するクラスです。<br />
                     一度処理が実行された場合、waittime(msec)だけ新たな処理を受け付けなくなります。<br />
                     ウィンドウサイズの変更による処理などに有効です。</p>
                 </div>
                 <ul>
-                    <li>request(arg)</li>
-                    <li>lock()</li>
-                    <li>unlock()</li>
+                    <li>
+                        <h3>request([vars])</h3>
+                        <div class="detail">
+                            <p>処理をリクエストします。<br />
+                            waittimeオプションだけ連続実行をできなくします。</p>
+<pre>throttle.request('Cool is Right.');
+throttle.request('Hot is Right.'); // 連続実行出来ない</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>lock()</h3>
+                        <div class="detail">
+                            <p>処理リクエストを受け付けなくします。</p>
+<pre>throttle.lock();
+throttle.request('Cool is Right.'); // 実行されない</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>unlock()</h3>
+                        <div class="detail">
+                            <p>処理リクエストを受け付けるようにします。</p>
+<pre>throttle.lock();
+throttle.unlock();
+throttle.request('Cool is Right.'); // 実行される</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1132,24 +2016,76 @@ var observerSingle = new C.Observer({
                 <div class="sample">
 <pre>var timer = new C.Timer({
     template: 'xxx.xxx',
-    limit: 20,
-    interval: 0.05,
-    onupdate: function() {
+    limit: 20, // sec
+    interval: 0.05, // sec
+    onupdate: function(time) {
         // write code.
+        console.log(time);
     },
-    ontimeup: function() {
+    ontimeup: function(time) {
         // write code.
     }
-});</pre>
+});
+
+timer.countDown(); // start timer.</pre>
                     <p>タイマー処理を行うクラスです。</p>
                 </div>
                 <ul>
-                    <li>getLimit()</li>
-                    <li>getTime()</li>
-                    <li>setUpdate(function)</li>
-                    <li>getProgress()</li>
-                    <li>countDown()</li>
-                    <li>stop()</li>
+                    <li>
+                        <h3>getLimit()</h3>
+                        <div class="detail">
+                            <p>リミット(秒)を取得します。</p>
+<pre>var limit = timer.getLimit();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>getTime()</h3>
+                        <div class="detail">
+                            <p>templateオプションに合わせた現在秒数を取得します。</p>
+<pre>var time = timer.getTime();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>getProgress()</h3>
+                        <div class="detail">
+                            <p>経過%を0~1の間の数値で返します。</p>
+<pre>var progress = timer.getProgress();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>setUpdate(function)</h3>
+                        <div class="detail">
+                            <p>intervalオプションごとに実行されるonupdateオプションを設定します。</p>
+<pre>timer.setUpdate(function(time) {
+    // write code.
+    console.log(time);
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>setTimeup(function)</h3>
+                        <div class="detail">
+                            <p>リミットに到達した場合に実行されるontimeupオプションを設定します。</p>
+<pre>timer.setTimeup(function(time) {
+    // write code.
+    console.log(time);
+});</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>countDown()</h3>
+                        <div class="detail">
+                            <p>カウントダウンを開始します。</p>
+<pre>timer.countDown();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>stop()</h3>
+                        <div class="detail">
+                            <p>タイマーを停止します。</p>
+<pre>timer.stop();</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1181,6 +2117,15 @@ var observerSingle = new C.Observer({
                     <p>シンプルなアニメーション用クラスです。<br />
                     easingオプションにC.easingの各メソッドを指定すれば、様々なイージング処理をさせることが可能です</p>
                 </div>
+                <ul>
+                    <li>
+                        <h3>end()</h3>
+                        <div class="detail">
+                            <p>アニメーションを停止します。</p>
+<pre>tweener.end();</pre>
+                        </div>
+                    </li>
+                </ul>
             </dd>
         </dl>
         <dl id="Twitter">
@@ -1191,7 +2136,18 @@ var observerSingle = new C.Observer({
                     <p>Twitter用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li>getShareURL(options)</li>
+                    <li>
+                        <h3>getShareURL({redirect_uri, [name], [caption], [hash]})</h3>
+                        <div class="detail">
+                            <p>シェア画面を開くためのURLを取得します。</p>
+<pre>var twshare = facebook.getShareURL({
+    redirect_uri: 'http://atsushim.github.com/cir.js',
+    name: 'CIR.js',
+    caption: 'Cool is Right.',
+    hash: '#CIR'
+}); // String</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1205,10 +2161,36 @@ var observerSingle = new C.Observer({
                     <p>XMLデータの操作を簡易にするメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>getData()</li>
-                    <li>setData()</li>
-                    <li>$(selector)</li>
-                    <li>$$(selector)</li>
+                    <li>
+                        <h3>getData()</h3>
+                        <div class="detail">
+                            <p>dataオプションの値を取得します。</p>
+<pre>var data = xml.getData();</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>setData()</h3>
+                        <div class="detail">
+                            <p>dataオプションの値を設定します。</p>
+<pre>xml.setData(xmlText);</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>$(selector)</h3>
+                        <div class="detail">
+                            <p>XMLからデータを1つ取り出します。<br />
+                            データはHTMLエレメント形式になっています。</p>
+<pre>var sample = xml.$('sample');</pre>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>$$(selector)</h3>
+                        <div class="detail">
+                            <p>XMLからデータを取り出します。<br />
+                            データはNodeList形式になっています。</p>
+<pre>var sample = xml.$$('sample');</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
@@ -1220,7 +2202,7 @@ var observerSingle = new C.Observer({
             <li><a href="#extend">extend</a></li>
             <li><a href="#selector">selector</a></li>
             <li><a href="#easing">easing</a></li>
-            <li><a href="#_event">event</a></li>
+            <li><a href="#event_">event</a></li>
             <li><a href="#Ajax">Ajax</a></li>
             <li><a href="#Bind">Bind</a></li>
             <li><a href="#CanvasImage">CanvasImage</a></li>
@@ -1230,14 +2212,14 @@ var observerSingle = new C.Observer({
             <li><a href="#DragFlick">DragFlick</a></li>
             <li><a href="#Event">Event</a></li>
             <li><a href="#ExternalInterface">ExternalInterface</a></li>
-            <li><a href="#FPS">FPS</a></li>
             <li><a href="#Facebook">Facebook</a></li>
+            <li><a href="#FontImage">FontImage</a></li>
+            <li><a href="#FPS">FPS</a></li>
             <li><a href="#HashController">HashController</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#Loading">Loading</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
             <li><a href="#Mobile">Mobile</a></li>
-            <li><a href="#FontImage">FontImage</a></li>
             <li><a href="#Observer">Observer</a></li>
             <li><a href="#PreRender">PreRender</a></li>
             <li><a href="#ScriptLoad">ScriptLoad</a></li>

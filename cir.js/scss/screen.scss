@@ -93,7 +93,7 @@ h2 {
 dl {
     @extend %frame;
 
-    margin-bottom: 15px;
+    margin: 0 15px 15px 0;
 
     dt {
         margin-bottom: 10px;
@@ -110,6 +110,12 @@ dl {
             content: '▼';
             vertical-align: middle;
             color: #00ACC9;
+        }
+
+        span {
+            padding-left: 20px;
+            font-size: 12px;
+            font-style: italic;
         }
     }
     dd {
