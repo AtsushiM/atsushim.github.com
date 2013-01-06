@@ -47,6 +47,27 @@ h2 {
 
     color: #00BDDA;
 }
+
+header {
+    .sns {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        padding: 5px 30px 10px;
+        border-radius: 0 0 3px 3px;
+        background-color: rgba(0, 47.5, 53.5, 0.3);
+
+        li {
+            padding-top: 5px;
+        }
+        .twitter {
+            iframe {
+                width: 100px !important;
+            }
+        }
+    }
+}
+
 .environment {
     padding: 14px 30px 0;
     font-size: 18px;
