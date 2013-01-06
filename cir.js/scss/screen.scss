@@ -47,10 +47,15 @@ h2 {
 
     color: #00BDDA;
 }
-.lead {
+.environment {
     padding: 14px 30px 0;
-    font-size: 16px;
+    font-size: 18px;
     @include text-shadow(#333 3px 3px 3px);
+}
+.lead {
+    @extend .environment;
+
+    font-size: 16px;
 
     .src {
         font-size: 18px;
