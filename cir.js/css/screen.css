@@ -114,7 +114,7 @@ h2 {
 header .sns {
   position: absolute;
   top: 0;
-  right: 10px;
+  right: 30px;
   padding: 5px 30px 10px;
   border-radius: 0 0 3px 3px;
   background-color: rgba(0, 47, 53, 0.3);
