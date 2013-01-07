@@ -180,6 +180,17 @@ var p = el.create('p', {
 }); // set attr</pre>
                         </div>
                     </li>
+                    <li id="element_css">
+                        <h3>css(element, object)</h3>
+                        <div class="detail">
+                            <p>element.styleにobjectの内容を反映します。</p>
+<pre>var $sample = el.$('#sample');
+el.css({
+    width: '100px',
+    height: '200px'
+});</pre>
+                        </div>
+                    </li>
                     <li id="element_hasClass">
                         <h3>hasClass(element, value)</h3>
                         <div class="detail">
@@ -242,17 +253,6 @@ el.opacity($sample, 0.5);</pre>
                             <p>element.style.displayに'block'を指定します。</p>
 <pre>var $sample = el.$('#sample');
 el.show($sample);</pre>
-                        </div>
-                    </li>
-                    <li id="element_css">
-                        <h3>css(element, object)</h3>
-                        <div class="detail">
-                            <p>element.styleにobjectの内容を反映します。</p>
-<pre>var $sample = el.$('#sample');
-el.css({
-    width: '100px',
-    height: '200px'
-});</pre>
                         </div>
                     </li>
                     <li id="element_removeClass">
