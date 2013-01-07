@@ -431,6 +431,26 @@ $sample.animate({
 </pre>
                         </div>
                     </li>
+                    <li id="selector_stop">
+                        <h3>.stop()</h3>
+                        <div class="detail">
+                            <p>animateで指定されたアニメーションを停止します。<br />
+                            animateの実行情報は各セレクターオブジェクト毎に保持されるため、<br />
+                            変数にセレクターオブジェクトを保存していない場合、正しく停止できない可能性があります。</p>
+<pre>var $sample = $('#sample');
+
+$sample.animate({
+    width: 100
+}); // widthを100pxに変更
+
+$sample.stop(); // 停止する
+
+$('#sample2').animate({
+    height: 200
+}); // heightを200pxに変更
+$('#sample2').stop(); // 停止しない</pre>
+                        </div>
+                    </li>
                     <li id="selector_append">
                         <h3>.append(element)</h3>
                         <div class="detail">
