@@ -145,10 +145,10 @@ dl {
         }
     }
     dd {
+        display: none;
         font-size: 16px;
 
-        %none {
-            display: none;
+        %dashbox {
             padding: 10px;
             border: 1px dashed #005F6B;
             font-family: monospace;
@@ -156,7 +156,7 @@ dl {
             @include border-radius(2px);
         }
         .sample {
-            @extend %none;
+            @extend %dashbox;
 
             margin-bottom: 10px;
             font-size: 18px;
@@ -197,8 +197,9 @@ dl {
             }
         }
         .detail {
-            @extend %none;
+            @extend %dashbox;
 
+            display: none;
             margin: 10px 0 15px 15px;
 
             pre {
@@ -227,9 +228,7 @@ dl {
             }
         }
         dd {
-            .sample {
-                display: block;
-            }
+            display: block;
         }
 
     }

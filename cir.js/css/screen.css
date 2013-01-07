@@ -224,11 +224,11 @@ dl dt span {
 }
 /* line 147, ../scss/screen.scss */
 dl dd {
+  display: none;
   font-size: 16px;
 }
-/* line 150, ../scss/screen.scss */
+/* line 151, ../scss/screen.scss */
 dl dd .sample, dl dd .detail {
-  display: none;
   padding: 10px;
   border: 1px dashed #005F6B;
   font-family: monospace;
@@ -284,40 +284,41 @@ dl dd h3:before {
 }
 /* line 199, ../scss/screen.scss */
 dl dd .detail {
+  display: none;
   margin: 10px 0 15px 15px;
 }
-/* line 204, ../scss/screen.scss */
+/* line 205, ../scss/screen.scss */
 dl dd .detail pre {
   margin: 10px;
   font-style: italic;
   font-size: 14px;
   color: #999;
 }
-/* line 213, ../scss/screen.scss */
+/* line 214, ../scss/screen.scss */
 dl dd .open h3:before {
   content: '-';
 }
-/* line 217, ../scss/screen.scss */
+/* line 218, ../scss/screen.scss */
 dl dd .open .detail {
   display: block;
 }
-/* line 225, ../scss/screen.scss */
+/* line 226, ../scss/screen.scss */
 dl.open dt:before {
   content: '▲';
 }
 /* line 230, ../scss/screen.scss */
-dl.open dd .sample {
+dl.open dd {
   display: block;
 }
 
-/* line 238, ../scss/screen.scss */
+/* line 237, ../scss/screen.scss */
 #footer {
   padding: 14px 30px;
   font-size: 16px;
   color: #AAA;
   text-shadow: #333333 3px 3px 3px;
 }
-/* line 244, ../scss/screen.scss */
+/* line 243, ../scss/screen.scss */
 #footer a {
   color: #CCC;
 }
