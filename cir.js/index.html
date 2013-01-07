@@ -1573,6 +1573,32 @@ var num = storage.get('num'); // null</pre>
                     <p>モバイル端末用のユーティリティクラスです。</p>
                 </div>
                 <ul>
+                    <li id="Mobile_bindOrientation">
+                        <h3>bindOrientation({portrait: function, landscape: function})</h3>
+                        <div class="detail">
+                            <p>端末の向きに合わせて処理を実行します。<br />
+                            このメソッドは紐付けたイベントを削除するための関数を返します。</p>
+<pre>var removeOrientation = mobile.bindOrientation({
+    portrait: function() {
+        // write code.
+    },
+    landscape: function() {
+        // write code.
+    }
+}); // イベント登録
+
+removeOrientation(); // イベント削除
+</pre>
+                        </div>
+                    </li>
+                    <li id="Mobile_getOrientation">
+                        <h3>getOrientation()</h3>
+                        <div class="detail">
+                            <p>端末の向きを取得します。</p>
+<pre>var orient = mobile.getOrientation();
+// {landscape: boolean, portrait: boolean}</pre>
+                        </div>
+                    </li>
                     <li id="Mobile_hideAddress">
                         <h3>hideAddress()</h3>
                         <div class="detail">
@@ -1622,28 +1648,6 @@ var num = storage.get('num'); // null</pre>
                             noTopをtrueにした場合、その場でスクロールを固定します。</p>
 <pre>mobile.killScroll(); // スクロールを最上にし、停止
 mobile.killScroll(true); // スクロールをその場で停止</pre>
-                        </div>
-                    </li>
-                    <li id="Mobile_orientationChange">
-                        <h3>orientationChange({portrait: function, landscape: function})</h3>
-                        <div class="detail">
-                            <p>端末の向きに合わせて処理を実行します。</p>
-<pre>mobile.orientationChange({
-    portrait: function() {
-        // write code.
-    },
-    landscape: function() {
-        // write code.
-    }
-});</pre>
-                        </div>
-                    </li>
-                    <li id="Mobile_orientationCheck">
-                        <h3>orientationCheck()</h3>
-                        <div class="detail">
-                            <p>端末の向きを取得します。</p>
-<pre>var orient = mobile.orientationCheck();
-// {landscape: boolean, portrait: boolean}</pre>
                         </div>
                     </li>
                     <li id="Mobile_revivalScroll">
