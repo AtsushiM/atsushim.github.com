@@ -29,7 +29,7 @@
             i;
 
         for (i in opendata) {
-            addOpen($('#' + id));
+            addOpen($('#' + i));
         }
     }
 
