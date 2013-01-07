@@ -45,36 +45,36 @@ var mobile = new C.Mobile(); // Mobile</pre>
                 </div>
             </dd>
         </dl>
-        <dl id="easing">
-            <dt>C.easing</dt>
+        <dl id="ease">
+            <dt>C.ease</dt>
             <dd>
                 <div class="sample">
-                    <pre>var easing = C.easing;</pre>
+                    <pre>var ease = C.ease;</pre>
                     <p>イージング処理をまとめたオブジェクトです。<br />
-                    主な使い方は<a href="#Tweener">C.Tweener</a>クラスや<a href="#selector">selector</a>メソッドのeasingオプションに対して参照を渡すことになります。</p>
+                    主な使い方は<a href="#Tweener">C.Tweener</a>クラスや<a href="#selector">selector</a>メソッドのeaseオプションに対して参照を渡すことになります。</p>
                 </div>
                 <ul>
-                    <li>easeInCirc</li>
-                    <li>easeInCubic</li>
-                    <li>easeInExpo</li>
-                    <li>easeInQuad</li>
-                    <li>easeInQuart</li>
-                    <li>easeInQuint</li>
-                    <li>easeInSine</li>
-                    <li>easeInOutCirc</li>
-                    <li>easeInOutCubic</li>
-                    <li>easeInOutExpo</li>
-                    <li>easeInOutQuad</li>
-                    <li>easeInOutQuart</li>
-                    <li>easeInOutQuint</li>
-                    <li>easeInOutSine</li>
-                    <li>easeOutCirc</li>
-                    <li>easeOutCubic</li>
-                    <li>easeOutExpo</li>
-                    <li>easeOutQuad</li>
-                    <li>easeOutQuart</li>
-                    <li>easeOutQuint</li>
-                    <li>easeOutSine</li>
+                    <li>inCirc</li>
+                    <li>inCubic</li>
+                    <li>inExpo</li>
+                    <li>inQuad</li>
+                    <li>inQuart</li>
+                    <li>inQuint</li>
+                    <li>inSine</li>
+                    <li>inOutCirc</li>
+                    <li>inOutCubic</li>
+                    <li>inOutExpo</li>
+                    <li>inOutQuad</li>
+                    <li>inOutQuart</li>
+                    <li>inOutQuint</li>
+                    <li>inOutSine</li>
+                    <li>outCirc</li>
+                    <li>outCubic</li>
+                    <li>outExpo</li>
+                    <li>outQuad</li>
+                    <li>outQuart</li>
+                    <li>outQuint</li>
+                    <li>outSine</li>
                 </ul>
             </dd>
         </dl>
@@ -300,7 +300,7 @@ el.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
                             タッチパネル非対応の場合、'click'になるプロパティです。</p>
-<pre>var $sample = C.selector('#selector');
+<pre>var $sample = C.selector('#sample');
 $sample.on(C.event.switchclick, function() {
     // write code.
 });</pre>
@@ -311,7 +311,7 @@ $sample.on(C.event.switchclick, function() {
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
                             タッチパネル非対応の場合、'mousedown'になるプロパティです。</p>
-<pre>var $sample = C.selector('#selector');
+<pre>var $sample = C.selector('#sample');
 $sample.on(C.event.switchdown, function() {
     // write code.
 });</pre>
@@ -322,7 +322,7 @@ $sample.on(C.event.switchdown, function() {
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchmove'に、<br />
                             タッチパネル非対応の場合、'mousemove'になるプロパティです。</p>
-<pre>var $sample = C.selector('#selector');
+<pre>var $sample = C.selector('#sample');
 $sample.on(C.event.switchmove, function() {
     // write code.
 });</pre>
@@ -333,7 +333,7 @@ $sample.on(C.event.switchmove, function() {
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchend'に、<br />
                             タッチパネル非対応の場合、'mouseup'になるプロパティです。</p>
-<pre>var $sample = C.selector('#selector');
+<pre>var $sample = C.selector('#sample');
 $sample.on(C.event.switchup, function() {
     // write code.
 });</pre>
@@ -387,10 +387,10 @@ alert(Sample2.prototype.test); //test extend.
             </dd>
         </dl>
         <dl id="selector">
-            <dt>C.selector<span>[ required: <a href="#Tweener">Tweener</a> ]</span></dt>
+            <dt>C.$<span>[ required: <a href="#Tweener">Tweener</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var $ = C.selector;
+<pre>var $ = C.$;
 var $p = $('p');</pre>
                     <p>jQueryライクなセレクターメソッドです。<br />
                     戻り値は便宜上セレクターオブジェクトとします。</p>
@@ -405,10 +405,10 @@ $sample.addClass('sample');</pre>
                         </div>
                     </li>
                     <li id="selector_animate">
-                        <h3>.animate(params, [duration], [easing], [callback])</h3>
+                        <h3>.animate(params, [duration], [ease], [callback])</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントをアニメーションします。<br />
-                            easingにはC.easingの各メソッド名をStringで指定できます。</p>
+                            easeにはC.easeの各メソッドを指定できます。</p>
 <pre>var $sample = $('#sample');
 
 $sample.animate({
@@ -421,13 +421,13 @@ $sample.animate({
 
 $sample.animate({
     opacity: 0.5
-}, 300, 'easeInCubic'); // 300msでopacityを0.5に'easeInCubic'でイージング
+}, 300, C.ease.inCubic); // 300msでopacityを0.5に'easeInCubic'でイージング
 
 $sample.animate({
     opacity: 0.5
 }, function() {
     // write code.
-}); // durationとeasingは省略可能
+}); // durationとeaseは省略可能
 </pre>
                         </div>
                     </li>
@@ -537,7 +537,7 @@ var $sample_parent = $sample.parent();</pre>
                         <h3>.querySelectorAll(query)</h3>
                         <div class="detail">
                             <p>セレクターオブジェクトの対象になっているHTMLエレメントに対して、element.querySelectorAllを実行します。<br />
-                            このメソッドは他のselector.methodから呼ばれるための関数であり、意図的に呼びだす必要はないはずです。</p>
+                            このメソッドは他の$.methodから呼ばれるための関数であり、意図的に呼びだす必要はないはずです。</p>
 <pre>var $sample = $('#sample');
 var nodelist = $sample.querySelectorAll('.sample');</pre>
                         </div>
@@ -832,7 +832,7 @@ ajax.request({
             <dd>
                 <div class="sample">
 <pre>var bind = new C.Bind({
-    element: C.selector('#sample')[0],
+    element: C.$('#sample')[0],
     events: {
         click: function(e) {
             // write code.
@@ -908,7 +908,7 @@ ajax.request({
                             imageにはimgエレメントかcanvasエレメントを指定できます。<br />
                             引数の配列の順に上に重なっていきます。<br />
                             canvasに描画されている場合、消去してから追加されます。</p>
-<pre>var $prerender = C.selector('.prerender');
+<pre>var $prerender = C.$('.prerender');
 render.draw([
     {image: $prerender[0], x: 0, y: 0},
     {image: $prerender[1], x: 100, y: 0},
@@ -1065,7 +1065,7 @@ deferred.done(function() {
                         <h3>amount({element: element, callback: function})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリック開始から終了までに移動した距離をcallbackに渡します。</p>
-<pre>var $sample = C.selector('#sample');
+<pre>var $sample = C.$('#sample');
 dragflick.amount({
     element: $sample[0],
     callback: function(amount) {
@@ -1081,7 +1081,7 @@ dragflick.amount({
                         <div class="detail">
                             <p>ドラッグもしくはフリック用のイベントをまとめて設定します。<br />
                             directionとboundaryはdirectionメソッド用のオプションです</p>
-<pre>var $sample = C.selector('#sample');
+<pre>var $sample = C.$('#sample');
 dragflick.bind({
     element: $sample[0],
     direction: function(direction) {
@@ -1108,7 +1108,7 @@ dragflick.bind({
                         <div class="detail">
                             <p>ドラッグもしくはフリックした場合、どの方向に移動したかをcallbackに渡します。<br />
                             boundaryを指定すると指定した値以上になった場合、移動したことになります。</p>
-<pre>var $sample = C.selector('#sample');
+<pre>var $sample = C.$('#sample');
 dragflick.direction({
     element: $sample[0],
     boundary: 100,
@@ -1155,7 +1155,7 @@ var eSingle = new C.Event({
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
                             タッチパネル非対応の場合、'click'になるプロパティです。</p>
-<pre>var $sample = C.selector('#selector');
+<pre>var $sample = C.$('#sample');
 $sample.on(C.event.switchclick, function() {
     // write code.
 });</pre>
@@ -1166,7 +1166,7 @@ $sample.on(C.event.switchclick, function() {
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
                             タッチパネル非対応の場合、'mousedown'になるプロパティです。</p>
-<pre>var $sample = C.selector('#selector');
+<pre>var $sample = C.$('#sample');
 $sample.on(C.event.switchdown, function() {
     // write code.
 });</pre>
@@ -1177,7 +1177,7 @@ $sample.on(C.event.switchdown, function() {
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchmove'に、<br />
                             タッチパネル非対応の場合、'mousemove'になるプロパティです。</p>
-<pre>var $sample = C.selector('#selector');
+<pre>var $sample = C.$('#sample');
 $sample.on(C.event.switchmove, function() {
     // write code.
 });</pre>
@@ -1188,7 +1188,7 @@ $sample.on(C.event.switchmove, function() {
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchend'に、<br />
                             タッチパネル非対応の場合、'mouseup'になるプロパティです。</p>
-<pre>var $sample = C.selector('#selector');
+<pre>var $sample = C.$('#sample');
 $sample.on(C.event.switchup, function() {
     // write code.
 });</pre>
@@ -2147,14 +2147,14 @@ timer.countDown(); // start timer.</pre>
         }
     },
     {
-        easing: null,
+        ease: null,
         onComplete: function() {
             // write code.
         }
     }
 );</pre>
                     <p>シンプルなアニメーション用クラスです。<br />
-                    easingオプションにC.easingの各メソッドを指定すれば、様々なイージング処理をさせることが可能です</p>
+                    easeオプションにC.easeの各メソッドを指定すれば、様々なイージング処理をさせることが可能です</p>
                 </div>
                 <ul>
                     <li id="Tweener_end">
@@ -2236,12 +2236,12 @@ timer.countDown(); // start timer.</pre>
     </div>
     <div id="sub">
         <ul>
-            <li><a href="#easing">easing</a></li>
+            <li><a href="#ease">ease</a></li>
             <li><a href="#element">element</a></li>
             <li><a href="#event_">event</a></li>
             <li><a href="#extend">extend</a></li>
             <li><a href="#klass">klass</a></li>
-            <li><a href="#selector">selector</a></li>
+            <li><a href="#selector">$</a></li>
             <li><a href="#utility">utility</a></li>
             <li><a href="#Ajax">Ajax</a></li>
             <li><a href="#Bind">Bind</a></li>
