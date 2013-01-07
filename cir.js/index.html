@@ -811,48 +811,41 @@ ajax.request({
             <dt>C.Bind</dt>
             <dd>
                 <div class="sample">
-                    <pre>var bind = new C.Bind();</pre>
+<pre>var bind = new C.Bind({
+    element: C.selector('#sample')[0],
+    events: {
+        click: function(e) {
+            // write code.
+        },
+        mouseover: function(e) {
+            // write code.
+        }
+    }
+});</pre>
                     <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
                 </div>
                 <ul>
                     <li id="Bind_add">
-                        <h3>add({element: element, events: {event: function}})</h3>
+                        <h3>add()</h3>
                         <div class="detail">
-                            <p>elementに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。</p>
-<pre>var $sample = C.selector('#sample');
-var handlerObj = {
-    element: $sample[0],
-    events: {
-        click: function() {
-            // write code.
-        },
-        mouseover: function(){
-            // write code.
-        }
-    }
-};
-bind.add(hadlerObj); // addEvent
-bind.remove(hadlerObj); // removeEvent</pre>
+                            <p>elementに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>bind.add(); // addEvent</pre>
+                        </div>
+                    </li>
+                    <li id="Bind_getHandler">
+                        <h3>getHandler()</h3>
+                        <div class="detail">
+                            <p>インスタンス生成時の引数を取得します。</p>
+<pre>var handler = bind.getHandler(); // object</pre>
                         </div>
                     </li>
                     <li id="Bind_remove">
-                        <h3>remove({element: element, events: {event: function})</h3>
+                        <h3>remove()</h3>
                         <div class="detail">
                             <p>elementに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
-<pre>var $sample = C.selector('#sample');
-var handlerObj = {
-    element: $sample[0],
-    events: {
-        click: function() {
-            // write code.
-        },
-        mouseover: function(){
-            // write code.
-        }
-    }
-};
-bind.add(hadlerObj); // addEvent
-bind.remove(hadlerObj); // removeEvent</pre>
+<pre>bind.remove(); // removeEvent</pre>
                         </div>
                     </li>
                 </ul>
@@ -1312,9 +1305,7 @@ var tag_white = font.make('A');
         // write code.
         console.log(fps); // {criterion: number, surver: number}
     }
-});
-
-fps.start(); // start enterframe.</pre>
+});</pre>
                     <p>指定したcriterion(fps)ごとにenterframeを実行するクラスです。</p>
                 </div>
                 <ul>
@@ -1349,7 +1340,9 @@ fps.start(); // start enterframe.</pre>
                     <li id="FPS_start">
                         <h3>start()</h3>
                         <div class="detail">
-                            <p>間隔実行を開始します。</p>
+                            <p>間隔実行を開始します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
 <pre>fps.start();</pre>
                         </div>
                     </li>
@@ -1449,9 +1442,7 @@ var hashobj = hashCtrl.getHash();
     onload: function() {
         // write code.
     }
-});
-
-imgload.start(); // start loading.</pre>
+});</pre>
                     <p>画像をまとめてロードするクラスです。</p>
                 </div>
                 <ul>
@@ -1465,7 +1456,9 @@ imgload.start(); // start loading.</pre>
                     <li id="ImgLoad_start">
                         <h3>start()</h3>
                         <div class="detail">
-                            <p>読み込みを開始します。</p>
+                            <p>読み込みを開始します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
 <pre>imgload.start();</pre>
                         </div>
                     </li>
@@ -1748,10 +1741,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
     onrendered: function() {
         // write code.
     }
-});
-
-render.start(); // start prerender.
-</pre>
+});</pre>
                     <p>HTMLエレメントは初めて画面上に表示される際にかなりの負荷がかかります。<br />
                     (※display: none; や opacity: 0;、もしくは画面外にpositionで設置するなど)<br />
                     ゲームなどでは負荷が邪魔になる場合も有るため、これらの要素の上に不透明な背景を持つエレメントをpositionで設置し、PreRenderクラスで予め表示しておくことが有効です。</p>
@@ -1760,7 +1750,9 @@ render.start(); // start prerender.
                     <li id="PreRender_start">
                         <h3>start()</h3>
                         <div class="detail">
-                            <p>プリレンダリングを開始します。</p>
+                            <p>プリレンダリングを開始します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
 <pre>render.start();</pre>
                         </div>
                     </li>
