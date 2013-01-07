@@ -68,34 +68,9 @@ header {
     }
 }
 
-.environment {
-    padding: 14px 30px 0;
-    font-size: 18px;
-    @include text-shadow(#333 3px 3px 3px);
-}
-.lead {
-    @extend .environment;
-
-    font-size: 16px;
-
-    .src {
-        font-size: 18px;
-    }
-}
-.download {
-    padding: 14px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    font-style: italic;
-    @include text-shadow(#333 3px 3px 3px);
-}
 #content {
     overflow: hidden;
-    padding: 15px;
-}
-#main {
-    float: right;
-    width: 80%;
+    padding: 10px 15px 15px;
 }
 
 %frame {
@@ -105,6 +80,38 @@ header {
     @include border-radius(2px);
     @include single-box-shadow(#333, 0, 0, 3px, 3px);
     @include text-shadow(#222 1px 1px 3px);
+}
+#main {
+    float: right;
+    width: 80%;
+
+    .first {
+        @extend %frame;
+
+        border: 1px solid #004E6A;
+        margin: 0 15px 15px 0;
+    }
+        .environment {
+            padding: 0 15px 15px;
+            font-size: 18px;
+            @include text-shadow(#333 3px 3px 3px);
+        }
+        .lead {
+            @extend .environment;
+
+            font-size: 16px;
+
+            .src {
+                font-size: 18px;
+            }
+        }
+        .download {
+            padding: 0 15px 15px;
+            font-size: 18px;
+            font-weight: bold;
+            font-style: italic;
+            @include text-shadow(#333 3px 3px 3px);
+        }
 }
 #sub {
     float: left;
