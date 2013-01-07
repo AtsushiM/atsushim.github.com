@@ -1447,16 +1447,17 @@ Global.LocalStorage = Global.klass({
 
             var ret = {},
                 i,
-                setRet = function() {
-                    ret[i] = JSON.parse(mine._s[i]);
-                };
+                key;
 
             for (i in mine._s) {
                 if (!this._n) {
-                    setRet();
+                    ret[i] = JSON.parse(mine._s[i]);
                 }
-                else if (i.split(this._n)[1]) {
-                    setRet();
+                else {
+                    key = i.split(this._n)[1];
+                    if (key) {
+                        ret[key] = JSON.parse(mine._s[i]);
+                    }
                 }
             }
 
@@ -1918,16 +1919,17 @@ Global.SessionStorage = Global.klass({
 
             var ret = {},
                 i,
-                setRet = function() {
-                    ret[i] = JSON.parse(mine._s[i]);
-                };
+                key;
 
             for (i in mine._s) {
                 if (!this._n) {
-                    setRet();
+                    ret[i] = JSON.parse(mine._s[i]);
                 }
-                else if (i.split(this._n)[1]) {
-                    setRet();
+                else {
+                    key = i.split(this._n)[1];
+                    if (key) {
+                        ret[key] = JSON.parse(mine._s[i]);
+                    }
                 }
             }
 
