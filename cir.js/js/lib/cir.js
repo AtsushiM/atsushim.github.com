@@ -178,7 +178,7 @@ Global.element = {
 
         return addClass(element, cls);
     },
-    style: function(element, addstyle) {
+    css: function(element, addstyle) {
         var style = element.style,
             i,
             key,
@@ -388,7 +388,7 @@ function forExe(_this, func, arg) {
 
     for (; i < len; i++) {
         ary[0] = _this[i];
-        func.apply(null, ary);
+        func.apply(_this, ary);
     }
 
     return _this;
@@ -450,7 +450,7 @@ Global.selector.methods = {
         return forExe(this, el.toggleClass, arguments);
     },
     css: function() {
-        return forExe(this, el.style, arguments);
+        return forExe(this, el.css, arguments);
     },
     html: function() {
         return exe(this, el.html, arguments);
@@ -473,7 +473,24 @@ var util = Global.utility,
     EASING = {};
 
 methods.animate = function() {
+    if (!this._animate) {
+        this._animate = [];
+    }
+
     return methods._forexe(this, animate, arguments);
+}
+methods.stop = function() {
+    var tweeners = this._animate,
+        i = 0,
+        len = tweeners.length;
+
+    for (; i < len; i++) {
+        tweeners[i].end();
+    }
+
+    this._animate = null;
+
+    return this;
 }
 
 function animate(element, params, duration, easing, callback) {
@@ -498,7 +515,10 @@ function animate(element, params, duration, easing, callback) {
             onComplete: callback
         }
     );
+
+    this._animate.push(tweener);
 }
+
 function convertTweenerParam(element, params) {
     var name,
         computedStyle = el.computedStyle(element),
@@ -802,30 +822,35 @@ Global.Ajax = Global.klass({
 });
 /* Test: "../../spec/_src/src/Bind/test.js" */
 Global.Bind = Global.klass({
+    init: function(config) {
+        this.handler = config;
+        this.add();
+    },
     properties: {
         _el: Global.element,
-        add: function(vars) {
-            return this._exe(true, vars);
+        getHandler: function() {
+            return this.handler;
         },
-        remove: function(vars) {
-            return this._exe(false, vars);
+        add: function() {
+            return this._exe(true);
         },
-        _exe: function(isBind, vars) {
+        remove: function() {
+            return this._exe(false);
+        },
+        _exe: function(isBind) {
             var el = this._el,
-                element = vars.element,
-                events = vars.events,
                 onoff = isBind ? el.on : el.off,
                 i;
 
-            for (i in events) {
+            for (i in this.handler.events) {
                 onoff(
-                    element,
+                    this.handler.element,
                     i,
-                    events[i]
+                    this.handler.events[i]
                 );
             }
 
-            return vars;
+            return this.handler;
         }
     }
 });
@@ -1291,6 +1316,10 @@ Global.FPS = Global.klass({
         this.nexttime =
         this.loopid = 0;
 
+        if (!config.manual) {
+            this.start();
+        }
+
         if (config.single) {
             instance = this;
         }
@@ -1364,6 +1393,11 @@ Global.ImgLoad = Global.klass({
         this.onprogress = config.onprogress || this._u.nullFunction,
         this.loadcount = 0;
         this.progress = 0;
+        this.started = false;
+
+        if (!config.manual) {
+            this.start();
+        }
     },
     properties: {
         _u: Global.utility,
@@ -1380,6 +1414,12 @@ Global.ImgLoad = Global.klass({
             }
         },
         start: function() {
+            if (this.started) {
+                return false;
+            }
+
+            this.started = true;
+
             var mine = this,
                 img,
                 i, len;
@@ -1750,6 +1790,10 @@ Global.PreRender = Global.klass({
         this.looptime = config.looptime || 100;
         this.loopblur = this.looptime + config.loopblur;
         this.loopid = this.prevtime = null;
+
+        if (!config.manual) {
+            this.start();
+        }
     },
     properties: {
         _u: Global.utility,
