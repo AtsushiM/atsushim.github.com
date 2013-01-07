@@ -1,6 +1,9 @@
 DOC.submenu = function(config) {
     'use strict';
 
+    var $sub = $('#sub'),
+        $footer = $('#footer');
+
     $(window).on(C.event.resize, subPoint);
     $(window).on(C.event.load, subPoint);
 
@@ -8,9 +11,10 @@ DOC.submenu = function(config) {
         var winH = this.innerHeight,
             $sub = $('#sub'),
             subH = $sub[0].offsetHeight,
-            subTop = $sub[0].offsetTop;
+            subTop = $sub[0].offsetTop,
+            footerH = $footer[0].offsetHeight;
 
-        if (subH + subTop > winH) {
+        if (subH + subTop + footerH > winH) {
             $sub.css({
                 position: 'static'
             });

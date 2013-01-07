@@ -51,7 +51,7 @@ var mobile = new C.Mobile(); // Mobile</pre>
                 <div class="sample">
                     <pre>var ease = C.ease;</pre>
                     <p>イージング処理をまとめたオブジェクトです。<br />
-                    主な使い方は<a href="#Tweener">C.Tweener</a>クラスや<a href="#selector">selector</a>メソッドのeaseオプションに対して参照を渡すことになります。</p>
+                    主な使い方は<a href="#Tweener">C.Tweener</a>クラスや<a href="#selector">C.$</a>メソッドのeaseオプションに対して参照を渡すことになります。</p>
                 </div>
                 <ul>
                     <li>inCirc</li>
@@ -951,19 +951,6 @@ var text = store.get('cir'); // Cool is Right.
 var obj = store.get(); // {cir: 'Cool is Right.'}</pre>
                         </div>
                     </li>
-                    <li id="DataStore_set">
-                        <h3>set(key, val)</h3>
-                        <div class="detail">
-                            <p>データを保存します。</p>
-<pre>store.set('cir', 'Cool is Right.'); // String
-store.set('obj', {
-    c: 'Cool',
-    i: ' is ',
-    r: 'Right.'
-}); // Object
-store.set('num', 123); // Number</pre>
-                        </div>
-                    </li>
                     <li id="DataStore_remove">
                         <h3>remove(key)</h3>
                         <div class="detail">
@@ -986,6 +973,19 @@ store.reset();
 var c = store.get('c'); // undefind
 var i = store.get('i'); // undefind
 var r = store.get('r'); // undefind</pre>
+                        </div>
+                    </li>
+                    <li id="DataStore_set">
+                        <h3>set(key, val)</h3>
+                        <div class="detail">
+                            <p>データを保存します。</p>
+<pre>store.set('cir', 'Cool is Right.'); // String
+store.set('obj', {
+    c: 'Cool',
+    i: ' is ',
+    r: 'Right.'
+}); // Object
+store.set('num', 123); // Number</pre>
                         </div>
                     </li>
                 </ul>
@@ -1537,7 +1537,7 @@ var cir = storage.get('cir'); // null</pre>
                         </div>
                     </li>
                     <li id="LocalStorage_reset">
-                        <h3>reset(key)</h3>
+                        <h3>reset()</h3>
                         <div class="detail">
                             <p>保存された値を全て削除します。<br />
                             namespaceオプションが指定されない場合はlocalStorage全体が削除されます。</p>
@@ -1929,7 +1929,7 @@ var cir = storage.get('cir'); // null</pre>
                         </div>
                     </li>
                     <li id="SessionStorage_reset">
-                        <h3>reset(key)</h3>
+                        <h3>reset()</h3>
                         <div class="detail">
                             <p>保存された値を全て削除します。<br />
                             namespaceオプションが指定されない場合はsessionStorage全体が削除されます。</p>
@@ -2158,10 +2158,10 @@ timer.countDown(); // start timer.</pre>
                 </div>
                 <ul>
                     <li id="Tweener_end">
-                        <h3>end()</h3>
+                        <h3>stop()</h3>
                         <div class="detail">
                             <p>アニメーションを停止します。</p>
-<pre>tweener.end();</pre>
+<pre>tweener.stop();</pre>
                         </div>
                     </li>
                 </ul>
