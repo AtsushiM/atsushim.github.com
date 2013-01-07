@@ -109,11 +109,17 @@ header {
 #sub {
     float: left;
     width: 20%;
+    position: fixed;
 
     ul {
         @extend %frame;
 
+        overflow: hidden;
         margin: 0 15px;
+    }
+    li {
+        float: left;
+        padding-right: 15px;
     }
 }
 dl {
