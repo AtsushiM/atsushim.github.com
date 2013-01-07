@@ -9,11 +9,6 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/text-shadow";
 
-@font-face {
-    font-family: 'title';
-    src: url('../font/NewRocker-Regular.ttf') format('truetype');
-}
-
 body {
     background-color: #343838;
     color: #BBB;
@@ -31,7 +26,7 @@ a {
 
 %title {
     display: inline-block;
-    font-family: 'title';
+    font-family: 'New Rocker', cursive;
     @include text-shadow(#222 3px 3px 3px);
 }
 h1 {
