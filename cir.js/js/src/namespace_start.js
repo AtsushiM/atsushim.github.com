@@ -7,10 +7,14 @@ var DOC = {},
     });
 
 function addOpen($el) {
-    $el.addClass(clsOpen);
-    storage.set($el.attr('id'), 1);
+    if ($el[0]) {
+        $el.addClass(clsOpen);
+        storage.set($el.attr('id'), 1);
+    }
 }
 function removeOpen($el) {
-    $el.removeClass(clsOpen);
-    storage.remove($el.attr('id'));
+    if ($el[0]) {
+        $el.removeClass(clsOpen);
+        storage.remove($el.attr('id'));
+    }
 }
