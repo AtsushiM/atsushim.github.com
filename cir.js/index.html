@@ -50,7 +50,7 @@ var mobile = new C.Mobile(); // Mobile</pre>
                     <p>様々なクラスから呼び出されるユーティリティオブジェクトです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="utility_pageTop">
                         <h3>pageTop()</h3>
                         <div class="detail">
                             <p>ページ上部へスクロールを移動させます。<br />
@@ -58,7 +58,7 @@ var mobile = new C.Mobile(); // Mobile</pre>
 <pre>util.pageTop();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_override">
                         <h3>override(targetObj, varObj)</h3>
                         <div class="detail">
                             <p>targetObjに対してvarObjのプロパティを上書きします。<br />
@@ -69,7 +69,7 @@ util.override(target, over);
 alert(target.sample); // override property</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_replaceAll">
                         <h3>replaceAll(targetext, needle, replacetext)</h3>
                         <div class="detail">
                             <p>targettext内にあるneedleを全てreplacetextに書き換えます。<br />
@@ -82,14 +82,14 @@ alert(text); // Cool ia Right.ja
 </pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_windowOpen">
                         <h3>windowOpen(url, windowname)</h3>
                         <div class="detail">
                             <p>新しいウィンドウを開きます</p>
 <pre>var subwindow = util.windowOpen('/sub.html', 'sub');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_typeCast">
                         <h3>typeCast(string)</h3>
                         <div class="detail">
                             <p>渡された文字列を内容に合わせて型変換します。</p>
@@ -107,7 +107,7 @@ str = util.typeCast(str); // 'sample'
 </pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_makeQueryString">
                         <h3>makeQueryString(object)</h3>
                         <div class="detail">
                             <p>オブジェクトのプロパティをlocation.search、もしくはlocation.hash用に使えるクエリーストリング形式に変換します。</p>
@@ -118,7 +118,7 @@ str = util.typeCast(str); // 'sample'
 }); // c=Cool&i=is&r=Right</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_parseQueryString">
                         <h3>parseQueryString(string)</h3>
                         <div class="detail">
                             <p>location.search、もしくはlocation.hashの値をオブジェクトに変換します。</p>
@@ -134,7 +134,7 @@ alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');
 </pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_isObject">
                         <h3>isObject(vars)</h3>
                         <div class="detail">
                             <p>varsがObjectかBooleanで返します。</p>
@@ -143,7 +143,7 @@ check = util.isObject({}); // true
 check = util.isObjext(''); // false</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_isNumber">
                         <h3>isNumber(vars)</h3>
                         <div class="detail">
                             <p>varsがNumberかBooleanで返します。</p>
@@ -152,7 +152,7 @@ check = util.isNumber(123); // true
 check = util.isNumber('123'); // false</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_isString">
                         <h3>isString(vars)</h3>
                         <div class="detail">
                             <p>varsがStringかBooleanで返します。</p>
@@ -161,7 +161,7 @@ check = util.isString(''); // true
 check = util.isString(12); // false</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_isFunction">
                         <h3>isFunction(vars)</h3>
                         <div class="detail">
                             <p>varsがFunctionかBooleanで返します。</p>
@@ -170,7 +170,7 @@ check = util.isFunction((function() {})); // true
 check = util.isFunction(12); // false</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_isBoolean">
                         <h3>isBoolean(vars)</h3>
                         <div class="detail">
                             <p>varsがBooleanかBooleanで返します。</p>
@@ -180,7 +180,7 @@ check = util.isBoolean(false); // true
 check = util.isBoolean(1); // false</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_is">
                         <h3>is(type, vars)</h3>
                         <div class="detail">
                             <p>varsがtypeで指定された形式になっているかBooleanで返します。</p>
@@ -189,7 +189,7 @@ check = util.is('String', ''); // true
 check = util.is('Number', '123'); // false</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="utility_nullFunction">
                         <h3>nullFunction()</h3>
                         <div class="detail">
                             <p>nullを返却するメソッドです。<br />
@@ -213,7 +213,7 @@ anyAction(util.nullFunction); // anyActionは常にcallbackを必要とするの
                     <p>HTMLエレメントに関するメソッドをまとめたオブジェクトです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="element__">
                         <h3>$(selector)</h3>
                         <div class="detail">
                             <p>document.querySelectorのショートハンドです。</p>
@@ -221,7 +221,7 @@ anyAction(util.nullFunction); // anyActionは常にcallbackを必要とするの
 var $p = $('p'); // HTML Element</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element___">
                         <h3>$$(selector)</h3>
                         <div class="detail">
                             <p>document.querySelectorAllのショートハンドです。<br />
@@ -230,7 +230,7 @@ var $p = $('p'); // HTML Element</pre>
 var $$p = $$('p'); // array</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element__child">
                         <h3>$child(selector, element)</h3>
                         <div class="detail">
                             <p>element.querySelectorのショートハンドです。</p>
@@ -238,7 +238,7 @@ var $$p = $$('p'); // array</pre>
 var $p = $child('p', document.body); // HTML Element</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element___child">
                         <h3>$$child(selector, element)</h3>
                         <div class="detail">
                             <p>element.querySelectorAllのショートハンドです。<br />
@@ -247,7 +247,7 @@ var $p = $child('p', document.body); // HTML Element</pre>
 var $$p = $$('p', document.body); // array</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element__id">
                         <h3>$id(selector)</h3>
                         <div class="detail">
                             <p>document.getElementByIdのショートハンドです。</p>
@@ -255,7 +255,7 @@ var $$p = $$('p', document.body); // array</pre>
 var $sample = $id('sample'); // HTML Element</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_on">
                         <h3>on(element, eventname, handler)</h3>
                         <div class="detail">
                             <p>element.addEventListnerを実行します。</p>
@@ -265,7 +265,7 @@ el.on($sample, C.event.click, function() {
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_off">
                         <h3>off(element, eventname, [handler])</h3>
                         <div class="detail">
                             <p>element.removeEventListnerを実行します。</p>
@@ -278,7 +278,7 @@ el.off($sample, C.event.click, func);
 </pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_create">
                         <h3>create(tagname, [attr])</h3>
                         <div class="detail">
                             <p>document.createElementのエイリアスです。</p>
@@ -289,7 +289,7 @@ var p = el.create('p', {
 }); // set attr</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_show">
                         <h3>show(element)</h3>
                         <div class="detail">
                             <p>element.style.displayに'block'を指定します。</p>
@@ -297,7 +297,7 @@ var p = el.create('p', {
 el.show($sample);</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_hide">
                         <h3>hide(element)</h3>
                         <div class="detail">
                             <p>element.style.displayに'none'を指定します。</p>
@@ -305,7 +305,7 @@ el.show($sample);</pre>
 el.hide($sample);</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_opacity">
                         <h3>opacity(element, value)</h3>
                         <div class="detail">
                             <p>element.style.opacityにvalueを指定します。</p>
@@ -313,7 +313,7 @@ el.hide($sample);</pre>
 el.opacity($sample, 0.5);</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_hasClass">
                         <h3>hasClass(element, value)</h3>
                         <div class="detail">
                             <p>elementのclassにvalueがあるかBooleanで返します。</p>
@@ -321,7 +321,7 @@ el.opacity($sample, 0.5);</pre>
 el.hasClass($sample, 'sample');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_addClass">
                         <h3>addClass(element, value)</h3>
                         <div class="detail">
                             <p>elementのclassにvalueを追加します。</p>
@@ -329,7 +329,7 @@ el.hasClass($sample, 'sample');</pre>
 el.addClass($sample, 'sample');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_removeClass">
                         <h3>removeClass(element, value)</h3>
                         <div class="detail">
                             <p>elementのclassからvalueを削除します。</p>
@@ -337,7 +337,7 @@ el.addClass($sample, 'sample');</pre>
 el.removeClass($sample, 'sample');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_toggleClass">
                         <h3>toggleClass(element, value)</h3>
                         <div class="detail">
                             <p>elementのclassにvalueがある場合は削除を、<br />
@@ -347,7 +347,7 @@ el.toggleClass($sample, 'sample'); // sampleクラスを追加
 el.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_style">
                         <h3>style(element, object)</h3>
                         <div class="detail">
                             <p>element.styleにobjectの内容を反映します。</p>
@@ -358,7 +358,7 @@ el.style({
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_computedStyle">
                         <h3>computedStyle(element)</h3>
                         <div class="detail">
                             <p>elementに適用されているcssのスタイルを取得する。<br />
@@ -369,7 +369,7 @@ var width = computed.width;
 var height = computed.getPropertyValue('height');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_attr">
                         <h3>attr(element, property, [value])</h3>
                         <div class="detail">
                             <p>elementの属性の取得、設定を行います。</p>
@@ -382,7 +382,7 @@ el.attr($img, {
 }); // まとめて設定</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_append">
                         <h3>append(_parent, element)</h3>
                         <div class="detail">
                             <p>_parentに対してelementを追加します。</p>
@@ -391,7 +391,7 @@ var $sample = el.$('#sample');
 el.append($sample, div);</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="element_html">
                         <h3>html(element, [text])</h3>
                         <div class="detail">
                             <p>element.innerHTMLを取得・設定します。</p>
@@ -454,7 +454,7 @@ var $p = $('p');</pre>
                     戻り値は便宜上セレクターオブジェクトとします。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="selector_querySelectorAll">
                         <h3>.querySelectorAll(query)</h3>
                         <div class="detail">
                             <p>セレクターオブジェクトの対象になっているHTMLエレメントに対して、element.querySelectorAllを実行します。<br />
@@ -463,7 +463,7 @@ var $p = $('p');</pre>
 var nodelist = $sample.querySelectorAll('.sample');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_find">
                         <h3>.find(selector)</h3>
                         <div class="detail">
                             <p>セレクターオブジェクトから子要素を取得します。</p>
@@ -471,7 +471,7 @@ var nodelist = $sample.querySelectorAll('.sample');</pre>
 var $sample_child = $sample.find('.sample');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_parent">
                         <h3>.parent()</h3>
                         <div class="detail">
                             <p>セレクターオブジェクトの親要素を取得します。</p>
@@ -479,7 +479,7 @@ var $sample_child = $sample.find('.sample');</pre>
 var $sample_parent = $sample.parent();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_on">
                         <h3>.on(eventname, handler)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントに対して、addEventListnerを実行します。</p>
@@ -490,7 +490,7 @@ $sample.on(C.event.click, function(){
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_off">
                         <h3>.off(eventname, [handler])</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントに対して、removeEventListnerを実行します。</p>
@@ -498,7 +498,7 @@ $sample.on(C.event.click, function(){
 $sample.off(C.event.click); // remove click event</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_show">
                         <h3>.show()</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのdisplayに'block'を指定します。</p>
@@ -506,7 +506,7 @@ $sample.off(C.event.click); // remove click event</pre>
 $sample.show();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_hide">
                         <h3>.hide()</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのdisplayに'none'を指定します。</p>
@@ -514,7 +514,7 @@ $sample.show();</pre>
 $sample.hide();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_opacity">
                         <h3>.opacity(value)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのopacityを設定します。</p>
@@ -522,7 +522,7 @@ $sample.hide();</pre>
 $sample.opacity(0.5);</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_hasClass">
                         <h3>.hasClass(className)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのclassNameにvalueが存在するかBooleanで返します。</p>
@@ -530,7 +530,7 @@ $sample.opacity(0.5);</pre>
 var has = $sample.hasClass('.sample'); // Boolean</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_addClass">
                         <h3>.addClass(className)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのclassNameにvalueを追加します。</p>
@@ -538,7 +538,7 @@ var has = $sample.hasClass('.sample'); // Boolean</pre>
 $sample.addClass('sample');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_removeClass">
                         <h3>.removeClass(className)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのclassNameからvalueを削除します。</p>
@@ -546,7 +546,7 @@ $sample.addClass('sample');</pre>
 $sample.removeClass('sample');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_toggleClass">
                         <h3>.toggleClass(className)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントに対して<br />
@@ -558,7 +558,7 @@ $sample.toggleClass('sample'); // 追加
 $sample.toggleClass('sample'); // 削除</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_css">
                         <h3>.css(object)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントにまとめてstyleを適用します。</p>
@@ -570,15 +570,16 @@ $sample.css({
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_append">
                         <h3>.append(element)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントにHTMLエレメントを追加します。</p>
 <pre>var $sample = $('#sample');
 var div = C.element.create('div');
 $sample.append(div);</pre>
+                        </div>
                     </li>
-                    <li>
+                    <li id="selector_html">
                         <h3>.html(text)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントのinnerHTMLを取得・設定します。</p>
@@ -587,7 +588,7 @@ var html = $sample.html(); // 取得
 $sample.html('Cool is Right.'); // 設定</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_attr">
                         <h3>.attr(property, [value])</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントの属性を取得：設定します。</p>
@@ -600,7 +601,7 @@ $img.attr({
 }); // まとめて設定</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="selector_animate">
                         <h3>.animate(params, [duration], [easing], [callback])</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントをアニメーションします。<br />
@@ -674,7 +675,7 @@ $sample.animate({
                     このオブジェクトは<a href="#Event">C.Event</a>クラスを使用して設定されます。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="event__switchclick">
                         <h3>switchclick</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
@@ -685,7 +686,7 @@ $sample.on(C.event.switchclick, function() {
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="event__switchdown">
                         <h3>switchdown</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
@@ -696,7 +697,7 @@ $sample.on(C.event.switchdown, function() {
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="event__switchmove">
                         <h3>switchmove</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchmove'に、<br />
@@ -707,7 +708,7 @@ $sample.on(C.event.switchmove, function() {
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="event__switchup">
                         <h3>switchup</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchend'に、<br />
@@ -740,7 +741,7 @@ $sample.on(C.event.switchup, function() {
                     <p>Ajax処理を行うクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Ajax_request">
                         <h3>request({url:string, [type: 'GET' || 'POST'], [query: object], [cash: bool], [callback: function], [error: function]})</h3>
                         <div class="detail">
                             <p>Ajaxでリクエストを行います。<br />
@@ -768,7 +769,7 @@ ajax.request({
 }); // archive?date=20120101の内容をキャッシュ有効で取得</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Ajax_getJSON">
                         <h3>getJSON({url:string, [type: 'GET' || 'POST'], [query: object], [cash: bool], [callback: function], [error: function]})</h3>
                         <div class="detail">
                             <p>AjaxでJSONに対するリクエストを行います。<br />
@@ -783,7 +784,7 @@ ajax.request({
 }); // news.jsonの内容を取得</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Ajax_abort">
                         <h3>abort()</h3>
                         <div class="detail">
                             <p>request,getJSONメソッドでリクエストした処理を停止します。</p>
@@ -807,7 +808,7 @@ ajax.abort(); // 直前のrequest処理を停止</pre>
                     <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Bind_add">
                         <h3>add({element: element, events: {event: function}})</h3>
                         <div class="detail">
                             <p>elementに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。</p>
@@ -827,7 +828,7 @@ bind.add(hadlerObj); // addEvent
 bind.remove(hadlerObj); // removeEvent</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Bind_remove">
                         <h3>remove({element: element, events: {event: function})</h3>
                         <div class="detail">
                             <p>elementに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
@@ -880,7 +881,7 @@ bind.remove(hadlerObj); // removeEvent</pre>
                     煩雑になりがちなcanvasのレイヤー構造を簡略化します。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="CanvasRender_setSize">
                         <h3>setSize({[width: string], [height: string]})</h3>
                         <div class="detail">
                             <p>canvasのwidth,heightを調整します。</p>
@@ -890,7 +891,7 @@ bind.remove(hadlerObj); // removeEvent</pre>
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="CanvasRender_draw">
                         <h3>draw([{image: element, x: number, y: number}])</h3>
                         <div class="detail">
                             <p>canvasに対してimageをdrawImageします。<br />
@@ -921,7 +922,7 @@ var storeSingle = new C.DataStore({
                     ブラウザのリロードなどが行われた場合、初期化されます。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="DataStore_set">
                         <h3>set(key, val)</h3>
                         <div class="detail">
                             <p>データを保存します。</p>
@@ -934,7 +935,7 @@ store.set('obj', {
 store.set('num', 123); // Number</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="DataStore_get">
                         <h3>get([key])</h3>
                         <div class="detail">
                             <p>データを取り出します。</p>
@@ -943,7 +944,7 @@ var text = store.get('cir'); // Cool is Right.
 var obj = store.get(); // {cir: 'Cool is Right.'}</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="DataStore_remove">
                         <h3>remove(key)</h3>
                         <div class="detail">
                             <p>データを削除します。</p>
@@ -953,7 +954,7 @@ if (store.remove('cir')) {
 }</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="DataStore_reset">
                         <h3>reset()</h3>
                         <div class="detail">
                             <p>データを全て削除します。</p>
@@ -978,7 +979,7 @@ var r = store.get('r'); // undefind</pre>
                     <p>遅延処理を簡易に実行するためのメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Deferred_isResolve">
                         <h3>isResolve()</h3>
                         <div class="detail">
                             <p>遅延処理が実行済みかどうかBooleanで返します。</p>
@@ -991,7 +992,7 @@ if (deferred.isResolve()) {
 }</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Deferred_done">
                         <h3>done(function)</h3>
                         <div class="detail">
                             <p>遅延処理を登録します。</p>
@@ -1010,7 +1011,7 @@ deferred.done(function() {
 </pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Deferred_resolve">
                         <h3>resolve()</h3>
                         <div class="detail">
                             <p>登録された遅延処理を実行します。</p>
@@ -1040,7 +1041,7 @@ deferred.done(function() {
                     <p>ドラッグ＆フリック用の処理を提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="DragFlick_amount">
                         <h3>amount({element: element, callback: function})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリック開始から終了までに移動した距離をcallbackに渡します。</p>
@@ -1055,7 +1056,7 @@ dragflick.amount({
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="DragFlick_direction">
                         <h3>direction({element: element, callback: function, [boundary: number]})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリックした場合、どの方向に移動したかをcallbackに渡します。<br />
@@ -1077,7 +1078,7 @@ dragflick.direction({
 </pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="DragFlick_bind">
                         <h3>bind({element: element, [direction: function], [boundary: number], [start: function], [move: function], [end: function]})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリック用のイベントをまとめて設定します。<br />
@@ -1121,7 +1122,7 @@ var eSingle = new C.Event({
                     実行環境がタッチパネルかどうか判定し、最適な値に変更されます。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Event_switchclick">
                         <h3>switchclick</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
@@ -1132,7 +1133,7 @@ $sample.on(C.event.switchclick, function() {
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Event_switchdown">
                         <h3>switchdown</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
@@ -1143,7 +1144,7 @@ $sample.on(C.event.switchdown, function() {
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Event_switchmove">
                         <h3>switchmove</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchmove'に、<br />
@@ -1154,7 +1155,7 @@ $sample.on(C.event.switchmove, function() {
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Event_switchup">
                         <h3>switchup</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchend'に、<br />
@@ -1191,7 +1192,7 @@ $sample.on(C.event.switchup, function() {
                     iOSの場合、そのオブジェクトを作らなければ自動的にiOS用の処理になります。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="ExternalInterface_call">
                         <h3>call({mode: string, vars: {key: val}})</h3>
                         <div class="detail">
                             <p>ネイティブ側から提供されたメソッドを実行します。<br />
@@ -1208,7 +1209,7 @@ $sample.on(C.event.switchup, function() {
 // Androidの場合、関数の引数に"nativeMethod?str=%22Cool%20is%20Right.%22&num=123"</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ExternalInterface_addCallback">
                         <h3>addCallback(name, function)</h3>
                         <div class="detail">
                             <p>ウェブビューからネイティブにメソッドを提供します。<br />
@@ -1224,7 +1225,7 @@ $sample.on(C.event.switchup, function() {
 location.hash = 'webviewMethod?text=Cool%20is%20Right.';</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ExternalInterface_removeCallback">
                         <h3>removeCallback(name)</h3>
                         <div class="detail">
                             <p>addCallbackで登録したメソッドを削除します。</p>
@@ -1249,7 +1250,7 @@ location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除している�
                     <p>Facebook用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Facebook_getShareURL">
                         <h3>getShareURL({app_id, redirect_uri, [link], [picture], [name], [caption], [description]})</h3>
                         <div class="detail">
                             <p>シェア画面を開くためのURLを取得します。</p>
@@ -1279,7 +1280,7 @@ var fontWhite = new C.FontImage({
                     typeに指定された文字列が生成されるタグのclassの一部になります。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="FontImage_make">
                         <h3>make(text)</h3>
                         <div class="detail">
                             <p>CSSスプライト用のspanタグを生成します。</p>
@@ -1310,42 +1311,42 @@ fps.start(); // start enterframe.</pre>
                     <p>指定したcriterion(fps)ごとにenterframeを実行するクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="FPS_getCriterion">
                         <h3>getCriterion()</h3>
                         <div class="detail">
                             <p>初期化時に指定したFPS目標値(criterion)を取得します。</p>
 <pre>var criterion = fps.getCriterion(); // Number</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="FPS_getSurver">
                         <h3>getSurver()</h3>
                         <div class="detail">
                             <p>現在のFPSを取得します。</p>
 <pre>var surver = fps.getSurver(); // Number</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="FPS_getFrameTime">
                         <h3>getFrameTime()</h3>
                         <div class="detail">
                             <p>FPS目標値の1フレームあたりのミリ秒を取得します。</p>
 <pre>var frametime = fps.getFrameTime(); // Number</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="FPS_enter">
                         <h3>enter()</h3>
                         <div class="detail">
                             <p>間隔実行される処理を強制的に発火します。</p>
 <pre>fps.enter();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="FPS_start">
                         <h3>start()</h3>
                         <div class="detail">
                             <p>間隔実行を開始します。</p>
 <pre>fps.start();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="FPS_stop">
                         <h3>stop()</h3>
                         <div class="detail">
                             <p>間隔実行を停止します。</p>
@@ -1363,7 +1364,7 @@ fps.start(); // start enterframe.</pre>
                     <p>location.hashの操作を行うメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="HashController_makeHash">
                         <h3>makeHash({mode: string, contents: {key: val}})</h3>
                         <div class="detail">
                             <p>location.hashに設定するための値を作成します。</p>
@@ -1376,7 +1377,7 @@ fps.start(); // start enterframe.</pre>
 }); // hashName?cir=Cool%20is%20Right.&id=123</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="HashController_setHash">
                         <h3>setHash({mode: string, contents: {key: val}})</h3>
                         <div class="detail">
                             <p>location.hashに値を設定します。</p>
@@ -1389,7 +1390,7 @@ fps.start(); // start enterframe.</pre>
 }); // location.hash = '#hashName?cir=Cool%20is%20Right.&id=123'</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="HashController_parseHash">
                         <h3>parseHash(querystring)</h3>
                         <div class="detail">
                             <p>クエリーストリング形式の文字列をオブジェクトに変換します。</p>
@@ -1405,7 +1406,7 @@ fps.start(); // start enterframe.</pre>
 */</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="HashController_getHash">
                         <h3>getHash()</h3>
                         <div class="detail">
                             <p>location.hashから値を取得します。</p>
@@ -1447,14 +1448,14 @@ imgload.start(); // start loading.</pre>
                     <p>画像をまとめてロードするクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="ImgLoad_start">
                         <h3>start()</h3>
                         <div class="detail">
                             <p>読み込みを開始します。</p>
 <pre>imgload.start();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ImgLoad_getProgress">
                         <h3>getProgress()</h3>
                         <div class="detail">
                             <p>読込状況を取得します。</p>
@@ -1481,16 +1482,21 @@ imgload.start(); // start loading.</pre>
             <dt>C.LocalStorage</dt>
             <dd>
                 <div class="sample">
-                    <pre>var storage = new C.LocalStorage();</pre>
-                    <p>localStorageに値を設定します。<br />
-                    オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。</p>
+<pre>var storage = new C.LocalStorage();
+// prefix
+var storage_cir = new C.LocalStorage({
+    prefix: 'cir'
+});</pre>
+                    <p>localStorageの操作を行います。<br />
+                    オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。<br />
+                    prefixオプションを指定した場合、localStorage中で適切な切り分けを行います。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="LocalStorage_set">
                         <h3>set(key, value)</h3>
                         <div class="detail">
-                            <p>locatlStorage.setItemのエイリアスです。<br />
-                            保存される値はStringに変換されて保存されます。</p>
+                            <p>値を保存します。<br />
+                            保存される値はStringに変換されます。</p>
 <pre>storage.set('cir', {
     c: 'Cool',
     i: 'is',
@@ -1498,10 +1504,10 @@ imgload.start(); // start loading.</pre>
 }); // localStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="LocalStorage_get">
                         <h3>get([key])</h3>
                         <div class="detail">
-                            <p>localStorageから値を取得します。</p>
+                            <p>値を取得します。</p>
 <pre>localStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';
 var cir = storage.get('cir'); // {c: 'Cool', i: 'is', r: 'Right'}
 
@@ -1512,21 +1518,21 @@ cir = storage.get(); // まとめて取得
 </pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="LocalStorage_remove">
                         <h3>remove(key)</h3>
                         <div class="detail">
-                            <p>localStorageから値を削除します。</p>
+                            <p>値を削除します。</p>
 <pre>storage.set('cir', 'Cool is Right.'); // 追加
 storage.remove('cir'); // 削除
 
 var cir = storage.get('cir'); // null</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="LocalStorage_reset">
                         <h3>reset(key)</h3>
                         <div class="detail">
-                            <p>localStorageに設定された値をリセットします。<br />
-                            インスタンス以外から直接localStorageに設定された値も削除されます。</p>
+                            <p>保存された値を全て削除します。<br />
+                            prefixオプションが指定されない場合はlocalStorage全体が削除されます。</p>
 <pre>storage.set('txt', 'Cool is Right.');
 storage.set('num', 123);
 
@@ -1547,49 +1553,49 @@ var num = storage.get('num'); // null</pre>
                     <p>モバイル端末用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Mobile_isAndroid">
                         <h3>isAndroid()</h3>
                         <div class="detail">
                             <p>端末OSがAndroidかどうかBooleanで返します。</p>
 <pre>var check = mobile.isAndroid(); // boolean</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Mobile_isIOS">
                         <h3>isIOS()</h3>
                         <div class="detail">
                             <p>端末OSがiOSかどうかBooleanで返します。</p>
 <pre>var check = mobile.isIOS(); // boolean</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Mobile_isWindows">
                         <h3>isWindows()</h3>
                         <div class="detail">
                             <p>端末OSがWindowsかどうかBooleanで返します。</p>
 <pre>var check = mobile.isWindows(); // boolean</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Mobile_isFBAPP">
                         <h3>isFBAPP()</h3>
                         <div class="detail">
                             <p>Facebookアプリで閲覧してるかどうかBooleanで返します。</p>
 <pre>var check = mobile.isFBAPP(); // boolean</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Mobile_isMobile">
                         <h3>isMobile()</h3>
                         <div class="detail">
                             <p>モバイル端末かどうかBooleanで返します。</p>
 <pre>var check = mobile.isMobile(); // boolean</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Mobile_hideAddress">
                         <h3>hideAddress()</h3>
                         <div class="detail">
                             <p>アドレスバーを非表示にします。</p>
 <pre>mobile.hideAddress();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Mobile_killScroll">
                         <h3>killScroll(noTop)</h3>
                         <div class="detail">
                             <p>ブラウザスクロールを不可にします。<br />
@@ -1598,7 +1604,7 @@ var num = storage.get('num'); // null</pre>
 mobile.killScroll(true); // スクロールをその場で停止</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Mobile_revivalScroll">
                         <h3>revivalScroll(noTop)</h3>
                         <div class="detail">
                             <p>ブラウザスクロールを可能にします。<br />
@@ -1607,7 +1613,7 @@ mobile.killScroll(true); // スクロールをその場で停止</pre>
 mobile.revivalScroll(true); // スクロールをその場で停止</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Mobile_orientationCheck">
                         <h3>orientationCheck()</h3>
                         <div class="detail">
                             <p>端末の向きを取得します。</p>
@@ -1615,7 +1621,7 @@ mobile.revivalScroll(true); // スクロールをその場で停止</pre>
 // {landscape: boolean, portrait: boolean}</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Mobile_orientationChange">
                         <h3>orientationChange({portrait: function, landscape: function})</h3>
                         <div class="detail">
                             <p>端末の向きに合わせて処理を実行します。</p>
@@ -1644,7 +1650,7 @@ var observerSingle = new C.Observer({
                     <p>オブザーバーパターンを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Observer_getObserved">
                         <h3>getObserved()</h3>
                         <div class="detail">
                             <p>onもしくはoneメソッドで追加されたfunctionを保持しているオブジェクトを返します。<br />
@@ -1652,7 +1658,7 @@ var observerSingle = new C.Observer({
 <pre>var observeObj = observer.getObserved();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Observer_on">
                         <h3>on(key, func)</h3>
                         <div class="detail">
                             <p>イベントを登録します。<br />
@@ -1667,7 +1673,7 @@ observer.fire('jsonloaded', {
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Observer_one">
                         <h3>one(key, func)</h3>
                         <div class="detail">
                             <p>一度だけ実行されるイベントを登録します。<br />
@@ -1681,7 +1687,7 @@ observer.fire('jsonloaded', 'fire1');
 observer.fire('jsonloaded', 'fire2');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Observer_off">
                         <h3>off(key, [func])</h3>
                         <div class="detail">
                             <p>登録されたイベントを削除します。</p>
@@ -1702,7 +1708,7 @@ observer.fire('jsonloaded'); // exe func2.
 observer.off('jsonloaded'); // remove 'jsonloaded' event.</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Observer_fire">
                         <h3>fire([vars])</h3>
                         <div class="detail">
                             <p>onメソッドで登録されたイベントを実行します。</p>
@@ -1744,7 +1750,7 @@ render.start(); // start prerender.
                     ゲームなどでは負荷が邪魔になる場合も有るため、これらの要素の上に不透明な背景を持つエレメントをpositionで設置し、PreRenderクラスで予め表示しておくことが有効です。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="PreRender_start">
                         <h3>start()</h3>
                         <div class="detail">
                             <p>プリレンダリングを開始します。</p>
@@ -1762,7 +1768,7 @@ render.start(); // start prerender.
                     <p>scriptファイルを動的に読み込むメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="ScriptLoad_request">
                         <h3>request({src, [callback]})</h3>
                         <div class="detail">
                             <p>jsファイルの動的読み込みを行います。</p>
@@ -1774,7 +1780,7 @@ render.start(); // start prerender.
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ScriptLoad_requests">
                         <h3>requests([{src, [callback]}])</h3>
                         <div class="detail">
                             <p>複数ファイルの動的読み込みを行います。</p>
@@ -1802,7 +1808,7 @@ render.start(); // start prerender.
                     初期化時にサーバ情報を取得するため、時間がかかります。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="ServerMeta_date">
                         <h3>date(callback)</h3>
                         <div class="detail">
                             <p>サーバから日付を取得します。<br />
@@ -1813,49 +1819,49 @@ render.start(); // start prerender.
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ServerMeta_connection">
                         <h3>connection()</h3>
                         <div class="detail">
                             <p>サーバーからConnectionを取得します。</p>
 <pre>var connection = server.connection();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ServerMeta_contentLength">
                         <h3>contentLength()</h3>
                         <div class="detail">
                             <p>サーバーからContent-Lengthを取得します。</p>
 <pre>var contentLength = server.ContentLength();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ServerMeta_lastModified">
                         <h3>lastModified()</h3>
                         <div class="detail">
                             <p>サーバーからLast-Modifiedを取得します。</p>
 <pre>var lastModified = server.lastModified();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ServerMeta_server">
                         <h3>server()</h3>
                         <div class="detail">
                             <p>サーバーからServerを取得します。</p>
 <pre>var _server = server.server();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ServerMeta_contentType">
                         <h3>contentType()</h3>
                         <div class="detail">
                             <p>サーバーからContent-Typeを取得します。</p>
 <pre>var contentType = server.contentType();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ServerMeta_acceptRanges">
                         <h3>acceptRanges()</h3>
                         <div class="detail">
                             <p>サーバーからAccept-Rangesを取得します。</p>
 <pre>var acceptRanges = server.acceptRanges();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="ServerMeta_keepAlive">
                         <h3>keepAlive()</h3>
                         <div class="detail">
                             <p>サーバーからKeep-Aliveを取得します。</p>
@@ -1869,16 +1875,21 @@ render.start(); // start prerender.
             <dt>C.SessionStorage</dt>
             <dd>
                 <div class="sample">
-                    <pre>var storage = new C.SessionStorage();</pre>
-                    <p>sessionStorageの操作を行うメソッドを提供するクラスです。<br />
-                    オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。</p>
+<pre>var storage = new C.SessionStorage();
+// prefix
+var storage_cir = new C.SessionStorage({
+    prefix: 'cir'
+});</pre>
+                    <p>sessionStorageの操作を行います。<br />
+                    オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。<br />
+                    prefixオプションを指定した場合、sessionStorage中で適切な切り分けを行います。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="SessionStorage_set">
                         <h3>set(key, value)</h3>
                         <div class="detail">
-                            <p>locatlStorage.setItemのエイリアスです。<br />
-                            保存される値はStringに変換されて保存されます。</p>
+                            <p>値を保存します。<br />
+                            保存される値はStringに変換されます。</p>
 <pre>storage.set('cir', {
     c: 'Cool',
     i: 'is',
@@ -1886,10 +1897,10 @@ render.start(); // start prerender.
 }); // sessionStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="SessionStorage_get">
                         <h3>get([key])</h3>
                         <div class="detail">
-                            <p>sessionStorageから値を取得します。</p>
+                            <p>値を取得します。</p>
 <pre>sessionStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';
 var cir = storage.get('cir'); // {c: 'Cool', i: 'is', r: 'Right'}
 
@@ -1900,21 +1911,21 @@ cir = storage.get(); // まとめて取得
 </pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="SessionStorage_remove">
                         <h3>remove(key)</h3>
                         <div class="detail">
-                            <p>sessionStorageから値を削除します。</p>
+                            <p>値を削除します。</p>
 <pre>storage.set('cir', 'Cool is Right.'); // 追加
 storage.remove('cir'); // 削除
 
 var cir = storage.get('cir'); // null</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="SessionStorage_reset">
                         <h3>reset(key)</h3>
                         <div class="detail">
-                            <p>sessionStorageに設定された値をリセットします。<br />
-                            インスタンス以外から直接sessionStorageに設定された値も削除されます。</p>
+                            <p>保存された値を全て削除します。<br />
+                            prefixオプションが指定されない場合はsessionStorage全体が削除されます。</p>
 <pre>storage.set('txt', 'Cool is Right.');
 storage.set('num', 123);
 
@@ -1946,14 +1957,14 @@ surrogate.request('Cool is Right.');</pre>
                     キーボード入力から自動でAjax処理を行い結果を表示する場合などに有効です。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Surrogate_request">
                         <h3>request([vars])</h3>
                         <div class="detail">
                             <p>処理をリクエストします。</p>
 <pre>surrogate.request('Cool is Right.'); // delayオプションだけ待機</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Surrogate_flush">
                         <h3>flush()</h3>
                         <div class="detail">
                             <p>処理を強制的に実行します。</p>
@@ -1961,7 +1972,7 @@ surrogate.request('Cool is Right.');</pre>
 surrogate.flush();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Surrogate_clear">
                         <h3>clear()</h3>
                         <div class="detail">
                             <p>処理待ちを解除します。</p>
@@ -1990,7 +2001,7 @@ throttle.request('Cool is Right.');</pre>
                     ウィンドウサイズの変更による処理などに有効です。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Throttle_request">
                         <h3>request([vars])</h3>
                         <div class="detail">
                             <p>処理をリクエストします。<br />
@@ -1999,7 +2010,7 @@ throttle.request('Cool is Right.');</pre>
 throttle.request('Hot is Right.'); // 連続実行出来ない</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Throttle_lock">
                         <h3>lock()</h3>
                         <div class="detail">
                             <p>処理リクエストを受け付けなくします。</p>
@@ -2007,7 +2018,7 @@ throttle.request('Hot is Right.'); // 連続実行出来ない</pre>
 throttle.request('Cool is Right.'); // 実行されない</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Throttle_unlock">
                         <h3>unlock()</h3>
                         <div class="detail">
                             <p>処理リクエストを受け付けるようにします。</p>
@@ -2040,28 +2051,28 @@ timer.countDown(); // start timer.</pre>
                     <p>タイマー処理を行うクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Timer_getLimit">
                         <h3>getLimit()</h3>
                         <div class="detail">
                             <p>リミット(秒)を取得します。</p>
 <pre>var limit = timer.getLimit();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Timer_getTime">
                         <h3>getTime()</h3>
                         <div class="detail">
                             <p>templateオプションに合わせた現在秒数を取得します。</p>
 <pre>var time = timer.getTime();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Timer_getProgress">
                         <h3>getProgress()</h3>
                         <div class="detail">
                             <p>経過%を0~1の間の数値で返します。</p>
 <pre>var progress = timer.getProgress();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Timer_setUpdate">
                         <h3>setUpdate(function)</h3>
                         <div class="detail">
                             <p>intervalオプションごとに実行されるonupdateオプションを設定します。</p>
@@ -2071,7 +2082,7 @@ timer.countDown(); // start timer.</pre>
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Timer_setTimeup">
                         <h3>setTimeup(function)</h3>
                         <div class="detail">
                             <p>リミットに到達した場合に実行されるontimeupオプションを設定します。</p>
@@ -2081,14 +2092,14 @@ timer.countDown(); // start timer.</pre>
 });</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Timer_countDown">
                         <h3>countDown()</h3>
                         <div class="detail">
                             <p>カウントダウンを開始します。</p>
 <pre>timer.countDown();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="Timer_stop">
                         <h3>stop()</h3>
                         <div class="detail">
                             <p>タイマーを停止します。</p>
@@ -2127,7 +2138,7 @@ timer.countDown(); // start timer.</pre>
                     easingオプションにC.easingの各メソッドを指定すれば、様々なイージング処理をさせることが可能です</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Tweener_end">
                         <h3>end()</h3>
                         <div class="detail">
                             <p>アニメーションを停止します。</p>
@@ -2145,7 +2156,7 @@ timer.countDown(); // start timer.</pre>
                     <p>Twitter用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="Twitter_getShareURL">
                         <h3>getShareURL({redirect_uri, [name], [caption], [hash]})</h3>
                         <div class="detail">
                             <p>シェア画面を開くためのURLを取得します。</p>
@@ -2170,21 +2181,21 @@ timer.countDown(); // start timer.</pre>
                     <p>XMLデータの操作を簡易にするメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li>
+                    <li id="XML_getData">
                         <h3>getData()</h3>
                         <div class="detail">
                             <p>dataオプションの値を取得します。</p>
 <pre>var data = xml.getData();</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="XML_setData">
                         <h3>setData()</h3>
                         <div class="detail">
                             <p>dataオプションの値を設定します。</p>
 <pre>xml.setData(xmlText);</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="XML__">
                         <h3>$(selector)</h3>
                         <div class="detail">
                             <p>XMLからデータを1つ取り出します。<br />
@@ -2192,7 +2203,7 @@ timer.countDown(); // start timer.</pre>
 <pre>var sample = xml.$('sample');</pre>
                         </div>
                     </li>
-                    <li>
+                    <li id="XML___">
                         <h3>$$(selector)</h3>
                         <div class="detail">
                             <p>XMLからデータを取り出します。<br />
