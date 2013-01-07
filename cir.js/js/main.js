@@ -1,8 +1,9 @@
 (function() {
     var $ = C.selector,
-        storage = new C.LocalStorage(),
         clsOpen = 'open',
-        key = clsOpen + '-';
+        storage = new C.LocalStorage({
+            namespace: clsOpen
+        });
 
     initOpen();
 
@@ -25,24 +26,19 @@
     // init open
     function initOpen() {
         var opendata = storage.get(),
-            i,
-            id;
+            i;
 
         for (i in opendata) {
-            id = i.split(key)[1];
-
-            if (id) {
-                addOpen($('#' + id));
-            }
+            addOpen($('#' + id));
         }
     }
 
     function addOpen($el) {
         $el.addClass(clsOpen);
-        storage.set(key + $el.attr('id'), 1);
+        storage.set($el.attr('id'), 1);
     }
     function removeOpen($el) {
         $el.removeClass(clsOpen);
-        storage.remove(key + $el.attr('id'));
+        storage.remove($el.attr('id'));
     }
 }());
