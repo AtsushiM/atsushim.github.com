@@ -84,15 +84,27 @@ header {
     @include single-box-shadow(#333, 0, 0, 3px, 3px);
     @include text-shadow(#222 1px 1px 3px);
 }
+%boxtitle {
+    margin-bottom: 10px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    background-color: #005F6B;
+    font-size: 20px;
+    color: #00DFFC;
+}
 #main {
     float: right;
     width: 80%;
 
     .first {
+        margin: 0 15px 15px 0;
+    }
+}
+    .first {
         @extend %frame;
 
+        margin: 15px;
         border: 1px solid #004E6A;
-        margin: 0 15px 15px 0;
     }
         .environment {
             padding: 0 15px 15px;
@@ -120,7 +132,6 @@ header {
                 font-size: 14px;
             }
         }
-}
 #sub {
     float: left;
     width: 20%;
@@ -143,12 +154,7 @@ dl {
     margin: 0 15px 15px 0;
 
     dt {
-        margin-bottom: 10px;
-        padding: 4px 10px;
-        border-radius: 2px;
-        background-color: #005F6B;
-        font-size: 20px;
-        color: #00DFFC;
+        @extend %boxtitle;
 
         &:before {
             padding-right: 5px;
@@ -262,5 +268,19 @@ dl {
 
     a {
         color: #CCC;
+    }
+}
+
+#optimize {
+    h3 {
+        @extend %boxtitle;
+    }
+    ul {
+        overflow: hidden;
+        padding: 10px 0 20px;
+    }
+    li {
+        float: left;
+        width: 20%;
     }
 }
