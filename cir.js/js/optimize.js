@@ -54,8 +54,8 @@
             url: 'http://closure-compiler.appspot.com/compile',
             type: 'POST',
             query: query,
-            callback: function(data) {
-                console.log(data);
+            callback: function(data, xhr) {
+                console.log(xhr);
             }
         });
 
