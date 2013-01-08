@@ -24,6 +24,8 @@
         var i = 0,
             len = $srcs.length;
 
+        path = [];
+
         for (; i < len; i++) {
             if ($srcs[i].checked) {
                 path.push($srcs[i].value);
@@ -34,9 +36,6 @@
     });
 
     function requestClosure(path) {
-        path.unshift('src/namespace_start.js');
-        path.push('src/namespace_end.js');
-
         var ajax = new C.Ajax(),
             uribase = location.protocol + '//' +
             location.hostname + location.pathname,
@@ -48,24 +47,31 @@
             path[i] = '&code_url=' + uribase + path[i];
         }
 
-        query = makeRequestURI();
-
         ajax.request({
-            url: 'http://closure-compiler.appspot.com/compile',
-            type: 'POST',
-            query: query,
-            callback: function(data, xhr) {
-                console.log(xhr);
+            url: 'http://atsushim.github.com/cir.js/js/optimize.js',
+            callback: function(data) {
+                console.log(data);
+
+                query = makeRequestURI(data);
+
+                ajax.request({
+                    url: 'http://closure-compiler.appspot.com/compile',
+                    type: 'POST',
+                    query: query,
+                    callback: function(data, xhr) {
+                        console.log(xhr);
+                    }
+                });
             }
         });
 
-        function makeRequestURI() {
-            var jssrc = path.join(''),
+        function makeRequestURI(data) {
+            var jssrc = 'js_code=' + data,
                 level = 'compilation_level=SIMPLE_OPTIMIZATIONS',
                 format = 'output_format=text',
                 info = 'output_info=compiled_code';
 
-            return level + '&' + format + '&' + info + jssrc;
+            return level + '&' + format + '&' + info + '&' + jssrc;
         }
     }
 }());
