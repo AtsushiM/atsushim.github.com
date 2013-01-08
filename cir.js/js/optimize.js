@@ -45,7 +45,7 @@
         path.push('src/namespace_end.js');
 
         for (; i < len; i++) {
-            path[i] = '&code_url=' + uribase + path[i];
+            path[i] = '&code_url[' + i + ']=' + uribase + path[i];
         }
 
         query = makeRequestURI();
