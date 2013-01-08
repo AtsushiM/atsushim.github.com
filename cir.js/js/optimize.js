@@ -66,7 +66,7 @@
         });
 
         function makeRequestURI(data) {
-            var jssrc = 'js_code=' + encodeURI(data),
+            var jssrc = 'js_code=' + encodeURIComponent((data),
                 level = 'compilation_level=SIMPLE_OPTIMIZATIONS',
                 format = 'output_format=text',
                 info = 'output_info=compiled_code';
