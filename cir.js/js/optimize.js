@@ -2,8 +2,7 @@
     var $ = C.$,
         $all = $('#all'),
         $create = $('#create'),
-        $srcs = $('#srcfile input'),
-        path = [];
+        $srcs = $('#srcfile input');
 
     $all.on(C.event.click, function() {
         var i = 0,
@@ -22,18 +21,34 @@
     });
     $create.on(C.event.click, function() {
         var i = 0,
-            len = $srcs.length;
-
-        path = [];
+            len = $srcs.length,
+            srcs = {},
+            callback = function() {
+                i--;
+                if (i === 0) {
+                    conslole.log(srcs);
+                    /* requestClosure(path); */
+                }
+            };
 
         for (; i < len; i++) {
             if ($srcs[i].checked) {
-                path.push($srcs[i].value);
+                requestJSFileSrc($srcs[i].value, srcs, callback);
             }
         }
-
-        requestClosure(path);
     });
+
+    function requestJSFileSrc(src, obj, callback) {
+        var ajax = new C.Ajax();
+
+        ajax.request({
+            url: src,
+            callback: function(data) {
+                obj[src] = encodeURIComponent(data);
+                callback();
+            }
+        });
+    }
 
     function requestClosure(path) {
         var ajax = new C.Ajax(),
