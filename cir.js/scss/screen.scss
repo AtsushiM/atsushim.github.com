@@ -55,6 +55,10 @@ header {
         /* background-color: #005F6B; */
         font-size: 80px;
         color: #00DFFC;
+
+        a:hover {
+            text-decoration: none;
+        }
     }
     h2 {
         @extend %title;
@@ -241,6 +245,7 @@ header {
             font-style: italic;
 
             span {
+                margin-right: 15px;
                 font-size: 14px;
             }
         }
