@@ -403,7 +403,7 @@ el.css({
                         <div class="detail">
                             <p>elementのclassにvalueがあるかBooleanで返します。</p>
 <pre>var $sample = el.$('#sample');
-el.hasClass($sample, 'sample');</pre>
+var check = el.hasClass($sample, 'sample'); // boolean</pre>
                         </div>
                     </li>
                     <li id="element_hide">
@@ -419,7 +419,7 @@ el.hide($sample);</pre>
                         <div class="detail">
                             <p>element.innerHTMLを取得・設定します。</p>
 <pre>var $sample = el.$('#sample');
-el.innerHTML($sample); // 取得
+var html = el.innerHTML($sample); // 取得
 el.innerHTML($sample, 'rewrite innerHTML.'); // 設定</pre>
                         </div>
                     </li>
@@ -431,9 +431,8 @@ el.innerHTML($sample, 'rewrite innerHTML.'); // 設定</pre>
 var func = function() {
     alert('sample click!');
 };
-el.on($sample, C.event.click, func);
-el.off($sample, C.event.click, func);
-</pre>
+el.on($sample, C.event.click, func); // 追加
+el.off($sample, C.event.click, func); // 削除</pre>
                         </div>
                     </li>
                     <li id="element_on">
@@ -575,11 +574,17 @@ alert(Sample2.prototype.test); //test extend.
             <dt>C.klass<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var Test = C.klass({
-    init: function() {
+<pre>var SuperTest = C.klass({
+    properties: {
+        sample: 'Cool is Right.'
+    }
+});
+
+var Test = C.klass({
+    init: function(config) {
         // write code.
     },
-    extend: SuperTest,
+    extend: SuperTest, // default: undefind
     properties: {
         // write method &amp; property
     }
@@ -659,7 +664,7 @@ check = util.isString(12); // false</pre>
                     <li id="utility_makeQueryString">
                         <h3>makeQueryString(object)</h3>
                         <div class="detail">
-                            <p>オブジェクトのプロパティをlocation.search、もしくはlocation.hash用に使えるクエリーストリング形式に変換します。</p>
+                            <p>オブジェクトのプロパティをクエリーストリング形式に変換します。</p>
 <pre>var hashquery = util.makeQueryString({
     c: 'Cool',
     i: 'is',
@@ -702,7 +707,7 @@ alert(target.sample); // override property</pre>
                     <li id="utility_parseQueryString">
                         <h3>parseQueryString(string)</h3>
                         <div class="detail">
-                            <p>location.search、もしくはlocation.hashの値をオブジェクトに変換します。</p>
+                            <p>クエリーストリング形式のテキストをオブジェクトに変換します。</p>
 <pre>var hashquery = util.makeQueryString({
     c: 'Cool',
     i: 'is',
