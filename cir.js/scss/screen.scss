@@ -284,6 +284,9 @@ header {
     h3 {
         @extend %boxtitle;
     }
+    .menu {
+        margin-left: 10px;
+    }
     #srcfile {
         float: left;
         width: 50%;
