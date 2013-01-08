@@ -2,13 +2,12 @@
  <body>
    <form action="http://closure-compiler.appspot.com/compile" method="POST">
    <p>Type JavaScript code to optimize here:</p>
-   <textarea name="js_code" cols="50" rows="5">
-   function hello(name) {
-     // Greets the user
-     alert('Hello, ' + name);
-   }
-   hello('New user');
-   </textarea>
+   <input type="hidden" name="code_url" value="http://atsushim.github.com/cir.js/optimize/src/namespace_start.js">
+   <input type="hidden" name="code_url" value="http://atsushim.github.com/cir.js/optimize/src/utility.js">
+   <input type="hidden" name="code_url" value="http://atsushim.github.com/cir.js/optimize/src/element.js">
+   <input type="hidden" name="code_url" value="http://atsushim.github.com/cir.js/optimize/src/extend.js">
+   <input type="hidden" name="code_url" value="http://atsushim.github.com/cir.js/optimize/src/klass.js">
+   <input type="hidden" name="code_url" value="http://atsushim.github.com/cir.js/optimize/src/namespace_end.js">
    <input type="hidden" name="compilation_level" value="WHITESPACE_ONLY">
    <input type="hidden" name="output_format" value="text">
    <input type="hidden" name="output_info" value="compiled_code">
