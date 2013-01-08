@@ -5,13 +5,19 @@ Global.MakeSrc = function(config) {
         e = config.e,
         observer = config.observer,
         ajax = config.ajax,
+        el = config.el,
         instanse = {
             make: function(srcs) {
                 var src = '',
-                    i;
+                    i = 0,
+                    len = el.srcs.length,
+                    key;
 
-                for (i in srcs) {
-                    src += srcs[i];
+                for (; i < len; i++) {
+                    key = el.srcs[i].value;
+                    if (srcs[key]) {
+                        src += srcs[key];
+                    }
                 }
 
                 ajax.closurecompiler({
