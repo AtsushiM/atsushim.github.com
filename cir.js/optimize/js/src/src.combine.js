@@ -1,5 +1,6 @@
 (function() {
-var Global = {};
+var Global = {},
+    $ = C.$;
 Global.Ajax = function(config) {
     'use strict';
 
@@ -118,6 +119,43 @@ Global.ChkAll = function(config) {
 
     return instanse;
 };
+Global.ChkSrc = function(config) {
+    'use strict';
+
+    var Mine = Global.ChkSrc,
+        e = config.e,
+        el = config.el,
+        dependency = config.dependency,
+        target,
+        instanse = {
+            checkDependency: function() {
+                var $parent = $(this).parent().parent(),
+                    key = 'passive';
+
+                if (this.checked) {
+                    key = 'active';
+                }
+
+                target = dependency[key][$parent[0].id];
+
+                if (target) {
+                    instanse.setDependency(target, this.checked);
+                }
+            },
+            setDependency: function(ary, bool) {
+                var i = 0,
+                    len = ary.length;
+
+                for (; i < len; i++) {
+                    $('#' + ary[i] + ' input')[0].checked = bool;
+                }
+            }
+        };
+
+    el.srcs.on(e.change, instanse.checkDependency);
+
+    return instanse;
+};
 Global.Event = C.klass({
     extend: C.Event,
     properties: {
@@ -130,7 +168,6 @@ Global.Element = function(config) {
     'use strict';
 
     var Mine = Global.Element,
-        $ = C.$,
         instanse = {
             check_all: $('#all'),
             btn_create: $('#create'),
@@ -145,19 +182,39 @@ Global.Dependency = function(config) {
 
     var Mine = Global.Dependency,
         instanse = {
-            selector_methods: [
-                'selector'
-            ],
-            selector_methods_animate: [
-                'selector',
-                'selector_methods',
-                'Tweener'
-            ],
-            ExternalInterface: [
-                'HashController',
-                'ExternalInterface_Android',
-                'ExternalInterface_IOS'
-            ]
+            active: {
+                selector_methods: [
+                    'selector'
+                ],
+                selector_methods_animate: [
+                    'selector',
+                    'selector_methods',
+                    'Tweener'
+                ],
+                ExternalInterface: [
+                    'HashController',
+                    'ExternalInterface_Android',
+                    'ExternalInterface_IOS'
+                ]
+            },
+            passive: {
+                selector: [
+                    'selector_methods',
+                    'selector_methods_animate'
+                ],
+                HashController: [
+                    'ExternalInterface',
+                    'ExternalInterface_Android',
+                    'ExternalInterface_IOS'
+                ],
+                ExternalInterface: [
+                    'ExternalInterface_Android',
+                    'ExternalInterface_IOS'
+                ],
+                Tweener: [
+                    'selector_methods_animate'
+                ]
+            }
         };
 
     return instanse;
@@ -232,6 +289,7 @@ Global.SrcArea = function(config) {
     arg.makeSrc = new Global.MakeSrc(arg);
     arg.btnCreate = new Global.BtnCreate(arg);
     arg.chkAll = new Global.ChkAll(arg);
+    arg.chkSrc = new Global.ChkSrc(arg);
     arg.srcArea = new Global.SrcArea(arg);
 
     return arg;

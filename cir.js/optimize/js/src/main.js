@@ -10,6 +10,7 @@
     arg.makeSrc = new Global.MakeSrc(arg);
     arg.btnCreate = new Global.BtnCreate(arg);
     arg.chkAll = new Global.ChkAll(arg);
+    arg.chkSrc = new Global.ChkSrc(arg);
     arg.srcArea = new Global.SrcArea(arg);
 
     return arg;

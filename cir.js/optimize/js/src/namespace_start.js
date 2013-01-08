@@ -1,2 +1,3 @@
 (function() {
-var Global = {};
+var Global = {},
+    $ = C.$;

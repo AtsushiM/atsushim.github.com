@@ -1,4 +1,4 @@
-SRC = namespace_start.js Ajax.js BtnCreate.js ChkAll.js Event.js Element.js Dependency.js MakeSrc.js SrcArea.js main.js namespace_end.js
+SRC = namespace_start.js Ajax.js BtnCreate.js ChkAll.js ChkSrc.js Event.js Element.js Dependency.js MakeSrc.js SrcArea.js main.js namespace_end.js
 COMBINE = src.combine.js
 COMPRESS = ../main.js
 
