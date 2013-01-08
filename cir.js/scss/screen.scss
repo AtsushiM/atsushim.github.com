@@ -24,25 +24,6 @@ a {
     }
 }
 
-%title {
-    display: inline-block;
-    font-family: 'New Rocker', cursive;
-    @include text-shadow(#222 3px 3px 3px);
-}
-h1 {
-    @extend %title;
-
-    padding: 0 15px 0 30px;
-    /* background-color: #005F6B; */
-    font-size: 80px;
-    color: #00DFFC;
-}
-h2 {
-    @extend %title;
-
-    color: #00BDDA;
-}
-
 header {
     .sns {
         position: absolute;
@@ -62,6 +43,33 @@ header {
         }
     }
 }
+    %title {
+        display: inline-block;
+        font-family: 'New Rocker', cursive;
+        @include text-shadow(#222 3px 3px 3px);
+    }
+    h1 {
+        @extend %title;
+
+        padding: 0 15px 0 30px;
+        /* background-color: #005F6B; */
+        font-size: 80px;
+        color: #00DFFC;
+    }
+    h2 {
+        @extend %title;
+
+        color: #00BDDA;
+    }
+    .ver {
+        @extend %title;
+
+        margin-left: 10px;
+
+        &:before {
+            content: 'ver ';
+        }
+    }
 
 #content {
     overflow: hidden;
@@ -101,11 +109,16 @@ header {
             }
         }
         .download {
+            @include text-shadow(#333 3px 3px 3px);
+
             padding: 0 15px 15px;
             font-size: 18px;
             font-weight: bold;
             font-style: italic;
-            @include text-shadow(#333 3px 3px 3px);
+
+            span {
+                font-size: 14px;
+            }
         }
 }
 #sub {
