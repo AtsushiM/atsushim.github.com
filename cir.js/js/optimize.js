@@ -38,7 +38,8 @@
             uribase = location.protocol + '//' +
             location.hostname + location.pathname,
             i = 0,
-            len = path.length;
+            len = path.length,
+            query;
 
         path.unshift('src/namespace_start.js');
         path.push('src/namespace_end.js');
@@ -47,10 +48,12 @@
             path[i] = '&code_url=' + uribase + path[i];
         }
 
+        query = makeRequestURI();
+
         ajax.request({
             url: 'http://closure-compiler.appspot.com/compile',
             type: 'POST',
-            query: makeRequestURI(),
+            query: query,
             callback: function(data) {
                 console.log(data);
             }
