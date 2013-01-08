@@ -34,15 +34,15 @@
     });
 
     function requestClosure(path) {
+        path.unshift('src/namespace_start.js');
+        path.push('src/namespace_end.js');
+
         var ajax = new C.Ajax(),
             uribase = location.protocol + '//' +
             location.hostname + location.pathname,
             i = 0,
             len = path.length,
             query;
-
-        path.unshift('src/namespace_start.js');
-        path.push('src/namespace_end.js');
 
         for (; i < len; i++) {
             path[i] = '&code_url=' + uribase + path[i];
