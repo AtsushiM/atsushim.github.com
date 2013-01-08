@@ -44,7 +44,7 @@
         path.push('src/namespace_end.js');
 
         for (; i < len; i++) {
-            path[i] = '&code_url=' + encodeURIComponent(uribase + path[i]);
+            path[i] = '&code_url=' + uribase + path[i];
         }
 
         ajax.request({
