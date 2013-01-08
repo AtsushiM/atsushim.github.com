@@ -1,5 +1,7 @@
 (function() {
-    var $ = C.$,
+    var dependency = {
+        },
+        $ = C.$,
         $all = $('#all'),
         $create = $('#create'),
         $srcs = $('#srcfile input');
@@ -27,7 +29,7 @@
             callback = function() {
                 count--;
                 if (count === 0) {
-                    conslole.log(srcs);
+                    console.log(srcs);
                     /* requestClosure(path); */
                 }
             };

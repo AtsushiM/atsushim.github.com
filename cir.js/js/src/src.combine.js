@@ -1,6 +1,6 @@
 (function() {
 var DOC = {},
-    $ = C.selector,
+    $ = C.$,
     clsOpen = 'open',
     storage = new C.LocalStorage({
         namespace: clsOpen

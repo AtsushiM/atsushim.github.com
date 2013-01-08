@@ -31,46 +31,98 @@
     <div id="optimize" class="first">
         <h3>Optimize</h3>
         <p><label><input id="all" type="checkbox" value="ALL" />ALL</label> <input type="button" value="Create." id="create" /></p>
-        <ul id="srcfile">
-            <li id="namespace_start" style="display: none;"><label><input type="checkbox" value="src/namespace_start.js" checked="checked" disabled="true" />namespace_start</label></li>
-            <li id="utility"><label><input type="checkbox" value="src/utility.js" checked="checked" disabled="true" />utility</label></li>
-            <li id="element"><label><input type="checkbox" value="src/element.js" checked="checked" disabled="true" />element</label></li>
-            <li id="extend"><label><input type="checkbox" value="src/extend.js" checked="checked" disabled="true" />extend</label></li>
-            <li id="klass"><label><input type="checkbox" value="src/klass.js" checked="checked" disabled="true" />klass</label></li>
-            <li id="Event"><label><input type="checkbox" value="src/Event.js" checked="checked" disabled="true" />Event</label></li>
-            <li id="selector"><label><input type="checkbox" value="src/selector.js" checked="checked" />$</label></li>
-            <li id="selector_methods"><label><input type="checkbox" value="src/selector.methods.js" checked="checked" />$.methods</label></li>
-            <li id="selector_methods_animate"><label><input type="checkbox" value="src/selector.methods.animate.js" checked="checked" />$.methods.animate</label></li>
-            <li id="ease"><label><input type="checkbox" value="src/ease.js" />ease</label></li>
-            <li id="Ajax"><label><input type="checkbox" value="src/Ajax.js" />Ajax</label></li>
-            <li id="Bind"><label><input type="checkbox" value="src/Bind.js" />Bind</label></li>
-            <li id="CanvasImage"><label><input type="checkbox" value="src/CanvasImage.js" />CanvasImage</label></li>
-            <li id="CanvasRender"><label><input type="checkbox" value="src/CanvasRender.js" />CanvasRender</label></li>
-            <li id="DataStore"><label><input type="checkbox" value="src/DataStore.js" />DataStore</label></li>
-            <li id="Deferred"><label><input type="checkbox" value="src/Deferred.js" />Deferred</label></li>
-            <li id="DragFlick"><label><input type="checkbox" value="src/DragFlick.js" />DragFlick</label></li>
-            <li id="HashController"><label><input type="checkbox" value="src/HashController.js" />HashController</label></li>
-            <li id="ExternalInterface"><label><input type="checkbox" value="src/ExternalInterface.js" />ExternalInterface</label></li>
-            <li id="Facebook"><label><input type="checkbox" value="src/Facebook.js" />Facebook</label></li>
-            <li id="FontImage"><label><input type="checkbox" value="src/FontImage.js" />FontImage</label></li>
-            <li id="FPS"><label><input type="checkbox" value="src/FPS.js" />FPS</label></li>
-            <li id="ImgLoad"><label><input type="checkbox" value="src/ImgLoad.js" />ImgLoad</label></li>
-            <li id="Loading"><label><input type="checkbox" value="src/Loading.js" />Loading</label></li>
-            <li id="LocalStorage"><label><input type="checkbox" value="src/LocalStorage.js" />LocalStorage</label></li>
-            <li id="Mobile"><label><input type="checkbox" value="src/Mobile.js" />Mobile</label></li>
-            <li id="Observer"><label><input type="checkbox" value="src/Observer.js" />Observer</label></li>
-            <li id="PreRender"><label><input type="checkbox" value="src/PreRender.js" />PreRender</label></li>
-            <li id="ScriptLoad"><label><input type="checkbox" value="src/ScriptLoad.js" />ScriptLoad</label></li>
-            <li id="ServerMeta"><label><input type="checkbox" value="src/ServerMeta.js" />ServerMeta</label></li>
-            <li id="SessionStorage"><label><input type="checkbox" value="src/SessionStorage.js" />SessionStorage</label></li>
-            <li id="Surrogate"><label><input type="checkbox" value="src/Surrogate.js" />Surrogate</label></li>
-            <li id="Throttle"><label><input type="checkbox" value="src/Throttle.js" />Throttle</label></li>
-            <li id="Timer"><label><input type="checkbox" value="src/Timer.js" />Timer</label></li>
-            <li id="Tweener"><label><input type="checkbox" value="src/Tweener.js" checked="checked" />Tweener</label></li>
-            <li id="Twitter"><label><input type="checkbox" value="src/Twitter.js" />Twitter</label></li>
-            <li id="XML"><label><input type="checkbox" value="src/XML.js" />XML</label></li>
-            <li id="namespace_end" style="display: none;"><label><input type="checkbox" value="src/namespace_end.js" checked="checked" disabled="true" />namespace_end</label></li>
-        </ul>
+        <div id="srcfile">
+            <dl>
+                <dt>Indispensable</dt>
+                <dd>
+                    <ul>
+                        <li id="namespace_start" style="display: none;"><label><input type="checkbox" value="src/namespace_start.js" checked="checked" disabled="true" />namespace_start</label></li>
+                        <li id="utility"><label><input type="checkbox" value="src/utility.js" checked="checked" disabled="true" />utility</label></li>
+                        <li id="element"><label><input type="checkbox" value="src/element.js" checked="checked" disabled="true" />element</label></li>
+                        <li id="extend"><label><input type="checkbox" value="src/extend.js" checked="checked" disabled="true" />extend</label></li>
+                        <li id="klass"><label><input type="checkbox" value="src/klass.js" checked="checked" disabled="true" />klass</label></li>
+                        <li id="Event"><label><input type="checkbox" value="src/Event.js" checked="checked" disabled="true" />Event</label></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>Selector</dt>
+                <dd>
+                    <ul>
+                        <li id="selector"><label><input type="checkbox" value="src/selector.js" checked="checked" />$</label></li>
+                        <li id="selector_methods"><label><input type="checkbox" value="src/selector.methods.js" checked="checked" />$.methods</label></li>
+                        <li id="selector_methods_animate"><label><input type="checkbox" value="src/selector.methods.animate.js" checked="checked" />$.methods.animate</label></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>ANIME</dt>
+                <dd>
+                    <ul>
+                        <li id="Tweener"><label><input type="checkbox" value="src/Tweener.js" checked="checked" />Tweener</label></li>
+                        <li id="ease"><label><input type="checkbox" value="src/ease.js" />ease</label></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>Usefull</dt>
+                <dd>
+                    <ul>
+                        <li id="Ajax"><label><input type="checkbox" value="src/Ajax.js" checked="checked" />Ajax</label></li>
+                        <li id="Mobile"><label><input type="checkbox" value="src/Mobile.js" checked="checked" />Mobile</label></li>
+                        <li id="Observer"><label><input type="checkbox" value="src/Observer.js" checked="checked" />Observer</label></li>
+                        <li id="HashController"><label><input type="checkbox" value="src/HashController.js" />HashController</label></li>
+                        <li id="ExternalInterface"><label><input type="checkbox" value="src/ExternalInterface.js" />ExternalInterface</label></li>
+                        <li id="ExternalInterface_Android" style="display: none;"><label><input type="checkbox" value="src/ExternalInterface.Android.js" />ExternalInterface.Android</label></li>
+                        <li id="ExternalInterface_IOS" style="display: none;"><label><input type="checkbox" value="src/ExternalInterface.IOS.js" />ExternalInterface.IOS</label></li>
+                        <li id="Facebook"><label><input type="checkbox" value="src/Facebook.js" />Facebook</label></li>
+                        <li id="Twitter"><label><input type="checkbox" value="src/Twitter.js" />Twitter</label></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>Storage</dt>
+                <dd>
+                    <ul>
+                        <li id="DataStore"><label><input type="checkbox" value="src/DataStore.js" />DataStore</label></li>
+                        <li id="LocalStorage"><label><input type="checkbox" value="src/LocalStorage.js" />LocalStorage</label></li>
+                        <li id="SessionStorage"><label><input type="checkbox" value="src/SessionStorage.js" />SessionStorage</label></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>Element Controller</dt>
+                <dd>
+                    <ul>
+                        <li id="Bind"><label><input type="checkbox" value="src/Bind.js" />Bind</label></li>
+                        <li id="CanvasImage"><label><input type="checkbox" value="src/CanvasImage.js" />CanvasImage</label></li>
+                        <li id="CanvasRender"><label><input type="checkbox" value="src/CanvasRender.js" />CanvasRender</label></li>
+                        <li id="DragFlick"><label><input type="checkbox" value="src/DragFlick.js" />DragFlick</label></li>
+                        <li id="FontImage"><label><input type="checkbox" value="src/FontImage.js" />FontImage</label></li>
+                        <li id="ImgLoad"><label><input type="checkbox" value="src/ImgLoad.js" />ImgLoad</label></li>
+                        <li id="Loading"><label><input type="checkbox" value="src/Loading.js" />Loading</label></li>
+                        <li id="ScriptLoad"><label><input type="checkbox" value="src/ScriptLoad.js" />ScriptLoad</label></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>More</dt>
+                <dd>
+                    <ul>
+                        <li id="Deferred"><label><input type="checkbox" value="src/Deferred.js" />Deferred</label></li>
+                        <li id="FPS"><label><input type="checkbox" value="src/FPS.js" />FPS</label></li>
+                        <li id="PreRender"><label><input type="checkbox" value="src/PreRender.js" />PreRender</label></li>
+                        <li id="ServerMeta"><label><input type="checkbox" value="src/ServerMeta.js" />ServerMeta</label></li>
+                        <li id="Surrogate"><label><input type="checkbox" value="src/Surrogate.js" />Surrogate</label></li>
+                        <li id="Throttle"><label><input type="checkbox" value="src/Throttle.js" />Throttle</label></li>
+                        <li id="Timer"><label><input type="checkbox" value="src/Timer.js" />Timer</label></li>
+                        <li id="XML"><label><input type="checkbox" value="src/XML.js" />XML</label></li>
+                        <li id="namespace_end" style="display: none;"><label><input type="checkbox" value="src/namespace_end.js" checked="checked" disabled="true" />namespace_end</label></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <p id="src"><textarea id="srcarea" readonly="true"></textarea></p>
     </div>
 </div>
 
@@ -88,6 +140,6 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <script src="/cir.js/js/lib/cir.min.js"></script>
-<script src="/cir.js/js/optimize.js"></script>
+<script src="/cir.js/optimize/js/main.js"></script>
 </body>
 </html>
