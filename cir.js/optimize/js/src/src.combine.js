@@ -202,6 +202,9 @@ Global.Dependency = function(config) {
                     'selector_methods',
                     'selector_methods_animate'
                 ],
+                selector_methods: [
+                    'selector_methods_animate'
+                ],
                 HashController: [
                     'ExternalInterface',
                     'ExternalInterface_Android',
