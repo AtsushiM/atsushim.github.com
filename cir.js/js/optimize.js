@@ -21,11 +21,12 @@
     });
     $create.on(C.event.click, function() {
         var i = 0,
+            count = 0,
             len = $srcs.length,
             srcs = {},
             callback = function() {
-                i--;
-                if (i === 0) {
+                count--;
+                if (count === 0) {
                     conslole.log(srcs);
                     /* requestClosure(path); */
                 }
@@ -33,6 +34,7 @@
 
         for (; i < len; i++) {
             if ($srcs[i].checked) {
+                count++;
                 requestJSFileSrc($srcs[i].value, srcs, callback);
             }
         }
