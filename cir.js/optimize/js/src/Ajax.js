@@ -8,7 +8,9 @@ Global.Ajax = function(config) {
 
                 ajax.request({
                     url: vars.src,
-                    query: '?update=20130109',
+                    query: {
+                        update: '20130109'
+                    },
                     callback: function(data) {
                         vars.result[vars.src] = encodeURIComponent(data);
                         vars.callback();
