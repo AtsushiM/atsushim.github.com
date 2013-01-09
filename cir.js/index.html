@@ -203,6 +203,13 @@ var $sample_parent = $sample.parent();</pre>
 var nodelist = $sample.querySelectorAll('.sample');</pre>
                         </div>
                     </li>
+                    <li id="selector_removeAttr">
+                        <h3>.removeAttr(property)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントの属性を取得：設定します。</p>
+<pre>var $img = $('img');
+$img.attr('width', '100%'); // 設定
+$img.removeAttr('width'); // 削除</pre>
                     <li id="selector_removeClass">
                         <h3>.removeClass(className)</h3>
                         <div class="detail">
@@ -350,7 +357,7 @@ el.addClass($sample, 'sample');</pre>
                         <div class="detail">
                             <p>elementの属性の取得、設定を行います。</p>
 <pre>var $img = el.$('#img');
-var src = el.attrElement($img, 'src'); // src取得
+var src = el.attr($img, 'src'); // src取得
 el.attr($img, 'src', '/img/test.png'); // src設定
 el.attr($img, {
     width: '100px',
@@ -461,6 +468,15 @@ el.opacity($sample, 0.5);</pre>
                             <p>element.style.displayに'block'を指定します。</p>
 <pre>var $sample = el.$('#sample');
 el.show($sample);</pre>
+                        </div>
+                    </li>
+                    <li id="element_removeAttr">
+                        <h3>removeAttr(element, property)</h3>
+                        <div class="detail">
+                            <p>elementの属性の削除行います。</p>
+<pre>var $img = el.$('#img');
+el.attr($img, 'witdh', '100%'); // 設定
+el.removeAttr($img, 'width'); // 削除</pre>
                         </div>
                     </li>
                     <li id="element_removeClass">
