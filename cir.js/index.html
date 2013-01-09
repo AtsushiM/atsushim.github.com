@@ -1810,6 +1810,47 @@ observer.fire('jsonloaded', 'fire2');</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Route">
+            <dt>C.Route</dt>
+            <dd>
+                <div class="sample">
+<pre>var route = new C.Route({
+    target: location.hash, // default: ''
+    action: {
+        '^#action_1$': function() {
+            // write code.
+        },
+        'action_2': function() {
+            // write code.
+        }
+    },
+    manual: false // default: false
+});</pre>
+                    <p>ルーティングを行うクラスです。<br />
+                    actionオプションに渡したオブジェクトのキー名でtarget.matchで正規表現を行い、
+                    当てはまった場合、設定した関数を実行します。</p>
+                </div>
+                <ul>
+                    <li id="Route_start">
+                        <h3>start()</h3>
+                        <div class="detail">
+                            <p>ルーティングを行います。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>route.start();</pre>
+                        </div>
+                    </li>
+                    <li id="Route_fire">
+                        <h3>fire(actionKey)</h3>
+                        <div class="detail">
+                            <p>アクションの呼び出しを行います。<br />
+                            actionKeyで正規表現を行い、対応するアクションを実行します。</p>
+<pre>route.fire('action');</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="ScriptLoad">
             <dt>C.ScriptLoad</dt>
             <dd>
@@ -2293,6 +2334,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Mobile">Mobile</a></li>
             <li><a href="#Observer">Observer</a></li>
             <li><a href="#PreRender">PreRender</a></li>
+            <li><a href="#Route">Route</a></li>
             <li><a href="#ScriptLoad">ScriptLoad</a></li>
             <li><a href="#ServerMeta">ServerMeta</a></li>
             <li><a href="#SessionStorage">SessionStorage</a></li>
