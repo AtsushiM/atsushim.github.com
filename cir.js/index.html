@@ -1513,19 +1513,6 @@ var hashobj = hashCtrl.getHash();
                 </ul>
             </dd>
         </dl>
-        <dl id="Loading">
-            <dt>C.Loading</dt>
-            <dd>
-                <div class="sample">
-<pre>var loading = new C.Loading({
-    onload: function() {
-        // write code.
-    }
-});</pre>
-                    <p>画像を含むページの読み込みが完了したタイミングでonloadを実行するクラスです。</p>
-                </div>
-            </dd>
-        </dl>
         <dl id="LocalStorage">
             <dt>C.LocalStorage</dt>
             <dd>
@@ -2264,6 +2251,19 @@ timer.countDown(); // start timer.</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="WindowLoad">
+            <dt>C.WindowLoad</dt>
+            <dd>
+                <div class="sample">
+<pre>var load = new C.WindowLod({
+    onload: function() {
+        // write code.
+    }
+});</pre>
+                    <p>画像を含むページの読み込みが完了したタイミングでonloadを実行するクラスです。</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="XML">
             <dt>C.XML</dt>
             <dd>
@@ -2331,7 +2331,6 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#FPS">FPS</a></li>
             <li><a href="#HashController">HashController</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
-            <li><a href="#Loading">Loading</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
             <li><a href="#Mobile">Mobile</a></li>
             <li><a href="#Observer">Observer</a></li>
@@ -2345,6 +2344,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Timer">Timer</a></li>
             <li><a href="#Tweener">Tweener</a></li>
             <li><a href="#Twitter">Twitter</a></li>
+            <li><a href="#WindowLoad">WindowLoad</a></li>
             <li><a href="#XML">XML</a></li>
         </ul>
     </div>
