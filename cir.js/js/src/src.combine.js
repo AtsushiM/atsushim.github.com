@@ -2,39 +2,56 @@
 var DOC = {},
     $ = C.$,
     clsClose = 'close',
-    storage = new C.LocalStorage({
+    clsOpen = 'open',
+    storageClose = new C.LocalStorage({
         namespace: clsClose
+    }),
+    storageOpen = new C.LocalStorage({
+        namespace: clsOpen
     });
 
 function addClose($el) {
     if ($el[0]) {
         $el.addClass(clsClose);
-        storage.set($el.attr('id'), 1);
+        storageClose.set($el.attr('id'), 1);
     }
 }
 function removeClose($el) {
     if ($el[0]) {
         $el.removeClass(clsClose);
-        storage.remove($el.attr('id'));
+        storageClose.remove($el.attr('id'));
+    }
+}
+
+function addOpen($el) {
+    if ($el[0]) {
+        $el.addClass(clsOpen);
+        storageOpen.set($el.attr('id'), 1);
+    }
+}
+function removeOpen($el) {
+    if ($el[0]) {
+        $el.removeClass(clsOpen);
+        storageOpen.remove($el.attr('id'));
     }
 }
 DOC.init = function(config) {
     'use strict';
 
-    var closedata = storage.get(),
+    var closedata = storageClose.get(),
+        opendata = storageOpen.get(),
         hash = location.hash.split('#')[1],
         i;
 
     for (i in closedata) {
-        close(i);
+        addClose($('#' + i));
     }
 
     if (hash) {
-        close(hash);
+        addOpen($('#' + hash));
     }
-
-    function close(key) {
-        addClose($('#' + key));
+    for (i in opendata) {
+        addOpen($('#' + i));
     }
 };
 DOC.localLink = function(config) {
@@ -76,7 +93,9 @@ DOC.submenu = function(config) {
 DOC.toggle = function(config) {
     'use strict';
 
-    return $('#main').find('dt, h3').on(C.event.click, function() {
+    var $main = $('#main');
+
+    $main.find('dt').on(C.event.click, function() {
         var $parent = $(this).parent();
 
         if ($parent.hasClass(clsClose)) {
@@ -84,6 +103,16 @@ DOC.toggle = function(config) {
         }
 
         return addClose($parent);
+    });
+
+    $main.find('h3').on(C.event.click, function() {
+        var $parent = $(this).parent();
+
+        if (!$parent.hasClass(clsOpen)) {
+            return addOpen($parent);
+        }
+
+        return removeOpen($parent);
     });
 };
 DOC.init();
