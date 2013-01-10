@@ -96,6 +96,7 @@ header {
     font-size: 20px;
     color: #00DFFC;
 }
+
 #main {
     float: right;
     width: 80%;
@@ -115,7 +116,7 @@ header {
             &:before {
                 padding-right: 5px;
                 font-size: 5px;
-                content: '▼';
+                content: '▲';
                 vertical-align: middle;
                 color: #00ACC9;
             }
@@ -127,7 +128,7 @@ header {
             }
         }
         dd {
-            display: none;
+            /* display: none; */
             font-size: 16px;
 
             %dashbox {
@@ -165,7 +166,7 @@ header {
                 vertical-align: middle;
 
                 &:before {
-                    content: '+';
+                    content: '-';
                     display: inline-block;
                     position: relative;
                     top: -2px;
@@ -181,7 +182,7 @@ header {
             .detail {
                 @extend %dashbox;
 
-                display: none;
+                /* display: none; */
                 margin: 10px 0 15px 15px;
 
                 pre {
@@ -191,26 +192,28 @@ header {
                     color: #999;
                 }
             }
-            .open {
+            .close {
                 h3 {
                     &:before {
-                        content: '-';
+                        content: '+';
                     }
                 }
                 .detail {
-                    display: block;
+                    /* display: block; */
+                    display: none;
                 }
             }
         }
 
-        &.open {
+        &.close {
             dt {
                 &:before {
-                    content: '▲';
+                    content: '▼';
                 }
             }
             dd {
-                display: block;
+                /* display: block; */
+                display: none;
             }
 
         }

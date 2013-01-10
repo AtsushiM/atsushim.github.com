@@ -1,40 +1,40 @@
 (function() {
 var DOC = {},
     $ = C.$,
-    clsOpen = 'open',
+    clsClose = 'close',
     storage = new C.LocalStorage({
-        namespace: clsOpen
+        namespace: clsClose
     });
 
-function addOpen($el) {
+function addClose($el) {
     if ($el[0]) {
-        $el.addClass(clsOpen);
+        $el.addClass(clsClose);
         storage.set($el.attr('id'), 1);
     }
 }
-function removeOpen($el) {
+function removeClose($el) {
     if ($el[0]) {
-        $el.removeClass(clsOpen);
+        $el.removeClass(clsClose);
         storage.remove($el.attr('id'));
     }
 }
 DOC.init = function(config) {
     'use strict';
 
-    var opendata = storage.get(),
+    var closedata = storage.get(),
         hash = location.hash.split('#')[1],
         i;
 
-    for (i in opendata) {
-        open(i);
+    for (i in closedata) {
+        close(i);
     }
 
     if (hash) {
-        open(hash);
+        close(hash);
     }
 
-    function open(key) {
-        addOpen($('#' + key));
+    function close(key) {
+        addClose($('#' + key));
     }
 };
 DOC.localLink = function(config) {
@@ -42,7 +42,7 @@ DOC.localLink = function(config) {
 
     // local link
     return $('a[href^="#"]').on(C.event.click, function(e) {
-        addOpen($($(this).attr('href')));
+        removeClose($($(this).attr('href')));
     });
 };
 DOC.submenu = function(config) {
@@ -59,7 +59,7 @@ DOC.submenu = function(config) {
             $sub = $('#sub'),
             subH = $sub[0].offsetHeight,
             subTop = $sub[0].offsetTop,
-            footerH = $footer[0].offsetHeight;
+            footerH = $footer[0].offsetHeight / 2;
 
         if (subH + subTop + footerH > winH) {
             $sub.css({
@@ -79,11 +79,11 @@ DOC.toggle = function(config) {
     return $('#main').find('dt, h3').on(C.event.click, function() {
         var $parent = $(this).parent();
 
-        if (!$parent.hasClass(clsOpen)) {
-            return addOpen($parent);
+        if ($parent.hasClass(clsClose)) {
+            return removeClose($parent);
         }
 
-        return removeOpen($parent);
+        return addClose($parent);
     });
 };
 DOC.init();

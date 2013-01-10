@@ -1,19 +1,19 @@
 DOC.init = function(config) {
     'use strict';
 
-    var opendata = storage.get(),
+    var closedata = storage.get(),
         hash = location.hash.split('#')[1],
         i;
 
-    for (i in opendata) {
-        open(i);
+    for (i in closedata) {
+        close(i);
     }
 
     if (hash) {
-        open(hash);
+        close(hash);
     }
 
-    function open(key) {
-        addOpen($('#' + key));
+    function close(key) {
+        addClose($('#' + key));
     }
 };

@@ -1,20 +1,20 @@
 (function() {
 var DOC = {},
     $ = C.$,
-    clsOpen = 'open',
+    clsClose = 'close',
     storage = new C.LocalStorage({
-        namespace: clsOpen
+        namespace: clsClose
     });
 
-function addOpen($el) {
+function addClose($el) {
     if ($el[0]) {
-        $el.addClass(clsOpen);
+        $el.addClass(clsClose);
         storage.set($el.attr('id'), 1);
     }
 }
-function removeOpen($el) {
+function removeClose($el) {
     if ($el[0]) {
-        $el.removeClass(clsOpen);
+        $el.removeClass(clsClose);
         storage.remove($el.attr('id'));
     }
 }

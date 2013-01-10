@@ -3,6 +3,6 @@ DOC.localLink = function(config) {
 
     // local link
     return $('a[href^="#"]').on(C.event.click, function(e) {
-        addOpen($($(this).attr('href')));
+        removeClose($($(this).attr('href')));
     });
 };

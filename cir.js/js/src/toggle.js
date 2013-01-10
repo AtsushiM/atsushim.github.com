@@ -4,10 +4,10 @@ DOC.toggle = function(config) {
     return $('#main').find('dt, h3').on(C.event.click, function() {
         var $parent = $(this).parent();
 
-        if (!$parent.hasClass(clsOpen)) {
-            return addOpen($parent);
+        if ($parent.hasClass(clsClose)) {
+            return removeClose($parent);
         }
 
-        return removeOpen($parent);
+        return addClose($parent);
     });
 };

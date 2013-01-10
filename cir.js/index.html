@@ -511,6 +511,7 @@ el.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
                     このオブジェクトは<a href="#Event">C.Event</a>クラスを使用して設定されます。</p>
                 </div>
                 <ul>
+                    <li>change</li>
                     <li>click</li>
                     <li>hashchange</li>
                     <li>load</li>
@@ -895,11 +896,11 @@ ajax.request({
                 </ul>
             </dd>
         </dl>
-        <dl id="CanvasImage">
-            <dt>C.CanvasImage</dt>
+        <dl id="CanvasImg">
+            <dt>C.CanvasImg</dt>
             <dd>
                 <div class="sample">
-<pre>var canvasImage = new C.CanvasImage({
+<pre>var canvas = new C.CanvasImg({
     src: '/img/canvas.png',
     width: 100,
     height: 100,
@@ -1166,6 +1167,7 @@ var eSingle = new C.Event({
                     実行環境がタッチパネルかどうか判定し、最適な値に変更されます。</p>
                 </div>
                 <ul>
+                    <li>change</li>
                     <li>click</li>
                     <li>hashchange</li>
                     <li>load</li>
@@ -1312,19 +1314,19 @@ location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除している�
                 </ul>
             </dd>
         </dl>
-        <dl id="FontImage">
-            <dt>C.FontImage</dt>
+        <dl id="FontImg">
+            <dt>C.FontImg</dt>
             <dd>
                 <div class="sample">
-<pre>var font = new C.FontImage(); //element.className == 'font_X'
-var fontWhite = new C.FontImage({
+<pre>var font = new C.FontImg(); //element.className == 'font_X'
+var fontWhite = new C.FontImg({
     type: 'white' // element.className == 'font_white_X'
 });</pre>
                     <p>CSSスプライト用のHTMLタグを生成するクラスです。<br />
                     typeに指定された文字列が生成されるタグのclassの一部になります。</p>
                 </div>
                 <ul>
-                    <li id="FontImage_make">
+                    <li id="FontImg_make">
                         <h3>make(text)</h3>
                         <div class="detail">
                             <p>CSSスプライト用のspanタグを生成します。</p>
@@ -2317,7 +2319,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#utility">utility</a></li>
             <li><a href="#Ajax">Ajax</a></li>
             <li><a href="#Bind">Bind</a></li>
-            <li><a href="#CanvasImage">CanvasImage</a></li>
+            <li><a href="#CanvasImg">CanvasImg</a></li>
             <li><a href="#CanvasRender">CanvasRender</a></li>
             <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#Deferred">Deferred</a></li>
@@ -2325,7 +2327,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Event">Event</a></li>
             <li><a href="#ExternalInterface">ExternalInterface</a></li>
             <li><a href="#Facebook">Facebook</a></li>
-            <li><a href="#FontImage">FontImage</a></li>
+            <li><a href="#FontImg">FontImg</a></li>
             <li><a href="#FPS">FPS</a></li>
             <li><a href="#HashController">HashController</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
