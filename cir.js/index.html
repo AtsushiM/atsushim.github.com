@@ -1813,11 +1813,14 @@ observer.fire('jsonloaded', 'fire2');</pre>
             // write code.
         }
     },
-    manual: false // default: false
+    single: false, // default: false
+    manual: false, // default: false
+    noregex: false // default: false
 });</pre>
                     <p>ルーティングを行うクラスです。<br />
                     targetに対してactionに渡したオブジェクトのキー名で正規表現を行い、
-                    当てはまった場合、設定した関数を実行します。</p>
+                    当てはまった場合、設定した関数を実行します。<br />
+                    noregexオプションをtrueにした場合、正規表現せずにルーティングを行います。</p>
                 </div>
                 <ul>
                     <li id="Route_start">
