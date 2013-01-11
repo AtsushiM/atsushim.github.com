@@ -4,8 +4,8 @@ Global.ImgLoad = Global.klass({
         this.srcs = config.srcs,
         this.srccount = this.srcs.length,
         this.loadedsrcs = [];
-        this.onload = config.onload || Global.utility.nullFunction,
-        this.onprogress = config.onprogress || Global.utility.nullFunction,
+        this.onload = config.onload || nullFunction,
+        this.onprogress = config.onprogress || nullFunction,
         this.loadcount = 0;
         this.progress = 0;
         this.started = false;
@@ -37,10 +37,10 @@ Global.ImgLoad = Global.klass({
                 i, len;
 
             for (i = 0, len = mine.srccount; i < len; i++) {
-                img = Global.element.create('img');
+                img = create('img');
                 img.src = mine.srcs[i];
 
-                Global.element.on(img, Global.event.load, function() {
+                on(img, Global.event.load, function() {
                     mine._c();
                 });
 

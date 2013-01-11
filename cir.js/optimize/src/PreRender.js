@@ -9,7 +9,7 @@ Global.PreRender = Global.klass({
 
         this.elements = config.elements || [];
         this.guesslimit = config.guesslimit || 30;
-        this.onrendered = config.onrendered || Global.utility.nullFunction;
+        this.onrendered = config.onrendered || nullFunction;
         this.looptime = config.looptime || 100;
         this.loopblur = this.looptime + config.loopblur;
         this.loopid = this.prevtime = null;
@@ -23,7 +23,7 @@ Global.PreRender = Global.klass({
             var i;
 
             for (i = this.elements.length; i--;) {
-                Global.element.show(this.elements[i]);
+                show(this.elements[i]);
             }
             this.prevtime = Date.now();
             this.loopid = setInterval(check, this.looptime, this);
@@ -41,7 +41,7 @@ Global.PreRender = Global.klass({
                         clearInterval(mine.loopid);
 
                         for (var i = mine.elements.length; i--;) {
-                            Global.element.hide(mine.elements[i]);
+                            hide(mine.elements[i]);
                         }
 
                         mine.onrendered();

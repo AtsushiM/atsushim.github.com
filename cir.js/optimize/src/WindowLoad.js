@@ -7,7 +7,7 @@ Global.WindowLoad = Global.klass({
     },
     properties: {
         onload: function(func) {
-            Global.element.on(Global.utility.win, Global.event.load, func);
+            on(win, Global.event.load, func);
         }
     }
 });

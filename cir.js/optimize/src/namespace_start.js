@@ -1,5 +1,5 @@
 // Cool is Right.
 var C = {};
-(function() {
-    'use strict';
-    var Global = C;
+(function(win, doc) {
+'use strict';
+var Global = C;
