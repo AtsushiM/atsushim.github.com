@@ -600,10 +600,10 @@ alert(Sample2.prototype.test); //test extend.
 });
 
 var Test = C.klass({
+    extend: SuperTest, // default: undefind
     init: function(config) {
         // write code.
     },
-    extend: SuperTest, // default: undefind
     properties: {
         // write method &amp; property
     }
@@ -625,6 +625,14 @@ var Test = C.klass({
                     <p>様々なクラスから呼び出されるユーティリティオブジェクトです。</p>
                 </div>
                 <ul>
+                    <li id="utility_checkUserAgent">
+                        <h3>checkUserAgent(regex, [userAgent])</h3>
+                        <div class="detail">
+                            <p>userAgentに対してregexで正規表現を行い、結果をBooleanで返します。<br />
+                            userAgentが省略された場合、window.navigator.userAgentに対して正規表現でチェックを行います。</p>
+<pre>var check = util.checkUserAgent(/iPhone|iPad|iPod/i); // boolean</pre>
+                        </div>
+                    </li>
                     <li id="utility_is">
                         <h3>is(type, vars)</h3>
                         <div class="detail">
@@ -747,6 +755,14 @@ alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');
 </pre>
                         </div>
                     </li>
+                    <li id="utility_preventDefault">
+                        <h3>preventDefault(e)</h3>
+                        <div class="detail">
+                            <p>e.preventDefault()を実行し、falseを返すメソッドです。<br />
+                            ブラウザのデフォルトの動作を停止させたい場合などに使えます。</p>
+<pre>element.on(util.doc, C.event.touchmove, util.preventDefault);</pre>
+                        </div>
+                    </li>
                     <li id="utility_replaceAll">
                         <h3>replaceAll(targetext, needle, replacetext)</h3>
                         <div class="detail">
@@ -799,7 +815,7 @@ str = util.typeCast(str); // 'sample'
                     <li id="Ajax_abort">
                         <h3>abort()</h3>
                         <div class="detail">
-                            <p>request,getJSONメソッドでリクエストした処理を停止します。</p>
+                            <p>request,jsonメソッドでリクエストした処理を停止します。</p>
 <pre>ajax.request({
     url: '/news',
     callback: function(data) {
@@ -809,13 +825,13 @@ str = util.typeCast(str); // 'sample'
 ajax.abort(); // 直前のrequest処理を停止</pre>
                         </div>
                     </li>
-                    <li id="Ajax_getJSON">
-                        <h3>getJSON({url, [type: 'GET' || 'POST'], [query], [cash], [callback], [error]})</h3>
+                    <li id="Ajax_json">
+                        <h3>json({url, [type: 'GET' || 'POST'], [query], [cash], [callback], [error]})</h3>
                         <div class="detail">
                             <p>AjaxでJSONに対するリクエストを行います。<br />
                             オプションは全てrequestメソッドと同じですが、<br />
                             callbackの引数はJSON.parseでオブジェクト化されたものになります。</p>
-<pre>ajax.getJSON({
+<pre>ajax.json({
     url: '/news.json',
     callback: function(data) {
         // write code.
@@ -1709,14 +1725,6 @@ var observerSingle = new C.Observer({
 observer.fire('jsonloaded', {
     cir: 'Cool is Right.'
 });</pre>
-                        </div>
-                    </li>
-                    <li id="Observer_getObserved">
-                        <h3>getObserved()</h3>
-                        <div class="detail">
-                            <p>onもしくはoneメソッドで追加されたfunctionを保持しているオブジェクトを返します。<br />
-                            基本的に使用することは無いはずです。</p>
-<pre>var observeObj = observer.getObserved();</pre>
                         </div>
                     </li>
                     <li id="Observer_off">
