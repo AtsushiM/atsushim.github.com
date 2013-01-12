@@ -11,16 +11,41 @@ DOC.submenu = function(config) {
         var winH = this.innerHeight,
             $sub = $('#sub'),
             subH = $sub[0].offsetHeight,
-            subTop = $sub[0].offsetTop;
+            subTop = $sub[0].offsetTop,
+            position = 'fixed',
+            method = 'on',
+            throttle = new C.Throttle({
+                waittime: 50,
+                callback: bind
+            });
 
         if (subH + subTop > winH) {
-            $sub.css({
-                position: 'static'
-            });
+            position = 'static';
+            method = 'off';
         }
         else {
+            bind();
+        }
+
+        $sub.css({
+            position: position
+        });
+        $(window)[method]('scroll', function() {
+            throttle.request();
+        });
+
+        function bind() {
+            var footerH = $footer[0].offsetHeight,
+                bodyH = document.body.clientHeight,
+                scrollY = window.scrollY,
+                diffTop = bodyH - footerH - subH - subTop - scrollY;
+
+            if (diffTop > 0) {
+                diffTop = 0;
+            }
+
             $sub.css({
-                position: 'fixed'
+                marginTop: diffTop
             });
         }
     }
