@@ -7,10 +7,7 @@ Global.Ajax = function(config) {
                 var ajax = new C.Ajax();
 
                 ajax.request({
-                    url: vars.src,
-                    query: {
-                        update: Date.now()
-                    },
+                    url: vars.src + '?update=' + Date.now(),
                     callback: function(data) {
                         vars.result[vars.src] = encodeURIComponent(data);
                         vars.callback();
