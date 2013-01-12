@@ -2208,6 +2208,47 @@ timer.countDown(); // start timer.</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Transition">
+            <dt>C.Transition</dt>
+            <dd>
+                <div class="sample">
+<pre>var transition = new C.Transition(
+    element,
+    {
+        width: 100,
+        height: 100
+    },
+    {
+        duration: 1000, // default: 500
+        manual: false, // default: false
+        callback: function() {
+            // write code.
+        }
+    }
+);</pre>
+                    <p>CSS Trasitionをjavascriptで指定するためのクラスです。</p>
+                </div>
+                <ul>
+                    <li id="Trasition_start">
+                        <h3>start()</h3>
+                        <div class="detail">
+                            <p>アニメーションを開始します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>trasition.start();</pre>
+                        </div>
+                    </li>
+                    <li id="Trasition_stop">
+                        <h3>stop()</h3>
+                        <div class="detail">
+                            <p>アニメーションを停止します。<br />
+                            CSS Trasitionは途中で停止する手段が無いため、実質callbackが実行されないだけとなります。</p>
+<pre>trasition.stop();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Tweener">
             <dt>C.Tweener</dt>
             <dd>
@@ -2361,6 +2402,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Surrogate">Surrogate</a></li>
             <li><a href="#Throttle">Throttle</a></li>
             <li><a href="#Timer">Timer</a></li>
+            <li><a href="#Transition">Transition</a></li>
             <li><a href="#Tweener">Tweener</a></li>
             <li><a href="#Twitter">Twitter</a></li>
             <li><a href="#WindowLoad">WindowLoad</a></li>
