@@ -75,10 +75,9 @@ DOC.submenu = function(config) {
         var winH = this.innerHeight,
             $sub = $('#sub'),
             subH = $sub[0].offsetHeight,
-            subTop = $sub[0].offsetTop,
-            footerH = $footer[0].offsetHeight / 2;
+            subTop = $sub[0].offsetTop;
 
-        if (subH + subTop + footerH > winH) {
+        if (subH + subTop > winH) {
             $sub.css({
                 position: 'static'
             });
