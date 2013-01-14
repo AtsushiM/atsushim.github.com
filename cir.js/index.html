@@ -203,6 +203,14 @@ var $sample_parent = $sample.parent();</pre>
 var nodelist = $sample.querySelectorAll('.sample');</pre>
                         </div>
                     </li>
+                    <li id="selector_remove">
+                        <h3>.remove()</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントを削除します。</p>
+<pre>var $sample = $('#sample');
+$smaple.remove(); // 削除</pre>
+                        </div>
+                    </li>
                     <li id="selector_removeAttr">
                         <h3>.removeAttr(property)</h3>
                         <div class="detail">
@@ -210,6 +218,8 @@ var nodelist = $sample.querySelectorAll('.sample');</pre>
 <pre>var $img = $('img');
 $img.attr('width', '100%'); // 設定
 $img.removeAttr('width'); // 削除</pre>
+                        </div>
+                    </li>
                     <li id="selector_removeClass">
                         <h3>.removeClass(className)</h3>
                         <div class="detail">
@@ -462,12 +472,26 @@ el.on($sample, C.event.click, function() {
 el.opacity($sample, 0.5);</pre>
                         </div>
                     </li>
+                    <li id="element_parent">
+                        <h3>parent(element)</h3>
+                        <div class="detail">
+                            <p>elementの親エレメントを取得します。</p>
+<pre>var $parent = el.$('#sample').parent();</pre>
+                        </div>
+                    </li>
                     <li id="element_show">
                         <h3>show(element)</h3>
                         <div class="detail">
                             <p>element.style.displayに'block'を指定します。</p>
 <pre>var $sample = el.$('#sample');
 el.show($sample);</pre>
+                        </div>
+                    </li>
+                    <li id="element_remove">
+                        <h3>remove(element)</h3>
+                        <div class="detail">
+                            <p>elementの削除を行います。</p>
+<pre>el.remove(element); // 削除</pre>
                         </div>
                     </li>
                     <li id="element_removeAttr">
@@ -870,6 +894,42 @@ ajax.request({
         console.log(data);
     }
 }); // archive?date=20120101の内容をキャッシュ有効で取得</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Animation">
+            <dt>C.Animation</dt>
+            <dd>
+                <div class="sample">
+<pre>var anime = new C.Animation(C.$('#box')[0], {
+    'margin-left': 100,
+    transform: 'rotate(180deg)'
+}, {
+    duration: 1000, // default: 500
+    manual: false, // default: false
+    onComplete: function(e) {
+        // write code.
+    }
+});</pre>
+                    <p>CSS Animationを指定するためのクラスです。</p>
+                </div>
+                <ul>
+                    <li id="Animation_start">
+                        <h3>start()</h3>
+                        <div class="detail">
+                            <p>アニメーションを開始します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>anime.start();</pre>
+                        </div>
+                    </li>
+                    <li id="Animation_stop">
+                        <h3>stop()</h3>
+                        <div class="detail">
+                            <p>アニメーションを停止します。</p>
+<pre>anime.stop();</pre>
                         </div>
                     </li>
                 </ul>
@@ -2226,7 +2286,7 @@ timer.countDown(); // start timer.</pre>
         }
     }
 );</pre>
-                    <p>CSS Trasitionをjavascriptで指定するためのクラスです。</p>
+                    <p>CSS Trasitionを指定するためのクラスです。</p>
                 </div>
                 <ul>
                     <li id="Trasition_start">
@@ -2378,6 +2438,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#klass">klass</a></li>
             <li><a href="#utility">utility</a></li>
             <li><a href="#Ajax">Ajax</a></li>
+            <li><a href="#Animation">Animation</a></li>
             <li><a href="#Bind">Bind</a></li>
             <li><a href="#CanvasImg">CanvasImg</a></li>
             <li><a href="#CanvasRender">CanvasRender</a></li>
