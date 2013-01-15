@@ -1,0 +1,30 @@
+@import "compass/reset";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+
+body {
+    background-color: #343838;
+    font-size: 16px;
+    color: #BBB;
+    line-height: 1.5;
+}
+
+%frame {
+    position: relative;
+    min-height: 300px;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #004E5A;
+    border-radius: 2px;
+    background-color: #343838;
+    @include single-box-shadow(#333, 0, 0, 3px, 3px);
+    @include text-shadow(#222 1px 1px 3px);
+}
+#samples {
+    @extend %frame;
+}
+#btn {
+    padding-top: 10px;
+}
+

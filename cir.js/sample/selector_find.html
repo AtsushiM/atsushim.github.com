@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:mixi="http://mixi-platform.com/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta charset="UTF-8" />
+<title>CIR.js | Cool is Right.</title>
+<meta property="og:title" content="CIR.js | Cool is Right." />
+<meta property="og:description" content="Web application development libraries for smartphones." />
+<meta property="og:url" content="http://atsushim.github.com/cir.js" />
+<meta property="og:image" content="http://atsushim.github.com/cir.js/logo.png" />
+<meta name="description" content="Web application development libraries for smartphones." />
+<meta name="keywords" content="cir.js javascript cool right" />
+<meta name="viewport" content="width=1024" />
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" sizes="16x16" href="/cir.js/favicon.ico" />
+<!--[if lte IE 9]><script src="/cir.js/js/lib/html5.js"></script><![endif]-->
+<link href='http://fonts.googleapis.com/css?family=New+Rocker&text=CIRjcolisrght.ve0123456789%20' rel='stylesheet' type='text/css' />
+<link href="/cir.js/css/sample.css" media="screen, projection" rel="stylesheet" type="text/css" />
+</head>
+<body class="sample-addClass">
+<style type="text/css">
+    #sample {
+        width: 100px;
+        height: 100px;
+        background-color: #00C;
+    }
+</style>
+<div id="samples">
+    <p id="sample">text.</p>
+    <p id="btn"><input type="button" value="find" /></p>
+</div>
+<script src="/cir.js/js/lib/cir.min.js"></script>
+<script type="text/javascript">
+(function() {
+    var $ = C.$,
+        $sample = $('#sample'),
+        $btn = $('#btn input');
+
+    $btn.on(C.event.click, function() {
+        $sample.parent().css({
+            'background-color': '#0F0'
+        });
+    });
+}());
+</script>
+</body>
+</html>
