@@ -78,11 +78,13 @@
         $sample
         .removeAttr('style')
         .css({
-            'left': 20
+            'left': 20,
+            '-webkit-transform': 'rotate(0deg)'
         });
 
         var anime = new C.Animation($sample[0], {
-                'left': 220
+                'left': 220,
+                '-webkit-transform': 'rotate(360deg)'
             }, {
                 duration: 1000,
                 ease: C.cssease[$ease[0].value]
