@@ -15,7 +15,7 @@ DOC.submenu = function(config) {
             position = 'fixed',
             method = 'on',
             throttle = new C.Throttle({
-                waittime: 50,
+                waittime: 25,
                 callback: bind
             });
 
