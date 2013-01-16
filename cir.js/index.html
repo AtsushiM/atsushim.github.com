@@ -280,6 +280,7 @@ $sample.toggleClass('sample'); // 削除</pre>
                     主な使い方は<a href="#Animation">Animation</a>や<a href="#Transition">Transition</a>のeasingオプションに対して参照を渡すことになります。</p>
                 </div>
                 <ul>
+                    <li>linear</li>
                     <li>inBack</li>
                     <li>inCirc</li>
                     <li>inCubic</li>
@@ -316,6 +317,7 @@ $sample.toggleClass('sample'); // 削除</pre>
                     主な使い方は<a href="#Tweener">C.Tweener</a>クラスや<a href="#selector">C.$</a>メソッドのeaseオプションに対して参照を渡すことになります。</p>
                 </div>
                 <ul>
+                    <li>linear</li>
                     <li>inBack</li>
                     <li>inCirc</li>
                     <li>inCubic</li>
@@ -2369,7 +2371,7 @@ timer.countDown(); // start timer.</pre>
         }
     },
     {
-        ease: null,
+        ease: C.ease.inOutBack, // default: undefind (easeOutExpo)
         onComplete: function() {
             // write code.
         }
