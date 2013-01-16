@@ -946,7 +946,7 @@ ajax.request({
                 <div class="sample">
 <pre>var anime = new C.Animation(C.$('#box')[0], {
     'margin-left': 100,
-    transform: 'rotate(180deg)'
+    '-webkit-transform': 'rotate(180deg)'
 }, {
     duration: 1000, // default: 500
     manual: false, // default: false
@@ -955,7 +955,9 @@ ajax.request({
         // write code.
     }
 });</pre>
-                    <p>CSS Animationを指定するためのクラスです。</p>
+                    <p>CSS Animationを指定するためのクラスです。<br />
+                    webkitブラウザかanimationにベンダープリフィックス無しで対応している場合のみ使用出来ます。<br />
+                    条件を満たしていない場合、newでインスタンスを生成した際、falseを返します</p>
                 </div>
                 <ul>
                     <li id="Animation_start">
@@ -2318,7 +2320,8 @@ timer.countDown(); // start timer.</pre>
     element,
     {
         width: 100,
-        height: 100
+        height: 100,
+        '-webkit-transform': 'rotate(180deg)'
     },
     {
         duration: 1000, // default: 500
@@ -2329,7 +2332,9 @@ timer.countDown(); // start timer.</pre>
         }
     }
 );</pre>
-                    <p>CSS Trasitionを指定するためのクラスです。</p>
+                    <p>CSS Trasitionを指定するためのクラスです。<br />
+                    webkitブラウザかtransitionにベンダープリフィックス無しで対応している場合のみ使用出来ます。<br />
+                    条件を満たしていない場合、newでインスタンスを生成した際、falseを返します</p>
                 </div>
                 <ul>
                     <li id="Trasition_start">
@@ -2366,11 +2371,18 @@ timer.countDown(); // start timer.</pre>
         height: {
             from: 0,
             to: 100,
-            prefix: '',
-            suffix: 'px'
+            prefix: '', // default: ''
+            suffix: 'px' // default: 'px'
+        }
+        '-webkit-transform': {
+            from: 0,
+            to: 180,
+            prefix: 'rotate(',
+            suffix: 'deg)'
         }
     },
     {
+        manual: false, // default: false
         ease: C.ease.inOutBack, // default: undefind (easeOutExpo)
         onComplete: function() {
             // write code.
@@ -2381,7 +2393,16 @@ timer.countDown(); // start timer.</pre>
                     easeオプションにC.easeの各メソッドを指定すれば、様々なイージング処理をさせることが可能です</p>
                 </div>
                 <ul>
-                    <li id="Tweener_end">
+                    <li id="Tweener_start">
+                        <h3>start()</h3>
+                        <div class="detail">
+                            <p>アニメーションを開始します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>tweener.start();</pre>
+                        </div>
+                    </li>
+                    <li id="Tweener_stop">
                         <h3>stop()</h3>
                         <div class="detail">
                             <p>アニメーションを停止します。</p>
