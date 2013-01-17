@@ -1967,11 +1967,13 @@ observer.fire('jsonloaded', 'fire2');</pre>
 <pre>var route = new C.Route({
     target: location.hash, // default: ''
     action: {
-        '^#action_1$': function() {
+        '^#action_1$': function(actionName) {
             // write code.
+            // actionName === '^#action_1$';
         },
-        'action_2': function() {
+        'action_2': function(actionName) {
             // write code.
+            // actionName === 'action_2';
         }
     },
     single: false, // default: false
