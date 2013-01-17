@@ -989,6 +989,30 @@ ajax.request({
                 </ul>
             </dd>
         </dl>
+        <dl id="Audio">
+            <dt>C.Audio</dt>
+            <dd>
+                <div class="sample">
+<pre>var audio = new c.Audio({
+    dir: '/sound/', // ディレクトリ
+    name: 'tm2_door000', // 拡張子抜きのファイル名
+    suffix: [ // default: undefined
+        ['mp3', 'mpeg'], // [suffix,  type]
+        ['wav', 'wav'],
+        ['ogg', 'ogg'],
+        ['m4a', 'mp4']
+    ],
+    controls: false, // default: false
+    preload: 'auto', // default: 'auto'
+    autoplay: true, // default: false
+    loop: false // default: false
+});</pre>
+                    <p>Audio要素を作成するためのクラスです。<br />
+                    ブラウザがAudio要素に対応している場合のみ使用出来ます。<br />
+                    条件を満たしていない場合、newでインスタンスを生成した際、falseを返します</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="Bind">
             <dt>C.Bind</dt>
             <dd>
@@ -2158,6 +2182,85 @@ var num = storage.get('num'); // null</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Sound">
+            <dt>C.Sound<span>[ required: <a href="#Audio">Audio</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var sound = new c.Sound({
+    dir: '/sound/', // ディレクトリ名
+    name: 'tm2_door000', // 拡張子抜きのファイル名
+    suffix: [ // default: undefined
+        ['mp3', 'mpeg'], // [suffix,  type]
+        ['wav', 'wav'],
+        ['ogg', 'ogg'],
+        ['m4a', 'mp4']
+    ],
+    autoplay: false, // default: false
+    loop: false, // default: false
+    oncanplay: function(e) {
+        // write code.
+    },
+    onended: function(e) {
+        // write code.
+    }
+});</pre>
+                    <p>音声ファイルを再生させるためのクラスです。<br />
+                    実行環境がAudio要素のloopやautoplayに確実に対応している場合は、<a href="#Audio">Audio</a>で事足りますが、そうでない場合やcanplayイベントなどを簡単に紐付けたい場合、このクラスをおつかいください 。</p>
+                </div>
+                <ul>
+                    <li id="Sound_getAudio">
+                        <h3>getAudio()</h3>
+                        <div class="detail">
+                            <p>インスタンス生成時に作られたAudio要素を取得します。</p>
+<pre>var audio = sound.getAudio(); // element</pre>
+                        </div>
+                    </li>
+                    <li id="Sound_getCurrent">
+                        <h3>getCurrent()</h3>
+                        <div class="detail">
+                            <p>現在の秒数を取得します。</p>
+<pre>var currenttime = sound.getCurrent(); // Number</pre>
+                        </div>
+                    </li>
+                    <li id="Sound_getDuration">
+                        <h3>getDuration()</h3>
+                        <div class="detail">
+                            <p>音声ファイルの総再生時間を取得します。</p>
+<pre>var duration = sound.getDuration(); // Number</pre>
+                        </div>
+                    </li>
+                    <li id="Sound_pause">
+                        <h3>pause()</h3>
+                        <div class="detail">
+                            <p>一時停止します。</p>
+<pre>sound.pause();</pre>
+                        </div>
+                    </li>
+                    <li id="Sound_play">
+                        <h3>play()</h3>
+                        <div class="detail">
+                            <p>再生します。</p>
+<pre>sound.play();</pre>
+                        </div>
+                    </li>
+                    <li id="Sound_setCurrent">
+                        <h3>setCurrent()</h3>
+                        <div class="detail">
+                            <p>音声ファイルの再生位置を設定します。</p>
+<pre>sound.setCurrent(1); // 1秒の位置へ</pre>
+                        </div>
+                    </li>
+                    <li id="Sound_stop">
+                        <h3>stop()</h3>
+                        <div class="detail">
+                            <p>停止します。<br />
+                            再生位置は0秒になります。</p>
+<pre>sound.stop(); // 停止して0秒の位置へ</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Surrogate">
             <dt>C.Surrogate</dt>
             <dd>
@@ -2521,6 +2624,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#utility">utility</a></li>
             <li><a href="#Ajax">Ajax</a></li>
             <li><a href="#Animation">Animation</a></li>
+            <li><a href="#Audio">Audio</a></li>
             <li><a href="#Bind">Bind</a></li>
             <li><a href="#CanvasImg">CanvasImg</a></li>
             <li><a href="#CanvasRender">CanvasRender</a></li>
@@ -2542,6 +2646,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#ScriptLoad">ScriptLoad</a></li>
             <li><a href="#ServerMeta">ServerMeta</a></li>
             <li><a href="#SessionStorage">SessionStorage</a></li>
+            <li><a href="#Sound">Sound</a></li>
             <li><a href="#Surrogate">Surrogate</a></li>
             <li><a href="#Throttle">Throttle</a></li>
             <li><a href="#Timer">Timer</a></li>

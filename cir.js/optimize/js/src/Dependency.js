@@ -16,6 +16,9 @@ Global.Dependency = function(config) {
                     'HashController',
                     'ExternalInterface_Android',
                     'ExternalInterface_IOS'
+                ],
+                Sound: [
+                    'Audio'
                 ]
             },
             passive: {
@@ -37,6 +40,9 @@ Global.Dependency = function(config) {
                 ],
                 Tweener: [
                     'selector_methods_animate'
+                ],
+                Audio: [
+                    'Sound'
                 ]
             }
         };
