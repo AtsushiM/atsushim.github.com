@@ -35,14 +35,19 @@
             loop: true
         });
 
-    C.$('#sample').append(audio);
+    if (audio) {
+        C.$('#sample').append(audio);
 
-    C.$('#btn input[value=play]').on(C.event.click, function() {
-        audio.play();
-    });
-    C.$('#btn input[value=pause]').on(C.event.click, function() {
-        audio.pause();
-    });
+        C.$('#btn input[value=play]').on(C.event.click, function() {
+            audio.play();
+        });
+        C.$('#btn input[value=pause]').on(C.event.click, function() {
+            audio.pause();
+        });
+    }
+    else {
+        C.$('#sample').html('No Audio.');
+    }
 }());
 </script>
 </body>
