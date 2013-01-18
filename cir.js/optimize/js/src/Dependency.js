@@ -17,6 +17,14 @@ Global.Dependency = function(config) {
                     'ExternalInterface_Android',
                     'ExternalInterface_IOS'
                 ],
+                ExternalInterface_Android: [
+                    'HashController',
+                    'ExternalInterface'
+                ],
+                ExternalInterface_IOS: [
+                    'HashController',
+                    'ExternalInterface'
+                ],
                 Sound: [
                     'Audio'
                 ]
