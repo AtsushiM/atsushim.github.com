@@ -277,7 +277,7 @@ $sample.toggleClass('sample'); // 削除</pre>
                 <div class="sample">
                     <pre>var ease = C.cssease;</pre>
                     <p>CSSアニメーション用のイージング処理をまとめたオブジェクトです。<br />
-                    主な使い方は<a href="#Animation">Animation</a>や<a href="#Transition">Transition</a>のeasingオプションに対して参照を渡すことになります。</p>
+                    主な使い方は<a href="#Animation">C.Animation</a>や<a href="#Transition">C.Transition</a>のeasingオプションに対して参照を渡すことになります。</p>
                 </div>
                 <ul>
                     <li>linear</li>
@@ -1006,7 +1006,7 @@ ajax.request({
     loop: false // default: false
 });</pre>
                     <p>Audio要素を作成するためのクラスです。<br />
-                    もっと機能が必要な場合は<a href="#Sound">Sound</a>をおつかいください。<br />
+                    もっと機能が必要な場合は<a href="#Sound">C.Sound</a>をおつかいください。<br />
                     ブラウザがAudio要素に対応している場合のみ使用出来ます。<br />
                     条件を満たしていない場合、newでインスタンスを生成した際、falseを返します</p>
                 </div>
@@ -2204,7 +2204,7 @@ var num = storage.get('num'); // null</pre>
     }
 });</pre>
                     <p>音声ファイルを再生させるためのクラスです。<br />
-                    実行環境がAudio要素のloopやautoplayに確実に対応している場合は、<a href="#Audio">Audio</a>で事足りますが、そうでない場合やcanplayイベントなどを簡単に紐付けたい場合、このクラスをおつかいください 。</p>
+                    実行環境がAudio要素のloopやautoplayに確実に対応している場合は、<a href="#Audio">C.Audio</a>で事足りますが、そうでない場合やcanplayイベントなどを簡単に紐付けたい場合、このクラスをおつかいください 。</p>
                 </div>
                 <ul>
                     <li id="Sound_getAudio">
