@@ -882,7 +882,8 @@ str = util.typeCast(str); // 'sample'
             <dd>
                 <div class="sample">
                     <pre>var ajax = new C.Ajax();</pre>
-                    <p>Ajax処理を行うクラスです。</p>
+                    <p>Ajax処理を行うクラスです。<br />
+                    インスタンス生成時にrequestメソッドと同じ形式の引数を渡すとrequestメソッドを呼び出します。</p>
                 </div>
                 <ul>
                     <li id="Ajax_abort">
@@ -914,10 +915,11 @@ ajax.abort(); // 直前のrequest処理を停止</pre>
                         </div>
                     </li>
                     <li id="Ajax_request">
-                        <h3>request({url, [type: 'GET' || 'POST'], [query], [cash], [callback], [error]})</h3>
+                        <h3>request({url, [type: 'GET' || 'POST'], [dataType], [query], [cash], [callback], [error]})</h3>
                         <div class="detail">
                             <p>Ajaxでリクエストを行います。<br />
                             typeオプションを省略した場合、自動的にGETでリクエストを行います。<br />
+                            dataTypeオプションに'json'を指定した場合、jsonメソッドの呼び出しを行います。<br />
                             queryオプションにはajax処理に渡したい値をオブジェクト形式で指定できます。<br />
                             cashオプションはデフォルトでfalseになっており、常に最新の情報を取得します。</p>
 <pre>ajax.request({
@@ -934,6 +936,7 @@ ajax.abort(); // 直前のrequest処理を停止</pre>
 
 ajax.request({
     url: '/archive',
+    dataType: 'json',
     query: {
         date: 20120101
     },
@@ -942,7 +945,7 @@ ajax.request({
         // write code.
         console.log(data);
     }
-}); // archive?date=20120101の内容をキャッシュ有効で取得</pre>
+}); // archive?date=20120101の内容をJSON形式、キャッシュ有効で取得</pre>
                         </div>
                     </li>
                 </ul>
