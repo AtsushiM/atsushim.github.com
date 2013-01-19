@@ -48,7 +48,7 @@ var mobile = new C.Mobile(); // Mobile</pre>
             </dd>
         </dl>
         <dl id="selector">
-            <dt>C.$<span>[ required: <a href="#Tweener">Tweener</a> ]</span></dt>
+            <dt>C.$<span>[ required: <a href="#Tweener">Tweener</a> <a href="#Animation">Animation</a>]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var $ = C.$;
@@ -82,7 +82,7 @@ $sample.animate({
 
 $sample.animate({
     opacity: 0.5
-}, 300, C.ease.inCubic); // 300msでopacityを0.5に'easeInCubic'でイージング
+}, 300, 'inCubic'); // 300msでopacityを0.5に'easeInCubic'でイージング
 
 $sample.animate({
     opacity: 0.5
@@ -1479,7 +1479,8 @@ location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除している�
                 <div class="sample">
 <pre>var font = new C.FontImg(); //element.className == 'font_X'
 var fontWhite = new C.FontImg({
-    type: 'white' // element.className == 'font_white_X'
+    type: 'white', // default: '' / element.className == 'font_white_X'
+    tag: 'span' // default: 'span'
 });</pre>
                     <p>CSSスプライト用のHTMLタグを生成するクラスです。<br />
                     typeに指定された文字列が生成されるタグのclassの一部になります。</p>
@@ -1488,7 +1489,7 @@ var fontWhite = new C.FontImg({
                     <li id="FontImg_make">
                         <h3>make(text)</h3>
                         <div class="detail">
-                            <p>CSSスプライト用のspanタグを生成します。</p>
+                            <p>CSSスプライト用のタグを生成します。</p>
 <pre>var tag_1 = font.make(1); // &lt;span class="font_1"&gt;&amp;nbsp;&lt;/span&gt;
 var tag_abc = font.make(abc);
 // &lt;span class="font_a"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="font_b"&gt;&amp;nbsp;&lt;/span&gt;&lt;span class="font_c"&gt;&amp;nbsp;&lt;/span&gt;

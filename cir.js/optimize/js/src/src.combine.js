@@ -189,7 +189,8 @@ Global.Dependency = function(config) {
                 selector_methods_animate: [
                     'selector',
                     'selector_methods',
-                    'Tweener'
+                    'Tweener',
+                    'Animation'
                 ],
                 ExternalInterface: [
                     'HashController',
