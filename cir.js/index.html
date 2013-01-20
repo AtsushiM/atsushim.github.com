@@ -1105,11 +1105,12 @@ brush.draw([
 }); // {image: canvasElement, x: 100, y: 50}</pre>
                         </div>
                     </li>
-                    <li id="Brush_pigment">
-                        <h3>pigments({name: {src: string, width: number, height: number, [x: number], [y: number], onload: function}})</h3>
+                    <li id="Brush_pigments">
+                        <h3>pigments({name: {src: string, width: number, height: number, [x: number], [y: number], onload: function}}, callback)</h3>
                         <div class="detail">
                             <p>drawメソッドの引数を作成するメソッドです。<br />
-                            pigmentメソッドの返り値をnameをキーにしたオブジェクトで返します。</p>
+                            pigmentメソッドの返り値をnameをキーにしたオブジェクトで返します。<br />
+                            画像の読み込み完了時、callbackを実行します。</p>
 <pre>var pigments = brush.pigments({
     char: {
         src: '/img/char.png',
@@ -1127,12 +1128,15 @@ brush.draw([
             // write code.
         }
     },
-}); // { char: {image: canavsElement, x:0, y:0}, bg: {image: canavsElement, x:0, y:0} }
+}, function(ret) {
+    // ret === pigments
 
-brush.draw([
-    pigments.bg,
-    pigments.char
-]);</pre>
+    brush.draw([
+        pigments.bg,
+        pigments.char
+    ]);
+}); // { char: {image: canavsElement, x:0, y:0}, bg: {image: canavsElement, x:0, y:0} }
+</pre>
                         </div>
                     </li>
                     <li id="Brush_setSize">
