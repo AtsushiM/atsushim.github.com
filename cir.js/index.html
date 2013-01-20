@@ -164,7 +164,12 @@ $sample.html('Cool is Right.'); // 設定</pre>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントに対して、removeEventListnerを実行します。</p>
 <pre>var $sample = $('#sample');
-$sample.off(C.event.click); // remove click event</pre>
+var handler = function() {
+    alert('click!');
+    // this = HTML element
+};
+$sample.on(C.event.click, handler);
+$sample.off(C.event.click, handler);</pre>
                         </div>
                     </li>
                     <li id="selector_on">
