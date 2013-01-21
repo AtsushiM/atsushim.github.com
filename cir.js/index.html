@@ -2067,14 +2067,16 @@ observer.fire('jsonloaded', 'fire2');</pre>
                         </div>
                     </li>
                     <li id="ScriptLoad_requests">
-                        <h3>requests([{src, [callback]}])</h3>
+                        <h3>requests([{src, [callback]}], [callback])</h3>
                         <div class="detail">
                             <p>複数ファイルの動的読み込みを行います。</p>
 <pre>scriptload.requests([
     { src: '/js/c.js', callback: function() { /* write code. */}},
     { src: '/js/i.js', callback: function() { /* write code. */}},
     { src: '/js/r.js', callback: function() { /* write code. */}}
-]);</pre>
+], function(scripts) {
+    // callback.
+});</pre>
                         </div>
                     </li>
                 </ul>
