@@ -16,14 +16,17 @@ Global.MakeSrc = function(config) {
                 for (; i < len; i++) {
                     key = el.srcs[i].value;
                     if (srcs[key]) {
-                        src += srcs[key];
+                        src += encodeURIComponent(srcs[key]);
                     }
                 }
+
+                console.log(src);
 
                 ajax.closurecompiler({
                     src: src,
                     callback: function(data) {
-                        observer.fire(e.createjssrc, data);
+                        observer.fire(e.createjssrc,
+                            srcs['src/clouser_start.js'] + data + srcs['src/clouser_end.js']);
                     }
                 });
 

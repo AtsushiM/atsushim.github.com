@@ -9,7 +9,8 @@ Global.Ajax = function(config) {
                 ajax.request({
                     url: vars.src + '?update=' + Date.now(),
                     callback: function(data) {
-                        vars.result[vars.src] = encodeURIComponent(data);
+                        /* vars.result[vars.src] = encodeURIComponent(data); */
+                        vars.result[vars.src] = data;
                         vars.callback();
                     }
                 });
@@ -17,7 +18,7 @@ Global.Ajax = function(config) {
             closurecompiler: function(vars) {
                 var ajax = new C.Ajax(),
                     url = 'http://closure-compiler.appspot.com/compile',
-                    level = 'compilation_level=SIMPLE_OPTIMIZATIONS',
+                    level = 'compilation_level=ADVANCED_OPTIMIZATIONS',
                     format = 'output_format=text',
                     info = 'output_info=compiled_code',
                     query = '';
