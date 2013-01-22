@@ -883,7 +883,7 @@ str = util.typeCast(str); // 'sample'
             </dd>
         </dl>
         <dl id="Ajax">
-            <dt>C.Ajax</dt>
+            <dt>C.Ajax<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var ajax = new C.Ajax();</pre>
@@ -957,7 +957,7 @@ ajax.request({
             </dd>
         </dl>
         <dl id="Animation">
-            <dt>C.Animation</dt>
+            <dt>C.Animation<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var anime = new C.Animation(C.$('#box')[0], {
@@ -996,7 +996,7 @@ ajax.request({
             </dd>
         </dl>
         <dl id="Audio">
-            <dt>C.Audio</dt>
+            <dt>C.Audio<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var audio = new c.Audio({
@@ -1020,8 +1020,29 @@ ajax.request({
                 </div>
             </dd>
         </dl>
+        <dl id="Base">
+            <dt>C.Base</dt>
+            <dd>
+                <div class="sample">
+<pre>var base = new C.Base({});</pre>
+                    <p>ほぼ全てのクラスに継承されている基底クラスです。<br />
+                    このクラスで宣言されいるメソッドは他のほぼ全てのクラスで使用出来ます。</p>
+                </div>
+                <ul>
+                    <li id="Base_dispose">
+                        <h3>dispose()</h3>
+                        <div class="detail">
+                            <p>インスタンスが使用しているメモリを解放します。<br />
+                            メモリ内のプロパティとメソッド、またDOMにバインドしたメソッドやsetIntervalなどを全て削除します。<br />
+                            メモリが解放されるタイミングはブラウザに依存します。</p>
+<pre>base.dispose();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Bind">
-            <dt>C.Bind</dt>
+            <dt>C.Bind<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var bind = new C.Bind({
@@ -1066,7 +1087,7 @@ ajax.request({
             </dd>
         </dl>
         <dl id="Brush">
-            <dt>C.Brush</dt>
+            <dt>C.Brush<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var brush = new C.Brush({
@@ -1158,7 +1179,7 @@ brush.draw([
             </dd>
         </dl>
         <dl id="DataStore">
-            <dt>C.DataStore</dt>
+            <dt>C.DataStore<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var store = new C.DataStore();
@@ -1220,7 +1241,7 @@ store.set('num', 123); // Number</pre>
             </dd>
         </dl>
         <dl id="Deferred">
-            <dt>C.Deferred</dt>
+            <dt>C.Deferred<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var deferred = new C.Deferred();</pre>
@@ -1282,7 +1303,7 @@ deferred.done(function() {
             </dd>
         </dl>
         <dl id="DragFlick">
-            <dt>C.DragFlick</dt>
+            <dt>C.DragFlick<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var dragflick = new C.DragFlick();</pre>
@@ -1428,7 +1449,7 @@ $sample.on(C.event.switchup, function() {
             </dd>
         </dl>
         <dl id="ExternalInterface">
-            <dt>C.ExternalInterface<span>[ required: <a href="#HashController">HashController</a> ExternalInterface.Android ExternalInterface.IOS ]</span></dt>
+            <dt>C.ExternalInterface<span>[ extend: <a href="#HashController">HashController</a> ]</span><span>[ required: ExternalInterface.Android ExternalInterface.IOS ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var external = new C.ExternalInterface({
@@ -1490,7 +1511,7 @@ location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除している�
             </dd>
         </dl>
         <dl id="Facebook">
-            <dt>C.Facebook</dt>
+            <dt>C.Facebook<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var facebook = new C.Facebook();</pre>
@@ -1516,7 +1537,7 @@ location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除している�
             </dd>
         </dl>
         <dl id="FontImg">
-            <dt>C.FontImg</dt>
+            <dt>C.FontImg<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var font = new C.FontImg(); //element.className == 'font_X'
@@ -1543,7 +1564,7 @@ var tag_white = font.make('A');
             </dd>
         </dl>
         <dl id="FPS">
-            <dt>C.FPS</dt>
+            <dt>C.FPS<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var fps = new C.FPS({
@@ -1606,7 +1627,7 @@ var tag_white = font.make('A');
             </dd>
         </dl>
         <dl id="HashController">
-            <dt>C.HashController</dt>
+            <dt>C.HashController<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var hashCtrl = new C.HashController();</pre>
@@ -1676,7 +1697,7 @@ var hashobj = hashCtrl.getHash();
             </dd>
         </dl>
         <dl id="ImgLoad">
-            <dt>C.ImgLoad</dt>
+            <dt>C.ImgLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var imgload = new C.ImgLoad({
@@ -1716,7 +1737,7 @@ var hashobj = hashCtrl.getHash();
             </dd>
         </dl>
         <dl id="LocalStorage">
-            <dt>C.LocalStorage</dt>
+            <dt>C.LocalStorage<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var storage = new C.LocalStorage();
@@ -1783,7 +1804,7 @@ var num = storage.get('num'); // null</pre>
             </dd>
         </dl>
         <dl id="Mobile">
-            <dt>C.Mobile</dt>
+            <dt>C.Mobile<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var mobile = new C.Mobile();</pre>
@@ -1887,7 +1908,7 @@ mobile.revivalScroll(true); // スクロールをその場で停止</pre>
             </dd>
         </dl>
         <dl id="Observer">
-            <dt>C.Observer</dt>
+            <dt>C.Observer<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var observer = new C.Observer();
@@ -1966,7 +1987,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             </dd>
         </dl>
         <dl id="PreRender">
-            <dt>C.PreRender</dt>
+            <dt>C.PreRender<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var render = new C.PreRender({
@@ -2001,7 +2022,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             </dd>
         </dl>
         <dl id="Route">
-            <dt>C.Route</dt>
+            <dt>C.Route<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var route = new C.Route({
@@ -2047,7 +2068,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             </dd>
         </dl>
         <dl id="ScriptLoad">
-            <dt>C.ScriptLoad</dt>
+            <dt>C.ScriptLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var scriptload = new C.ScriptLoad();</pre>
@@ -2083,7 +2104,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             </dd>
         </dl>
         <dl id="ServerMeta">
-            <dt>C.ServerMeta</dt>
+            <dt>C.ServerMeta<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var server = new C.ServerMeta({
@@ -2160,7 +2181,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             </dd>
         </dl>
         <dl id="SessionStorage">
-            <dt>C.SessionStorage</dt>
+            <dt>C.SessionStorage<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var storage = new C.SessionStorage();
@@ -2227,7 +2248,7 @@ var num = storage.get('num'); // null</pre>
             </dd>
         </dl>
         <dl id="Sound">
-            <dt>C.Sound<span>[ required: <a href="#Audio">Audio</a> ]</span></dt>
+            <dt>C.Sound<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Audio">Audio</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var sound = new c.Sound({
@@ -2306,7 +2327,7 @@ var num = storage.get('num'); // null</pre>
             </dd>
         </dl>
         <dl id="Surrogate">
-            <dt>C.Surrogate</dt>
+            <dt>C.Surrogate<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var surrogate = new C.Surrogate({
@@ -2351,7 +2372,7 @@ surrogate.flush();</pre>
             </dd>
         </dl>
         <dl id="Throttle">
-            <dt>C.Throttle</dt>
+            <dt>C.Throttle<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var throttle = new C.Throttle({
@@ -2477,7 +2498,7 @@ timer.countDown(); // start timer.</pre>
             </dd>
         </dl>
         <dl id="Transition">
-            <dt>C.Transition</dt>
+            <dt>C.Transition<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var transition = new C.Transition(
@@ -2522,7 +2543,7 @@ timer.countDown(); // start timer.</pre>
             </dd>
         </dl>
         <dl id="Tweener">
-            <dt>C.Tweener</dt>
+            <dt>C.Tweener<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var tweener = new C.Tweener(
@@ -2577,7 +2598,7 @@ timer.countDown(); // start timer.</pre>
             </dd>
         </dl>
         <dl id="Twitter">
-            <dt>C.Twitter</dt>
+            <dt>C.Twitter<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var twitter = new C.Twitter();</pre>
@@ -2600,7 +2621,7 @@ timer.countDown(); // start timer.</pre>
             </dd>
         </dl>
         <dl id="WindowLoad">
-            <dt>C.WindowLoad</dt>
+            <dt>C.WindowLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var load = new C.WindowLod({
@@ -2613,7 +2634,7 @@ timer.countDown(); // start timer.</pre>
             </dd>
         </dl>
         <dl id="XML">
-            <dt>C.XML</dt>
+            <dt>C.XML<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var xml = new C.XML({
