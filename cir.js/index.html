@@ -1518,11 +1518,11 @@ location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除している�
                     <p>Facebook用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li id="Facebook_getShareURL">
-                        <h3>getShareURL({app_id, redirect_uri, [link], [picture], [name], [caption], [description]})</h3>
+                    <li id="Facebook_shareURL">
+                        <h3>shareURL({app_id, redirect_uri, [link], [picture], [name], [caption], [description]})</h3>
                         <div class="detail">
                             <p>シェア画面を開くためのURLを取得します。</p>
-<pre>var fbshare = facebook.getShareURL({
+<pre>var fbshare = facebook.shareURL({
     app_id: '123456789012345',
     redirect_uri: 'http://atsushim.github.com/cir.js',
     link: 'http://atsushim.github.com/cir.js',
@@ -1899,9 +1899,9 @@ mobile.killScroll(true); // スクロールをその場で停止</pre>
                         <h3>revivalScroll(noTop)</h3>
                         <div class="detail">
                             <p>ブラウザスクロールを可能にします。<br />
-                            noTopをtrueにした場合、その場でスクロールを固定します。</p>
-<pre>mobile.revivalScroll(); // スクロールを最上にし、停止
-mobile.revivalScroll(true); // スクロールをその場で停止</pre>
+                            noTopをtrueにした場合、その場でスクロール可能にします。</p>
+<pre>mobile.revivalScroll(); // スクロールを最上にし、再開
+mobile.revivalScroll(true); // スクロールをその場で再開</pre>
                         </div>
                     </li>
                 </ul>
@@ -2605,11 +2605,11 @@ timer.countDown(); // start timer.</pre>
                     <p>Twitter用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li id="Twitter_getShareURL">
-                        <h3>getShareURL({redirect_uri, [name], [caption], [hash]})</h3>
+                    <li id="Twitter_shareURL">
+                        <h3>shareURL({redirect_uri, [name], [caption], [hash]})</h3>
                         <div class="detail">
                             <p>シェア画面を開くためのURLを取得します。</p>
-<pre>var twshare = facebook.getShareURL({
+<pre>var twshare = facebook.shareURL({
     redirect_uri: 'http://atsushim.github.com/cir.js',
     name: 'CIR.js',
     caption: 'Cool is Right.',
