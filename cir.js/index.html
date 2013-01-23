@@ -1449,7 +1449,7 @@ $sample.on(C.event.switchup, function() {
             </dd>
         </dl>
         <dl id="ExternalInterface">
-            <dt>C.ExternalInterface<span>[ extend: <a href="#HashController">HashController</a> ]</span><span>[ required: ExternalInterface.Android ExternalInterface.IOS ]</span></dt>
+            <dt>C.ExternalInterface<span>[ extend: <a href="#HashQuery">HashQuery</a> ]</span><span>[ required: ExternalInterface.Android ExternalInterface.IOS ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var external = new C.ExternalInterface({
@@ -1626,20 +1626,20 @@ var tag_white = font.make('A');
                 </ul>
             </dd>
         </dl>
-        <dl id="HashController">
-            <dt>C.HashController<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+        <dl id="HashQuery">
+            <dt>C.HashQuery<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var hashCtrl = new C.HashController();</pre>
+                    <pre>var hashquery = new C.HashQuery();</pre>
                     <p>location.hashの操作を行うメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
-                    <li id="HashController_getHash">
+                    <li id="HashQuery_getHash">
                         <h3>getHash()</h3>
                         <div class="detail">
                             <p>location.hashから値を取得します。</p>
 <pre>location.hash = 'hashName?cir=Cool%20is%20Right.&id=123';
-var hashobj = hashCtrl.getHash();
+var hashobj = hashquery.getHash();
 /*
 {
     mode: 'hashName',
@@ -1651,11 +1651,11 @@ var hashobj = hashCtrl.getHash();
 */</pre>
                         </div>
                     </li>
-                    <li id="HashController_makeHash">
+                    <li id="HashQuery_makeHash">
                         <h3>makeHash({mode: string, contents: {key: val}})</h3>
                         <div class="detail">
                             <p>location.hashに設定するための値を作成します。</p>
-<pre>var hashtxt = hashCtrl.makeHash({
+<pre>var hashtxt = hashquery.makeHash({
     mode: 'hashName',
     contents: {
         cir: 'Cool is Right.',
@@ -1664,11 +1664,11 @@ var hashobj = hashCtrl.getHash();
 }); // hashName?cir=Cool%20is%20Right.&id=123</pre>
                         </div>
                     </li>
-                    <li id="HashController_parseHash">
+                    <li id="HashQuery_parseHash">
                         <h3>parseHash(querystring)</h3>
                         <div class="detail">
                             <p>クエリーストリング形式の文字列をオブジェクトに変換します。</p>
-<pre>var hashvar = hashCtrl.parseHash('#hashName?cir=Cool%20is%20Right.&id=123');
+<pre>var hashvar = hashquery.parseHash('#hashName?cir=Cool%20is%20Right.&id=123');
 /*
 {
     mode: 'hashName',
@@ -1680,11 +1680,11 @@ var hashobj = hashCtrl.getHash();
 */</pre>
                         </div>
                     </li>
-                    <li id="HashController_setHash">
+                    <li id="HashQuery_setHash">
                         <h3>setHash({mode: string, contents: {key: val}})</h3>
                         <div class="detail">
                             <p>location.hashに値を設定します。</p>
-<pre>var hashtxt = hashCtrl.setHash({
+<pre>var hashtxt = hashquery.setHash({
     mode: 'hashName',
     contents: {
         cir: 'Cool is Right.',
@@ -2701,7 +2701,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Facebook">Facebook</a></li>
             <li><a href="#FontImg">FontImg</a></li>
             <li><a href="#FPS">FPS</a></li>
-            <li><a href="#HashController">HashController</a></li>
+            <li><a href="#HashQuery">HashQuery</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
             <li><a href="#Mobile">Mobile</a></li>
