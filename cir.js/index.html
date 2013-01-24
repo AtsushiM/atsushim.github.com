@@ -1038,6 +1038,30 @@ ajax.request({
 <pre>base.dispose();</pre>
                         </div>
                     </li>
+                    <li id="Base_contract">
+                        <h3>contract(element, eventname, handler)</h3>
+                        <div class="detail">
+                            <p>element.addEventListnerを実行します。<br />
+                            このメソッドは紐付けた引数と一意になる値を返します。<br />
+                            この返り値をuncontractメソッドに渡せば登録したイベントを削除します。</p>
+<pre>var $sample = el.$('#sample');
+var contractid = base.contract($sample, C.event.click, function() {
+    alert('sample click!');
+}); // イベント登録
+base.uncontract(contractid); // イベント削除</pre>
+                        </div>
+                    </li>
+                    <li id="Base_uncontract">
+                        <h3>uncontract(id)</h3>
+                        <div class="detail">
+                            <p>contractメソッドの返り値を元にelement.removeEventListnerを実行します。</p>
+<pre>var $sample = el.$('#sample');
+var contractid = base.contract($sample, C.event.click, function() {
+    alert('sample click!');
+}); // イベント登録
+base.uncontract(contractid); // イベント削除</pre>
+                        </div>
+                    </li>
                 </ul>
             </dd>
         </dl>
