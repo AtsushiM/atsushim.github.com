@@ -662,6 +662,9 @@ alert(Sample2.prototype.test); //test extend.
             <dd>
                 <div class="sample">
 <pre>var SuperTest = C.klass({
+    init: function() { // default: undefind
+        console.log('super');
+    }
     properties: {
         sample: 'Cool is Right.'
     }
@@ -670,7 +673,8 @@ alert(Sample2.prototype.test); //test extend.
 var Test = C.klass({
     extend: SuperTest, // default: undefind
     init: function(config) {
-        // write code.
+        this._super(); // console.log('super');
+        console.log(this.sample); // 'Cool is Right.'
     },
     properties: {
         // write method &amp; property
@@ -681,7 +685,8 @@ var Test = C.klass({
                     var test = new Test();<br />
                     でインスタンスを生成できます。<br />
                     extendオプションに別クラスを指定すれば継承できます。<br />
-                    継承させたいクラスがない場合、extendオプションは省略可能です。</p>
+                    継承させたいクラスがない場合、extendオプションは省略可能です。<br />
+                    また、init中でスーパークラスのinitを呼び出したい場合、this._superメソッドで呼び出し可能です。</p>
                 </div>
             </dd>
         </dl>
