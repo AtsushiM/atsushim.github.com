@@ -40,7 +40,7 @@
             <dt>C<span>[ namespaece ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var ajax = new C.Ajax(); // ajax
+<pre>var ajax = new C.Ajax(); // Ajax
 var mobile = new C.Mobile(); // Mobile</pre>
                     <p>CIR.jsのネームスペースです。<br />
                     すべてのクラス、メソッドはC以下に存在します。</p>
@@ -1021,7 +1021,7 @@ ajax.request({
             </dd>
         </dl>
         <dl id="Base">
-            <dt>C.Base</dt>
+            <dt>C.Base<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var base = new C.Base({});</pre>
@@ -1033,8 +1033,8 @@ ajax.request({
                         <h3>dispose()</h3>
                         <div class="detail">
                             <p>インスタンスが使用しているメモリを解放します。<br />
-                            メモリ内のプロパティとメソッド、またDOMにバインドしたメソッドやsetIntervalなどを全て削除します。<br />
-                            メモリが解放されるタイミングはブラウザに依存します。</p>
+                            インスタンスのプロパティとメソッド、またDOMにバインドしたメソッドやsetIntervalなどを全て削除します。<br />
+                            メモリが解放されるタイミングはブラウザのガベージコレクションに依存します。</p>
 <pre>base.dispose();</pre>
                         </div>
                     </li>
