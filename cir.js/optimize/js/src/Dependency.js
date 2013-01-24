@@ -28,6 +28,9 @@ Global.Dependency = function(config) {
                 ],
                 Sound: [
                     'Audio'
+                ],
+                Movie: [
+                    'Video'
                 ]
             },
             passive: {
@@ -52,6 +55,9 @@ Global.Dependency = function(config) {
                 ],
                 Audio: [
                     'Sound'
+                ],
+                Video: [
+                    'Movie'
                 ]
             }
         };

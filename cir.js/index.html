@@ -1936,6 +1936,95 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Movie">
+            <dt>C.Movie<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Video">Video</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var movie = new c.Movie({
+    dir: '/video/', // ディレクトリ名
+    name: 'testvideo', // 拡張子抜きのファイル名
+    suffix: [ // default: undefined
+        ['mp3', 'mpeg'], // [suffix,  type]
+        ['wav', 'wav'],
+        ['ogg', 'ogg'],
+        ['m4a', 'mp4']
+    ],
+    controls: true, // default: false,
+    autoplay: false, // default: false
+    loop: false, // default: false
+    element: C.$('#sample')[0], // default: document.body
+    oncanplay: function(e) {
+        // write code.
+    },
+    onended: function(e) {
+        // write code.
+    }
+});</pre>
+                    <p>動画ファイルを再生させるためのクラスです。<br />
+                    実行環境がvideo要素のloopやautoplayに確実に対応している場合は、<a href="#Video">C.Video</a>で事足りますが、そうでない場合やcanplayイベントなどを簡単に紐付けたい場合、このクラスをおつかいください 。</p>
+                </div>
+                <ul>
+                    <li id="Movie_getCurrent">
+                        <h3>getCurrent()</h3>
+                        <div class="detail">
+                            <p>現在の秒数を取得します。</p>
+<pre>var currenttime = movie.getCurrent(); // Number</pre>
+                        </div>
+                    </li>
+                    <li id="Movie_getDuration">
+                        <h3>getDuration()</h3>
+                        <div class="detail">
+                            <p>音声ファイルの総再生時間を取得します。</p>
+<pre>var duration = movie.getDuration(); // Number</pre>
+                        </div>
+                    </li>
+                    <li id="Movie_getVideo">
+                        <h3>getVideo()</h3>
+                        <div class="detail">
+                            <p>インスタンス生成時に作られたVideo要素を取得します。</p>
+<pre>var video = movie.getVideo(); // element</pre>
+                        </div>
+                    </li>
+                    <li id="Movie_loop">
+                        <h3>loop(bool)</h3>
+                        <div class="detail">
+                            <p>ループの設定を行います。</p>
+<pre>movie.loop(true); // ループ有り
+movie.loop(true); // ループ有り</pre>
+                        </div>
+                    </li>
+                    <li id="Movie_pause">
+                        <h3>pause()</h3>
+                        <div class="detail">
+                            <p>一時停止します。</p>
+<pre>movie.pause();</pre>
+                        </div>
+                    </li>
+                    <li id="Movie_play">
+                        <h3>play()</h3>
+                        <div class="detail">
+                            <p>再生します。</p>
+<pre>movie.play();</pre>
+                        </div>
+                    </li>
+                    <li id="Movie_setCurrent">
+                        <h3>setCurrent()</h3>
+                        <div class="detail">
+                            <p>音声ファイルの再生位置を設定します。</p>
+<pre>movie.setCurrent(1); // 1秒の位置へ</pre>
+                        </div>
+                    </li>
+                    <li id="Movie_stop">
+                        <h3>stop()</h3>
+                        <div class="detail">
+                            <p>停止します。<br />
+                            再生位置は0秒になります。</p>
+<pre>movie.stop(); // 停止して0秒の位置へ</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Observer">
             <dt>C.Observer<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -2289,6 +2378,7 @@ var num = storage.get('num'); // null</pre>
         ['ogg', 'ogg'],
         ['m4a', 'mp4']
     ],
+    controls: false, // default: false
     autoplay: false, // default: false
     loop: false, // default: false
     element: C.$('#sample')[0], // default: document.body
@@ -2322,6 +2412,14 @@ var num = storage.get('num'); // null</pre>
                         <div class="detail">
                             <p>音声ファイルの総再生時間を取得します。</p>
 <pre>var duration = sound.getDuration(); // Number</pre>
+                        </div>
+                    </li>
+                    <li id="Sound_loop">
+                        <h3>loop(bool)</h3>
+                        <div class="detail">
+                            <p>ループの設定を行います。</p>
+<pre>sound.loop(true); // ループ有り
+sound.loop(true); // ループ有り</pre>
                         </div>
                     </li>
                     <li id="Sound_pause">
@@ -2650,6 +2748,30 @@ timer.countDown(); // start timer.</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Video">
+            <dt>C.Video</dt>
+            <dd>
+                <div class="sample">
+<pre>var video = new c.Video({
+    dir: '/video/', // ディレクトリ
+    name: 'testvideo', // 拡張子抜きのファイル名
+    suffix: [ // default: undefined
+        ['webm', 'webm'], // [suffix,  type]
+        ['mp4', 'mp4'],
+        ['ogv', 'ogg']
+    ],
+    controls: false, // default: false
+    preload: 'auto', // default: 'auto'
+    autoplay: true, // default: false
+    loop: false // default: false
+});</pre>
+                    <p>Video要素を作成するためのクラスです。<br />
+                    もっと機能が必要な場合は<a href="#Movie">C.Movie</a>をおつかいください。<br />
+                    ブラウザがVideo要素に対応している場合のみ使用出来ます。<br />
+                    条件を満たしていない場合、newでインスタンスを生成した際、falseを返します</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="WindowLoad">
             <dt>C.WindowLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -2735,6 +2857,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
             <li><a href="#Mobile">Mobile</a></li>
+            <li><a href="#Movie">Movie</a></li>
             <li><a href="#Observer">Observer</a></li>
             <li><a href="#PreRender">PreRender</a></li>
             <li><a href="#Route">Route</a></li>
@@ -2748,6 +2871,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Transition">Transition</a></li>
             <li><a href="#Tweener">Tweener</a></li>
             <li><a href="#Twitter">Twitter</a></li>
+            <li><a href="#Video">Video</a></li>
             <li><a href="#WindowLoad">WindowLoad</a></li>
             <li><a href="#XML">XML</a></li>
         </ul>
