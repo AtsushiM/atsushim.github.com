@@ -26,18 +26,23 @@
 var $ = C.$,
     $support = $('#support'),
     $abg = $('#abg'),
-    shake;
+    shake,
+    base,
+    limit = 50;
 
 if (C.DeviceShake.support) {
     $support.html('support');
 
     shake = new C.DeviceShake();
     shake.bind(function(e) {
-        $abg.html(
-            e.alpha+','+
-            e.beta+','+
-            e.gamma
-        );
+        if (!base) {
+            base = e;
+        }
+
+        var diffbeta = Math.abs(e.beta - base.beta);
+        if (diffbeta > limit) {
+            alert('shake!');
+        }
     });
 }
 else {
