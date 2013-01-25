@@ -6,7 +6,7 @@ Global['DeviceOrientation'] = klass({
             return false;
         }
     },
-    'propeties': {
+    'properties': {
         'bind': function(func) {
             this['unbind']();
             this._bindid = this['contract'](win, 'deviceorientation', func);
