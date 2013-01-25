@@ -4,7 +4,7 @@ var Shake,
     mode,
     mobile = new C['Mobile']();
 
-if (mobile['isMobile']()) {
+/* if (mobile['isMobile']()) { */
     if (Global['DeviceMotion']['support']) {
         Shake = Global['DeviceMotion'];
         mode = 'DeviceMotion';
@@ -13,7 +13,7 @@ if (mobile['isMobile']()) {
         Shake = Global['DeviceOrientation'];
         mode = 'DeviceOrientation';
     }
-}
+/* } */
 mobile = mobile['dispose']();
 
 if (!Shake) {
@@ -42,7 +42,7 @@ Global['DeviceShake'] = klass({
                     e = {
                         'alpha': e['alpha'],
                         'beta': e['beta'],
-                        'gamma': e['bamma']
+                        'gamma': e['gamma']
                     };
                     handler(e);
                 };
@@ -52,7 +52,7 @@ Global['DeviceShake'] = klass({
                     e = {
                         'alpha': e['alpha'],
                         'beta': e['beta'],
-                        'gamma': e['bamma']
+                        'gamma': e['gamma']
                     };
                     handler(e);
                 };
