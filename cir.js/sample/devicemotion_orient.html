@@ -34,10 +34,10 @@ if (motion === true) {
     shake = new C.DeviceMotion();
     $('#motion').html('support motion.');
 }
-if (orientation === true){
-    shake = new C.DeviceOrientation();
-    $('#orientation').html('support orientation.');
-}
+// if (orientation === true){
+//     shake = new C.DeviceOrientation();
+//     $('#orientation').html('support orientation.');
+// }
 if (!motion && !orientation) {
     $('#nosupport').html('no shake.');
     return false;
