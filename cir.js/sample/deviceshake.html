@@ -45,9 +45,10 @@ if (C.DeviceShake.support) {
             if (diffbeta > limit) {
                 alert('shake!');
                 shaked = true;
-                setTimeout(1000, function() {
+                base = null;
+                setTimeout(function() {
                     shaked = false;
-                });
+                }, 1000);
             }
         }
     });
