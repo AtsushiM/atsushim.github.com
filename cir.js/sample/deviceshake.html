@@ -28,20 +28,27 @@ var $ = C.$,
     $abg = $('#abg'),
     shake,
     base,
-    limit = 50;
+    limit = 50,
+    shaked = false;
 
 if (C.DeviceShake.support) {
     $support.html('support');
 
     shake = new C.DeviceShake();
     shake.bind(function(e) {
-        if (!base) {
-            base = e;
-        }
+        if (!shaked) {
+            if (!base) {
+                base = e;
+            }
 
-        var diffbeta = Math.abs(e.beta - base.beta);
-        if (diffbeta > limit) {
-            alert('shake!');
+            var diffbeta = Math.abs(e.beta - base.beta);
+            if (diffbeta > limit) {
+                alert('shake!');
+                shaked = true;
+                setTimeout(1000, function() {
+                    shaked = false;
+                });
+            }
         }
     });
 }
