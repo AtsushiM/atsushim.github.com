@@ -43,7 +43,6 @@ if (C.DeviceShake.support) {
 
             var diffbeta = Math.abs(e.beta - base.beta);
             if (diffbeta > limit) {
-                alert('shake!');
                 shaked = true;
                 base = null;
                 setTimeout(function() {
