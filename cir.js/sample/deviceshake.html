@@ -29,9 +29,11 @@ var motion = C.DeviceMotion.support,
 
 if (motion === true) {
     shake = new C.DeviceMotion();
+    $sample.html('support motion.');
 }
 else if (orientation === true){
     shake = new C.DeviceOrientation();
+    $sample.html('support orientation.');
 }
 else {
     $sample.html('no shake.');
@@ -39,7 +41,7 @@ else {
 }
 
 shake.bind(function(e) {
-    $sample.html(JSON.stringify(e));
+    console.log(e);
 });
 
 
