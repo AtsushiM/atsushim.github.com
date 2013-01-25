@@ -4,7 +4,7 @@ var Shake,
     mode,
     mobile = new C['Mobile']();
 
-/* if (mobile['isMobile']()) { */
+if (mobile['isMobile']()) {
     if (Global['DeviceMotion']['support']) {
         Shake = Global['DeviceMotion'];
         mode = 'DeviceMotion';
@@ -13,7 +13,7 @@ var Shake,
         Shake = Global['DeviceOrientation'];
         mode = 'DeviceOrientation';
     }
-/* } */
+}
 mobile = mobile['dispose']();
 
 if (!Shake) {
