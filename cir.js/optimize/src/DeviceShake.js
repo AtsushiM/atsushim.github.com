@@ -38,12 +38,12 @@ Global['DeviceShake'] = klass({
             var wraphandle;
             if (mode === 'DeviceMotion') {
                 wraphandle = function(e) {
-                    e = e['rotationRate'];
-                    e = {
-                        'alpha': e['alpha'],
-                        'beta': e['beta'],
-                        'gamma': e['gamma']
-                    };
+                    // e = e['rotationRate'];
+                    // e = {
+                    //     'alpha': e['alpha'],
+                    //     'beta': e['beta'],
+                    //     'gamma': e['gamma']
+                    // };
                     handler(e);
                 };
             }

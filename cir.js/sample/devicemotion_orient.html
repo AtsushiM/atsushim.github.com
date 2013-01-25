@@ -44,22 +44,28 @@ if (!motion && !orientation) {
 }
 
 shake.bind(function(e) {
-    var rote = e.rotationRate;
+    var text = '';
 
-    if (rote) {
-        $('#agb').html(
-            rote.alpha+','+
-            rote.beta+','+
-            rote.gamma
-        );
+    for (var i in e) {
+        text += i+':'+e[i]+'<br />'
     }
-    else {
-        $('#agb').html(
-            e.alpha+','+
-            e.beta+','+
-            e.gamma
-        );
-    }
+    $('#agb').html(text);
+    // var rote = e.rotationRate;
+
+    // if (rote) {
+    //     $('#agb').html(
+    //         rote.alpha+','+
+    //         rote.beta+','+
+    //         rote.gamma
+    //     );
+    // }
+    // else {
+    //     $('#agb').html(
+    //         e.alpha+','+
+    //         e.beta+','+
+    //         e.gamma
+    //     );
+    // }
 });
 
 
