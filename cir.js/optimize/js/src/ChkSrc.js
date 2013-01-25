@@ -9,7 +9,11 @@ Global.ChkSrc = function(config) {
         instanse = {
             checkDependency: function() {
                 var $parent = $(this).parent().parent(),
-                    key = 'passive';
+                    key = 'passive',
+                    waste = dependency.waste,
+                    i,
+                    j,
+                    flg;
 
                 if (this.checked) {
                     key = 'active';
@@ -19,6 +23,24 @@ Global.ChkSrc = function(config) {
 
                 if (target) {
                     instanse.setDependency(target, this.checked);
+                }
+
+                if (!this.checked) {
+                    for (i in waste) {
+                        flg = true;
+                        j = waste[i].length;
+
+                        for (; j--;) {
+                            if ($('#' + waste[i][j] + ' input')[0].checked) {
+                                flg = false;
+                                break;
+                            }
+                        }
+
+                        if (flg) {
+                            $('#' + i + ' input')[0].checked = false;
+                        }
+                    }
                 }
             },
             setDependency: function(ary, bool) {

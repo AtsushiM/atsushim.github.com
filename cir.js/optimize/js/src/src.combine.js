@@ -131,7 +131,11 @@ Global.ChkSrc = function(config) {
         instanse = {
             checkDependency: function() {
                 var $parent = $(this).parent().parent(),
-                    key = 'passive';
+                    key = 'passive',
+                    waste = dependency.waste,
+                    i,
+                    j,
+                    flg;
 
                 if (this.checked) {
                     key = 'active';
@@ -141,6 +145,24 @@ Global.ChkSrc = function(config) {
 
                 if (target) {
                     instanse.setDependency(target, this.checked);
+                }
+
+                if (!this.checked) {
+                    for (i in waste) {
+                        flg = true;
+                        j = waste[i].length;
+
+                        for (; j--;) {
+                            if ($('#' + waste[i][j] + ' input')[0].checked) {
+                                flg = false;
+                                break;
+                            }
+                        }
+
+                        if (flg) {
+                            $('#' + i + ' input')[0].checked = false;
+                        }
+                    }
                 }
             },
             setDependency: function(ary, bool) {
@@ -194,23 +216,44 @@ Global.Dependency = function(config) {
                     'Animation'
                 ],
                 ExternalInterface: [
-                    'HashController',
+                    'HashQuery',
                     'ExternalInterface_Android',
                     'ExternalInterface_IOS'
                 ],
                 ExternalInterface_Android: [
-                    'HashController',
+                    'HashQuery',
                     'ExternalInterface'
                 ],
                 ExternalInterface_IOS: [
-                    'HashController',
+                    'HashQuery',
                     'ExternalInterface'
                 ],
+                Audio: [
+                    'Embed'
+                ],
                 Sound: [
+                    'Embed',
+                    'Media',
                     'Audio'
                 ],
+                Video: [
+                    'Embed'
+                ],
                 Movie: [
+                    'Embed',
+                    'Media',
                     'Video'
+                ],
+                Media: [
+                    'Embed',
+                    'Audio',
+                    'Video'
+                ],
+                LocalStorage: [
+                    'WebStorage'
+                ],
+                SessionStorage: [
+                    'WebStorage'
                 ]
             },
             passive: {
@@ -221,7 +264,7 @@ Global.Dependency = function(config) {
                 selector_methods: [
                     'selector_methods_animate'
                 ],
-                HashController: [
+                HashQuery: [
                     'ExternalInterface',
                     'ExternalInterface_Android',
                     'ExternalInterface_IOS'
@@ -233,10 +276,39 @@ Global.Dependency = function(config) {
                 Tweener: [
                     'selector_methods_animate'
                 ],
+                Embed: [
+                    'Audio',
+                    'Video',
+                    'Media',
+                    'Sound',
+                    'Movie'
+                ],
+                Media: [
+                    'Audio',
+                    'Video',
+                    'Sound',
+                    'Movie'
+                ],
                 Audio: [
                     'Sound'
                 ],
                 Video: [
+                    'Movie'
+                ],
+                WebStorage: [
+                    'LocalStorage',
+                    'SessionStorage'
+                ]
+            },
+            waste: {
+                ExternalInterface: [
+                    'ExternalInterface_Android',
+                    'ExternalInterface_IOS'
+                ],
+                Media: [
+                    'Audio',
+                    'Video',
+                    'Sound',
                     'Movie'
                 ]
             }
@@ -265,8 +337,6 @@ Global.MakeSrc = function(config) {
                         src += encodeURIComponent(srcs[key]);
                     }
                 }
-
-                console.log(src);
 
                 ajax.closurecompiler({
                     src: src,

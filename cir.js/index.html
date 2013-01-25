@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Cool is Right.</h2>
-    <p class="ver">0.8.1</p>
+    <p class="ver">0.8.2</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはスマートフォンメインのWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.1)</span> 機能選択：<a href="optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.2)</span> 機能選択：<a href="optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -1001,7 +1001,7 @@ ajax.request({
             </dd>
         </dl>
         <dl id="Audio">
-            <dt>C.Audio</dt>
+            <dt>C.Audio<span>[ required: <a href="#Embed">Embed</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var audio = new c.Audio({
@@ -1406,6 +1406,31 @@ dragflick.direction({
                 </ul>
             </dd>
         </dl>
+        <dl id="Embed">
+            <dt>C.Embed</dt>
+            <dd>
+                <div class="sample">
+<pre>var embed = new c.Embed({
+    type: 'Video', // 'Audio' || 'Video'
+    dir: '/video/', // ディレクトリ
+    name: 'testvideo', // 拡張子抜きのファイル名
+    suffix: [ // default: undefined
+        ['webm', 'webm'], // [suffix,  type]
+        ['mp4', 'mp4'],
+        ['ogv', 'ogg']
+    ],
+    controls: false, // default: false
+    preload: 'auto', // default: 'auto'
+    autoplay: true, // default: false
+    loop: false // default: false
+});</pre>
+                    <p>Audio要素、もしくはVideo要素を生成するクラスです。<br />
+                    もっと機能が必要な場合は<a href="#Media">C.Media</a>をおつかいください。<br />
+                    ブラウザがAudio要素、Video要素に対応している場合のみ使用出来ます。<br />
+                    条件を満たしていない場合、newでインスタンスを生成した際、falseを返します</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="Event">
             <dt>C.Event<span>[ indispensable ]</span></dt>
             <dd>
@@ -1766,7 +1791,7 @@ var hashobj = hashquery.getHash();
             </dd>
         </dl>
         <dl id="LocalStorage">
-            <dt>C.LocalStorage<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt>C.LocalStorage<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#WebStorage">WebStorage</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var storage = new C.LocalStorage();
@@ -1936,8 +1961,98 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Media">
+            <dt>C.Media<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Audio">Audio</a> <a href="#Video">Video</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var media = new c.Media({
+    type: 'Audio', // 'Audio' || 'Video'
+    dir: '/sound/', // ディレクトリ名
+    name: 'tm2_door000', // 拡張子抜きのファイル名
+    suffix: [ // default: undefined
+        ['mp3', 'mpeg'], // [suffix,  type]
+        ['wav', 'wav'],
+        ['ogg', 'ogg'],
+        ['m4a', 'mp4']
+    ],
+    controls: false, // default: false
+    autoplay: false, // default: false
+    loop: false, // default: false
+    element: C.$('#sample')[0], // default: document.body
+    oncanplay: function(e) {
+        // write code.
+    },
+    onended: function(e) {
+        // write code.
+    }
+});</pre>
+                    <p>音声、もしくは動画ファイルを再生させるためのクラスです。<br />
+                    実行環境がAudio要素、もしくはVideo要素のloopやautoplayに確実に対応している場合は、<a href="#Embed">C.Embed</a>で事足りますが、そうでない場合やcanplayイベントなどを簡単に紐付けたい場合、このクラスをおつかいください 。</p>
+                </div>
+                <ul>
+                    <li id="Media_getElement">
+                        <h3>getElement()</h3>
+                        <div class="detail">
+                            <p>インスタンス生成時に作られたAudio要素を取得します。</p>
+<pre>var element = media.getElement(); // element</pre>
+                        </div>
+                    </li>
+                    <li id="Media_getCurrent">
+                        <h3>getCurrent()</h3>
+                        <div class="detail">
+                            <p>現在の秒数を取得します。</p>
+<pre>var currenttime = media.getCurrent(); // Number</pre>
+                        </div>
+                    </li>
+                    <li id="Media_getDuration">
+                        <h3>getDuration()</h3>
+                        <div class="detail">
+                            <p>音声ファイルの総再生時間を取得します。</p>
+<pre>var duration = media.getDuration(); // Number</pre>
+                        </div>
+                    </li>
+                    <li id="Media_loop">
+                        <h3>loop(bool)</h3>
+                        <div class="detail">
+                            <p>ループの設定を行います。</p>
+<pre>media.loop(true); // ループ有り
+media.loop(false); // ループ無し</pre>
+                        </div>
+                    </li>
+                    <li id="Media_pause">
+                        <h3>pause()</h3>
+                        <div class="detail">
+                            <p>一時停止します。</p>
+<pre>media.pause();</pre>
+                        </div>
+                    </li>
+                    <li id="Media_play">
+                        <h3>play()</h3>
+                        <div class="detail">
+                            <p>再生します。</p>
+<pre>media.play();</pre>
+                        </div>
+                    </li>
+                    <li id="Media_setCurrent">
+                        <h3>setCurrent()</h3>
+                        <div class="detail">
+                            <p>音声ファイルの再生位置を設定します。</p>
+<pre>media.setCurrent(1); // 1秒の位置へ</pre>
+                        </div>
+                    </li>
+                    <li id="Media_stop">
+                        <h3>stop()</h3>
+                        <div class="detail">
+                            <p>停止します。<br />
+                            再生位置は0秒になります。</p>
+<pre>media.stop(); // 停止して0秒の位置へ</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Movie">
-            <dt>C.Movie<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Video">Video</a> ]</span></dt>
+            <dt>C.Movie<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Media">Media</a> <a href="#Video">Video</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var movie = new c.Movie({
@@ -1978,11 +2093,11 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
 <pre>var duration = movie.getDuration(); // Number</pre>
                         </div>
                     </li>
-                    <li id="Movie_getVideo">
-                        <h3>getVideo()</h3>
+                    <li id="Movie_getElement">
+                        <h3>getElement()</h3>
                         <div class="detail">
                             <p>インスタンス生成時に作られたVideo要素を取得します。</p>
-<pre>var video = movie.getVideo(); // element</pre>
+<pre>var video = movie.getElement(); // element</pre>
                         </div>
                     </li>
                     <li id="Movie_loop">
@@ -2299,7 +2414,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             </dd>
         </dl>
         <dl id="SessionStorage">
-            <dt>C.SessionStorage<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt>C.SessionStorage<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#WebStorage">WebStorage</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var storage = new C.SessionStorage();
@@ -2366,7 +2481,7 @@ var num = storage.get('num'); // null</pre>
             </dd>
         </dl>
         <dl id="Sound">
-            <dt>C.Sound<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Audio">Audio</a> ]</span></dt>
+            <dt>C.Sound<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Audio">Audio</a> <a href="#Media">Media</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var sound = new c.Sound({
@@ -2393,11 +2508,11 @@ var num = storage.get('num'); // null</pre>
                     実行環境がAudio要素のloopやautoplayに確実に対応している場合は、<a href="#Audio">C.Audio</a>で事足りますが、そうでない場合やcanplayイベントなどを簡単に紐付けたい場合、このクラスをおつかいください 。</p>
                 </div>
                 <ul>
-                    <li id="Sound_getAudio">
-                        <h3>getAudio()</h3>
+                    <li id="Sound_getElement">
+                        <h3>getElement()</h3>
                         <div class="detail">
                             <p>インスタンス生成時に作られたAudio要素を取得します。</p>
-<pre>var audio = sound.getAudio(); // element</pre>
+<pre>var audio = sound.getElement(); // element</pre>
                         </div>
                     </li>
                     <li id="Sound_getCurrent">
@@ -2749,7 +2864,7 @@ timer.countDown(); // start timer.</pre>
             </dd>
         </dl>
         <dl id="Video">
-            <dt>C.Video</dt>
+            <dt>C.Video<span>[ required: <a href="#Embed">Embed</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var video = new c.Video({
@@ -2770,6 +2885,68 @@ timer.countDown(); // start timer.</pre>
                     ブラウザがVideo要素に対応している場合のみ使用出来ます。<br />
                     条件を満たしていない場合、newでインスタンスを生成した際、falseを返します</p>
                 </div>
+            </dd>
+        </dl>
+        <dl id="WebStorage">
+            <dt>C.WebStorage<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var storage = new C.WebStorage({
+    type: 'Session', // 'Local' || 'Session'
+    namespace: 'cir', // default: undefind
+    single: false // default: false
+});</pre>
+                    <p>webStorageの操作を行います。<br />
+                    typeでlocalStorageかsessionStorageのどちらを使うか指定します。<br />
+                    オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。<br />
+                    namespaceオプションを指定した場合、sessionStorage中で適切な切り分けを行います。</p>
+                </div>
+                <ul>
+                    <li id="WebStorage_get">
+                        <h3>get([key])</h3>
+                        <div class="detail">
+                            <p>値を取得します。</p>
+<pre>var cir = storage.get('cir'); // キーがcirの値を取得
+cir = storage.get(); // まとめて取得</pre>
+                        </div>
+                    </li>
+                    <li id="WebStorage_remove">
+                        <h3>remove(key)</h3>
+                        <div class="detail">
+                            <p>値を削除します。</p>
+<pre>storage.set('cir', 'Cool is Right.'); // 追加
+storage.remove('cir'); // 削除
+
+var cir = storage.get('cir'); // null</pre>
+                        </div>
+                    </li>
+                    <li id="WebStorage_reset">
+                        <h3>reset()</h3>
+                        <div class="detail">
+                            <p>保存された値を全て削除します。<br />
+                            namespaceオプションが指定されない場合はsessionStorage全体が削除されます。</p>
+<pre>storage.set('txt', 'Cool is Right.');
+storage.set('num', 123);
+
+storage.reset();
+
+var txt = storage.get('txt'); // null
+var num = storage.get('num'); // null</pre>
+                        </div>
+                    </li>
+                    <li id="WebStorage_set">
+                        <h3>set(key, value)</h3>
+                        <div class="detail">
+                            <p>値を保存します。<br />
+                            保存される値はStringに変換されます。</p>
+<pre>storage.set('cir', {
+    c: 'Cool',
+    i: 'is',
+    r: 'Right'
+});</pre>
+                        </div>
+                    </li>
+                </ul>
             </dd>
         </dl>
         <dl id="WindowLoad">
@@ -2848,6 +3025,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#Deferred">Deferred</a></li>
             <li><a href="#DragFlick">DragFlick</a></li>
+            <li><a href="#Embed">Embed</a></li>
             <li><a href="#Event">Event</a></li>
             <li><a href="#ExternalInterface">ExternalInterface</a></li>
             <li><a href="#Facebook">Facebook</a></li>
@@ -2856,6 +3034,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#HashQuery">HashQuery</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
+            <li><a href="#Media">Media</a></li>
             <li><a href="#Mobile">Mobile</a></li>
             <li><a href="#Movie">Movie</a></li>
             <li><a href="#Observer">Observer</a></li>
@@ -2872,6 +3051,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Tweener">Tweener</a></li>
             <li><a href="#Twitter">Twitter</a></li>
             <li><a href="#Video">Video</a></li>
+            <li><a href="#WebStorage">WebStorage</a></li>
             <li><a href="#WindowLoad">WindowLoad</a></li>
             <li><a href="#XML">XML</a></li>
         </ul>

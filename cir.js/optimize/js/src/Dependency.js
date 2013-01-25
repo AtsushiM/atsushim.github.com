@@ -14,23 +14,44 @@ Global.Dependency = function(config) {
                     'Animation'
                 ],
                 ExternalInterface: [
-                    'HashController',
+                    'HashQuery',
                     'ExternalInterface_Android',
                     'ExternalInterface_IOS'
                 ],
                 ExternalInterface_Android: [
-                    'HashController',
+                    'HashQuery',
                     'ExternalInterface'
                 ],
                 ExternalInterface_IOS: [
-                    'HashController',
+                    'HashQuery',
                     'ExternalInterface'
                 ],
+                Audio: [
+                    'Embed'
+                ],
                 Sound: [
+                    'Embed',
+                    'Media',
                     'Audio'
                 ],
+                Video: [
+                    'Embed'
+                ],
                 Movie: [
+                    'Embed',
+                    'Media',
                     'Video'
+                ],
+                Media: [
+                    'Embed',
+                    'Audio',
+                    'Video'
+                ],
+                LocalStorage: [
+                    'WebStorage'
+                ],
+                SessionStorage: [
+                    'WebStorage'
                 ]
             },
             passive: {
@@ -41,7 +62,7 @@ Global.Dependency = function(config) {
                 selector_methods: [
                     'selector_methods_animate'
                 ],
-                HashController: [
+                HashQuery: [
                     'ExternalInterface',
                     'ExternalInterface_Android',
                     'ExternalInterface_IOS'
@@ -53,10 +74,39 @@ Global.Dependency = function(config) {
                 Tweener: [
                     'selector_methods_animate'
                 ],
+                Embed: [
+                    'Audio',
+                    'Video',
+                    'Media',
+                    'Sound',
+                    'Movie'
+                ],
+                Media: [
+                    'Audio',
+                    'Video',
+                    'Sound',
+                    'Movie'
+                ],
                 Audio: [
                     'Sound'
                 ],
                 Video: [
+                    'Movie'
+                ],
+                WebStorage: [
+                    'LocalStorage',
+                    'SessionStorage'
+                ]
+            },
+            waste: {
+                ExternalInterface: [
+                    'ExternalInterface_Android',
+                    'ExternalInterface_IOS'
+                ],
+                Media: [
+                    'Audio',
+                    'Video',
+                    'Sound',
                     'Movie'
                 ]
             }

@@ -20,8 +20,6 @@ Global.MakeSrc = function(config) {
                     }
                 }
 
-                console.log(src);
-
                 ajax.closurecompiler({
                     src: src,
                     callback: function(data) {
