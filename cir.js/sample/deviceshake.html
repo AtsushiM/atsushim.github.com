@@ -20,6 +20,7 @@
     <p id="motion"></p>
     <p id="orientation"></p>
     <p id="nosupport"></p>
+    <p id="agb"></p>
 </div>
 <script src="/cir.js/js/lib/cir.min.js"></script>
 <script type="text/javascript">
@@ -43,7 +44,22 @@ if (!motion && !orientation) {
 }
 
 shake.bind(function(e) {
-    console.log(e);
+    var rote = e.rotationRate;
+
+    if (rote) {
+        $('#agb').html(
+            rote.alpha+','+
+            rote.beta+','+
+            rote.gamma
+        );
+    }
+    else {
+        $('#agb').html(
+            e.alpha+','+
+            e.beta+','+
+            e.gamma
+        );
+    }
 });
 
 
