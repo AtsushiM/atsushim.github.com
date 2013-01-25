@@ -17,7 +17,9 @@
 </head>
 <body class="sample-audio">
 <div id="samples">
-    <p id="sample"></p>
+    <p id="motion"></p>
+    <p id="orientation"></p>
+    <p id="nosupport"></p>
 </div>
 <script src="/cir.js/js/lib/cir.min.js"></script>
 <script type="text/javascript">
@@ -25,18 +27,18 @@
 var motion = C.DeviceMotion.support,
     orientation = C.DeviceOrientation.support,
     shake,
-    $sample = C.$('#sample');
+    $ = C.$;
 
 if (motion === true) {
     shake = new C.DeviceMotion();
-    $sample.html('support motion.');
+    $('#motion').html('support motion.');
 }
-else if (orientation === true){
+if (orientation === true){
     shake = new C.DeviceOrientation();
-    $sample.html('support orientation.');
+    $('#orientation').html('support orientation.');
 }
-else {
-    $sample.html('no shake.');
+if (!motion && !orientation) {
+    $('#nosupport').html('no shake.');
     return false;
 }
 
