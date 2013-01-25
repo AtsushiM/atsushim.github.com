@@ -27,10 +27,10 @@ var motion = C.DeviceMotion.support,
     shake,
     $sample = C.$('#sample');
 
-if (motion) {
+if (motion === true) {
     shake = new C.DeviceMotion();
 }
-else if (orientation){
+else if (orientation === true){
     shake = new C.DeviceOrientation();
 }
 else {
