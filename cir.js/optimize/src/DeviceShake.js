@@ -5,13 +5,13 @@ var Shake,
     mobile = new C['Mobile']();
 
 if (mobile['isMobile']()) {
-    if (Global['DeviceMotion']['support']) {
-        Shake = Global['DeviceMotion'];
-        mode = 'DeviceMotion';
-    }
-    else if (Global['DeviceOrientation']['support']) {
+    if (Global['DeviceOrientation']['support']) {
         Shake = Global['DeviceOrientation'];
         mode = 'DeviceOrientation';
+    }
+    else if (Global['DeviceMotion']['support']) {
+        Shake = Global['DeviceMotion'];
+        mode = 'DeviceMotion';
     }
 }
 mobile = mobile['dispose']();
@@ -36,19 +36,19 @@ Global['DeviceShake'] = klass({
         },
         'bind': function(handler) {
             var wraphandle;
-            if (mode === 'DeviceMotion') {
+            if (mode === 'DeviceOrientation') {
                 wraphandle = function(e) {
-                    // e = e['rotationRate'];
-                    // e = {
-                    //     'alpha': e['alpha'],
-                    //     'beta': e['beta'],
-                    //     'gamma': e['gamma']
-                    // };
+                    e = {
+                        'alpha': e['alpha'],
+                        'beta': e['beta'],
+                        'gamma': e['gamma']
+                    };
                     handler(e);
                 };
             }
             else {
                 wraphandle = function(e) {
+                    e = e['rotationRate'];
                     e = {
                         'alpha': e['alpha'],
                         'beta': e['beta'],
