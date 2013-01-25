@@ -5,6 +5,7 @@ Global['DeviceMotion'] = klass({
         if (!Global['DeviceMotion']['support']) {
             return false;
         }
+        this['_super']();
     },
     'properties': {
         'bind': function(func) {

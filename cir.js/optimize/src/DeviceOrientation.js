@@ -5,6 +5,7 @@ Global['DeviceOrientation'] = klass({
         if (!Global['DeviceOrientation']['support']) {
             return false;
         }
+        this['_super']();
     },
     'properties': {
         'bind': function(func) {
