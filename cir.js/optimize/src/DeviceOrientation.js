@@ -16,4 +16,4 @@ Global['DeviceOrientation'] = klass({
         }
     }
 });
-Global['DeviceOrientation']['support'] = 'deviceorientation' in win;
+Global['DeviceOrientation']['support'] = 'ondeviceorientation' in win;

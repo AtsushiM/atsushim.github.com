@@ -16,4 +16,4 @@ Global['DeviceMotion'] = klass({
         }
     }
 });
-Global['DeviceMotion']['support'] = 'devicemotion' in win;
+Global['DeviceMotion']['support'] = 'ondevicemotion' in win;
