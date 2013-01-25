@@ -22,23 +22,27 @@
 <script src="/cir.js/js/lib/cir.min.js"></script>
 <script type="text/javascript">
 (function() {
-    var $ = C.$,
-        $sample = $('#sample'),
-        shake = new C.DeviceMotion() || new C.DeviceOrientation();
+var motion = C.DeviceMotion.support,
+    orientation = C.DeviceOrientation.support,
+    shake,
+    $sample = C.$('#sample');
 
-    if (!shake) {
-        $sample.html("can't shake.");
+if (motion) {
+    shake = new C.DeviceMotion();
+}
+else if (orientation){
+    shake = new C.DeviceOrientation();
+}
+else {
+    $sample.html('no shake.');
+    return false;
+}
 
-        return false;
-    }
-    else{
-        $sample.html('can shake.');
-    }
+shake.bind(function(e) {
+    $sample.html(JSON.stringify(e));
+});
 
-    console.log(shake);
-    shake.bind(function(e){
-        $sample.html(JSON.stringify(e));
-    });
+
 }());
 </script>
 </body>

@@ -40,10 +40,6 @@ for (; i < len; i++) {
 Mine = Global['Transition'] = klass({
     'extend': Base,
     'init': function(element, property, option) {
-        if (!support) {
-            return FALSE;
-        }
-
         option = option || {};
         option['onComplete'] = option['onComplete'] || nullFunction;
 

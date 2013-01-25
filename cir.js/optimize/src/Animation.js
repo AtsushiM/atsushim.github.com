@@ -38,10 +38,6 @@ for (; i < len; i++) {
 Mine = Global['Animation'] = klass({
     'extend': Base,
     'init': function(element, property, option) {
-        if (!support) {
-            return FALSE;
-        }
-
         option = option || {};
 
         this.onComplete = option['onComplete'] || nullFunction;
