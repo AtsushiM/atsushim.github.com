@@ -40,8 +40,8 @@
             <dt>C<span>[ namespaece ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var ajax = newsC.Ajax(); // Ajax
-var mobile = newsC.Mobile(); // Mobile</pre>
+<pre>var ajax = new C.Ajax(); // Ajax
+var mobile = new C.Mobile(); // Mobile</pre>
                     <p>CIR.jsのネームスペースです。<br />
                     すべてのクラス、メソッドはC以下に存在します。</p>
                 </div>
@@ -891,7 +891,7 @@ str = util.typeCast(str); // 'sample'
             <dt>C.Ajax<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var ajax = newsC.Ajax();</pre>
+                    <pre>var ajax = new C.Ajax();</pre>
                     <p>Ajax処理を行うクラスです。<br />
                     インスタンス生成時にrequestメソッドと同じ形式の引数を渡すとrequestメソッドを呼び出します。</p>
                 </div>
@@ -965,7 +965,7 @@ ajax.request({
             <dt>C.Animation<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var anime = newsC.Animation(C.$('#box')[0], {
+<pre>var anime = new C.Animation(C.$('#box')[0], {
     'margin-left': 100,
     '-webkit-transform': 'rotate(180deg)'
 }, {
@@ -1004,7 +1004,7 @@ ajax.request({
             <dt>C.Audio<span>[ required: <a href="#Embed">Embed</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var audio = newsC.Audio({
+<pre>var audio = new C.Audio({
     dir: '/sound/', // ディレクトリ
     name: 'tm2_door000', // 拡張子抜きのファイル名
     controls: false, // default: false
@@ -1025,7 +1025,7 @@ ajax.request({
             <dt>C.Base<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var base = newsC.Base({});</pre>
+<pre>var base = new C.Base({});</pre>
                     <p>ほぼ全てのクラスに継承されている基底クラスです。<br />
                     このクラスで宣言されているメソッドは他のほぼ全てのクラスで使用出来ます。</p>
                 </div>
@@ -1070,7 +1070,7 @@ base.uncontract(contractid); // イベント削除</pre>
             <dt>C.Bind<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var bind = newsC.Bind({
+<pre>var bind = new C.Bind({
     element: C.$('#sample')[0],
     events: {
         click: function(e) {
@@ -1115,7 +1115,7 @@ base.uncontract(contractid); // イベント削除</pre>
             <dt>C.Brush<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var brush = newsC.Brush({
+<pre>var brush = new C.Brush({
     canvas: canvasElement,
     width: 100,
     height: 100
@@ -1209,9 +1209,9 @@ brush.draw([
             <dt>C.DataStore<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var store = newsC.DataStore();
+<pre>var store = new C.DataStore();
 // singleton
-var storeSingle = newsC.DataStore({
+var storeSingle = new C.DataStore({
     single: true
 })</pre>
                     <p>一時的な情報を保存するためのクラスです。<br />
@@ -1271,7 +1271,7 @@ store.set('num', 123); // Number</pre>
             <dt>C.Deferred<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var deferred = newsC.Deferred();</pre>
+                    <pre>var deferred = new C.Deferred();</pre>
                     <p>遅延処理を簡易に実行するためのメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
@@ -1333,7 +1333,7 @@ deferred.done(function() {
             <dt>C.DragFlick<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var dragflick = newsC.DragFlick();</pre>
+                    <pre>var dragflick = new C.DragFlick();</pre>
                     <p>ドラッグ＆フリック用の処理を提供するクラスです。</p>
                 </div>
                 <ul>
@@ -1408,7 +1408,7 @@ dragflick.direction({
             <dt>C.Embed</dt>
             <dd>
                 <div class="sample">
-<pre>var embed = newsC.Embed({
+<pre>var embed = new C.Embed({
     type: 'Video', // 'Audio' || 'Video'
     dir: '/video/', // ディレクトリ
     name: 'testvideo', // 拡張子抜きのファイル名
@@ -1433,9 +1433,9 @@ dragflick.direction({
             <dt>C.Event<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var e = newsC.Event();
+<pre>var e = new C.Event();
 // singleton
-var eSingle = newsC.Event({
+var eSingle = new C.Event({
     single: true
 });</pre>
                     <p>エレメント用の各イベントを纏めたクラスです。<br />
@@ -1504,7 +1504,7 @@ $sample.on(C.event.switchup, function() {
             <dt>C.ExternalInterface<span>[ extend: <a href="#HashQuery">HashQuery</a> ]</span><span>[ required: ExternalInterface.Android ExternalInterface.IOS ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var external = newsC.ExternalInterface({
+<pre>var external = new C.ExternalInterface({
     android: window.AndroidMethod
 });</pre>
                     <p>ハイブリッドアプリ用にネイティブとのやり取りを行うためのメソッドを提供するクラスです。<br />
@@ -1566,7 +1566,7 @@ location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除している�
             <dt>C.Facebook<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var facebook = newsC.Facebook();</pre>
+                    <pre>var facebook = new C.Facebook();</pre>
                     <p>Facebook用のユーティリティクラスです。</p>
                 </div>
                 <ul>
@@ -1592,8 +1592,8 @@ location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除している�
             <dt>C.FontImg<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var font = newsC.FontImg(); //element.className == 'font_X'
-var fontWhite = newsC.FontImg({
+<pre>var font = new C.FontImg(); //element.className == 'font_X'
+var fontWhite = new C.FontImg({
     type: 'white', // default: '' / element.className == 'font_white_X'
     tag: 'span' // default: 'span'
 });</pre>
@@ -1619,7 +1619,7 @@ var tag_white = font.make('A');
             <dt>C.FPS<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var fps = newsC.FPS({
+<pre>var fps = new C.FPS({
     single: false, // singleton / default: false
     manual: false, // default: false
     criterion: 10,
@@ -1682,7 +1682,7 @@ var tag_white = font.make('A');
             <dt>C.HashQuery<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var hashquery = newsC.HashQuery();</pre>
+                    <pre>var hashquery = new C.HashQuery();</pre>
                     <p>location.hashの操作を行うメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
@@ -1752,7 +1752,7 @@ var hashobj = hashquery.getHash();
             <dt>C.ImgLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var imgload = newsC.ImgLoad({
+<pre>var imgload = new C.ImgLoad({
     manual: false, // default: false
     srcs: [
         '/img/test1.png',
@@ -1792,9 +1792,9 @@ var hashobj = hashquery.getHash();
             <dt>C.LocalStorage<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#WebStorage">WebStorage</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var storage = newsC.LocalStorage();
+<pre>var storage = new C.LocalStorage();
 // namespace
-var storage_cir = newsC.LocalStorage({
+var storage_cir = new C.LocalStorage({
     namespace: 'cir'
 });</pre>
                     <p>localStorageの操作を行います。<br />
@@ -1859,7 +1859,7 @@ var num = storage.get('num'); // null</pre>
             <dt>C.Mobile<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var mobile = newsC.Mobile();</pre>
+                    <pre>var mobile = new C.Mobile();</pre>
                     <p>モバイル端末用のユーティリティクラスです。</p>
                 </div>
                 <ul>
@@ -1963,7 +1963,7 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
             <dt>C.Media<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Audio">Audio</a> <a href="#Video">Video</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var media = newsC.Media({
+<pre>var media = new C.Media({
     type: 'Audio', // 'Audio' || 'Video'
     dir: '/sound/', // ディレクトリ名
     name: 'tm2_door000', // 拡張子抜きのファイル名
@@ -2054,7 +2054,7 @@ media.loop(false); // ループ無し</pre>
             <dt>C.Movie<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Media">Media</a> <a href="#Video">Video</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var movie = newsC.Movie({
+<pre>var movie = new C.Movie({
     dir: '/video/', // ディレクトリ名
     name: 'testvideo', // 拡張子抜きのファイル名
     controls: true, // default: false,
@@ -2141,9 +2141,9 @@ movie.loop(false); // ループ無し</pre>
             <dt>C.Observer<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var observer = newsC.Observer();
+<pre>var observer = new C.Observer();
 // singleton
-var observerSingle = newsC.Observer({
+var observerSingle = new C.Observer({
     single: true
 });</pre>
                     <p>オブザーバーパターンを提供するクラスです。</p>
@@ -2220,7 +2220,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             <dt>C.PreRender<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var render = newsC.PreRender({
+<pre>var render = new C.PreRender({
     manual: false, // default: false
     elements: [
         element1,
@@ -2255,7 +2255,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             <dt>C.Route<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var route = newsC.Route({
+<pre>var route = new C.Route({
     target: location.hash, // default: ''
     action: {
         '^#action_1$': function(actionName) {
@@ -2301,7 +2301,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             <dt>C.ScriptLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var scriptload = newsC.ScriptLoad();</pre>
+                    <pre>var scriptload = new C.ScriptLoad();</pre>
                     <p>scriptファイルを動的に読み込むメソッドを提供するクラスです。</p>
                 </div>
                 <ul>
@@ -2337,7 +2337,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             <dt>C.ServerMeta<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var server = newsC.ServerMeta({
+<pre>var server = new C.ServerMeta({
     callback: function() {
         // write code.
     }
@@ -2414,9 +2414,9 @@ observer.fire('jsonloaded', 'fire2');</pre>
             <dt>C.SessionStorage<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#WebStorage">WebStorage</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var storage = newsC.SessionStorage();
+<pre>var storage = new C.SessionStorage();
 // namespace
-var storage_cir = newsC.SessionStorage({
+var storage_cir = new C.SessionStorage({
     namespace: 'cir'
 });</pre>
                     <p>sessionStorageの操作を行います。<br />
@@ -2481,7 +2481,7 @@ var num = storage.get('num'); // null</pre>
             <dt>C.Sound<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Audio">Audio</a> <a href="#Media">Media</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var sound = newsC.Sound({
+<pre>var sound = new C.Sound({
     dir: '/sound/', // ディレクトリ名
     name: 'tm2_door000', // 拡張子抜きのファイル名
     controls: false, // default: false
@@ -2568,7 +2568,7 @@ sound.loop(false); // ループ無し</pre>
             <dt>C.Surrogate<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var surrogate = newsC.Surrogate({
+<pre>var surrogate = new C.Surrogate({
     delay: 20,
     callback: function(vars) {
         // write code.
@@ -2613,7 +2613,7 @@ surrogate.flush();</pre>
             <dt>C.Throttle<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var throttle = newsC.Throttle({
+<pre>var throttle = new C.Throttle({
     waittime: 100,
     callback: function(vars) {
         // write code.
@@ -2660,7 +2660,7 @@ throttle.request('Cool is Right.'); // 実行される</pre>
             <dt>C.Timer</dt>
             <dd>
                 <div class="sample">
-<pre>var timer = newsC.Timer({
+<pre>var timer = new C.Timer({
     template: 'xxx.xxx',
     limit: 20, // sec
     interval: 0.05, // sec
@@ -2739,7 +2739,7 @@ timer.countDown(); // start timer.</pre>
             <dt>C.Transition<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var transition = newsC.Transition(
+<pre>var transition = new C.Transition(
     element,
     {
         width: 100,
@@ -2784,7 +2784,7 @@ timer.countDown(); // start timer.</pre>
             <dt>C.Tweener<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var tweener = newsC.Tweener(
+<pre>var tweener = new C.Tweener(
     element.style,
     {
         width: {
@@ -2839,7 +2839,7 @@ timer.countDown(); // start timer.</pre>
             <dt>C.Twitter<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var twitter = newsC.Twitter();</pre>
+                    <pre>var twitter = new C.Twitter();</pre>
                     <p>Twitter用のユーティリティクラスです。</p>
                 </div>
                 <ul>
@@ -2862,7 +2862,7 @@ timer.countDown(); // start timer.</pre>
             <dt>C.Video<span>[ required: <a href="#Embed">Embed</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var video = newsC.Video({
+<pre>var video = new C.Video({
     dir: '/video/', // ディレクトリ
     name: 'testvideo', // 拡張子抜きのファイル名
     controls: false, // default: false
@@ -2883,7 +2883,7 @@ timer.countDown(); // start timer.</pre>
             <dt>C.WebStorage<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var storage = newsC.WebStorage({
+<pre>var storage = new C.WebStorage({
     type: 'Session', // 'Local' || 'Session'
     namespace: 'cir', // default: undefind
     single: false // default: false
@@ -2891,7 +2891,7 @@ timer.countDown(); // start timer.</pre>
                     <p>webStorageの操作を行います。<br />
                     typeでlocalStorageかsessionStorageのどちらを使うか指定します。<br />
                     オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。<br />
-                    namespaceオプションを指定した場合、sessionStorage中で適切な切り分けを行います。</p>
+                    namespaceオプションを指定した場合、対象のstorage中で適切な切り分けを行います。</p>
                 </div>
                 <ul>
                     <li id="WebStorage_get">
@@ -2945,7 +2945,7 @@ var num = storage.get('num'); // null</pre>
             <dt>C.WindowLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var load = newsC.WindowLod({
+<pre>var load = new C.WindowLod({
     onload: function() {
         // write code.
     }
@@ -2958,7 +2958,7 @@ var num = storage.get('num'); // null</pre>
             <dt>C.XML<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var xml = newsC.XML({
+<pre>var xml = new C.XML({
     data: xmlText
 });</pre>
                     <p>XMLデータの操作を簡易にするメソッドを提供するクラスです。</p>
