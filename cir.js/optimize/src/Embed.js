@@ -1,26 +1,6 @@
 /* Test: "../../spec/_src/src/Embed/test.js" */
 Global['Embed'] = function(config) {
-    if (!win['HTML' + config['type'] + 'Element']) {
-        return FALSE;
-    }
-
-    var type = config['type'].toLowerCase(),
-        embed = create(type),
-        suffix = config['suffix'],
-        support,
-        i = 0,
-        len = suffix.length;
-
-    for (; i < len; i++) {
-        if (embed.canPlayType(type + '/' + suffix[i][1])) {
-            support = suffix[i][0];
-            break;
-        }
-    }
-
-    if (!support) {
-        return FALSE;
-    }
+    var embed = create(config['type'].toLowerCase());
 
     embed['controls'] = config['controls'] ? TRUE : FALSE;
     embed['preload'] = config['preload'] || 'auto';
@@ -29,4 +9,28 @@ Global['Embed'] = function(config) {
     embed['src'] = config['dir'] + config['name'] + '.' + support;
 
     return embed;
+};
+Global['Embed']['supportcheck'] = function(config) {
+    if (!win['HTML' + config['type'] + 'Element']) {
+        return FALSE;
+    }
+
+    var type = config['type'].toLowerCase(),
+        embed = create(type),
+        suffix = config['suffix'],
+        support = [],
+        i = 0,
+        len = suffix.length;
+
+    for (; i < len; i++) {
+        if (embed.canPlayType(type + '/' + suffix[i][1])) {
+            support.push(suffix[i]);
+        }
+    }
+
+    if (!support.length) {
+        return FALSE;
+    }
+
+    return support;
 };
