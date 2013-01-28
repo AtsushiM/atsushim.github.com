@@ -571,7 +571,7 @@ dom.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
             </dd>
         </dl>
         <dl id="event_">
-            <dt>C.event<span>[ indispensable ]</span></dt>
+            <dt>C.event<span>[ indispensable ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var event = C.event;</pre>
@@ -580,62 +580,6 @@ dom.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
                     実行環境がタッチパネルかどうか判定し、最適な値に変更されます。<br />
                     このオブジェクトは<a href="#Event">C.Event</a>クラスを使用して設定されます。</p>
                 </div>
-                <ul>
-                    <li>change</li>
-                    <li>click</li>
-                    <li>load</li>
-                    <li>mousedown</li>
-                    <li>mousemove</li>
-                    <li>mouseup</li>
-                    <li>resize</li>
-                    <li id="event__switchclick">
-                        <h3>switchclick</h3>
-                        <div class="detail">
-                            <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
-                            タッチパネル非対応の場合、'click'になるプロパティです。</p>
-<pre>var $sample = C.selector('#sample');
-$sample.on(C.event.switchclick, function() {
-    // write code.
-});</pre>
-                        </div>
-                    </li>
-                    <li id="event__switchdown">
-                        <h3>switchdown</h3>
-                        <div class="detail">
-                            <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
-                            タッチパネル非対応の場合、'mousedown'になるプロパティです。</p>
-<pre>var $sample = C.selector('#sample');
-$sample.on(C.event.switchdown, function() {
-    // write code.
-});</pre>
-                        </div>
-                    </li>
-                    <li id="event__switchmove">
-                        <h3>switchmove</h3>
-                        <div class="detail">
-                            <p>実行している環境がタッチパネル対応の場合、'touchmove'に、<br />
-                            タッチパネル非対応の場合、'mousemove'になるプロパティです。</p>
-<pre>var $sample = C.selector('#sample');
-$sample.on(C.event.switchmove, function() {
-    // write code.
-});</pre>
-                        </div>
-                    </li>
-                    <li id="event__switchup">
-                        <h3>switchup</h3>
-                        <div class="detail">
-                            <p>実行している環境がタッチパネル対応の場合、'touchend'に、<br />
-                            タッチパネル非対応の場合、'mouseup'になるプロパティです。</p>
-<pre>var $sample = C.selector('#sample');
-$sample.on(C.event.switchup, function() {
-    // write code.
-});</pre>
-                        </div>
-                    </li>
-                    <li>touchend</li>
-                    <li>touchmove</li>
-                    <li>touchstart</li>
-                </ul>
             </dd>
         </dl>
         <dl id="extend">
@@ -687,6 +631,16 @@ var Test = C.klass({
                     extendオプションに別クラスを指定すれば継承できます。<br />
                     init,extendオプションは省略可能です。<br />
                     また、init中でスーパークラスのinitを呼び出したい場合、this._superメソッドで呼び出し可能です。</p>
+                </div>
+            </dd>
+        </dl>
+        <dl id="mobile_">
+            <dt>C.mobile<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+                    <pre>var mobile = new C.mobile;</pre>
+                    <p>モバイル端末用のユーティリティクラスです。<br />
+                    このオブジェクトは<a href="#Mobile">C.Mobile</a>クラスを使用して設定されます。</p>
                 </div>
             </dd>
         </dl>
@@ -1430,7 +1384,7 @@ dragflick.direction({
             </dd>
         </dl>
         <dl id="Event">
-            <dt>C.Event<span>[ indispensable ]</span></dt>
+            <dt>C.Event<span>[ indispensable ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var e = new C.Event();
@@ -3007,6 +2961,7 @@ var num = storage.get('num'); // null</pre>
             <li><a href="#event_">event</a></li>
             <li><a href="#extend">extend</a></li>
             <li><a href="#klass">klass</a></li>
+            <li><a href="#mobile_">mobile</a></li>
             <li><a href="#utility">utility</a></li>
             <li><a href="#Ajax">Ajax</a></li>
             <li><a href="#Animation">Animation</a></li>

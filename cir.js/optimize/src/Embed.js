@@ -6,11 +6,11 @@ Global['Embed'] = function(config) {
     embed['preload'] = config['preload'] || 'auto';
     embed['autoplay'] = config['autoplay'] ? TRUE : FALSE;
     embed['loop'] = config['loop'] ? TRUE : FALSE;
-    embed['src'] = config['dir'] + config['name'] + '.' + support;
+    embed['src'] = config['dir'] + config['name'] + '.' + config['suffix'][0][0];
 
     return embed;
 };
-Global['Embed']['supportcheck'] = function(config) {
+function embedSupportCheck(config) {
     if (!win['HTML' + config['type'] + 'Element']) {
         return FALSE;
     }
@@ -33,4 +33,5 @@ Global['Embed']['supportcheck'] = function(config) {
     }
 
     return support;
-};
+}
+Global['Embed']['supportcheck'] = embedSupportCheck;
