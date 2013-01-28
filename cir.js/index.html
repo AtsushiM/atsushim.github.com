@@ -1370,12 +1370,12 @@ deferred.done(function() {
                 </div>
                 <ul>
                     <li id="DeviceShake_bind">
-                        <h3>bind(propname, callback)</h3>
+                        <h3>bind(direction, callback)</h3>
                         <div class="detail">
                             <p>端末が振られた際に発火するcallbackを登録します。<br />
-                            振られる方向はpropnameで指定します。<br />
-                            propnameの値は'alpha', 'beta', 'gamma'のいずれかとなります。<br />
-                            インスタンス生成時に、callbackオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
+                            振られる方向はdirectionで指定します。<br />
+                            directionの値は'x', 'y', 'z'のいずれかとなります。<br />
+                            インスタンス生成時に、callback・directionオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
                             1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
 <pre>shake.bind('alpha', function(e) {
     console.log('callback1');
