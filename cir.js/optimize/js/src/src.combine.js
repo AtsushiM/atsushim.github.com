@@ -254,6 +254,17 @@ Global.Dependency = function(config) {
                 ],
                 SessionStorage: [
                     'WebStorage'
+                ],
+                DeviceMotion: [
+                    'DeviceAction'
+                ],
+                DeviceOrientation: [
+                    'DeviceAction'
+                ],
+                DeviceShake: [
+                    'DeviceAction',
+                    'DeviceMotion',
+                    'DeviceOrientation'
                 ]
             },
             passive: {
@@ -298,6 +309,17 @@ Global.Dependency = function(config) {
                 WebStorage: [
                     'LocalStorage',
                     'SessionStorage'
+                ],
+                DeviceAction: [
+                    'DeviceMotion',
+                    'DeviceOrientation',
+                    'DeviceShake'
+                ],
+                DeviceMotion: [
+                    'DeviceShake'
+                ],
+                DeviceOrientation: [
+                    'DeviceShake'
                 ]
             },
             waste: {
@@ -310,6 +332,11 @@ Global.Dependency = function(config) {
                     'Video',
                     'Sound',
                     'Movie'
+                ],
+                DeviceAction: [
+                    'DeviceMotion',
+                    'DeviceOrientation',
+                    'DeviceShake'
                 ]
             }
         };

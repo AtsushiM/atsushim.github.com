@@ -130,6 +130,9 @@ header {
                 font-size: 12px;
                 font-style: italic;
             }
+            .beta {
+                color: #222;
+            }
         }
         dd {
             /* display: none; */
@@ -260,6 +263,7 @@ header {
     float: left;
     width: 20%;
     position: fixed;
+    font-size: 14px;
 
     ul {
         @extend %frame;

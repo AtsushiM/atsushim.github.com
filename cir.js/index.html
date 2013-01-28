@@ -1283,6 +1283,115 @@ deferred.done(function() {
                 </ul>
             </dd>
         </dl>
+        <dl id="DeviceMotion">
+            <dt>C.DeviceMotion<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var motion = new C.DeviceMotion({
+    callback: function(e) { // default: undefind
+        // write code.
+    }
+});</pre>
+                    <p>window.ondevicemotionを便利に使うためのクラスです。<br />
+                    端末がdevicemotionに対応していない場合、C.DeviceMotion.supportがfalseになります。</p>
+                </div>
+                <ul>
+                    <li id="DeviceMotion_bind">
+                        <h3>bind(callback)</h3>
+                        <div class="detail">
+                            <p>window.ondevicemotionにcallbackを登録します。<br />
+                            インスタンス生成時に、callbackオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
+                            1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
+<pre>motion.bind(function(e) {
+    console.log('callback1');
+});</pre>
+                        </div>
+                    </li>
+                    <li id="DeviceMotion_unbind">
+                        <h3>unbind()</h3>
+                        <div class="detail">
+                            <p>window.ondevicemotionに登録したcallbackを削除します。</p>
+<pre>motion.unbind();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="DeviceOrientation">
+            <dt>C.DeviceOrientation<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var orient = new C.DeviceOrientation({
+    callback: function(e) {
+        // write code.
+    }
+});</pre>
+                    <p>window.ondeviceorientationを便利に使うためのクラスです。<br />
+                    端末がdeviceorientationに対応していない場合、C.DeviceOrientation.supportがfalseになります。</p>
+                </div>
+                <ul>
+                    <li id="DeviceOrientation_bind">
+                        <h3>bind(callback)</h3>
+                        <div class="detail">
+                            <p>window.ondeviceorientationにcallbackを登録します。<br />
+                            インスタンス生成時に、callbackオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
+                            1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
+<pre>orient.bind(function(e) {
+    console.log('callback1');
+});</pre>
+                        </div>
+                    </li>
+                    <li id="DeviceOrientation_unbind">
+                        <h3>unbind()</h3>
+                        <div class="detail">
+                            <p>window.ondeviceorientationに登録したcallbackを削除します。</p>
+<pre>orient.unbind();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="DeviceShake">
+            <dt>C.DeviceShake<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#DeviceMotion">DeviceMotion</a> <a href="#DeviceOrientation">DeviceOrientation</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var shake = new C.DeviceShake({
+    limit: 100,
+    waittime: 500,
+    direction: 'x', // default: undefind
+    callback: function(e) { // default: undefind
+        // write code.
+    }
+});</pre>
+                    <p>端末が振られたことに対してイベントを登録するクラスです。<br />
+                    limitの値分、directionの方向に加速度が変化した場合、callbackが実行されます。<br />
+                    一度callbackを実行した後、waittimeほどcallbackを実行をキャンセルし、その後再び実行可能になります。<br />
+                    端末がdeviceorientation、もしくはdevicemotionに対応していない場合、C.DeviceShake.supportがfalseになります。</p>
+                </div>
+                <ul>
+                    <li id="DeviceShake_bind">
+                        <h3>bind(propname, callback)</h3>
+                        <div class="detail">
+                            <p>端末が振られた際に発火するcallbackを登録します。<br />
+                            振られる方向はpropnameで指定します。<br />
+                            propnameの値は'alpha', 'beta', 'gamma'のいずれかとなります。<br />
+                            インスタンス生成時に、callbackオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
+                            1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
+<pre>shake.bind('alpha', function(e) {
+    console.log('callback1');
+});</pre>
+                        </div>
+                    </li>
+                    <li id="DeviceShake_unbind">
+                        <h3>unbind()</h3>
+                        <div class="detail">
+                            <p>登録したcallbackを削除します。</p>
+<pre>shake.unbind();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="DragFlick">
             <dt>C.DragFlick<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -2611,7 +2720,7 @@ throttle.request('Cool is Right.'); // 実行される</pre>
             </dd>
         </dl>
         <dl id="Timer">
-            <dt>C.Timer</dt>
+            <dt>C.Timer<span class="beta">[ Beta ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var timer = new C.Timer({
@@ -2971,6 +3080,9 @@ var num = storage.get('num'); // null</pre>
             <li><a href="#Brush">Brush</a></li>
             <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#Deferred">Deferred</a></li>
+            <li><a href="#DeviceMotion">DeviceMotion</a></li>
+            <li><a href="#DeviceOrientation">DeviceOrientation</a></li>
+            <li><a href="#DeviceShake">DeviceShake</a></li>
             <li><a href="#DragFlick">DragFlick</a></li>
             <li><a href="#Embed">Embed</a></li>
             <li><a href="#Event">Event</a></li>
