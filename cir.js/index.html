@@ -832,10 +832,21 @@ str = util.typeCast(str); // 'sample'
                         </div>
                     </li>
                     <li id="utility_windowOpen">
-                        <h3>windowOpen(url, windowname)</h3>
+                        <h3>windowOpen(url, [ windowname ], [ option ])</h3>
                         <div class="detail">
                             <p>新しいウィンドウを開きます</p>
-<pre>var subwindow = util.windowOpen('/sub.html', 'sub');</pre>
+<pre>var subwindow = util.windowOpen('/sub.html', 'sub', {
+    width: 100,
+    height: 100,
+    left: 100,
+    top: 100,
+    menubar: true,
+    toolbar: true,
+    location: true,
+    status: true,
+    resizable: true,
+    scrollbars: true
+});</pre>
                         </div>
                     </li>
                 </ul>
