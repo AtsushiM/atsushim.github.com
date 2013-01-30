@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Cool is Right.</h2>
-    <p class="ver">0.8.2</p>
+    <p class="ver">0.8.3</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはスマートフォンメインのWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.2)</span> 機能選択：<a href="optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.3)</span> 機能選択：<a href="optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -1031,51 +1031,6 @@ base.uncontract(contractid); // イベント削除</pre>
                 </ul>
             </dd>
         </dl>
-        <dl id="Bind">
-            <dt>C.Bind<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var bind = new C.Bind({
-    element: C.$('#sample')[0],
-    events: {
-        click: function(e) {
-            // write code.
-        },
-        mouseover: function(e) {
-            // write code.
-        }
-    },
-    manual: false // default: false
-});</pre>
-                    <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
-                </div>
-                <ul>
-                    <li id="Bind_add">
-                        <h3>add()</h3>
-                        <div class="detail">
-                            <p>elementに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。<br />
-                            インスタンス生成時に自動的に呼び出されます。<br />
-                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
-<pre>bind.add(); // addEvent</pre>
-                        </div>
-                    </li>
-                    <li id="Bind_getHandler">
-                        <h3>getHandler()</h3>
-                        <div class="detail">
-                            <p>インスタンス生成時の引数を取得します。</p>
-<pre>var handler = bind.getHandler(); // object</pre>
-                        </div>
-                    </li>
-                    <li id="Bind_remove">
-                        <h3>remove()</h3>
-                        <div class="detail">
-                            <p>elementに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
-<pre>bind.remove(); // removeEvent</pre>
-                        </div>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
         <dl id="Brush">
             <dt>C.Brush<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -1307,22 +1262,22 @@ deferred.done(function() {
                     端末がdevicemotionに対応していない場合、C.DeviceMotion.supportがfalseになります。</p>
                 </div>
                 <ul>
-                    <li id="DeviceMotion_bind">
-                        <h3>bind(callback)</h3>
+                    <li id="DeviceMotion_attach">
+                        <h3>attach(callback)</h3>
                         <div class="detail">
                             <p>window.ondevicemotionにcallbackを登録します。<br />
                             インスタンス生成時に、callbackオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
                             1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
-<pre>motion.bind(function(e) {
+<pre>motion.attach(function(e) {
     console.log('callback1');
 });</pre>
                         </div>
                     </li>
-                    <li id="DeviceMotion_unbind">
-                        <h3>unbind()</h3>
+                    <li id="DeviceMotion_detach">
+                        <h3>detach()</h3>
                         <div class="detail">
                             <p>window.ondevicemotionに登録したcallbackを削除します。</p>
-<pre>motion.unbind();</pre>
+<pre>motion.detach();</pre>
                         </div>
                     </li>
                 </ul>
@@ -1341,22 +1296,22 @@ deferred.done(function() {
                     端末がdeviceorientationに対応していない場合、C.DeviceOrientation.supportがfalseになります。</p>
                 </div>
                 <ul>
-                    <li id="DeviceOrientation_bind">
-                        <h3>bind(callback)</h3>
+                    <li id="DeviceOrientation_attach">
+                        <h3>attach(callback)</h3>
                         <div class="detail">
                             <p>window.ondeviceorientationにcallbackを登録します。<br />
                             インスタンス生成時に、callbackオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
                             1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
-<pre>orient.bind(function(e) {
+<pre>orient.attach(function(e) {
     console.log('callback1');
 });</pre>
                         </div>
                     </li>
-                    <li id="DeviceOrientation_unbind">
-                        <h3>unbind()</h3>
+                    <li id="DeviceOrientation_detach">
+                        <h3>detach()</h3>
                         <div class="detail">
                             <p>window.ondeviceorientationに登録したcallbackを削除します。</p>
-<pre>orient.unbind();</pre>
+<pre>orient.detach();</pre>
                         </div>
                     </li>
                 </ul>
@@ -1380,24 +1335,24 @@ deferred.done(function() {
                     端末がdeviceorientation、もしくはdevicemotionに対応していない場合、C.DeviceShake.supportがfalseになります。</p>
                 </div>
                 <ul>
-                    <li id="DeviceShake_bind">
-                        <h3>bind(direction, callback)</h3>
+                    <li id="DeviceShake_attach">
+                        <h3>attach(direction, callback)</h3>
                         <div class="detail">
                             <p>端末が振られた際に発火するcallbackを登録します。<br />
                             振られる方向はdirectionで指定します。<br />
                             directionの値は'x', 'y', 'z'のいずれかとなります。<br />
                             インスタンス生成時に、callback・directionオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
                             1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
-<pre>shake.bind('alpha', function(e) {
+<pre>shake.attach('alpha', function(e) {
     console.log('callback1');
 });</pre>
                         </div>
                     </li>
-                    <li id="DeviceShake_unbind">
-                        <h3>unbind()</h3>
+                    <li id="DeviceShake_detach">
+                        <h3>detach()</h3>
                         <div class="detail">
                             <p>登録したcallbackを削除します。</p>
-<pre>shake.unbind();</pre>
+<pre>shake.detach();</pre>
                         </div>
                     </li>
                 </ul>
@@ -1426,13 +1381,13 @@ dragflick.amount({
 });</pre>
                         </div>
                     </li>
-                    <li id="DragFlick_bind">
-                        <h3>bind({element: element, [direction: function], [boundary: number], [start: function], [move: function], [end: function]})</h3>
+                    <li id="DragFlick_attach">
+                        <h3>attach({element: element, [direction: function], [boundary: number], [start: function], [move: function], [end: function]})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリック用のイベントをまとめて設定します。<br />
                             directionとboundaryはdirectionメソッド用のオプションです</p>
 <pre>var $sample = C.$('#sample');
-dragflick.bind({
+dragflick.attach({
     element: $sample[0],
     direction: function(direction) {
         // write code.
@@ -1822,6 +1777,51 @@ var hashobj = hashquery.getHash();
                 </ul>
             </dd>
         </dl>
+        <dl id="Handle">
+            <dt>C.Handle<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var handle = new C.Handle({
+    element: C.$('#sample')[0],
+    events: {
+        click: function(e) {
+            // write code.
+        },
+        mouseover: function(e) {
+            // write code.
+        }
+    },
+    manual: false // default: false
+});</pre>
+                    <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
+                </div>
+                <ul>
+                    <li id="Handle_add">
+                        <h3>add()</h3>
+                        <div class="detail">
+                            <p>elementに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>handle.add(); // addEvent</pre>
+                        </div>
+                    </li>
+                    <li id="Handle_getHandler">
+                        <h3>getHandler()</h3>
+                        <div class="detail">
+                            <p>インスタンス生成時の引数を取得します。</p>
+<pre>var handler = handle.getHandler(); // object</pre>
+                        </div>
+                    </li>
+                    <li id="Handle_remove">
+                        <h3>remove()</h3>
+                        <div class="detail">
+                            <p>elementに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
+<pre>handle.remove(); // removeEvent</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="ImgLoad">
             <dt>C.ImgLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -1937,12 +1937,12 @@ var num = storage.get('num'); // null</pre>
                     <p>モバイル端末用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li id="Mobile_bindOrientation">
-                        <h3>bindOrientation({portrait: function, landscape: function})</h3>
+                    <li id="Mobile_attachOrientation">
+                        <h3>attachOrientation({portrait: function, landscape: function})</h3>
                         <div class="detail">
                             <p>端末の向きに合わせて処理を実行します。<br />
                             このメソッドは紐付けたイベントを削除するための関数を返します。</p>
-<pre>var removeOrientation = mobile.bindOrientation({
+<pre>var removeOrientation = mobile.attachOrientation({
     portrait: function() {
         // write code.
     },
@@ -3087,7 +3087,6 @@ var num = storage.get('num'); // null</pre>
             <li><a href="#Animation">Animation</a></li>
             <li><a href="#Audio">Audio</a></li>
             <li><a href="#Base">Base</a></li>
-            <li><a href="#Bind">Bind</a></li>
             <li><a href="#Brush">Brush</a></li>
             <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#Deferred">Deferred</a></li>
@@ -3102,6 +3101,7 @@ var num = storage.get('num'); // null</pre>
             <li><a href="#FontImg">FontImg</a></li>
             <li><a href="#FPS">FPS</a></li>
             <li><a href="#HashQuery">HashQuery</a></li>
+            <li><a href="#Handle">Handle</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
             <li><a href="#Media">Media</a></li>
