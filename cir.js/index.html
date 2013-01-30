@@ -1707,6 +1707,51 @@ var tag_white = font.make('A');
                 </ul>
             </dd>
         </dl>
+        <dl id="Handle">
+            <dt>C.Handle<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var handle = new C.Handle({
+    element: C.$('#sample')[0],
+    events: {
+        click: function(e) {
+            // write code.
+        },
+        mouseover: function(e) {
+            // write code.
+        }
+    },
+    manual: false // default: false
+});</pre>
+                    <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
+                </div>
+                <ul>
+                    <li id="Handle_add">
+                        <h3>add()</h3>
+                        <div class="detail">
+                            <p>elementに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>handle.add(); // addEvent</pre>
+                        </div>
+                    </li>
+                    <li id="Handle_getHandler">
+                        <h3>getHandler()</h3>
+                        <div class="detail">
+                            <p>インスタンス生成時の引数を取得します。</p>
+<pre>var handler = handle.getHandler(); // object</pre>
+                        </div>
+                    </li>
+                    <li id="Handle_remove">
+                        <h3>remove()</h3>
+                        <div class="detail">
+                            <p>elementに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
+<pre>handle.remove(); // removeEvent</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="HashQuery">
             <dt>C.HashQuery<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -1772,51 +1817,6 @@ var hashobj = hashquery.getHash();
         id: 123
     }
 }); // location.hash = '#hashName?cir=Cool%20is%20Right.&id=123'</pre>
-                        </div>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="Handle">
-            <dt>C.Handle<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var handle = new C.Handle({
-    element: C.$('#sample')[0],
-    events: {
-        click: function(e) {
-            // write code.
-        },
-        mouseover: function(e) {
-            // write code.
-        }
-    },
-    manual: false // default: false
-});</pre>
-                    <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
-                </div>
-                <ul>
-                    <li id="Handle_add">
-                        <h3>add()</h3>
-                        <div class="detail">
-                            <p>elementに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。<br />
-                            インスタンス生成時に自動的に呼び出されます。<br />
-                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
-<pre>handle.add(); // addEvent</pre>
-                        </div>
-                    </li>
-                    <li id="Handle_getHandler">
-                        <h3>getHandler()</h3>
-                        <div class="detail">
-                            <p>インスタンス生成時の引数を取得します。</p>
-<pre>var handler = handle.getHandler(); // object</pre>
-                        </div>
-                    </li>
-                    <li id="Handle_remove">
-                        <h3>remove()</h3>
-                        <div class="detail">
-                            <p>elementに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
-<pre>handle.remove(); // removeEvent</pre>
                         </div>
                     </li>
                 </ul>
@@ -3100,8 +3100,8 @@ var num = storage.get('num'); // null</pre>
             <li><a href="#Facebook">Facebook</a></li>
             <li><a href="#FontImg">FontImg</a></li>
             <li><a href="#FPS">FPS</a></li>
-            <li><a href="#HashQuery">HashQuery</a></li>
             <li><a href="#Handle">Handle</a></li>
+            <li><a href="#HashQuery">HashQuery</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
             <li><a href="#Media">Media</a></li>
