@@ -1530,11 +1530,16 @@ $sample.on(C.event.switchup, function() {
             <dt>C.ExternalInterface<span>[ extend: <a href="#HashQuery">HashQuery</a> ]</span><span>[ required: ExternalInterface.Android ExternalInterface.IOS ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var external = new C.ExternalInterface({
-    android: window.AndroidMethod
+<pre>
+window.C.EXTERNAL = {};
+var external = new C.ExternalInterface({
+    android: window.AndroidMethod, // for Android
+    externalObj: window.C.EXTERNAL // for Android
 });</pre>
                     <p>ハイブリッドアプリ用にネイティブとのやり取りを行うためのメソッドを提供するクラスです。<br />
                     Androidの場合、window直下にメソッドを含んだオブジェクトを作っておく必要があります。<br />
+                    androidオプションにネイティブから設定されたメソッドを持つオブジェクトを、<br />
+                    externalObjにウェブビューからメソッドを登録するためのオブジェクトを指定します。<br />
                     iOSの場合、そのオブジェクトを作らなければ自動的にiOS用の処理になります。</p>
                 </div>
                 <ul>
