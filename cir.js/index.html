@@ -533,6 +533,18 @@ dom.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="e">
+            <dt>C.e<span>[ indispensable ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+                    <pre>var e= C.e;</pre>
+                    <p>エレメント用の各イベントを纏めたオブジェクトです。<br />
+                    SWITCHCLICK, SWITCHDOWN, SWITCHMOVE, SWITCHUPは<br />
+                    実行環境がタッチパネルかどうか判定し、最適な値に変更されます。<br />
+                    このオブジェクトは<a href="#Event">C.Event</a>クラスを使用して設定されます。</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="ease">
             <dt>C.ease</dt>
             <dd>
@@ -568,18 +580,6 @@ dom.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
                     <li>outQuint</li>
                     <li>outSine</li>
                 </ul>
-            </dd>
-        </dl>
-        <dl id="e">
-            <dt>C.e<span>[ indispensable ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-                    <pre>var e= C.e;</pre>
-                    <p>エレメント用の各イベントを纏めたオブジェクトです。<br />
-                    switchclick, switchdown, switchmove, switchupは<br />
-                    実行環境がタッチパネルかどうか判定し、最適な値に変更されます。<br />
-                    このオブジェクトは<a href="#Event">C.Event</a>クラスを使用して設定されます。</p>
-                </div>
             </dd>
         </dl>
         <dl id="extend">
@@ -2926,8 +2926,8 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#selector">$</a></li>
             <li><a href="#cssease">cssease</a></li>
             <li><a href="#dom">dom</a></li>
+            <li><a href="#e">e</a></li>
             <li><a href="#ease">ease</a></li>
-            <li><a href="#event_">event</a></li>
             <li><a href="#extend">extend</a></li>
             <li><a href="#klass">klass</a></li>
             <li><a href="#mobile_">mobile</a></li>
