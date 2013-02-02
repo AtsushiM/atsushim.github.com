@@ -35,11 +35,11 @@ Global.BtnCreate = function(config) {
             },
             unbind: function() {
                 el.btn_create.attr('value', 'request...');
-                return el.btn_create.off(C.event.click, instanse.requestJS);
+                return el.btn_create.off(C.e.CLICK, instanse.requestJS);
             },
             bind: function() {
                 el.btn_create.attr('value', 'Create.');
-                return el.btn_create.on(C.event.click, instanse.requestJS);
+                return el.btn_create.on(C.e.CLICK, instanse.requestJS);
             }
         };
 

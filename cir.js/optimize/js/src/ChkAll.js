@@ -22,7 +22,7 @@ Global.ChkAll = function(config) {
             }
         };
 
-    el.check_all.on(C.event.click, instanse.toggle);
+    el.check_all.on(C.e.CLICK, instanse.toggle);
 
     return instanse;
 };

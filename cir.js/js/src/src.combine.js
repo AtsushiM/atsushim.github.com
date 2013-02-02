@@ -58,7 +58,7 @@ DOC.localLink = function(config) {
     'use strict';
 
     // local link
-    return $('a[href^="#"]').on(C.event.click, function(e) {
+    return $('a[href^="#"]').on(C.e.CLICK, function(e) {
         removeClose($($(this).attr('href')));
     });
 };
@@ -68,8 +68,8 @@ DOC.submenu = function(config) {
     var $sub = $('#sub'),
         $footer = $('#footer');
 
-    $(window).on(C.event.resize, subPoint);
-    $(window).on(C.event.load, subPoint);
+    $(window).on(C.e.RESIZE, subPoint);
+    $(window).on(C.e.LOAD, subPoint);
 
     function subPoint() {
         var winH = this.innerHeight,
@@ -119,7 +119,7 @@ DOC.toggle = function(config) {
 
     var $main = $('#main');
 
-    $main.find('dt').on(C.event.click, function() {
+    $main.find('dt').on(C.e.CLICK, function() {
         var $parent = $(this).parent();
 
         if ($parent.hasClass(clsClose)) {
@@ -129,7 +129,7 @@ DOC.toggle = function(config) {
         return addClose($parent);
     });
 
-    $main.find('h3').on(C.event.click, function() {
+    $main.find('h3').on(C.e.CLICK, function() {
         var $parent = $(this).parent();
 
         if (!$parent.hasClass(clsOpen)) {
