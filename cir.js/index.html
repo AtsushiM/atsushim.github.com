@@ -168,8 +168,8 @@ var handler = function() {
     alert('click!');
     // this = HTML element
 };
-$sample.on(C.event.click, handler);
-$sample.off(C.event.click, handler);</pre>
+$sample.on(C.e.CLICK, handler);
+$sample.off(C.e.CLICK, handler);</pre>
                         </div>
                     </li>
                     <li id="selector_on">
@@ -177,7 +177,7 @@ $sample.off(C.event.click, handler);</pre>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントに対して、addEventListnerを実行します。</p>
 <pre>var $sample = $('#sample');
-$sample.on(C.event.click, function(){
+$sample.on(C.e.CLICK, function(){
     alert('click!');
     // this = HTML element
 });</pre>
@@ -459,8 +459,8 @@ dom.innerHTML($sample, 'rewrite innerHTML.'); // 設定</pre>
 var func = function() {
     alert('sample click!');
 };
-dom.on($sample, C.event.click, func); // 追加
-dom.off($sample, C.event.click, func); // 削除</pre>
+dom.on($sample, C.e.CLICK, func); // 追加
+dom.off($sample, C.e.CLICK, func); // 削除</pre>
                         </div>
                     </li>
                     <li id="dom_on">
@@ -468,7 +468,7 @@ dom.off($sample, C.event.click, func); // 削除</pre>
                         <div class="detail">
                             <p>element.addEventListnerを実行します。</p>
 <pre>var $sample = dom.$('#sample');
-dom.on($sample, C.event.click, function() {
+dom.on($sample, C.e.CLICK, function() {
     alert('sample click!');
 });</pre>
                         </div>
@@ -570,11 +570,11 @@ dom.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
                 </ul>
             </dd>
         </dl>
-        <dl id="event_">
-            <dt>C.event<span>[ indispensable ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+        <dl id="e">
+            <dt>C.e<span>[ indispensable ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var event = C.event;</pre>
+                    <pre>var e= C.e;</pre>
                     <p>エレメント用の各イベントを纏めたオブジェクトです。<br />
                     switchclick, switchdown, switchmove, switchupは<br />
                     実行環境がタッチパネルかどうか判定し、最適な値に変更されます。<br />
@@ -797,7 +797,7 @@ alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');
                         <div class="detail">
                             <p>e.preventDefault()を実行し、falseを返すメソッドです。<br />
                             ブラウザのデフォルトの動作を停止させたい場合などに使えます。</p>
-<pre>element.on(util.doc, C.event.touchmove, util.preventDefault);</pre>
+<pre>element.on(util.doc, C.e.TOUCHMOVE, util.preventDefault);</pre>
                         </div>
                     </li>
                     <li id="utility_replaceAll">
@@ -1011,7 +1011,7 @@ ajax.request({
                             このメソッドは紐付けた引数と一意になる値を返します。<br />
                             この返り値をuncontractメソッドに渡せば登録したイベントを削除します。</p>
 <pre>var $sample = el.$('#sample');
-var contractid = base.contract($sample, C.event.click, function() {
+var contractid = base.contract($sample, C.e.CLICK, function() {
     alert('sample click!');
 }); // イベント登録
 base.uncontract(contractid); // イベント削除</pre>
@@ -1022,7 +1022,7 @@ base.uncontract(contractid); // イベント削除</pre>
                         <div class="detail">
                             <p>contractメソッドの返り値を元にelement.removeEventListnerを実行します。</p>
 <pre>var $sample = el.$('#sample');
-var contractid = base.contract($sample, C.event.click, function() {
+var contractid = base.contract($sample, C.e.CLICK, function() {
     alert('sample click!');
 }); // イベント登録
 base.uncontract(contractid); // イベント削除</pre>
@@ -1447,82 +1447,82 @@ var eSingle = new C.Event({
                     実行環境がタッチパネルかどうか判定し、最適な値に変更されます。</p>
                 </div>
                 <ul>
-                    <li>change</li>
-                    <li>click</li>
-                    <li>load</li>
-                    <li>mousedown</li>
-                    <li>mousemove</li>
-                    <li>mouseup</li>
-                    <li>resize</li>
+                    <li>CHANGE</li>
+                    <li>CLICK</li>
+                    <li>LOAD</li>
+                    <li>MOUSEDOWN</li>
+                    <li>MOUSEMOVE</li>
+                    <li>MOUSEUP</li>
+                    <li>RESIZE</li>
                     <li id="Event_switchclick">
-                        <h3>switchclick</h3>
+                        <h3>SWITCHCLICK</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
                             タッチパネル非対応の場合、'click'になるプロパティです。</p>
 <pre>var $sample = C.$('#sample');
-$sample.on(C.event.switchclick, function() {
+$sample.on(C.e.SWITCHCLICK, function() {
     // write code.
 });</pre>
                         </div>
                     </li>
                     <li id="Event_switchdown">
-                        <h3>switchdown</h3>
+                        <h3>SWITCHDOWN</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
                             タッチパネル非対応の場合、'mousedown'になるプロパティです。</p>
 <pre>var $sample = C.$('#sample');
-$sample.on(C.event.switchdown, function() {
+$sample.on(C.e.SWITCHDOWN, function() {
     // write code.
 });</pre>
                         </div>
                     </li>
                     <li id="Event_switchmove">
-                        <h3>switchmove</h3>
+                        <h3>SWITCHMOVE</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchmove'に、<br />
                             タッチパネル非対応の場合、'mousemove'になるプロパティです。</p>
 <pre>var $sample = C.$('#sample');
-$sample.on(C.event.switchmove, function() {
+$sample.on(C.e.SWITCHMOVE, function() {
     // write code.
 });</pre>
                         </div>
                     </li>
                     <li id="Event_switchout">
-                        <h3>switchout</h3>
+                        <h3>SWITCHOUT</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchend'に、<br />
                             タッチパネル非対応の場合、'mouseout'になるプロパティです。</p>
 <pre>var $sample = C.$('#sample');
-$sample.on(C.event.switchout, function() {
+$sample.on(C.e.SWITCHOUT, function() {
     // write code.
 });</pre>
                         </div>
                     </li>
                     <li id="Event_switchover">
-                        <h3>switchover</h3>
+                        <h3>SWITCHOVER</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchstart'に、<br />
                             タッチパネル非対応の場合、'mouseover'になるプロパティです。</p>
 <pre>var $sample = C.$('#sample');
-$sample.on(C.event.switchover, function() {
+$sample.on(C.e.SWITCHOVER, function() {
     // write code.
 });</pre>
                         </div>
                     </li>
                     <li id="Event_switchup">
-                        <h3>switchup</h3>
+                        <h3>SWITCHUP</h3>
                         <div class="detail">
                             <p>実行している環境がタッチパネル対応の場合、'touchend'に、<br />
                             タッチパネル非対応の場合、'mouseup'になるプロパティです。</p>
 <pre>var $sample = C.$('#sample');
-$sample.on(C.event.switchup, function() {
+$sample.on(C.e.SWITCHUP, function() {
     // write code.
 });</pre>
                         </div>
                     </li>
-                    <li>touchend</li>
-                    <li>touchmove</li>
-                    <li>touchstart</li>
+                    <li>TOUCHEND</li>
+                    <li>TOUCHMOVE</li>
+                    <li>TOUCHSTART</li>
                 </ul>
             </dd>
         </dl>
