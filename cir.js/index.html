@@ -652,6 +652,21 @@ var Test = C.klass({
                     <p>様々なクラスから呼び出されるユーティリティオブジェクトです。</p>
                 </div>
                 <ul>
+                    <li id="utility_bind">
+                        <h3>bind(target, func)</h3>
+                        <div class="detail">
+                            <p>funcのthisをtargetにします。</p>
+<pre>var obj = {
+    prop: 'cir.js'
+};
+var func = function() {
+    console.log(this.prop);
+};
+func(); // undefind
+var bindfunc = C.utility.bind(obj, func);
+ret(); // 'cir.js'</pre>
+                        </div>
+                    </li>
                     <li id="utility_checkUserAgent">
                         <h3>checkUserAgent(regex, [userAgent])</h3>
                         <div class="detail">
