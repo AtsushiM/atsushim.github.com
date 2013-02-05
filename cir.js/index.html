@@ -675,6 +675,22 @@ ret(); // 'cir.js'</pre>
 <pre>var check = util.checkUserAgent(/iPhone|iPad|iPod/i); // boolean</pre>
                         </div>
                     </li>
+                    <li id="utility_eventPrevent">
+                        <h3>eventPrevent(e)</h3>
+                        <div class="detail">
+                            <p>e.preventDefault()を実行し、falseを返すメソッドです。<br />
+                            ブラウザのデフォルトの動作を停止させたい場合などに使えます。</p>
+<pre>element.on(util.doc, C.e.TOUCHMOVE, util.eventPrevent);</pre>
+                        </div>
+                    </li>
+                    <li id="utility_eventStop">
+                        <h3>eventStop(e)</h3>
+                        <div class="detail">
+                            <p>e.stopPropagation()を実行し、falseを返すメソッドです。<br />
+                            ブラウザのイベント伝播を停止させたい場合などに使えます。</p>
+<pre>element.on(util.doc, C.e.CLICK, util.eventStop);</pre>
+                        </div>
+                    </li>
                     <li id="utility_is">
                         <h3>is(type, vars)</h3>
                         <div class="detail">
@@ -805,14 +821,6 @@ location.hash = hashquery;
 var obj = util.parseQueryString(location.hash);
 alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');
 </pre>
-                        </div>
-                    </li>
-                    <li id="utility_preventDefault">
-                        <h3>preventDefault(e)</h3>
-                        <div class="detail">
-                            <p>e.preventDefault()を実行し、falseを返すメソッドです。<br />
-                            ブラウザのデフォルトの動作を停止させたい場合などに使えます。</p>
-<pre>element.on(util.doc, C.e.TOUCHMOVE, util.preventDefault);</pre>
                         </div>
                     </li>
                     <li id="utility_replaceAll">
@@ -2063,6 +2071,145 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Model">
+            <dt>C.Model<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var model = new C.Model({
+    store: { // default: undefind
+        test1: 1,
+        test2: 'test'
+    },
+    validate: { // default: undefind
+        test: function(vars) {
+            if (C.utility.isNumber(vars)) {
+                return true;
+            }
+            return false;
+        }
+    },
+    on: { // default: undefind
+        'change': function(vars) {
+            // write code.
+        },
+        'change:test1': function(vars) {
+            // write code.
+        },
+        'remove': function() {
+            // write code.
+        },
+        'remove:test2': function(vars) {
+            // write code.
+        },
+        'reset': function() {
+            // write code.
+        }
+    }
+});</pre>
+                    <p>MVCのModelを担当するクラスです。<br />
+                    <a href="#View">C.View</a>と連携することで大規模なアプリを作成する際にも読みやすいコードを書くことが可能です。<br />
+                    storeオプションに指定された値は保持されるデータの初期値になります。<br />
+                    validateオプションはstoreオプションに指定された各値のチェックを行います。<br />
+                    条件式で負になる値を返した場合、エラーが発生します。<br />
+                    onオプションは保持しているデータに変更があった場合、各メソッドが実行されます。</p>
+                </div>
+                <ul>
+                    <li id="Model_fire">
+                        <h3>fire(key, [value])</h3>
+                        <div class="detail">
+                            <p>onオプション、onメソッドで登録されたイベントを実行します。</p>
+<pre>model.on('change', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('change', {
+    cir: 'Cool is Right.'
+});</pre>
+                        </div>
+                    </li>
+                    <li id="Model_get">
+                        <h3>get([key])</h3>
+                        <div class="detail">
+                            <p>データを取り出します。</p>
+<pre>model.get('test');</pre>
+                        </div>
+                    </li>
+                    <li id="Model_off">
+                        <h3>off(key, func)</h3>
+                        <div class="detail">
+                            <p>登録されたイベントを削除します。</p>
+<pre>var func1 = function() {
+    console.log('func1');
+};
+var func2 = function() {
+    console.log('func2');
+};
+
+model.on('change', func1);
+model.on('change', func2);
+
+model.off('change', func1);
+model.fire('change'); // exe func2.</pre>
+                        </div>
+                    </li>
+                    <li id="Model_on">
+                        <h3>on(key, func)</h3>
+                        <div class="detail">
+                            <p>イベントを登録します。<br />
+                            登録されたイベントはfireメソッドで強制的に呼び出しできます。</p>
+<pre>var func1 = function() {
+    console.log('func1');
+};
+var func2 = function() {
+    console.log('func2');
+};
+
+model.on('change', func1);
+model.on('change', func2);
+
+model.off('change', func1);
+model.fire('change'); // exe func2.</pre>
+                        </div>
+                    </li>
+                    <li id="Model_prev">
+                        <h3>prev([key])</h3>
+                        <div class="detail">
+                            <p>保持しているデータの一つ前の状態を返します。<br />
+                            keyを省略した場合、データを纏めたオブジェクトを返します。<br />
+                            changeイベントが発火した場合に前の数値を使用したい場合などに便利です。</p>
+<pre>model.set('test', 12345);
+model.set('test', 23456);
+model.prev('test'); // 12345</pre>
+                        </div>
+                    </li>
+                    <li id="Model_remove">
+                        <h3>remove(key)</h3>
+                        <div class="detail">
+                            <p>データを削除します。<br />
+                            このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
+<pre>model.remove('test'); // removeイベント実行</pre>
+                        </div>
+                    </li>
+                    <li id="Model_reset">
+                        <h3>reset(key)</h3>
+                        <div class="detail">
+                            <p>保存された値を全て削除します。<br />
+                            このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
+<pre>model.reset(); // resetイベント実行</pre>
+                        </div>
+                    </li>
+                    <li id="Model_set">
+                        <h3>set(key, value)</h3>
+                        <div class="detail">
+                            <p>Modelにデータを保存します。<br />
+                            このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
+<pre>model.set('test', 12345); // changeイベント実行</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Movie">
             <dt>C.Movie<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Video">Video</a> ]</span></dt>
             <dd>
@@ -2871,6 +3018,58 @@ timer.countDown(); // start timer.</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="View">
+            <dt>C.View<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>view = new C.View({
+    el: '#test', // C.$の引数
+    model: model, // メソッドで使うmodel
+    events: { // elに登録するイベント
+        'mine': { // mine == el
+            'click': 'click' // elのclickイベントにclickメソッドを登録
+        },
+        '.test': { // #test .test
+            'click': 'clickLower'
+        }
+    },
+    init: function() { // 初期化時に呼ばれるメソッド
+        this.render();
+        this.model.on('change:test', this.render);
+    },
+    render: function() {
+        this.el.find('.test').html('count: ' + this.model.get('test'));
+    },
+    click: function(e) {
+        this.model.set('test', this.model.get('test') + 1);
+    },
+    clickLower: function(e) {
+        console.log('click lower.');
+        C.utility.eventStop(e); // e.stopPropagation();
+    }
+});</pre>
+                    <p>MVCのViewとControllerを担当するクラスです。<br />
+                    <a href="#Model">C.Model</a>と連携することで大規模なアプリを作成する際にも読みやすいコードを書くことが可能です。</p>
+                </div>
+                <ul>
+                    <li id="View_attach">
+                        <h3>attach()</h3>
+                        <div class="detail">
+                            <p>eventsオプションに指定されたメソッドを登録します。<br />
+                            クラス初期化時に自動的に呼び出されます。</p>
+<pre>view.attach();</pre>
+                        </div>
+                    </li>
+                    <li id="View_detach">
+                        <h3>detach()</h3>
+                        <div class="detail">
+                            <p>eventsオプションに指定されたメソッドを削除します。</p>
+<pre>view.detach();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Video">
             <dt>C.Video</dt>
             <dd>
@@ -2981,6 +3180,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#HashQuery">HashQuery</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
+            <li><a href="#Model">Model</a></li>
             <li><a href="#Mobile">Mobile</a></li>
             <li><a href="#Movie">Movie</a></li>
             <li><a href="#Observer">Observer</a></li>
@@ -2996,6 +3196,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Transition">Transition</a></li>
             <li><a href="#Tweener">Tweener</a></li>
             <li><a href="#Twitter">Twitter</a></li>
+            <li><a href="#View">View</a></li>
             <li><a href="#Video">Video</a></li>
             <li><a href="#WindowLoad">WindowLoad</a></li>
             <li><a href="#XML">XML</a></li>

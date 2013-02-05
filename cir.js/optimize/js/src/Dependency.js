@@ -63,15 +63,27 @@ Global.Dependency = function(config) {
                     'DeviceAction',
                     'DeviceMotion',
                     'DeviceOrientation'
+                ],
+                Model: [
+                    'selector',
+                    'DataStore',
+                    'Observer'
                 ]
             },
             passive: {
                 selector: [
                     'selector_methods',
-                    'selector_methods_animate'
+                    'selector_methods_animate',
+                    'Model'
                 ],
                 selector_methods: [
                     'selector_methods_animate'
+                ],
+                DataStore: [
+                    'Model'
+                ],
+                Observer: [
+                    'Model'
                 ],
                 HashQuery: [
                     'ExternalInterface',
