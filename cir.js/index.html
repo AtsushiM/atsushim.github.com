@@ -1197,11 +1197,7 @@ brush.draw([
             <dt>C.DataStore<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var store = new C.DataStore();
-// singleton
-var storeSingle = new C.DataStore({
-    single: true
-})</pre>
+<pre>var store = new C.DataStore();</pre>
                     <p>一時的な情報を保存するためのクラスです。<br />
                     ブラウザのリロードなどが行われた場合、初期化されます。</p>
                 </div>
@@ -1518,11 +1514,7 @@ dragflick.direction({
             <dt>C.Event<span>[ indispensable ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var e = new C.Event();
-// singleton
-var eSingle = new C.Event({
-    single: true
-});</pre>
+<pre>var e = new C.Event();</pre>
                     <p>エレメント用の各イベントを纏めたクラスです。<br />
                     SWITCHCLICK, SWITCHDOWN, SWITCHMOVE, SWITCHUPは<br />
                     実行環境がタッチパネルかどうか判定し、最適な値に変更されます。</p>
@@ -1732,7 +1724,6 @@ var tag_white = font.make('A');
             <dd>
                 <div class="sample">
 <pre>var fps = new C.FPS({
-    single: false, // singleton / default: false
     manual: false, // default: false
     criterion: 10,
     enterframe: function(fps) {
@@ -2346,11 +2337,7 @@ movie.loop(false); // ループ無し</pre>
             <dt>C.Observer<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var observer = new C.Observer();
-// singleton
-var observerSingle = new C.Observer({
-    single: true
-});</pre>
+<pre>var observer = new C.Observer();</pre>
                     <p>オブザーバーパターンを提供するクラスです。</p>
                 </div>
                 <ul>
@@ -2472,7 +2459,6 @@ observer.fire('jsonloaded', 'fire2');</pre>
             // actionName === 'action_2';
         }
     },
-    single: false, // default: false
     manual: false, // default: false
     noregex: false // default: false
 });</pre>
