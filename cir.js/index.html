@@ -65,6 +65,15 @@ var $p = $('p');</pre>
 $sample.addClass('sample');</pre>
                         </div>
                     </li>
+                    <li id="selector_after">
+                        <h3>.after(element)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントの後ろにelementを追加します。</p>
+<pre>var $sample = $('#sample');
+var div = C.dom.create('div');
+$sample.after(div);</pre>
+                        </div>
+                    </li>
                     <li id="selector_animate">
                         <h3>.animate(params, [duration], [ease], [callback])</h3>
                         <div class="detail">
@@ -112,6 +121,15 @@ $img.attr({
     width: 100,
     height: 200
 }); // まとめて設定</pre>
+                        </div>
+                    </li>
+                    <li id="selector_before">
+                        <h3>.before(element)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントの前にelementを追加します。</p>
+<pre>var $sample = $('#sample');
+var div = C.dom.create('div');
+$sample.before(div);</pre>
                         </div>
                     </li>
                     <li id="selector_css">
@@ -384,6 +402,15 @@ dom.attr($img, {
 }); // まとめて設定</pre>
                         </div>
                     </li>
+                    <li id="dom_after">
+                        <h3>after(element, addElement)</h3>
+                        <div class="detail">
+                            <p>elementの後ろにaddElementを追加します。</p>
+<pre>var div = dom.create('div');
+var $sample = dom.$('#sample');
+dom.after($sample, div);</pre>
+                        </div>
+                    </li>
                     <li id="dom_append">
                         <h3>append(_parent, element)</h3>
                         <div class="detail">
@@ -391,6 +418,15 @@ dom.attr($img, {
 <pre>var div = dom.create('div');
 var $sample = dom.$('#sample');
 dom.append($sample, div);</pre>
+                        </div>
+                    </li>
+                    <li id="dom_before">
+                        <h3>before(element, addElement)</h3>
+                        <div class="detail">
+                            <p>elementの前にaddElementを追加します。</p>
+<pre>var div = dom.create('div');
+var $sample = dom.$('#sample');
+dom.before($sample, div);</pre>
                         </div>
                     </li>
                     <li id="dom_computedStyle">
