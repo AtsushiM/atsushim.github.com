@@ -819,21 +819,28 @@ alert(target.sample); // override property</pre>
 location.hash = hashquery;
 
 var obj = util.parseQueryString(location.hash);
-alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');
-</pre>
+alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');</pre>
                         </div>
                     </li>
                     <li id="util_replaceAll">
                         <h3>replaceAll(targetext, needle, replacetext)</h3>
                         <div class="detail">
-                            <p>targettext内にあるneedleを全てreplacetextに書き換えます。<br />
-                            正規表現は使えません。</p>
+                            <p>targettext内にあるneedleを全てreplacetextに書き換えます。</p>
 <pre>var text = util.replaceAll('cir.js', 'cir', 'Cool is Right');
 alert(text); // Cool is Right.js
 
 text = util.relaceAll(text, 's', 'a');
-alert(text); // Cool ia Right.ja
-</pre>
+alert(text); // Cool ia Right.ja</pre>
+                        </div>
+                    </li>
+                    <li id="util_template">
+                        <h3>template(templatetxt, replaceObj)</h3>
+                        <div class="detail">
+                            <p>templatetxt内の"<%= key %>"をreplaceObjの値で置換します。</p>
+<pre>var templatetxt = '<p class="name"><%= name %></p>';
+var innerhtml = util.template(templatetxt, {
+    name: 'John Doe'
+}); // '<p class="name">John Doe</p>'</pre>
                         </div>
                     </li>
                     <li id="util_typeCast">
@@ -850,8 +857,7 @@ obj = util.typeCast(obj); // { a: 'objtext'}
 num = util.typeCast(num); // 123
 boolTrue = util.typeCast(boolTrue); // true
 boolFalse = util.typeCast(boolFalse); // false
-str = util.typeCast(str); // 'sample'
-</pre>
+str = util.typeCast(str); // 'sample'</pre>
                         </div>
                     </li>
                     <li id="util_windowOpen">
@@ -2072,7 +2078,7 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
             </dd>
         </dl>
         <dl id="Model">
-            <dt>C.Model<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt>C.Model<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#DataStore">DataStore</a> <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var model = new C.Model({
@@ -3019,7 +3025,7 @@ timer.countDown(); // start timer.</pre>
             </dd>
         </dl>
         <dl id="View">
-            <dt>C.View<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt>C.View<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#selector">$</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>view = new C.View({
