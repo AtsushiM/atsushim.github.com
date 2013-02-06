@@ -837,10 +837,10 @@ alert(text); // Cool ia Right.ja</pre>
                         <h3>template(templatetxt, replaceObj)</h3>
                         <div class="detail">
                             <p>templatetxt内の"<%= key %>"をreplaceObjの値で置換します。</p>
-<pre>var templatetxt = '<p class="name"><%= name %></p>';
+<pre>var templatetxt = '&lt;p class="name"&gt;<%= name %>&lt;/p&gt;';
 var innerhtml = util.template(templatetxt, {
     name: 'John Doe'
-}); // '<p class="name">John Doe</p>'</pre>
+}); // '&lt;p class="name"&gt;John Doe&lt;/p&gt;'</pre>
                         </div>
                     </li>
                     <li id="util_typeCast">
