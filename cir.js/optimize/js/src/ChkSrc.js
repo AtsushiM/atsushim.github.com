@@ -47,13 +47,14 @@ Global.ChkSrc = function(config) {
                 var i = 0,
                     len = ary.length;
 
+                console.log(ary);
                 for (; i < len; i++) {
                     $('#' + ary[i] + ' input')[0].checked = bool;
                 }
             }
         };
 
-    el.srcs.on(e.change, instanse.checkDependency);
+    el.srcs.on(e.CHANGE, instanse.checkDependency);
 
     return instanse;
 };

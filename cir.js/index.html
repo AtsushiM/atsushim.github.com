@@ -644,15 +644,15 @@ var Test = C.klass({
                 </div>
             </dd>
         </dl>
-        <dl id="utility">
-            <dt>C.utility<span>[ indispensable ]</span></dt>
+        <dl id="util">
+            <dt>C.util<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var util = C.utility;</pre>
+                    <pre>var util = C.util;</pre>
                     <p>様々なクラスから呼び出されるユーティリティオブジェクトです。</p>
                 </div>
                 <ul>
-                    <li id="utility_bind">
+                    <li id="util_bind">
                         <h3>bind(target, func)</h3>
                         <div class="detail">
                             <p>funcのthisをtargetにします。</p>
@@ -663,11 +663,11 @@ var func = function() {
     console.log(this.prop);
 };
 func(); // undefind
-var bindfunc = C.utility.bind(obj, func);
+var bindfunc = C.util.bind(obj, func);
 ret(); // 'cir.js'</pre>
                         </div>
                     </li>
-                    <li id="utility_checkUserAgent">
+                    <li id="util_checkUserAgent">
                         <h3>checkUserAgent(regex, [userAgent])</h3>
                         <div class="detail">
                             <p>userAgentに対してregexで正規表現を行い、結果をBooleanで返します。<br />
@@ -675,7 +675,7 @@ ret(); // 'cir.js'</pre>
 <pre>var check = util.checkUserAgent(/iPhone|iPad|iPod/i); // boolean</pre>
                         </div>
                     </li>
-                    <li id="utility_eventPrevent">
+                    <li id="util_eventPrevent">
                         <h3>eventPrevent(e)</h3>
                         <div class="detail">
                             <p>e.preventDefault()を実行し、falseを返すメソッドです。<br />
@@ -683,7 +683,7 @@ ret(); // 'cir.js'</pre>
 <pre>element.on(util.doc, C.e.TOUCHMOVE, util.eventPrevent);</pre>
                         </div>
                     </li>
-                    <li id="utility_eventStop">
+                    <li id="util_eventStop">
                         <h3>eventStop(e)</h3>
                         <div class="detail">
                             <p>e.stopPropagation()を実行し、falseを返すメソッドです。<br />
@@ -691,7 +691,7 @@ ret(); // 'cir.js'</pre>
 <pre>element.on(util.doc, C.e.CLICK, util.eventStop);</pre>
                         </div>
                     </li>
-                    <li id="utility_is">
+                    <li id="util_is">
                         <h3>is(type, vars)</h3>
                         <div class="detail">
                             <p>varsがtypeで指定された形式になっているかBooleanで返します。</p>
@@ -700,7 +700,7 @@ check = util.is('String', ''); // true
 check = util.is('Number', '123'); // false</pre>
                         </div>
                     </li>
-                    <li id="utility_isArray">
+                    <li id="util_isArray">
                         <h3>isArray(vars)</h3>
                         <div class="detail">
                             <p>varsがArrayかBooleanで返します。</p>
@@ -710,7 +710,7 @@ check = util.isArray([1, 2, 3]); // true
 check = util.isArray({}); // false</pre>
                         </div>
                     </li>
-                    <li id="utility_isBoolean">
+                    <li id="util_isBoolean">
                         <h3>isBoolean(vars)</h3>
                         <div class="detail">
                             <p>varsがBooleanかBooleanで返します。</p>
@@ -720,7 +720,7 @@ check = util.isBoolean(false); // true
 check = util.isBoolean(1); // false</pre>
                         </div>
                     </li>
-                    <li id="utility_isFunction">
+                    <li id="util_isFunction">
                         <h3>isFunction(vars)</h3>
                         <div class="detail">
                             <p>varsがFunctionかBooleanで返します。</p>
@@ -729,7 +729,7 @@ check = util.isFunction((function() {})); // true
 check = util.isFunction(12); // false</pre>
                         </div>
                     </li>
-                    <li id="utility_isNumber">
+                    <li id="util_isNumber">
                         <h3>isNumber(vars)</h3>
                         <div class="detail">
                             <p>varsがNumberかBooleanで返します。</p>
@@ -738,7 +738,7 @@ check = util.isNumber(123); // true
 check = util.isNumber('123'); // false</pre>
                         </div>
                     </li>
-                    <li id="utility_isObject">
+                    <li id="util_isObject">
                         <h3>isObject(vars)</h3>
                         <div class="detail">
                             <p>varsがObjectかBooleanで返します。</p>
@@ -747,7 +747,7 @@ check = util.isObject({}); // true
 check = util.isObjext(''); // false</pre>
                         </div>
                     </li>
-                    <li id="utility_isString">
+                    <li id="util_isString">
                         <h3>isString(vars)</h3>
                         <div class="detail">
                             <p>varsがStringかBooleanで返します。</p>
@@ -756,7 +756,7 @@ check = util.isString(''); // true
 check = util.isString(12); // false</pre>
                         </div>
                     </li>
-                    <li id="utility_isTouchDevice">
+                    <li id="util_isTouchDevice">
                         <h3>isTouchDevice()</h3>
                         <div class="detail">
                             <p>ブラウザがtouchイベントに対応してるかどうか、Booleanで返します。</p>
@@ -764,7 +764,7 @@ check = util.isString(12); // false</pre>
 check = util.isTouchDevice(); // boolean</pre>
                         </div>
                     </li>
-                    <li id="utility_makeQueryString">
+                    <li id="util_makeQueryString">
                         <h3>makeQueryString(object)</h3>
                         <div class="detail">
                             <p>オブジェクトのプロパティをクエリーストリング形式に変換します。</p>
@@ -775,7 +775,7 @@ check = util.isTouchDevice(); // boolean</pre>
 }); // c=Cool&i=is&r=Right</pre>
                         </div>
                     </li>
-                    <li id="utility_nullFunction">
+                    <li id="util_nullFunction">
                         <h3>nullFunction()</h3>
                         <div class="detail">
                             <p>nullを返却するメソッドです。<br />
@@ -788,7 +788,7 @@ anyAction(util.nullFunction); // anyActionは常にcallbackを必要とするの
 </pre>
                         </div>
                     </li>
-                    <li id="utility_override">
+                    <li id="util_override">
                         <h3>override(targetObj, varObj)</h3>
                         <div class="detail">
                             <p>targetObjに対してvarObjのプロパティを上書きします。<br />
@@ -799,7 +799,7 @@ util.override(target, over);
 alert(target.sample); // override property</pre>
                         </div>
                     </li>
-                    <li id="utility_pageTop">
+                    <li id="util_pageTop">
                         <h3>pageTop()</h3>
                         <div class="detail">
                             <p>ページ上部へスクロールを移動させます。<br />
@@ -807,7 +807,7 @@ alert(target.sample); // override property</pre>
 <pre>util.pageTop();</pre>
                         </div>
                     </li>
-                    <li id="utility_parseQueryString">
+                    <li id="util_parseQueryString">
                         <h3>parseQueryString(string)</h3>
                         <div class="detail">
                             <p>クエリーストリング形式のテキストをオブジェクトに変換します。</p>
@@ -823,7 +823,7 @@ alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');
 </pre>
                         </div>
                     </li>
-                    <li id="utility_replaceAll">
+                    <li id="util_replaceAll">
                         <h3>replaceAll(targetext, needle, replacetext)</h3>
                         <div class="detail">
                             <p>targettext内にあるneedleを全てreplacetextに書き換えます。<br />
@@ -836,7 +836,7 @@ alert(text); // Cool ia Right.ja
 </pre>
                         </div>
                     </li>
-                    <li id="utility_typeCast">
+                    <li id="util_typeCast">
                         <h3>typeCast(string)</h3>
                         <div class="detail">
                             <p>渡された文字列を内容に合わせて型変換します。</p>
@@ -854,7 +854,7 @@ str = util.typeCast(str); // 'sample'
 </pre>
                         </div>
                     </li>
-                    <li id="utility_windowOpen">
+                    <li id="util_windowOpen">
                         <h3>windowOpen(url, [ windowname ], [ option ])</h3>
                         <div class="detail">
                             <p>新しいウィンドウを開きます</p>
@@ -2082,7 +2082,7 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
     },
     validate: { // default: undefind
         test: function(vars) {
-            if (C.utility.isNumber(vars)) {
+            if (C.util.isNumber(vars)) {
                 return true;
             }
             return false;
@@ -3026,7 +3026,7 @@ timer.countDown(); // start timer.</pre>
     el: '#test', // C.$の引数
     model: model, // メソッドで使うmodel
     events: { // elに登録するイベント
-        'mine': { // mine == el
+        'me': { // me == C.$(el)
             'click': 'click' // elのclickイベントにclickメソッドを登録
         },
         '.test': { // #test .test
@@ -3045,7 +3045,7 @@ timer.countDown(); // start timer.</pre>
     },
     clickLower: function(e) {
         console.log('click lower.');
-        C.utility.eventStop(e); // e.stopPropagation();
+        C.util.eventStop(e); // e.stopPropagation();
     }
 });</pre>
                     <p>MVCのViewとControllerを担当するクラスです。<br />
@@ -3158,7 +3158,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#extend">extend</a></li>
             <li><a href="#klass">klass</a></li>
             <li><a href="#mobile_">mobile</a></li>
-            <li><a href="#utility">utility</a></li>
+            <li><a href="#util">util</a></li>
             <li><a href="#Ajax">Ajax</a></li>
             <li><a href="#Animation">Animation</a></li>
             <li><a href="#Audio">Audio</a></li>

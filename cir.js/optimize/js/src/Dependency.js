@@ -64,6 +64,10 @@ Global.Dependency = function(config) {
                     'DeviceMotion',
                     'DeviceOrientation'
                 ],
+                View: [
+                    'selector',
+                    'selector_methods'
+                ],
                 Model: [
                     'selector',
                     'DataStore',
@@ -74,10 +78,11 @@ Global.Dependency = function(config) {
                 selector: [
                     'selector_methods',
                     'selector_methods_animate',
-                    'Model'
+                    'View'
                 ],
                 selector_methods: [
-                    'selector_methods_animate'
+                    'selector_methods_animate',
+                    'View'
                 ],
                 DataStore: [
                     'Model'

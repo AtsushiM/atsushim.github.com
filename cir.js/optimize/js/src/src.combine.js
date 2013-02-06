@@ -169,13 +169,14 @@ Global.ChkSrc = function(config) {
                 var i = 0,
                     len = ary.length;
 
+                console.log(ary);
                 for (; i < len; i++) {
                     $('#' + ary[i] + ' input')[0].checked = bool;
                 }
             }
         };
 
-    el.srcs.on(e.change, instanse.checkDependency);
+    el.srcs.on(e.CHANGE, instanse.checkDependency);
 
     return instanse;
 };
@@ -266,6 +267,10 @@ Global.Dependency = function(config) {
                     'DeviceMotion',
                     'DeviceOrientation'
                 ],
+                View: [
+                    'selector',
+                    'selector_methods'
+                ],
                 Model: [
                     'selector',
                     'DataStore',
@@ -276,10 +281,11 @@ Global.Dependency = function(config) {
                 selector: [
                     'selector_methods',
                     'selector_methods_animate',
-                    'Model'
+                    'View'
                 ],
                 selector_methods: [
-                    'selector_methods_animate'
+                    'selector_methods_animate',
+                    'View'
                 ],
                 DataStore: [
                     'Model'
