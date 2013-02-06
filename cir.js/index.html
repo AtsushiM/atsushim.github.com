@@ -1029,7 +1029,9 @@ ajax.request({
                         <div class="detail">
                             <p>インスタンスが使用しているメモリを解放します。<br />
                             インスタンスのプロパティとメソッド、またDOMにバインドしたメソッドやsetIntervalなどを全て削除します。<br />
-                            メモリが解放されるタイミングはブラウザのガベージコレクションに依存します。</p>
+                            メモリが解放されるタイミングはブラウザのガベージコレクションに依存します。<br />
+                            Baseを継承したクラスでdisposeメソッドに何か処理を追加したい場合、disposeInternalメソッドを作成すればdispose実行時に呼び出されます。<br />
+                            例えばsetIntervalなどのタイマーや追加したエレメントの削除などが考えられます。</p>
 <pre>base.dispose();</pre>
                         </div>
                     </li>
@@ -1038,7 +1040,8 @@ ajax.request({
                         <div class="detail">
                             <p>element.addEventListnerを実行します。<br />
                             このメソッドは紐付けた引数と一意になる値を返します。<br />
-                            この返り値をuncontractメソッドに渡せば登録したイベントを削除します。</p>
+                            この返り値をuncontractメソッドに渡せば登録したイベントを削除します。<br />
+                            このメソッドで登録したイベントはdisposeメソッド実行時に自動的に削除されます。</p>
 <pre>var $sample = el.$('#sample');
 var contractid = base.contract($sample, C.e.CLICK, function() {
     alert('sample click!');
