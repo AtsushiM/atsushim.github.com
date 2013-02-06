@@ -32,7 +32,10 @@ Global.MakeSrc = function(config) {
             }
         };
 
-    observer.on(e.srcloaded, instanse.make);
+    observer.on(e.srcloaded, function(srcs) {
+        console.log(srcs);
+        instanse.make(srcs);
+    });
 
     return instanse;
 };

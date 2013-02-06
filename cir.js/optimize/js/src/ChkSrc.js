@@ -47,7 +47,6 @@ Global.ChkSrc = function(config) {
                 var i = 0,
                     len = ary.length;
 
-                console.log(ary);
                 for (; i < len; i++) {
                     $('#' + ary[i] + ' input')[0].checked = bool;
                 }

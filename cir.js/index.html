@@ -645,7 +645,7 @@ alert(Sample2.prototype.test); //test extend.
     init: function() { // default: undefind
         console.log('super');
     }
-    properties: {
+    prop: {
         sample: 'Cool is Right.'
     }
 });
@@ -655,7 +655,7 @@ var Test = C.klass({
     init: function(config) {
         console.log(this.sample); // 'Cool is Right.'
     },
-    properties: {
+    prop: {
         // write method &amp; property
     }
 });</pre>

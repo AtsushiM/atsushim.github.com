@@ -59,6 +59,7 @@ Global.BtnCreate = function(config) {
                     callback = function() {
                         count--;
                         if (count === 0) {
+                            console.log(count);
                             observer.fire(e.srcloaded, srcs);
                         }
                     };
@@ -88,7 +89,9 @@ Global.BtnCreate = function(config) {
         };
 
     instanse.bind();
-    observer.on(e.createjssrc, instanse.bind);
+    observer.on(e.createjssrc, function() {
+        instanse.bind();
+    });
 
     return instanse;
 };
@@ -169,7 +172,6 @@ Global.ChkSrc = function(config) {
                 var i = 0,
                     len = ary.length;
 
-                console.log(ary);
                 for (; i < len; i++) {
                     $('#' + ary[i] + ' input')[0].checked = bool;
                 }
@@ -182,7 +184,7 @@ Global.ChkSrc = function(config) {
 };
 Global.Event = C.klass({
     extend: C.Event,
-    properties: {
+    prop: {
         createjssrc: 'a',
         srccreatestart: 'b',
         srcloaded: 'c'
@@ -395,7 +397,10 @@ Global.MakeSrc = function(config) {
             }
         };
 
-    observer.on(e.srcloaded, instanse.make);
+    observer.on(e.srcloaded, function(srcs) {
+        console.log(srcs);
+        instanse.make(srcs);
+    });
 
     return instanse;
 };
