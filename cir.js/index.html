@@ -959,7 +959,7 @@ ajax.request({
 }, {
     duration: 1000, // default: 500
     manual: false, // default: false
-    ease: 'linear', // default: 'ease'
+    ease: 'linear', // default: easeOutExpo
     onComplete: function(e) {
         // write code.
     }
@@ -2076,7 +2076,7 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
             <dd>
                 <div class="sample">
 <pre>var model = new C.Model({
-    store: { // default: undefind
+    defaults: { // default: undefind
         test1: 1,
         test2: 'test'
     },
@@ -2909,7 +2909,7 @@ timer.countDown(); // start timer.</pre>
     {
         duration: 1000, // default: 500
         manual: false, // default: false
-        ease: 'linear', // default: 'ease'
+        ease: 'linear', // default: easeOutExpo
         onComplete: function() {
             // write code.
         }
