@@ -2145,17 +2145,19 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
             <dd>
                 <div class="sample">
 <pre>var model = new C.Model({
+    store: new C.SessionStorage(), // default: undefind
     defaults: { // default: undefind
         test1: 1,
         test2: 'test'
     },
     validate: { // default: undefind
-        test: function(vars) {
+        test1: function(key, vars) {
             if (C.util.isNumber(vars)) {
                 return true;
             }
             return false;
-        }
+        },
+        test2: C.validate.isString
     },
     on: { // default: undefind
         'change': function(vars) {
@@ -2172,13 +2174,19 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
         },
         'reset': function() {
             // write code.
+        },
+        'fail': function(vars) {
+            // write code for validate error.
+        },
+        'fail:test1': function(vars) {
+            // write code for validate error.
         }
     }
 });</pre>
                     <p>MVCのModelを担当するクラスです。<br />
                     <a href="#View">C.View</a>と連携することで大規模なアプリを作成する際にも読みやすいコードを書くことが可能です。<br />
                     defaultsオプションに指定された値は保持されるデータの初期値になります。<br />
-                    validateオプションは値が登録・変更された時、条件式で偽になる値を返した場合、エラーが発生します。<br />
+                    validateオプションは値が登録・変更された時、条件式で偽になる値を返した場合、failイベントが発生します。<br />
                     onオプションは保持しているデータに変更があった場合、各メソッドが実行されます。</p>
                 </div>
                 <ul>
@@ -3081,6 +3089,72 @@ timer.countDown(); // start timer.</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Validate">
+            <dt>C.Validate<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>validate = new C.Validate();</pre>
+                    <p>引数のvalidateを行うメソッドを持つクラスです。<br />
+                    主に<a href="#Model">C.Model</a></p>
+                </div>
+                <ul>
+                    <li id="Validate_isArray">
+                        <h3>isArray(key, vars)</h3>
+                        <div class="detail">
+                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+<pre>var check;
+check = validate.isArray('check', []); // true
+check = validate.isArray('check', {}); // console.log(error)</pre>
+                        </div>
+                    </li>
+                    <li id="Validate_isBoolean">
+                        <h3>isBoolean(key, vars)</h3>
+                        <div class="detail">
+                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+<pre>var check;
+check = validate.isBoolean('check', false); // true
+check = validate.isBoolean('check', {}); // console.log(error)</pre>
+                        </div>
+                    </li>
+                    <li id="Validate_isFunction">
+                        <h3>isFunction(key, vars)</h3>
+                        <div class="detail">
+                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+<pre>var check;
+check = validate.isFunction('check', function() {}); // true
+check = validate.isFunction('check', {}); // console.log(error)</pre>
+                        </div>
+                    </li>
+                    <li id="Validate_isNumber">
+                        <h3>isNumber(key, vars)</h3>
+                        <div class="detail">
+                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+<pre>var check;
+check = validate.isNumber('check', 1); // true
+check = validate.isNumber('check', {}); // console.log(error)</pre>
+                        </div>
+                    </li>
+                    <li id="Validate_isObject">
+                        <h3>isObject(key, vars)</h3>
+                        <div class="detail">
+                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+<pre>var check;
+check = validate.isObject('check', {}); // true
+check = validate.isObject('check', []); // console.log(error)</pre>
+                        </div>
+                    </li>
+                    <li id="Validate_isString">
+                        <h3>isString(key, vars)</h3>
+                        <div class="detail">
+                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+<pre>var check;
+check = validate.isString('check', ''); // true
+check = validate.isString('check', {}); // console.log(error)</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="View">
             <dt>C.View<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#selector">$</a> ]</span></dt>
             <dd>
@@ -3259,6 +3333,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Transition">Transition</a></li>
             <li><a href="#Tweener">Tweener</a></li>
             <li><a href="#Twitter">Twitter</a></li>
+            <li><a href="#Validate">Validate</a></li>
             <li><a href="#View">View</a></li>
             <li><a href="#Video">Video</a></li>
             <li><a href="#WindowLoad">WindowLoad</a></li>
