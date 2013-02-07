@@ -950,6 +950,17 @@ str = util.typeCast(str); // 'sample'</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="validate_">
+            <dt>C.validate<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>validate =  C.validate;</pre>
+                    <p>引数のvalidateを行うメソッドを持つクラスです。<br />
+                    主な使い方は<a href="#Model">C.Model</a>のvalidateオプションにメソッドの参照を渡すことになります。<br />
+                    このオブジェクトは<a href="#Validate">C.Validate</a>クラスを使用して設定されます。</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="Ajax">
             <dt>C.Ajax<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -3095,7 +3106,7 @@ timer.countDown(); // start timer.</pre>
                 <div class="sample">
 <pre>validate = new C.Validate();</pre>
                     <p>引数のvalidateを行うメソッドを持つクラスです。<br />
-                    主に<a href="#Model">C.Model</a></p>
+                    主な使い方は<a href="#Model">C.Model</a>のvalidateオプションにメソッドの参照を渡すことになります。</p>
                 </div>
                 <ul>
                     <li id="Validate_isArray">
