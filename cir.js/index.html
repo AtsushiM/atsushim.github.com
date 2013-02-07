@@ -686,6 +686,39 @@ var Test = C.klass({
                     <p>様々なクラスから呼び出されるユーティリティオブジェクトです。</p>
                 </div>
                 <ul>
+                    <li id="util_ancestors">
+                        <h3>ancestors(obj, propname)</h3>
+                        <div class="detail">
+                            <p>objの__proto__を辿り、propnameに該当するプロパティを配列に入れて返します。<br />
+                            obj.__proto__.__proto__...のように__proto__が尽きるまで遡りチェックを行います。<br />
+                            継承した親クラスのメソッドを取得し、実行したい場合などに便利です。</p>
+<pre>var Test1 = C.klass({
+    extend: C.Base,
+    prop: {
+        test: function() {
+            console.log(1);
+        }
+    }
+});
+var Test2 = C.klass({
+    extend: Test1,
+    prop: {
+        test: function() {
+            console.log(2);
+        }
+    }
+});
+
+var test2 = new Test2();
+var ancestors = util.ancestors(test2, 'test');
+var i = 0;
+var len = ancestors.length;
+
+for (; i < len; i++) {
+    ancestors[i].call(test2);
+} // 2, 1</pre>
+                        </div>
+                    </li>
                     <li id="util_bind">
                         <h3>bind(target, func)</h3>
                         <div class="detail">
@@ -2142,9 +2175,8 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
 });</pre>
                     <p>MVCのModelを担当するクラスです。<br />
                     <a href="#View">C.View</a>と連携することで大規模なアプリを作成する際にも読みやすいコードを書くことが可能です。<br />
-                    storeオプションに指定された値は保持されるデータの初期値になります。<br />
-                    validateオプションはstoreオプションに指定された各値のチェックを行います。<br />
-                    条件式で負になる値を返した場合、エラーが発生します。<br />
+                    defaultsオプションに指定された値は保持されるデータの初期値になります。<br />
+                    validateオプションは値が登録・変更された時、条件式で偽になる値を返した場合、エラーが発生します。<br />
                     onオプションは保持しているデータに変更があった場合、各メソッドが実行されます。</p>
                 </div>
                 <ul>
