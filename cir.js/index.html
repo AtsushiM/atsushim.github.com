@@ -2224,6 +2224,8 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
 });</pre>
                     <p>MVCのModelを担当するクラスです。<br />
                     <a href="#View">C.View</a>と連携することで大規模なアプリを作成する際にも読みやすいコードを書くことが可能です。<br />
+                    storeオプションにはデータを保持するインスタンスを設定します。<br />
+                    省略した場合<a href="#DataStore">C.DataStore</a>が指定されます。設定できる値は<a href="#localStorage">C.LocalStorage</a>、もしくは<a href="#SessionStorage">C.SessionStorage</a>のインスタンスです。<br />
                     defaultsオプションに指定された値は保持されるデータの初期値になります。<br />
                     validateオプションは値が登録・変更された時、条件式で偽になる値を返した場合、failイベントが発生します。<br />
                     onオプションは保持しているデータに変更があった場合、各メソッドが実行されます。</p>
