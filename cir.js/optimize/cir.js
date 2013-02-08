@@ -72,7 +72,7 @@ function jsonStringify(text) {
 /* Test: "../../spec/_src/src/util/test.js" */
 if (!Date['now']) {
     Date['now'] = function now() {
-        return +(new Date);
+        return new Date * 1;
     };
 }
 
@@ -390,11 +390,20 @@ function css(element, addstyle) {
 function computedStyle(element) {
     return doc.defaultView.getComputedStyle(element, NULL);
 }
+function parent(element) {
+    return element['parentNode'];
+}
 function append(element, addelement) {
     return element['appendChild'](addelement);
 }
-function parent(element) {
-    return element['parentNode'];
+function beforeafter(element, addelement, target) {
+    return parent(element).insertBefore(addelement, target);
+}
+function before(element, addelement) {
+    return beforeafter(element, addelement, element);
+}
+function after(element, addelement) {
+    return beforeafter(element, addelement, element.nextSibling);
 }
 function remove(element) {
     return parent(element).removeChild(element);
@@ -427,6 +436,8 @@ Global['dom'] = {
     'computedStyle': computedStyle,
     'append': append,
     'parent': parent,
+    'before': before,
+    'after': after,
     'remove': remove,
     'attr': attr,
     'removeAttr': removeAttr,
@@ -437,35 +448,61 @@ Global['klass'] = function(config) {
     'use strict';
 
     var init = config['init'] || function() {},
-        properties = config['properties'],
+        wrap = function() {
+            var inits = ancestors(this, '__init__'),
+                i = inits.length;
+
+            for (; i--;) {
+                inits[i].apply(this, arguments);
+            }
+        },
+        prop = config['prop'],
         extend = config['extend'];
 
     if (extend) {
-        Global['extend'](init, extend);
+        Global['extend'](wrap, extend);
+    }
+    wrap.prototype['__init__'] = init;
+
+    override(wrap.prototype, prop);
+
+    return wrap;
+};
+Global['klass']['ancestors'] = ancestors;
+
+function ancestors(obj, propname) {
+    var props = [],
+        flg = TRUE;
+
+    while (flg) {
+        if (obj[propname] && props[props.length - 1] !== obj[propname]) {
+            props.push(obj[propname]);
+        }
+        if (obj['_superclass'] && obj['_superclass'].prototype) {
+            obj = obj['_superclass'].prototype;
+        }
+        else {
+            flg = FALSE;
+        }
     }
 
-    override(init.prototype, properties);
-
-    return init;
-};
-
-function klassExtend(kls, init, properties) {
+    return props;
+}
+function klassExtend(kls, init, prop) {
     return Global['klass']({
         'extend': kls,
         'init': init,
-        'properties': properties
+        'prop': prop
     });
 }
-function klassExtendBase(init, properties) {
-    return klassExtend(Global['Base'], init, properties);
+function klassExtendBase(init, prop) {
+    return klassExtend(Global['Base'], init, prop);
 }
 /* Test: "../../spec/_src/src/extend/test.js" */
 Global['extend'] = function(child, _super) {
     'use strict';
 
-    function ctor() {
-        this['init'] = child;
-    }
+    function ctor() {}
 
     ctor.prototype = _super.prototype;
     child.prototype = new ctor();
@@ -490,31 +527,19 @@ Global['extend'] = function(child, _super) {
 Global['Base'] = klassExtend(UNDEFINED, function(config) {
     config = config || {};
     this._dispose = {};
-    this._single = config['single'];
 }, {
     _disid: 0,
-    singleAct: function(name) {
-        if (this._single) {
-            if (Global[name].instance) {
-                return Global[name].instance;
-            }
-
-            Global[name].instance = this;
-        }
-
-        return this;
-    },
     'dispose': function() {
-        var i;
+        var internal = ancestors(this, 'disposeInternal'),
+            i = 0,
+            len = internal.length;
 
-        if (this['disposeInternal']) {
-            this['disposeInternal']();
+        for (; i < len; i++) {
+            internal[i].call(this);
         }
 
-        if (this._dispose) {
-            for (i in this._dispose) {
-                off.apply(NULL, this._dispose[i]);
-            }
+        for (i in this._dispose) {
+            off.apply(NULL, this._dispose[i]);
         }
 
         for (i in this) {
@@ -544,12 +569,7 @@ Global['Base'] = klassExtend(UNDEFINED, function(config) {
 });
 /* Test: "../../spec/_src/src/Event/test.js" */
 var EventName = 'Event';
-ev = klassExtendBase(function(config) {
-    this['_super'](config);
-
-    // singleton
-    return this.singleAct(EventName);
-}, {
+ev = klassExtendBase(UNDEFINED, {
     'SWITCHCLICK': isTouch ? 'touchstart' : 'click',
     'SWITCHDOWN': isTouch ? 'touchstart' : 'mousedown',
     'SWITCHMOVE': isTouch ? 'touchmove' : 'mousemove',
@@ -1222,6 +1242,12 @@ Global['$'].methods = {
     'append': function() {
         return forExe(this, append, arguments);
     },
+    'before': function() {
+        return exe(this, before, arguments);
+    },
+    'after': function() {
+        return exe(this, after, arguments);
+    },
     'remove': function() {
         return forExe(this, remove, arguments);
     }
@@ -1462,7 +1488,7 @@ function embedSupportCheck(type, suffix) {
 /* Test: "../../spec/_src/src/Media/test.js" */
 /* Global.Media = klassExtendBase(function(config) { */
 var Media = klassExtendBase(function(config) {
-    this['_super']();
+    /* this['_super'](); */
 
     var mine = this,
         autoplay = config['autoplay'],
@@ -1688,14 +1714,13 @@ Global['Handle'] = klassExtendBase(function(config) {
         this['detach']();
     },
     'attach': function() {
-        this._e(TRUE);
+        this._e(on);
     },
     'detach': function() {
-        this._e(FALSE);
+        this._e(off);
     },
-    _e: function(isBind) {
-        var onoff = isBind ? on : off,
-            i;
+    _e: function(onoff) {
+        var i;
 
         for (i in this.handler['events']) {
             onoff(
@@ -1784,7 +1809,7 @@ Global['Brush']['support'] = !!win['HTMLCanvasElement'];
 /* Test: "../../spec/_src/src/Datetime/test.js" */
 Global['Datetime'] = function(str) {
     if (!str || isNumber(str)) {
-        return new Date(str);
+        return Date(str);
     }
 
     str = str.split(/[T:\-\+\/\s]/);
@@ -1807,11 +1832,7 @@ Global['Datetime'] = function(str) {
 /* Test: "../../spec/_src/src/DataStore/test.js" */
 var DataStoreName = 'DataStore';
 Global[DataStoreName] = klassExtendBase(function(config) {
-    this['_super'](config);
-
     this.data = {};
-
-    return this.singleAct(DataStoreName);
 }, {
     'set': function(key, val) {
         this.data[key] = val;
@@ -1844,15 +1865,11 @@ Global[DataStoreName] = klassExtendBase(function(config) {
 /* Test: "../../spec/_src/src/WebStorage/test.js" */
 var WebStorageName = 'WebStorage',
     WebStorage = klassExtendBase(function(config) {
-        this['_super'](config);
-
         var key = 'Storage',
             klassname = config['type'] + key;
 
         this._n = config['namespace'] ? config['namespace'] + '-' : EMPTY;
         this._storage = win[config['type'].toLowerCase() + key];
-
-        return this.singleAct(WebStorageName);
     }, {
         'set': function(key, val) {
             this._storage.setItem(this._n + key, jsonStringify(val));
@@ -1953,7 +1970,7 @@ Global['Deferred'] = klassExtendBase(function() {
 });
 /* Test: "../../spec/_src/src/DragFlick/test.js" */
 Global['DragFlick'] = klassExtendBase(function(config) {
-    this['_super']();
+    /* this['_super'](); */
 
     if (config) {
         this['attach'](config);
@@ -2108,25 +2125,11 @@ Global['DragFlick'] = klassExtendBase(function(config) {
 Global['ExternalInterface'] = function(config) {
     config = config || {};
 
-    var Mine = Global['ExternalInterface'],
-        external;
-
-    if (config['single'] && Mine.instance) {
-        return Mine.instance;
-    }
-
     if (config['android']) {
-        external = new ExternalAndroid(config);
-    }
-    else {
-        external = new ExternalIOS(config);
+        return new ExternalAndroid(config);
     }
 
-    if (config['single']) {
-        Mine.instance = external;
-    }
-
-    return external;
+    return new ExternalIOS(config);
 };
 /* Test: "../../spec/_src/src/ExternalInterface.Android/test.js" */
 var ExternalAndroid = klassExtend(Global['HashQuery'], function(config) {
@@ -2202,8 +2205,6 @@ Global['Facebook'] = klassExtendBase(UNDEFINED,
 /* Test: "../../spec/_src/src/FPS/test.js" */
 var FPSName = 'FPS';
 Global[FPSName] = klassExtendBase(function(config) {
-    this['_super'](config);
-
     this.criterion = config['criterion'] || 20,
     this.surver = this.criterion,
     this.enterframe = config['enterframe'],
@@ -2215,8 +2216,6 @@ Global[FPSName] = klassExtendBase(function(config) {
     if (!config['manual']) {
         this['start']();
     }
-
-    return this.singleAct(FPSName);
 }, {
     'disposeInternal': function() {
         this['stop']();
@@ -2256,7 +2255,7 @@ Global[FPSName] = klassExtendBase(function(config) {
 });
 /* Test: "../../spec/_src/src/ImgLoad/test.js" */
 Global['ImgLoad'] = klassExtendBase(function(config) {
-    this['_super']();
+    /* this['_super'](); */
 
     this.srcs = config['srcs'],
     this.srccount = this.srcs.length,
@@ -2318,7 +2317,7 @@ Global['ImgLoad'] = klassExtendBase(function(config) {
 });
 /* Test: "../../spec/_src/src/WindowLoad/test.js" */
 Global['WindowLoad'] = klassExtendBase(function(config) {
-    this['_super']();
+    /* this['_super'](); */
 
     if (config) {
         this.onload(config['onload']);
@@ -2337,7 +2336,7 @@ Global['WindowLoad'] = klassExtendBase(function(config) {
 });
 /* Test: "../../spec/_src/src/Mobile/test.js" */
 Global['Mobile'] = klassExtendBase(function() {
-    this['_super']();
+    /* this['_super'](); */
 }, {
     'getZoom': function() {
         return doc.body.clientWidth / win.innerWidth;
@@ -2469,7 +2468,7 @@ Global['Mobile'] = klassExtendBase(function() {
 Global['mobile'] = new Global['Mobile']();
 /* Test: "../../spec/_src/src/DeviceAction/test.js" */
 Global.DeviceAction = klassExtendBase(function(config) {
-    this['_super']();
+    /* this['_super'](); */
 
     this._e = config['e'];
 
@@ -2491,14 +2490,14 @@ Global.DeviceAction = klassExtendBase(function(config) {
 Global['DeviceOrientation'] = function(config) {
     config = config || {};
     config['e'] = 'deviceorientation';
-    return new Global.DeviceAction(config);
+    return Global.DeviceAction(config);
 };
 Global['DeviceOrientation']['support'] = 'ondeviceorientation' in win;
 /* Test: "../../spec/_src/src/DeviceMotion/test.js" */
 Global['DeviceMotion'] = function(config) {
     config = config || {};
     config['e'] = 'devicemotion';
-    return new Global.DeviceAction(config);
+    return Global.DeviceAction(config);
 };
 Global['DeviceMotion']['support'] = 'ondevicemotion' in win;
 /* Test: "../../spec/_src/src/DeviceShake/test.js" */
@@ -2522,7 +2521,7 @@ var Shake,
 /* } */
 
 Global['DeviceShake'] = klassExtendBase(function(config) {
-    this['_super']();
+    /* this['_super'](); */
     this._shaker = new Shake();
     this._limit = config['limit'];
     this._waittime = config['waittime'];
@@ -2596,11 +2595,7 @@ Global['FontImg'] = klassExtendBase(function(config) {
 /* Test: "../../spec/_src/src/Observer/test.js" */
 var ObserverName = 'Observer';
 Global[ObserverName] = klassExtendBase(function(config) {
-    this['_super'](config);
-
     this.observed = {};
-
-    return this.singleAct(ObserverName);
 }, {
     'on': function(key, func) {
         var observed = this.observed;
@@ -2728,8 +2723,6 @@ Global['PreRender'] = klassExtendBase(function(config) {
 /* Test: "../../spec/_src/src/Route/test.js" */
 var RouteName = 'Route';
 Global[RouteName] = klassExtendBase(function(config) {
-    this['_super'](config);
-
     this._target = config['target'] || EMPTY;
     this._noregex = config['noregex'];
     this._action = config['action'];
@@ -2737,8 +2730,6 @@ Global[RouteName] = klassExtendBase(function(config) {
     if (!config['manual']) {
         this['start']();
     }
-
-    return this.singleAct(RouteName);
 }, {
     'start': function() {
         this['fire'](this._target);
@@ -2759,7 +2750,7 @@ Global[RouteName] = klassExtendBase(function(config) {
 });
 /* Test: "../../spec/_src/src/ScriptLoad/test.js" */
 Global['ScriptLoad'] = klassExtendBase(function() {
-    this['_super']();
+    /* this['_super'](); */
     this.els = [];
 }, {
     'requests': function(varary, callback) {
@@ -2832,8 +2823,7 @@ Global['ServerMeta'] = klassExtendBase(function(config) {
 }, {
     'date': function(callback) {
         return getHeader(function(xhr) {
-            var time = new Date(xhr.getResponseHeader('Date'));
-            callback(time);
+            callback(new Date(xhr.getResponseHeader('Date')));
         });
     },
     'connection': function() {
@@ -3131,76 +3121,23 @@ Global['XML'] = klassExtendBase(function(config) {
         return $$child(selector, this.el);
     }
 });
-/* Test: "../../spec/_src/src/View/test.js" */
-Global['View'] = klassExtendBase(function(config) {
-    var i;
-
-    for (i in config) {
-        if (isFunction(config[i])) {
-            config[i] = bind(this, config[i]);
-        }
-    }
-
-    override(this, config);
-
-    this['el'] = Global['$'](config['el'] || create('div'));
-
-    this['attach']();
-    if (config['init']) {
-        this['init']();
-    }
-}, {
-    'disposeInternal': function() {
-        this['detach']();
-    },
-    _e: function(flg) {
-        var i,
-            j,
-            $el,
-            events = this['events'];
-
-        for (i in events) {
-            if (i === 'me') {
-                $el = this['el'];
-            }
-            else {
-                $el = this['el'].find(i);
-            }
-
-            if (flg) {
-                for (j in events[i]) {
-                    $el['on'](j, this[events[i][j]]);
-                }
-            }
-            else {
-                for (j in events[i]) {
-                    $el['off'](j, this[events[i][j]]);
-                }
-            }
-        }
-    },
-    'attach': function() {
-        this._e(TRUE);
-    },
-    'detach': function() {
-        this._e(FALSE);
-    }
-});
 /* Test: "../../spec/_src/src/Model/test.js" */
 Global['Model'] = klassExtendBase(function(config) {
-    var i,
-        defaults = config['defaults'] || {},
-        on = config['on'];
+    config = config || {};
 
-    this._validate = config['validate'];
-    this._store = new C['DataStore']();
+    var i,
+        defaults = config['defaults'] || this['defaults'] || {},
+        events = config['events'] || this['events'];
+
+    this._validate = config['validate'] || this['validate'];
+    this._store = config['store'] || this['store'] || new C['DataStore']();
     this._observer = new C['Observer']();
 
     for (i in defaults) {
         this['set'](i, defaults[i]);
     }
-    for (i in on) {
-        this['on'](i, on[i]);
+    for (i in events) {
+        this['on'](i, events[i]);
     }
 }, {
     notice: function(eventname, key, val) {
@@ -3213,9 +3150,9 @@ Global['Model'] = klassExtendBase(function(config) {
     'set': function(key, val) {
         if (
             this._validate[key] &&
-            !this._validate[key](val)
+            !this._validate[key](key, val)
         ) {
-            throw new Error('cir-framework: Model / Validate Error.');
+            return this.notice('fail', key, val);
         }
 
         this._prev = this._store['get']();
@@ -3223,7 +3160,7 @@ Global['Model'] = klassExtendBase(function(config) {
 
         this.notice(ev['CHANGE'], key, val);
 
-        return true;
+        return TRUE;
     },
     'prev': function(key) {
         if (!key) {
@@ -3236,7 +3173,7 @@ Global['Model'] = klassExtendBase(function(config) {
     },
     'remove': function(key) {
         if (!key) {
-            return false;
+            return FALSE;
         }
 
         var get = this._store['get'](key),
@@ -3254,7 +3191,10 @@ Global['Model'] = klassExtendBase(function(config) {
         return ret;
     },
     'on': function(key, func) {
-        this._observer['on'](key, bind(this, func));
+        var bindfunc = bind(this, func);
+        this._observer['on'](key, bindfunc);
+
+        return bindfunc;
     },
     'off': function(key, func) {
         return this._observer['off'](key, func);
@@ -3263,4 +3203,124 @@ Global['Model'] = klassExtendBase(function(config) {
         return this._observer['fire'](key, vars);
     }
 });
+/* Test: "../../spec/_src/src/View/test.js" */
+Global['View'] = klassExtendBase(function(config) {
+    var i;
+
+    if (!config) {
+        config = {};
+
+        for (i in this.__proto__) {
+            if (
+                this.__proto__.hasOwnProperty(i) &&
+                /* i.indexOf('_') !== 0 && */
+                isFunction(this.__proto__[i])
+            ) {
+                config[i] = this.__proto__[i];
+            }
+        }
+    }
+
+    for (i in config) {
+        if (isFunction(config[i])) {
+            config[i] = bind(this, config[i]);
+        }
+    }
+
+    override(this, config);
+
+    this['el'] = Global['$'](config['el'] || this['el'] || create('div'));
+
+    this['attach']();
+    if (config['init']) {
+        this['init']();
+    }
+}, {
+    'disposeInternal': function() {
+        this['detach']();
+    },
+    _e: function(methodname) {
+        var i,
+            j,
+            $el,
+            events = this['events'];
+
+        for (i in events) {
+            if (i === 'me') {
+                $el = this['el'];
+            }
+            else {
+                $el = this['el'].find(i);
+            }
+
+            for (j in events[i]) {
+                $el[methodname](j, this[events[i][j]]);
+            }
+        }
+    },
+    'attach': function() {
+        this._e('on');
+    },
+    'detach': function() {
+        this._e('off');
+    }
+});
+/* Test: "../../spec/_src/src/Validate/test.js" */
+Global['Validate'] = klassExtendBase(function(config) {
+    config = config || {};
+
+    this['level'] = config.level || 'off';
+}, {
+    'displayError': displayError,
+    'isObject': function(key, value) {
+        if (isObject(value)) {
+            return TRUE;
+        }
+        displayError(this, key, 'Object');
+    },
+    'isNumber': function(key, value) {
+        if (isNumber(value)) {
+            return TRUE;
+        }
+        displayError(this, key, 'Number');
+    },
+    'isString': function(key, value) {
+        if (isString(value)) {
+            return TRUE;
+        }
+        displayError(this, key, 'String');
+    },
+    'isFunction': function(key, value) {
+        if (isFunction(value)) {
+            return TRUE;
+        }
+        displayError(this, key, 'Function');
+    },
+    'isBoolean': function(key, value) {
+        if (isBoolean(value)) {
+            return TRUE;
+        }
+        displayError(this, key, 'Boolean');
+    },
+    'isArray': function(key, value) {
+        if (isArray(value)) {
+            return TRUE;
+        }
+        displayError(this, key, 'Array');
+    }
+});
+function displayError(obj, key, text) {
+    text = 'Validate Error: ' + key + ' is ' + text + '.';
+
+    console.log(obj);
+    switch (obj.level) {
+        case 'console':
+            return console.log(text);
+        case 'error':
+            throw new Error(text);
+        case 'off':
+            return false;
+    }
+}
+Global['validate'] = new Global['Validate']();
 }());

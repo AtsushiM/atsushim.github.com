@@ -30,7 +30,7 @@
 <div id="content">
     <div id="main">
         <div class="first">
-            <p class="lead">CIR.jsはスマートフォンメインのWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
+            <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
             <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.4)</span> 機能選択：<a href="optimize">Optimize</a></p>
@@ -78,7 +78,7 @@ $sample.after(div);</pre>
                         <h3>.animate(params, [duration], [ease], [callback])</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントをアニメーションします。<br />
-                            easeにはC.easeの各メソッドを指定できます。</p>
+                            easeには<a href="#ease">C.ease</a>、もしくは<a href="#cssease">C.cssease</a>の各プロパティ名を指定できます。</p>
 <pre>var $sample = $('#sample');
 
 $sample.animate({
@@ -847,8 +847,8 @@ check = util.isTouchDevice(); // boolean</pre>
                     <li id="util_nullFunction">
                         <h3>nullFunction()</h3>
                         <div class="detail">
-                            <p>nullを返却するメソッドです。<br />
-                            実質的に何もしませんが、メソッドの引数で渡すcallbackが必須でない場合等で使うと効果的です。</p>
+                            <p>何もしないメソッドです。<br />
+                            メソッドの引数で渡すcallbackが必須でない場合等で使うと効果的です。</p>
 <pre>function anyAction(callback) {
     // any action...
     callback();
@@ -866,6 +866,34 @@ anyAction(util.nullFunction); // anyActionは常にcallbackを必要とするの
 var over = {sample: 'override property'};
 util.override(target, over);
 alert(target.sample); // override property</pre>
+                        </div>
+                    </li>
+                    <li id="util_owner">
+                        <h3>owner(ownerObj, [methods], [overrideObj])</h3>
+                        <div class="detail">
+                            <p>methods内のすべてのメソッドのthisをownerObjに固定し、上書きを行います。<br />
+                            overrideObjが指定された場合、overrideObjを新しいメソッドで上書きし、その後ownerObjに適用されます。<br />
+                            methodsが省略された場合、methodsはownerObjになります。<br />
+                            overrideObjが省略された場合、overrideObjはmethodsになります。<br />
+                            クラスのメソッドのthisを固定したい場合などに便利です。</p>
+<pre>var Test = C.klass({
+    init: function(config) {
+        util.owner(this, this, config);
+    },
+    prop: {
+        no: 0,
+        test: 'Override Test.',
+        countup: function() {
+            this.no++;
+            console.log(this.no);
+        }
+    }
+});
+var test = new Test({
+    test: 'Cool is Right.'
+});
+console.log(test.test); // 'Cool is Right.'
+setInterval(test.countup, 1000);</pre>
                         </div>
                     </li>
                     <li id="util_pageTop">
@@ -3104,11 +3132,23 @@ timer.countDown(); // start timer.</pre>
             <dt>C.Validate<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>validate = new C.Validate();</pre>
+<pre>validate = new C.Validate({
+    level: 'error' // default: 'warn' | 'off', 'log', 'warn', 'error'
+});</pre>
                     <p>引数のvalidateを行うメソッドを持つクラスです。<br />
+                    levelオプションでエラーの表示方法を変更します。<br />
+                    'off'は通知しません。<br />
+                    'log'はconsole.log、'warn'はconsole.warn、'error'はErrorを発生させます。<br />
                     主な使い方は<a href="#Model">C.Model</a>のvalidateオプションにメソッドの参照を渡すことになります。</p>
                 </div>
                 <ul>
+                    <li id="Validate_displayError">
+                        <h3>displayError(key, text)</h3>
+                        <div class="detail">
+                            <p>levelオプションに合わせてエラー表示を行います。</p>
+<pre>validate('test', 'Test'); // Validate Error: test is Test.</pre>
+                        </div>
+                    </li>
                     <li id="Validate_isArray">
                         <h3>isArray(key, vars)</h3>
                         <div class="detail">
