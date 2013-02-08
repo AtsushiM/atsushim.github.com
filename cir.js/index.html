@@ -749,7 +749,7 @@ ret(); // 'cir.js'</pre>
                         <div class="detail">
                             <p>e.preventDefault()を実行し、falseを返すメソッドです。<br />
                             ブラウザのデフォルトの動作を停止させたい場合などに使えます。</p>
-<pre>element.on(util.doc, C.e.TOUCHMOVE, util.eventPrevent);</pre>
+<pre>C.dom.on(util.doc, C.e.TOUCHMOVE, util.eventPrevent);</pre>
                         </div>
                     </li>
                     <li id="util_eventStop">
@@ -757,7 +757,7 @@ ret(); // 'cir.js'</pre>
                         <div class="detail">
                             <p>e.stopPropagation()を実行し、falseを返すメソッドです。<br />
                             ブラウザのイベント伝播を停止させたい場合などに使えます。</p>
-<pre>element.on(util.doc, C.e.CLICK, util.eventStop);</pre>
+<pre>C.dom.on(util.doc, C.e.CLICK, util.eventStop);</pre>
                         </div>
                     </li>
                     <li id="util_is">
@@ -1516,12 +1516,12 @@ deferred.done(function() {
                 </div>
                 <ul>
                     <li id="DragFlick_amount">
-                        <h3>amount({element: element, callback: function})</h3>
+                        <h3>amount({el: element, callback: function})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリック開始から終了までに移動した距離をcallbackに渡します。</p>
 <pre>var $sample = C.$('#sample');
 dragflick.amount({
-    element: $sample[0],
+    el: $sample[0],
     callback: function(amount) {
         // write code.
         console.log('x:' amount.x);
@@ -1531,13 +1531,13 @@ dragflick.amount({
                         </div>
                     </li>
                     <li id="DragFlick_attach">
-                        <h3>attach({element: element, [direction: function], [boundary: number], [start: function], [move: function], [end: function]})</h3>
+                        <h3>attach({el: element, [direction: function], [boundary: number], [start: function], [move: function], [end: function]})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリック用のイベントをまとめて設定します。<br />
                             directionとboundaryはdirectionメソッド用のオプションです</p>
 <pre>var $sample = C.$('#sample');
 dragflick.attach({
-    element: $sample[0],
+    el: $sample[0],
     direction: function(direction) {
         // write code.
     },
@@ -1558,13 +1558,13 @@ dragflick.attach({
                         </div>
                     </li>
                     <li id="DragFlick_direction">
-                        <h3>direction({element: element, callback: function, [boundary: number]})</h3>
+                        <h3>direction({el: element, callback: function, [boundary: number]})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリックした場合、どの方向に移動したかをcallbackに渡します。<br />
                             boundaryを指定すると指定した値以上になった場合、移動したことになります。</p>
 <pre>var $sample = C.$('#sample');
 dragflick.direction({
-    element: $sample[0],
+    el: $sample[0],
     boundary: 100,
     callback: function(direction) {
         // write code.
@@ -1858,7 +1858,7 @@ var tag_white = font.make('A');
             <dd>
                 <div class="sample">
 <pre>var handle = new C.Handle({
-    element: C.$('#sample')[0],
+    el: C.$('#sample')[0],
     events: {
         click: function(e) {
             // write code.
@@ -1875,7 +1875,7 @@ var tag_white = font.make('A');
                     <li id="Handle_add">
                         <h3>add()</h3>
                         <div class="detail">
-                            <p>elementに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。<br />
+                            <p>elに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。<br />
                             インスタンス生成時に自動的に呼び出されます。<br />
                             呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
 <pre>handle.add(); // addEvent</pre>
@@ -1891,7 +1891,7 @@ var tag_white = font.make('A');
                     <li id="Handle_remove">
                         <h3>remove()</h3>
                         <div class="detail">
-                            <p>elementに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
+                            <p>elに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
 <pre>handle.remove(); // removeEvent</pre>
                         </div>
                     </li>
@@ -2337,7 +2337,7 @@ model.prev('test'); // 12345</pre>
     controls: true, // default: false,
     autoplay: false, // default: false
     loop: false, // default: false
-    element: C.$('#sample')[0], // default: document.body
+    el: C.$('#sample')[0], // default: document.body
     oncanplay: function(e) {
         // write code.
     },
@@ -2495,7 +2495,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
                 <div class="sample">
 <pre>var render = new C.PreRender({
     manual: false, // default: false
-    elements: [
+    els: [
         element1,
         element2,
         element3
@@ -2759,7 +2759,7 @@ var num = storage.get('num'); // null</pre>
     controls: false, // default: false
     autoplay: false, // default: false
     loop: false, // default: false
-    element: C.$('#sample')[0], // default: document.body
+    el: C.$('#sample')[0], // default: document.body
     oncanplay: function(e) {
         // write code.
     },
