@@ -789,6 +789,17 @@ check = util.isBoolean(false); // true
 check = util.isBoolean(1); // false</pre>
                         </div>
                     </li>
+                    <li id="util_isDefined">
+                        <h3>isDefined(vars)</h3>
+                        <div class="detail">
+                            <p>varsがundefined出ない場合trueを、undefinedの場合falseを返します。</p>
+<pre>var check;
+check = util.isDefined(true); // true
+check = util.isDefined(false); // true
+check = util.isDefined(1); // true
+check = util.isDefined(undefined); // false</pre>
+                        </div>
+                    </li>
                     <li id="util_isFunction">
                         <h3>isFunction(vars)</h3>
                         <div class="detail">
@@ -2179,6 +2190,58 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Modal">
+            <dt>C.Modal<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Mobile">Mobile</a> <a href="#PC">PC</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var modal = new C.Modal({
+    html: '&lt;div&gt;&lt;p&gt;TEST.&lt;/p&gt;&lt;p class="close"&gt;close&lt;/p&gt;&lt;/div&gt;', // default: undefined
+    overlayClose: true, // default: false
+    closeSelector: '.close', // default: undefined
+    manual: true // default: false
+});
+
+C.$('.open').on(C.e.CLICK, function() {
+    modal.open();
+});</pre>
+                    <p>シンプルなモーダルを提供するクラスです。<br />
+                    htmlオプションで表示する内容を指定します。<br />
+                    overlayCloseオプションを指定するとhtmlオプションで指定した内容以外をクリックした場合、モーダルを閉じます。<br />
+                    closeSelectorオプションはcssセレクターでhtmlオプションで指定した内容中の対応するエレメントをクリックした場合、モーダルを閉じます。<br />
+                    manualにtrueを指定した場合、インスタンス生成時にモーダルを表示しません。<br />
+                    モーダルのデザインはほぼ何も適用されていない為、CSSで調整する必要があります。<br />
+                    背景は.cir-modal-bgクラスが、コンテンツのラッパーには.cir-modal-contentが指定されています。</p>
+                </div>
+                <ul>
+                    <li id="Modal_close">
+                        <h3>close()</h3>
+                        <div class="detail">
+                            <p>モーダルを閉じます。</p>
+<pre>modal.close();</pre>
+                        </div>
+                    </li>
+                    <li id="Modal_inner">
+                        <h3>inner([html])</h3>
+                        <div class="detail">
+                            <p>モーダルで表示するHTMLを設定します。<br />
+                            htmlを省略した場合、初期化時に渡したhtmlオプションの内容を表示します。<br />
+                            モーダルを閉じずに内容だけ入れ替えたい場合に便利です。</p>
+<pre>modal.inner('&lt;div&gt;&lt;p&gt;Cool is Right.&lt;/p&gt;&lt;p class="close"&gt;close&lt;/p&gt;&lt;/div&gt;');</pre>
+                        </div>
+                    </li>
+                    <li id="Modal_open">
+                        <h3>open([html])</h3>
+                        <div class="detail">
+                            <p>モーダルを表示します。<br />
+                            htmlを省略した場合、初期化時に渡したhtmlオプションの内容を表示します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>modal.open('&lt;div&gt;&lt;p&gt;Cool is Right.&lt;/p&gt;&lt;p class="close"&gt;close&lt;/p&gt;&lt;/div&gt;');</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Model">
             <dt>C.Model<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#DataStore">DataStore</a> <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
@@ -2484,6 +2547,35 @@ observer.fire('jsonloaded', {
 
 observer.fire('jsonloaded', 'fire1');
 observer.fire('jsonloaded', 'fire2');</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="PC">
+            <dt>C.PC<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+                    <pre>var pc = new C.PC();</pre>
+                    <p>モバイル端末以外を対象にしたユーティリティクラスです。</p>
+                </div>
+                <ul>
+                    <li id="PC_killScroll">
+                        <h3>killScroll(noTop)</h3>
+                        <div class="detail">
+                            <p>ブラウザスクロールを不可にします。<br />
+                            noTopをtrueにした場合、その場でスクロールを固定します。</p>
+<pre>pc.killScroll(); // スクロールを最上にし、停止
+pc.killScroll(true); // スクロールをその場で停止</pre>
+                        </div>
+                    </li>
+                    <li id="PC_revivalScroll">
+                        <h3>revivalScroll(noTop)</h3>
+                        <div class="detail">
+                            <p>ブラウザスクロールを可能にします。<br />
+                            noTopをtrueにした場合、その場でスクロール可能にします。</p>
+<pre>pc.revivalScroll(); // スクロールを最上にし、再開
+pc.revivalScroll(true); // スクロールをその場で再開</pre>
                         </div>
                     </li>
                 </ul>
@@ -3371,10 +3463,12 @@ check = validate.isString('check', {}); // console.log(error)</pre>
             <li><a href="#HashQuery">HashQuery</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
+            <li><a href="#Modal">Modal</a></li>
             <li><a href="#Model">Model</a></li>
             <li><a href="#Mobile">Mobile</a></li>
             <li><a href="#Movie">Movie</a></li>
             <li><a href="#Observer">Observer</a></li>
+            <li><a href="#PC">PC</a></li>
             <li><a href="#PreRender">PreRender</a></li>
             <li><a href="#Route">Route</a></li>
             <li><a href="#ScriptLoad">ScriptLoad</a></li>
