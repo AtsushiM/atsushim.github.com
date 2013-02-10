@@ -75,7 +75,7 @@ $sample.after(div);</pre>
                         </div>
                     </li>
                     <li id="selector_animate">
-                        <h3>.animate(params, [duration], [ease], [callback])</h3>
+                        <h3>.animate(params, <span class="expansion">[duration]</span>, <span class="expansion">[ease]</span>, <span class="expansion">[callback]</span>)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントをアニメーションします。<br />
                             easeには<a href="#ease">C.ease</a>、もしくは<a href="#cssease">C.cssease</a>の各プロパティ名を指定できます。</p>
@@ -111,7 +111,7 @@ $sample.append(div);</pre>
                         </div>
                     </li>
                     <li id="selector_attr">
-                        <h3>.attr(property, [value])</h3>
+                        <h3>.attr(property, <span class="expansion">[value]</span>)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントの属性を取得：設定します。</p>
 <pre>var $img = $('img');
@@ -178,7 +178,7 @@ $sample.html('Cool is Right.'); // 設定</pre>
                         </div>
                     </li>
                     <li id="selector_off">
-                        <h3>.off(eventname, [handler])</h3>
+                        <h3>.off(eventname, handler)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントに対して、removeEventListnerを実行します。</p>
 <pre>var $sample = $('#sample');
@@ -390,7 +390,7 @@ el.addClass($sample, 'sample');</pre>
                         </div>
                     </li>
                     <li id="dom_attr">
-                        <h3>attr(element, property, [value])</h3>
+                        <h3>attr(element, property, <span class="expansion">[value]</span>)</h3>
                         <div class="detail">
                             <p>elementの属性の取得、設定を行います。</p>
 <pre>var $img = dom.$('#img');
@@ -441,7 +441,7 @@ var height = computed.getPropertyValue('height');</pre>
                         </div>
                     </li>
                     <li id="dom_create">
-                        <h3>create(tagname, [attr])</h3>
+                        <h3>create(tagname, <span class="expansion">[attr]</span>)</h3>
                         <div class="detail">
                             <p>document.createElementのエイリアスです。</p>
 <pre>var div = dom.create('div'); // div element
@@ -479,7 +479,7 @@ dom.hide($sample);</pre>
                         </div>
                     </li>
                     <li id="dom_html">
-                        <h3>html(element, [text])</h3>
+                        <h3>html(element, <span class="expansion">[text]</span>)</h3>
                         <div class="detail">
                             <p>element.innerHTMLを取得・設定します。</p>
 <pre>var $sample = dom.$('#sample');
@@ -488,7 +488,7 @@ dom.innerHTML($sample, 'rewrite innerHTML.'); // 設定</pre>
                         </div>
                     </li>
                     <li id="dom_off">
-                        <h3>off(element, eventname, [handler])</h3>
+                        <h3>off(element, eventname, handler)</h3>
                         <div class="detail">
                             <p>element.removeEventListnerを実行します。</p>
 <pre>var $sample = dom.$('#sample');
@@ -737,7 +737,7 @@ ret(); // 'cir.js'</pre>
                         </div>
                     </li>
                     <li id="util_checkUserAgent">
-                        <h3>checkUserAgent(regex, [userAgent])</h3>
+                        <h3>checkUserAgent(regex, <span class="expansion">[userAgent]</span>)</h3>
                         <div class="detail">
                             <p>userAgentに対してregexで正規表現を行い、結果をBooleanで返します。<br />
                             userAgentが省略された場合、window.navigator.userAgentに対して正規表現でチェックを行います。</p>
@@ -880,7 +880,7 @@ alert(target.sample); // override property</pre>
                         </div>
                     </li>
                     <li id="util_owner">
-                        <h3>owner(ownerObj, [methods], [overrideObj])</h3>
+                        <h3>owner(ownerObj, <span class="expansion">[methods]</span>, <span class="expansion">[overrideObj]</span>)</h3>
                         <div class="detail">
                             <p>methods内のすべてのメソッドのthisをownerObjに固定し、上書きを行います。<br />
                             overrideObjが指定された場合、overrideObjを新しいメソッドで上書きし、その後ownerObjに適用されます。<br />
@@ -969,7 +969,7 @@ str = util.typeCast(str); // 'sample'</pre>
                         </div>
                     </li>
                     <li id="util_windowOpen">
-                        <h3>windowOpen(url, [ windowname ], [ option ])</h3>
+                        <h3>windowOpen(url, <span class="expansion">[ windowname ]</span>, <span class="expansion">[ option ]</span>)</h3>
                         <div class="detail">
                             <p>新しいウィンドウを開きます</p>
 <pre>var subwindow = util.windowOpen('/sub.html', 'sub', {
@@ -1023,7 +1023,7 @@ ajax.abort(); // 直前のrequest処理を停止</pre>
                         </div>
                     </li>
                     <li id="Ajax_json">
-                        <h3>json({url, [type: 'GET' || 'POST'], [query], [cash], [callback], [error]})</h3>
+                        <h3>json({url, <span class="expansion">[type: 'GET' || 'POST']</span>, <span class="expansion">[query]</span>, <span class="expansion">[cash]</span>, <span class="expansion">[callback]</span>, <span class="expansion">[error]</span>})</h3>
                         <div class="detail">
                             <p>AjaxでJSONに対するリクエストを行います。<br />
                             オプションは全てrequestメソッドと同じですが、<br />
@@ -1038,7 +1038,7 @@ ajax.abort(); // 直前のrequest処理を停止</pre>
                         </div>
                     </li>
                     <li id="Ajax_request">
-                        <h3>request({url, [type: 'GET' || 'POST'], [dataType], [query], [cash], [callback], [error]})</h3>
+                        <h3>request({url, <span class="expansion">[type: 'GET' || 'POST']</span>, <span class="expansion">[dataType]</span>, <span class="expansion">[query]</span>, <span class="expansion">[cash]</span>, <span class="expansion">[callback]</span>, <span class="expansion">[error]</span>})</h3>
                         <div class="detail">
                             <p>Ajaxでリクエストを行います。<br />
                             typeオプションを省略した場合、自動的にGETでリクエストを行います。<br />
@@ -1213,7 +1213,7 @@ brush.draw([
                         </div>
                     </li>
                     <li id="Brush_pigment">
-                        <h3>pigment({src: string, width: number, height: number, [x: number], [y: number], onload: function})</h3>
+                        <h3>pigment({src: string, width: number, height: number, <span class="expansion">[x: number]</span>, <span class="expansion">[y: number]</span>, onload: function})</h3>
                         <div class="detail">
                             <p>drawメソッドの引数を作成するメソッドです。<br />
                             srcオプションで指定された画像を読み込んだcanvasエレメントとx,yオプションを指定されたオブジェクトが返ります。</p>
@@ -1230,7 +1230,7 @@ brush.draw([
                         </div>
                     </li>
                     <li id="Brush_pigments">
-                        <h3>pigments({name: {src: string, width: number, height: number, [x: number], [y: number], onload: function}}, callback)</h3>
+                        <h3>pigments({name: {src: string, width: number, height: number, <span class="expansion">[x: number]</span>, <span class="expansion">[y: number]</span>, onload: function}}, callback)</h3>
                         <div class="detail">
                             <p>drawメソッドの引数を作成するメソッドです。<br />
                             pigmentメソッドの返り値をnameをキーにしたオブジェクトで返します。<br />
@@ -1264,7 +1264,7 @@ brush.draw([
                         </div>
                     </li>
                     <li id="Brush_setSize">
-                        <h3>setSize({[width: string], [height: string]})</h3>
+                        <h3>setSize({<span class="expansion">[width: string]</span>, <span class="expansion">[height: string]</span>})</h3>
                         <div class="detail">
                             <p>canvasのwidth,heightを調整します。</p>
 <pre>brush.setSize({
@@ -1286,7 +1286,7 @@ brush.draw([
                 </div>
                 <ul>
                     <li id="DataStore_get">
-                        <h3>get([key])</h3>
+                        <h3>get(<span class="expansion">[key]</span>)</h3>
                         <div class="detail">
                             <p>データを取り出します。</p>
 <pre>store.set('cir', 'Cool is Right.'); // set
@@ -1542,7 +1542,7 @@ dragflick.amount({
                         </div>
                     </li>
                     <li id="DragFlick_attach">
-                        <h3>attach({el: element, [direction: function], [boundary: number], [start: function], [move: function], [end: function]})</h3>
+                        <h3>attach({el: element, <span class="expansion">[direction: function]</span>, <span class="expansion">[boundary: number]</span>, <span class="expansion">[start: function]</span>, <span class="expansion">[move: function]</span>, <span class="expansion">[end: function]</span>})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリック用のイベントをまとめて設定します。<br />
                             directionとboundaryはdirectionメソッド用のオプションです</p>
@@ -1569,7 +1569,7 @@ dragflick.attach({
                         </div>
                     </li>
                     <li id="DragFlick_direction">
-                        <h3>direction({el: element, callback: function, [boundary: number]})</h3>
+                        <h3>direction({el: element, callback: function, <span class="expansion">[boundary: number]</span>})</h3>
                         <div class="detail">
                             <p>ドラッグもしくはフリックした場合、どの方向に移動したかをcallbackに渡します。<br />
                             boundaryを指定すると指定した値以上になった場合、移動したことになります。</p>
@@ -1758,7 +1758,7 @@ location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除している�
                 </div>
                 <ul>
                     <li id="Facebook_shareURL">
-                        <h3>shareURL({app_id, redirect_uri, [link], [picture], [name], [caption], [description]})</h3>
+                        <h3>shareURL({app_id, redirect_uri, <span class="expansion">[link]</span>, <span class="expansion">[picture]</span>, <span class="expansion">[name]</span>, <span class="expansion">[caption]</span>, <span class="expansion">[description]</span>})</h3>
                         <div class="detail">
                             <p>シェア画面を開くためのURLを取得します。</p>
 <pre>var fbshare = facebook.shareURL({
@@ -2034,7 +2034,7 @@ var storage_cir = new C.LocalStorage({
                 </div>
                 <ul>
                     <li id="LocalStorage_get">
-                        <h3>get([key])</h3>
+                        <h3>get(<span class="expansion">[key]</span>)</h3>
                         <div class="detail">
                             <p>値を取得します。</p>
 <pre>localStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';
@@ -2221,7 +2221,7 @@ C.$('.open').on(C.e.CLICK, function() {
                         </div>
                     </li>
                     <li id="Modal_inner">
-                        <h3>inner([html])</h3>
+                        <h3>inner(<span class="expansion">[html]</span>)</h3>
                         <div class="detail">
                             <p>モーダルで表示するHTMLを設定します。<br />
                             htmlを省略した場合、初期化時に渡したhtmlオプションの内容を表示します。<br />
@@ -2230,7 +2230,7 @@ C.$('.open').on(C.e.CLICK, function() {
                         </div>
                     </li>
                     <li id="Modal_open">
-                        <h3>open([html])</h3>
+                        <h3>open(<span class="expansion">[html]</span>)</h3>
                         <div class="detail">
                             <p>モーダルを表示します。<br />
                             htmlを省略した場合、初期化時に渡したhtmlオプションの内容を表示します。<br />
@@ -2295,7 +2295,7 @@ C.$('.open').on(C.e.CLICK, function() {
                 </div>
                 <ul>
                     <li id="Model_fire">
-                        <h3>fire(key, [value])</h3>
+                        <h3>fire(key, <span class="expansion">[value]</span>)</h3>
                         <div class="detail">
                             <p>onオプション、onメソッドで登録されたイベントを実行します。</p>
 <pre>model.on('change', function(vars) {
@@ -2309,7 +2309,7 @@ observer.fire('change', {
                         </div>
                     </li>
                     <li id="Model_get">
-                        <h3>get([key])</h3>
+                        <h3>get(<span class="expansion">[key]</span>)</h3>
                         <div class="detail">
                             <p>データを取り出します。</p>
 <pre>model.get('test');</pre>
@@ -2353,7 +2353,7 @@ model.fire('change'); // exe func2.</pre>
                         </div>
                     </li>
                     <li id="Model_prev">
-                        <h3>prev([key])</h3>
+                        <h3>prev(<span class="expansion">[key]</span>)</h3>
                         <div class="detail">
                             <p>保持しているデータの一つ前の状態を返します。<br />
                             keyを省略した場合、データを纏めたオブジェクトを返します。<br />
@@ -2486,7 +2486,7 @@ movie.loop(false); // ループ無し</pre>
                 </div>
                 <ul>
                     <li id="Observer_fire">
-                        <h3>fire([vars])</h3>
+                        <h3>fire(<span class="expansion">[vars]</span>)</h3>
                         <div class="detail">
                             <p>onメソッドで登録されたイベントを実行します。</p>
 <pre>observer.on('jsonloaded', function(vars) {
@@ -2500,7 +2500,7 @@ observer.fire('jsonloaded', {
                         </div>
                     </li>
                     <li id="Observer_off">
-                        <h3>off(key, [func])</h3>
+                        <h3>off(key, <span class="expansion">[func]</span>)</h3>
                         <div class="detail">
                             <p>登録されたイベントを削除します。</p>
 <pre>var func1 = function() {
@@ -2670,7 +2670,7 @@ pc.revivalScroll(true); // スクロールをその場で再開</pre>
                 </div>
                 <ul>
                     <li id="ScriptLoad_request">
-                        <h3>request({src, [callback]})</h3>
+                        <h3>request({src, <span class="expansion">[callback]</span>})</h3>
                         <div class="detail">
                             <p>jsファイルの動的読み込みを行います。</p>
 <pre>scriptload.request({
@@ -2682,7 +2682,7 @@ pc.revivalScroll(true); // スクロールをその場で再開</pre>
                         </div>
                     </li>
                     <li id="ScriptLoad_requests">
-                        <h3>requests([{src, [callback]}], [callback])</h3>
+                        <h3>requests([{src, <span class="expansion">[callback]</span>}], <span class="expansion">[callback]</span>)</h3>
                         <div class="detail">
                             <p>複数ファイルの動的読み込みを行います。</p>
 <pre>scriptload.requests([
@@ -2789,7 +2789,7 @@ var storage_cir = new C.SessionStorage({
                 </div>
                 <ul>
                     <li id="SessionStorage_get">
-                        <h3>get([key])</h3>
+                        <h3>get(<span class="expansion">[key]</span>)</h3>
                         <div class="detail">
                             <p>値を取得します。</p>
 <pre>sessionStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';
@@ -2964,7 +2964,7 @@ surrogate.flush();</pre>
                         </div>
                     </li>
                     <li id="Surrogate_request">
-                        <h3>request([vars])</h3>
+                        <h3>request(<span class="expansion">[vars]</span>)</h3>
                         <div class="detail">
                             <p>処理をリクエストします。</p>
 <pre>surrogate.request('Cool is Right.'); // delayオプションだけ待機</pre>
@@ -3000,7 +3000,7 @@ throttle.request('Cool is Right.'); // 実行されない</pre>
                         </div>
                     </li>
                     <li id="Throttle_request">
-                        <h3>request([vars])</h3>
+                        <h3>request(<span class="expansion">[vars]</span>)</h3>
                         <div class="detail">
                             <p>処理をリクエストします。<br />
                             waittimeオプションだけ連続実行をできなくします。</p>
@@ -3208,7 +3208,7 @@ timer.countDown(); // start timer.</pre>
                 </div>
                 <ul>
                     <li id="Twitter_shareURL">
-                        <h3>shareURL({redirect_uri, [name], [caption], [hash]})</h3>
+                        <h3>shareURL({redirect_uri, <span class="expansion">[name]</span>, <span class="expansion">[caption]</span>, <span class="expansion">[hash]</span>})</h3>
                         <div class="detail">
                             <p>シェア画面を開くためのURLを取得します。</p>
 <pre>var twshare = facebook.shareURL({
