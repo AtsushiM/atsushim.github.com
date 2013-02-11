@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Cool is Right.</h2>
-    <p class="ver">0.8.4</p>
+    <p class="ver">0.8.5</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.4)</span> 機能選択：<a href="optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.5)</span> 機能選択：<a href="optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -707,9 +707,19 @@ for (; i < len; i++) {
             <dt>C.mobile<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var mobile = new C.mobile;</pre>
+                    <pre>var mobile = C.mobile;</pre>
                     <p>モバイル端末用のユーティリティクラスです。<br />
                     このオブジェクトは<a href="#Mobile">C.Mobile</a>クラスを使用して設定されます。</p>
+                </div>
+            </dd>
+        </dl>
+        <dl id="pc_">
+            <dt>C.pc<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+                    <pre>var pc = C.pc;</pre>
+                    <p>モバイル端末以外を対象にしたユーティリティクラスです。<br />
+                    このオブジェクトは<a href="#PC">C.PC</a>クラスを使用して設定されます。</p>
                 </div>
             </dd>
         </dl>
@@ -864,8 +874,7 @@ check = util.isTouchable(); // boolean</pre>
     // any action...
     callback();
 }
-anyAction(util.nullFunction); // anyActionは常にcallbackを必要とするのでnullFunctionを渡し処理の簡略
-</pre>
+anyAction(util.nullFunction); // anyActionは常にcallbackを必要とするのでnullFunctionを渡し処理の簡略</pre>
                         </div>
                     </li>
                     <li id="util_override">
@@ -1522,62 +1531,10 @@ deferred.done(function() {
             <dt>C.DragFlick<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var dragflick = new C.DragFlick();</pre>
-                    <p>ドラッグ＆フリック用の処理を提供するクラスです。</p>
-                </div>
-                <ul>
-                    <li id="DragFlick_amount">
-                        <h3>amount({el: element, callback: function})</h3>
-                        <div class="detail">
-                            <p>ドラッグもしくはフリック開始から終了までに移動した距離をcallbackに渡します。</p>
 <pre>var $sample = C.$('#sample');
-dragflick.amount({
+var dragflick = new C.DragFlick({
     el: $sample[0],
-    callback: function(amount) {
-        // write code.
-        console.log('x:' amount.x);
-        console.log('y:' amount.y);
-    }
-});</pre>
-                        </div>
-                    </li>
-                    <li id="DragFlick_attach">
-                        <h3>attach({el: element, <span class="expansion">[direction: function]</span>, <span class="expansion">[boundary: number]</span>, <span class="expansion">[start: function]</span>, <span class="expansion">[move: function]</span>, <span class="expansion">[end: function]</span>})</h3>
-                        <div class="detail">
-                            <p>ドラッグもしくはフリック用のイベントをまとめて設定します。<br />
-                            directionとboundaryはdirectionメソッド用のオプションです</p>
-<pre>var $sample = C.$('#sample');
-dragflick.attach({
-    el: $sample[0],
-    direction: function(direction) {
-        // write code.
-    },
-    boundary: 100,
-    start: function(e) {
-        // write code.
-        console.log(e); // {e: mouseevent, move: {x: number, y: number}}
-    },
-    move: function(e) {
-        // write code.
-        console.log(e); // {e: mouseevent, move: {x: number, y: number}}
-    },
-    end: function(e) {
-        // write code.
-        console.log(e); // {e: mouseevent, move: {x: number, y: number}}
-    },
-});</pre>
-                        </div>
-                    </li>
-                    <li id="DragFlick_direction">
-                        <h3>direction({el: element, callback: function, <span class="expansion">[boundary: number]</span>})</h3>
-                        <div class="detail">
-                            <p>ドラッグもしくはフリックした場合、どの方向に移動したかをcallbackに渡します。<br />
-                            boundaryを指定すると指定した値以上になった場合、移動したことになります。</p>
-<pre>var $sample = C.$('#sample');
-dragflick.direction({
-    el: $sample[0],
-    boundary: 100,
-    callback: function(direction) {
+    direction: function(direction) { // default: undefined
         // write code.
         console.log('change:' direction.change); //boolean
         console.log('top:' direction.top); //boolean
@@ -1585,9 +1542,41 @@ dragflick.direction({
         console.log('bottom:' direction.bottom); //boolean
         console.log('left:' direction.left); //boolean
         console.log('amount:' direction.amount); // {x: number, y: number}
-    }
-});
-</pre>
+    },
+    boundary: 100, // default: undefined
+    start: function(e) { // default: undefined
+        // write code.
+        console.log(e); // {e: mouseevent, move: {x: number, y: number}}
+    },
+    move: function(e) { // default: undefined
+        // write code.
+        console.log(e); // {e: mouseevent, move: {x: number, y: number}}
+    },
+    end: function(e) { // default: undefined
+        // write code.
+        console.log(e); // {e: mouseevent, move: {x: number, y: number}}
+    },
+    manual: false // default: false
+});</pre>
+                    <p>ドラッグ＆フリック用の処理を提供するクラスです。</p>
+                </div>
+                <ul>
+                    <li id="DragFlick_attach">
+                        <h3>attach()</h3>
+                        <div class="detail">
+                            <p>ドラッグもしくはフリック用のイベントを設定します。<br />
+                            directionオプションに指定した関数は、ドラッグもしくはフリックした場合どの方向に移動したかが引数として渡されます。<br />
+                            boundaryを指定すると指定した値以上になった場合、移動したことになります。<br />
+                            このメソッドはインスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しを行いたくない場合は、manualオプションをtrueにしてください。</p>
+<pre>dragflick.attach();</pre>
+                        </div>
+                    </li>
+                    <li id="DragFlick_detach">
+                        <h3>detach()</h3>
+                        <div class="detail">
+                            <p>elに設定されたイベントを削除します。</p>
+<pre>dragflick.detach();</pre>
                         </div>
                     </li>
                 </ul>
@@ -3246,55 +3235,55 @@ timer.countDown(); // start timer.</pre>
                     <li id="Validate_isArray">
                         <h3>isArray(key, vars)</h3>
                         <div class="detail">
-                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+                            <p>varsがArrayの場合はtrueを返し、そうでない場合エラー表示します。</p>
 <pre>var check;
 check = validate.isArray('check', []); // true
-check = validate.isArray('check', {}); // console.log(error)</pre>
+check = validate.isArray('check', {}); // error</pre>
                         </div>
                     </li>
                     <li id="Validate_isBoolean">
                         <h3>isBoolean(key, vars)</h3>
                         <div class="detail">
-                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+                            <p>varsがBooleanの場合はtrueを返し、そうでない場合エラー表示します。</p>
 <pre>var check;
 check = validate.isBoolean('check', false); // true
-check = validate.isBoolean('check', {}); // console.log(error)</pre>
+check = validate.isBoolean('check', {}); // error</pre>
                         </div>
                     </li>
                     <li id="Validate_isFunction">
                         <h3>isFunction(key, vars)</h3>
                         <div class="detail">
-                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+                            <p>varsがFunctionの場合はtrueを返し、そうでない場合エラー表示します。</p>
 <pre>var check;
 check = validate.isFunction('check', function() {}); // true
-check = validate.isFunction('check', {}); // console.log(error)</pre>
+check = validate.isFunction('check', {}); // error</pre>
                         </div>
                     </li>
                     <li id="Validate_isNumber">
                         <h3>isNumber(key, vars)</h3>
                         <div class="detail">
-                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+                            <p>varsがNumberの場合はtrueを返し、そうでない場合エラー表示します。</p>
 <pre>var check;
 check = validate.isNumber('check', 1); // true
-check = validate.isNumber('check', {}); // console.log(error)</pre>
+check = validate.isNumber('check', {}); // error</pre>
                         </div>
                     </li>
                     <li id="Validate_isObject">
                         <h3>isObject(key, vars)</h3>
                         <div class="detail">
-                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+                            <p>varsがObjectの場合はtrueを返し、そうでない場合エラー表示します。</p>
 <pre>var check;
 check = validate.isObject('check', {}); // true
-check = validate.isObject('check', []); // console.log(error)</pre>
+check = validate.isObject('check', []); // error</pre>
                         </div>
                     </li>
                     <li id="Validate_isString">
                         <h3>isString(key, vars)</h3>
                         <div class="detail">
-                            <p>varsがArrayの場合はtrueを返し、そうでない場合console.logでエラー表示します。</p>
+                            <p>varsがStringの場合はtrueを返し、そうでない場合エラー表示します。</p>
 <pre>var check;
 check = validate.isString('check', ''); // true
-check = validate.isString('check', {}); // console.log(error)</pre>
+check = validate.isString('check', {}); // error</pre>
                         </div>
                     </li>
                 </ul>
