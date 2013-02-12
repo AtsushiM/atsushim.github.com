@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Cool is Right.</h2>
-    <p class="ver">0.8.5</p>
+    <p class="ver">0.8.6</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.5)</span> 機能選択：<a href="optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.6)</span> 機能選択：<a href="optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -731,21 +731,6 @@ for (; i < len; i++) {
                     <p>様々なクラスから呼び出されるユーティリティオブジェクトです。</p>
                 </div>
                 <ul>
-                    <li id="util_bind">
-                        <h3>bind(target, func)</h3>
-                        <div class="detail">
-                            <p>funcのthisをtargetにします。</p>
-<pre>var obj = {
-    prop: 'cir.js'
-};
-var func = function() {
-    console.log(this.prop);
-};
-func(); // undefind
-var bindfunc = C.util.bind(obj, func);
-ret(); // 'cir.js'</pre>
-                        </div>
-                    </li>
                     <li id="util_checkUserAgent">
                         <h3>checkUserAgent(regex, <span class="expansion">[userAgent]</span>)</h3>
                         <div class="detail">
@@ -937,6 +922,21 @@ location.hash = hashquery;
 
 var obj = util.parseQueryString(location.hash);
 alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');</pre>
+                        </div>
+                    </li>
+                    <li id="util_proxy">
+                        <h3>proxy(target, func)</h3>
+                        <div class="detail">
+                            <p>funcのthisをtargetにします。</p>
+<pre>var obj = {
+    prop: 'cir.js'
+};
+var func = function() {
+    console.log(this.prop);
+};
+func(); // undefind
+var proxyfunc = C.util.proxy(obj, func);
+ret(); // 'cir.js'</pre>
                         </div>
                     </li>
                     <li id="util_replaceAll">
@@ -3429,6 +3429,7 @@ check = validate.isString('check', {}); // error</pre>
             <li><a href="#extend">extend</a></li>
             <li><a href="#klass">klass</a></li>
             <li><a href="#mobile_">mobile</a></li>
+            <li><a href="#pc_">pc</a></li>
             <li><a href="#util">util</a></li>
             <li><a href="#validate_">validate</a></li>
             <li><a href="#Ajax">Ajax</a></li>
