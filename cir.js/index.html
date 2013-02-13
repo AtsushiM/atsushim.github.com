@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Cool is Right.</h2>
-    <p class="ver">0.8.6</p>
+    <p class="ver">0.8.7</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.6)</span> 機能選択：<a href="optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.7)</span> 機能選択：<a href="optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -787,7 +787,7 @@ check = util.isBoolean(1); // false</pre>
                     <li id="util_isDefined">
                         <h3>isDefined(vars)</h3>
                         <div class="detail">
-                            <p>varsがundefined出ない場合trueを、undefinedの場合falseを返します。</p>
+                            <p>varsがundefinedでない場合trueを、undefinedの場合falseを返します。</p>
 <pre>var check;
 check = util.isDefined(true); // true
 check = util.isDefined(false); // true
@@ -1423,7 +1423,7 @@ deferred.done(function() {
             <dd>
                 <div class="sample">
 <pre>var motion = new C.DeviceMotion({
-    callback: function(e) { // default: undefind
+    callback: function(e) {
         // write code.
     }
 });</pre>
@@ -1432,14 +1432,11 @@ deferred.done(function() {
                 </div>
                 <ul>
                     <li id="DeviceMotion_attach">
-                        <h3>attach(callback)</h3>
+                        <h3>attach()</h3>
                         <div class="detail">
                             <p>window.ondevicemotionにcallbackを登録します。<br />
-                            インスタンス生成時に、callbackオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
-                            1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
-<pre>motion.attach(function(e) {
-    console.log('callback1');
-});</pre>
+                            インスタンス生成時に、このメソッドは自動的に呼び出されます。</p>
+<pre>motion.attach();</pre>
                         </div>
                     </li>
                     <li id="DeviceMotion_detach">
@@ -1466,14 +1463,11 @@ deferred.done(function() {
                 </div>
                 <ul>
                     <li id="DeviceOrientation_attach">
-                        <h3>attach(callback)</h3>
+                        <h3>attach()</h3>
                         <div class="detail">
                             <p>window.ondeviceorientationにcallbackを登録します。<br />
-                            インスタンス生成時に、callbackオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
-                            1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
-<pre>orient.attach(function(e) {
-    console.log('callback1');
-});</pre>
+                            インスタンス生成時に、このメソッドは自動的に呼び出されます。</p>
+<pre>orient.attach();</pre>
                         </div>
                     </li>
                     <li id="DeviceOrientation_detach">
@@ -1493,8 +1487,8 @@ deferred.done(function() {
 <pre>var shake = new C.DeviceShake({
     limit: 100,
     waittime: 500,
-    direction: 'x', // default: undefind
-    callback: function(e) { // default: undefind
+    direction: 'x', // 'x' || 'y' || 'z'
+    callback: function(e) {
         // write code.
     }
 });</pre>
@@ -1505,16 +1499,13 @@ deferred.done(function() {
                 </div>
                 <ul>
                     <li id="DeviceShake_attach">
-                        <h3>attach(direction, callback)</h3>
+                        <h3>attach()</h3>
                         <div class="detail">
                             <p>端末が振られた際に発火するcallbackを登録します。<br />
                             振られる方向はdirectionで指定します。<br />
                             directionの値は'x', 'y', 'z'のいずれかとなります。<br />
-                            インスタンス生成時に、callback・directionオプションが指定された場合、このメソッドは自動的に呼び出されます。<br />
-                            1インスタンスに1callbackを結びつける構造になっているため、複数のイベントを登録したい場合、インスタンスを複数生成してください。</p>
-<pre>shake.attach('alpha', function(e) {
-    console.log('callback1');
-});</pre>
+                            インスタンス生成時に、このメソッドは自動的に呼び出されます。</p>
+<pre>shake.attach();</pre>
                         </div>
                     </li>
                     <li id="DeviceShake_detach">
@@ -2185,7 +2176,7 @@ mobile.revivalScroll(true); // スクロールをその場で再開</pre>
                 <div class="sample">
 <pre>var modal = new C.Modal({
     html: '&lt;div&gt;&lt;p&gt;TEST.&lt;/p&gt;&lt;p class="close"&gt;close&lt;/p&gt;&lt;/div&gt;', // default: undefined
-    overlayClose: true, // default: false
+    bgClose: true, // default: false
     closeSelector: '.close', // default: undefined
     manual: true // default: false
 });
@@ -2195,7 +2186,7 @@ C.$('.open').on(C.e.CLICK, function() {
 });</pre>
                     <p>シンプルなモーダルを提供するクラスです。<br />
                     htmlオプションで表示する内容を指定します。<br />
-                    overlayCloseオプションを指定するとhtmlオプションで指定した内容以外をクリックした場合、モーダルを閉じます。<br />
+                    bgCloseオプションを指定するとhtmlオプションで指定した内容以外をクリックした場合、モーダルを閉じます。<br />
                     closeSelectorオプションはcssセレクターでhtmlオプションで指定した内容中の対応するエレメントをクリックした場合、モーダルを閉じます。<br />
                     manualにtrueを指定した場合、インスタンス生成時にモーダルを表示しません。<br />
                     モーダルのデザインはほぼ何も適用されていない為、CSSで調整する必要があります。<br />
@@ -3399,20 +3390,6 @@ check = validate.isString('check', {}); // error</pre>
                             <p>XMLからデータを取り出します。<br />
                             データはNodeList形式になっています。</p>
 <pre>var sample = xml.$$('sample');</pre>
-                        </div>
-                    </li>
-                    <li id="XML_getData">
-                        <h3>getData()</h3>
-                        <div class="detail">
-                            <p>dataオプションの値を取得します。</p>
-<pre>var data = xml.getData();</pre>
-                        </div>
-                    </li>
-                    <li id="XML_setData">
-                        <h3>setData()</h3>
-                        <div class="detail">
-                            <p>dataオプションの値を設定します。</p>
-<pre>xml.setData(xmlText);</pre>
                         </div>
                     </li>
                 </ul>
