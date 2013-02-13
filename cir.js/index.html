@@ -1863,27 +1863,20 @@ var tag_white = font.make('A');
                     <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
                 </div>
                 <ul>
-                    <li id="Handle_add">
-                        <h3>add()</h3>
+                    <li id="Handle_attach">
+                        <h3>attach()</h3>
                         <div class="detail">
                             <p>elに対してeventsに渡したオブジェクトのプロパティをaddEventListnerします。<br />
                             インスタンス生成時に自動的に呼び出されます。<br />
                             呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
-<pre>handle.add(); // addEvent</pre>
+<pre>handle.attach(); // addEvent</pre>
                         </div>
                     </li>
-                    <li id="Handle_getHandler">
-                        <h3>getHandler()</h3>
-                        <div class="detail">
-                            <p>インスタンス生成時の引数を取得します。</p>
-<pre>var handler = handle.getHandler(); // object</pre>
-                        </div>
-                    </li>
-                    <li id="Handle_remove">
-                        <h3>remove()</h3>
+                    <li id="Handle_detach">
+                        <h3>detach()</h3>
                         <div class="detail">
                             <p>elに対してeventsに渡したオブジェクトのプロパティをremoveEventListnerします。</p>
-<pre>handle.remove(); // removeEvent</pre>
+<pre>handle.detach(); // removeEvent</pre>
                         </div>
                     </li>
                 </ul>
