@@ -2051,32 +2051,6 @@ var num = storage.get('num'); // null</pre>
                     <p>モバイル端末用のユーティリティクラスです。</p>
                 </div>
                 <ul>
-                    <li id="Mobile_attachOrientation">
-                        <h3>attachOrientation({portrait: function, landscape: function})</h3>
-                        <div class="detail">
-                            <p>端末の向きに合わせて処理を実行します。<br />
-                            このメソッドは紐付けたイベントを削除するための関数を返します。</p>
-<pre>var removeOrientation = mobile.attachOrientation({
-    portrait: function() {
-        // write code.
-    },
-    landscape: function() {
-        // write code.
-    }
-}); // イベント登録
-
-removeOrientation(); // イベント削除
-</pre>
-                        </div>
-                    </li>
-                    <li id="Mobile_getOrientation">
-                        <h3>getOrientation()</h3>
-                        <div class="detail">
-                            <p>端末の向きを取得します。</p>
-<pre>var orient = mobile.getOrientation();
-// {landscape: boolean, portrait: boolean}</pre>
-                        </div>
-                    </li>
                     <li id="Mobile_getZoom">
                         <h3>getZoom()</h3>
                         <div class="detail">
@@ -2509,6 +2483,46 @@ observer.fire('jsonloaded', 'fire2');</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Orientation">
+            <dt>C.Orientation<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+                    <pre>var orient = new C.Orientation({
+                        portrait: function() {
+                            // write code.
+                        },
+                        landscape: function() {
+                            // write code.
+                        }
+                    });</pre>
+                    <p>orientationイベントの操作を行うクラスです。</p>
+                </div>
+                <ul>
+                    <li id="Orientation_attach">
+                        <h3>attach()</h3>
+                        <div class="detail">
+                            <p>端末の向きに合わせて処理を実行します。</p>
+<pre>orient.attach();</pre>
+                        </div>
+                    </li>
+                    <li id="Orientation_detach">
+                        <h3>detach()</h3>
+                        <div class="detail">
+                            <p>紐付けたイベントを削除します。</p>
+<pre>orient.detach();</pre>
+                        </div>
+                    </li>
+                    <li id="Orientation_getOrientation">
+                        <h3>get()</h3>
+                        <div class="detail">
+                            <p>端末の向きを取得します。</p>
+<pre>var direction = orient.get();
+// {landscape: boolean, portrait: boolean}</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="PC">
             <dt>C.PC<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -2623,7 +2637,8 @@ pc.revivalScroll(true); // スクロールをその場で再開</pre>
             <dd>
                 <div class="sample">
                     <pre>var scriptload = new C.ScriptLoad();</pre>
-                    <p>scriptファイルを動的に読み込むメソッドを提供するクラスです。</p>
+                    <p>scriptファイルを動的に読み込むメソッドを提供するクラスです。<br />
+                    インスタンス生成時にrequestsメソッドと同じ形式の引数を渡すとrequestsメソッドを呼び出します。</p>
                 </div>
                 <ul>
                     <li id="ScriptLoad_request">
