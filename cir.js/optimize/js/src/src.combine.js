@@ -247,6 +247,9 @@ Global.Dependency = function(config) {
                     'Media',
                     'Video'
                 ],
+                Modal: [
+                    'Scroll'
+                ],
                 Media: [
                     'Embed',
                     'Audio',
@@ -319,6 +322,9 @@ Global.Dependency = function(config) {
                     'Video',
                     'Sound',
                     'Movie'
+                ],
+                Scroll: [
+                    'Modal'
                 ],
                 Audio: [
                     'Sound'

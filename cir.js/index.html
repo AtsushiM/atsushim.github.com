@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Cool is Right.</h2>
-    <p class="ver">0.8.9</p>
+    <p class="ver">0.8.10</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.9)</span> 機能選択：<a href="optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.10)</span> 機能選択：<a href="optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -2100,24 +2100,6 @@ var num = storage.get('num'); // null</pre>
 <pre>var check = mobile.isWindows(); // boolean</pre>
                         </div>
                     </li>
-                    <li id="Mobile_killScroll">
-                        <h3>killScroll(noTop)</h3>
-                        <div class="detail">
-                            <p>ブラウザスクロールを不可にします。<br />
-                            noTopをtrueにした場合、その場でスクロールを固定します。</p>
-<pre>mobile.killScroll(); // スクロールを最上にし、停止
-mobile.killScroll(true); // スクロールをその場で停止</pre>
-                        </div>
-                    </li>
-                    <li id="Mobile_revivalScroll">
-                        <h3>revivalScroll(noTop)</h3>
-                        <div class="detail">
-                            <p>ブラウザスクロールを可能にします。<br />
-                            noTopをtrueにした場合、その場でスクロール可能にします。</p>
-<pre>mobile.revivalScroll(); // スクロールを最上にし、再開
-mobile.revivalScroll(true); // スクロールをその場で再開</pre>
-                        </div>
-                    </li>
                 </ul>
             </dd>
         </dl>
@@ -2523,35 +2505,6 @@ observer.fire('jsonloaded', 'fire2');</pre>
                 </ul>
             </dd>
         </dl>
-        <dl id="PC">
-            <dt>C.PC<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-                    <pre>var pc = new C.PC();</pre>
-                    <p>モバイル端末以外を対象にしたユーティリティクラスです。</p>
-                </div>
-                <ul>
-                    <li id="PC_killScroll">
-                        <h3>killScroll(noTop)</h3>
-                        <div class="detail">
-                            <p>ブラウザスクロールを不可にします。<br />
-                            noTopをtrueにした場合、その場でスクロールを固定します。</p>
-<pre>pc.killScroll(); // スクロールを最上にし、停止
-pc.killScroll(true); // スクロールをその場で停止</pre>
-                        </div>
-                    </li>
-                    <li id="PC_revivalScroll">
-                        <h3>revivalScroll(noTop)</h3>
-                        <div class="detail">
-                            <p>ブラウザスクロールを可能にします。<br />
-                            noTopをtrueにした場合、その場でスクロール可能にします。</p>
-<pre>pc.revivalScroll(); // スクロールを最上にし、再開
-pc.revivalScroll(true); // スクロールをその場で再開</pre>
-                        </div>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
         <dl id="PreRender">
             <dt>C.PreRender<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -2664,6 +2617,61 @@ pc.revivalScroll(true); // スクロールをその場で再開</pre>
 ], function(scripts) {
     // callback.
 });</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="Scroll">
+            <dt>C.Scroll<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+                    <pre>var scroll = new C.Scroll();</pre>
+                    <p>スクロールの操作を行うクラスです。</p>
+                </div>
+                <ul>
+                    <li id="Scroll_kill">
+                        <h3>kill()</h3>
+                        <div class="detail">
+                            <p>ブラウザスクロールを不可にします。</p>
+<pre>scroll.kill(); // スクロールを停止</pre>
+                        </div>
+                    </li>
+                    <li id="Scroll_revival">
+                        <h3>revival()</h3>
+                        <div class="detail">
+                            <p>ブラウザスクロールを可能にします。</p>
+<pre>scroll.revival(); // スクロールを停止</pre>
+                        </div>
+                    </li>
+                    <li id="Scroll_smooth">
+                        <h3>smooth(target)</h3>
+                        <div class="detail">
+                            <p>スムーズスクロールで移動します。<br />
+                            targetには数値かHTMLエレメントが指定出来ます。</p>
+<pre>scroll.smooth(0); // ページトップへ
+scroll.smooth(C.dom.$('#test')); // #testの位置へ</pre>
+                        </div>
+                    </li>
+                    <li id="Scroll_to">
+                        <h3>to(num)</h3>
+                        <div class="detail">
+                            <p>スクロール位置を移動します。</p>
+<pre>scroll.to(100); // トップから100pの位置へ</pre>
+                        </div>
+                    </li>
+                    <li id="Scroll_toBottom">
+                        <h3>toBottom()</h3>
+                        <div class="detail">
+                            <p>スクロール位置を一番下にします。</p>
+<pre>scroll.toBottom();</pre>
+                        </div>
+                    </li>
+                    <li id="Scroll_toTop">
+                        <h3>toTop()</h3>
+                        <div class="detail">
+                            <p>スクロール位置を一番上にします。</p>
+<pre>scroll.toTop();</pre>
                         </div>
                     </li>
                 </ul>
@@ -3428,10 +3436,10 @@ check = validate.isString('check', {}); // error</pre>
             <li><a href="#Movie">Movie</a></li>
             <li><a href="#Observer">Observer</a></li>
             <li><a href="#Orientation">Orientation</a></li>
-            <li><a href="#PC">PC</a></li>
             <li><a href="#PreRender">PreRender</a></li>
             <li><a href="#Route">Route</a></li>
             <li><a href="#ScriptLoad">ScriptLoad</a></li>
+            <li><a href="#Scroll">Scroll</a></li>
             <li><a href="#ServerMeta">ServerMeta</a></li>
             <li><a href="#SessionStorage">SessionStorage</a></li>
             <li><a href="#Sound">Sound</a></li>
