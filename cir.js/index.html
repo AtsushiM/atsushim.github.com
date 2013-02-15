@@ -2645,12 +2645,14 @@ observer.fire('jsonloaded', 'fire2');</pre>
                         </div>
                     </li>
                     <li id="Scroll_smooth">
-                        <h3>smooth(target)</h3>
+                        <h3>smooth(target, callback)</h3>
                         <div class="detail">
                             <p>スムーズスクロールで移動します。<br />
                             targetには数値かHTMLエレメントが指定出来ます。</p>
 <pre>scroll.smooth(0); // ページトップへ
-scroll.smooth(C.dom.$('#test')); // #testの位置へ</pre>
+scroll.smooth(C.dom.$('#test'), function() {
+    // write code.
+}); // #testの位置へ</pre>
                         </div>
                     </li>
                     <li id="Scroll_to">

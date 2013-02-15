@@ -57,9 +57,19 @@ DOC.init = function(config) {
 DOC.localLink = function(config) {
     'use strict';
 
+    var scroll = new C.Scroll();
+
     // local link
     return $('a[href^="#"]').on(C.e.CLICK, function(e) {
-        removeClose($($(this).attr('href')));
+        var $this = $(this),
+            $href = $($this.attr('href'));
+
+        removeClose($href);
+        scroll.smooth($href[0], function() {
+            console.log('test');
+            location.hash = $this.attr('href').split('#')[1];
+        });
+        C.util.eventPrevent(e);
     });
 };
 DOC.submenu = function(config) {
