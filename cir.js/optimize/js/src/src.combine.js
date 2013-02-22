@@ -59,7 +59,6 @@ Global.BtnCreate = function(config) {
                     callback = function() {
                         count--;
                         if (count === 0) {
-                            console.log(count);
                             observer.fire(e.srcloaded, srcs);
                         }
                     };
@@ -197,7 +196,7 @@ Global.Element = function(config) {
         instanse = {
             check_all: $('#all'),
             btn_create: $('#create'),
-            srcs: $('#srcfile input'),
+            srcs: $('#srcfile li input'),
             srcarea: $('#srcarea')
         };
 
@@ -382,20 +381,31 @@ Global.MakeSrc = function(config) {
                 var src = '',
                     i = 0,
                     len = el.srcs.length,
-                    key;
+                    key,
+                    optimizedname = '/* optimize: ';
 
                 for (; i < len; i++) {
                     key = el.srcs[i].value;
+
                     if (srcs[key]) {
+                        if ($(el.srcs[i]).parent()[0].querySelector('.name')) {
+                            optimizedname += $(el.srcs[i]).parent()[0].querySelector('.name').innerHTML + ' ';
+                        }
+                        optimizedname += '';
                         src += encodeURIComponent(srcs[key]);
                     }
                 }
+
+                optimizedname += '*/\n';
 
                 ajax.closurecompiler({
                     src: src,
                     callback: function(data) {
                         observer.fire(e.createjssrc,
-                            srcs['src/clouser_start.js'] + data + srcs['src/clouser_end.js']);
+                            srcs['src/clouser_start.js'] +
+                            optimizedname +
+                            data +
+                            srcs['src/clouser_end.js']);
                     }
                 });
 
@@ -404,7 +414,6 @@ Global.MakeSrc = function(config) {
         };
 
     observer.on(e.srcloaded, function(srcs) {
-        console.log(srcs);
         instanse.make(srcs);
     });
 

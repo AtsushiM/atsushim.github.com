@@ -2495,6 +2495,52 @@ observer.fire('jsonloaded', 'fire2');</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="PC">
+            <dt>C.PC<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+                    <pre>var pc = new C.PC();</pre>
+                    <p>モバイル端末以外を対象にしたユーティリティクラスです。</p>
+                </div>
+                <ul>
+                    <li id="PC_isChrome">
+                        <h3>isChrome()</h3>
+                        <div class="detail">
+                            <p>ブラウザがChromeかどうかBooleanで返します。</p>
+<pre>var check = pc.isChrome(); // boolean</pre>
+                        </div>
+                    </li>
+                    <li id="PC_isGecko">
+                        <h3>isGecko()</h3>
+                        <div class="detail">
+                            <p>ブラウザがGecko系かどうかBooleanで返します。</p>
+<pre>var check = pc.isGecko(); // boolean</pre>
+                        </div>
+                    </li>
+                    <li id="PC_isIE">
+                        <h3>isIE()</h3>
+                        <div class="detail">
+                            <p>ブラウザがIE系かどうかBooleanで返します。</p>
+<pre>var check = pc.isIE(); // boolean</pre>
+                        </div>
+                    </li>
+                    <li id="PC_isOpera">
+                        <h3>isOpera()</h3>
+                        <div class="detail">
+                            <p>ブラウザがOperaかどうかBooleanで返します。</p>
+<pre>var check = pc.isOpera(); // boolean</pre>
+                        </div>
+                    </li>
+                    <li id="PC_isSafari">
+                        <h3>isSafari()</h3>
+                        <div class="detail">
+                            <p>ブラウザがSafariかどうかBooleanで返します。</p>
+<pre>var check = pc.isSafari(); // boolean</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="PreRender">
             <dt>C.PreRender<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -3427,6 +3473,7 @@ check = validate.isString('check', {}); // error</pre>
             <li><a href="#Movie">Movie</a></li>
             <li><a href="#Observer">Observer</a></li>
             <li><a href="#Orientation">Orientation</a></li>
+            <li><a href="#PC">PC</a></li>
             <li><a href="#PreRender">PreRender</a></li>
             <li><a href="#Route">Route</a></li>
             <li><a href="#ScriptLoad">ScriptLoad</a></li>

@@ -5,7 +5,7 @@ Global.Element = function(config) {
         instanse = {
             check_all: $('#all'),
             btn_create: $('#create'),
-            srcs: $('#srcfile input'),
+            srcs: $('#srcfile li input'),
             srcarea: $('#srcarea')
         };
 

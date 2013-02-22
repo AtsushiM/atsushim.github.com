@@ -15,7 +15,6 @@ Global.BtnCreate = function(config) {
                     callback = function() {
                         count--;
                         if (count === 0) {
-                            console.log(count);
                             observer.fire(e.srcloaded, srcs);
                         }
                     };
