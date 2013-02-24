@@ -382,16 +382,19 @@ Global.MakeSrc = function(config) {
                     i = 0,
                     len = el.srcs.length,
                     key,
-                    optimizedname = '/* optimize: ';
+                    optimizedname = '/* optimize: ',
+                    target;
 
                 for (; i < len; i++) {
                     key = el.srcs[i].value;
 
                     if (srcs[key]) {
-                        if ($(el.srcs[i]).parent()[0].querySelector('.name')) {
-                            optimizedname += $(el.srcs[i]).parent()[0].querySelector('.name').innerHTML + ' ';
+                        target = $(el.srcs[i]).parent().find('.name');
+
+                        if (target.length) {
+                            optimizedname += target.html() + ' ';
                         }
-                        optimizedname += '';
+                        /* optimizedname += ''; */
                         src += encodeURIComponent(srcs[key]);
                     }
                 }
