@@ -516,6 +516,14 @@ dom.on($sample, C.e.CLICK, function() {
 dom.show($sample);</pre>
                         </div>
                     </li>
+                    <li id="dom_reflow">
+                        <h3>reflow(<span class="expansion">[el]</span>)</h3>
+                        <div class="detail">
+                            <p>表示を再描画(リフロー)します。<br />
+                            elが指定されなかった場合、document.body以下をリフローします。</p>
+<pre>dom.reflow();</pre>
+                        </div>
+                    </li>
                     <li id="dom_remove">
                         <h3>remove(element)</h3>
                         <div class="detail">
@@ -919,7 +927,7 @@ var func = function() {
     console.log(this.prop);
 };
 func(); // undefind
-var proxyfunc = C.util.proxy(obj, func);
+var proxyfunc = util.proxy(obj, func);
 ret(); // 'cir.js'</pre>
                         </div>
                     </li>
