@@ -6,30 +6,36 @@ C['$'] = function(query, _parent /* varless */, $el, instance, len) {
     //     instance,
     //     len;
 
-    /* var base = function(){}; */
-    /* base.prototype = $_methods; */
-
-    /* _parent = _parent || doc; */
-
-    /* if (isString(query)) { */
-    if (typeof query === 'string') {
+    if (typeof query == 'string') {
         _parent = _parent || doc;
-        $el = _parent.querySelectorAll(query);
+
+        if (
+            /^(.+[\#\.\s\[>:,]|[\[:])/.test(query)
+        ) {
+            $el = _parent.querySelectorAll(query);
+        }
+        else if (query[0] == '#') {
+            $el = [_parent.getElementById(query.substring(1, query.length))];
+        }
+        else if (query[0] == '.') {
+            $el =
+                _parent
+                .getElementsByClassName(query.substring(1, query.length));
+        }
+        else {
+            $el = _parent.getElementsByTagName(query);
+        }
     }
     else {
         $el = [query];
-        query = EMPTY;
     }
+
     len = $el.length;
-    /* instance = new base(); */
     instance = new $base();
 
     instance.length = len;
-    /* instance._selector = query; */
-    /* instance._parent = _parent; */
 
-    /* for (; i < len; i++) { */
-    for (;len--;) {
+    for (; len--;) {
         instance[len] = $el[len];
     }
 
