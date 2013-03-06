@@ -1,5 +1,6 @@
 /* Test: "../../spec/_src/src/selector/test.js" */
-var $base = function(){};
+var $base = function(){},
+    checkQuerySelector = /^(.+[\#\.\s\[>:,]|[\[:])/;
 C['$'] = function(query, _parent /* varless */, $el, instance, len) {
     // var $el,
     //     base,
@@ -7,23 +8,26 @@ C['$'] = function(query, _parent /* varless */, $el, instance, len) {
     //     len;
 
     if (typeof query == 'string') {
-        _parent = _parent || doc;
-
-        if (
-            /^(.+[\#\.\s\[>:,]|[\[:])/.test(query)
-        ) {
-            $el = _parent.querySelectorAll(query);
-        }
-        else if (query[0] == '#') {
-            $el = [_parent.getElementById(query.substring(1, query.length))];
-        }
-        else if (query[0] == '.') {
-            $el =
-                _parent
-                .getElementsByClassName(query.substring(1, query.length));
+        if (!_parent) {
+            if (
+                checkQuerySelector.test(query)
+            ) {
+                $el = doc.querySelectorAll(query);
+            }
+            else if (query[0] == '#') {
+                $el = [doc.getElementById(query.substring(1, query.length))];
+            }
+            else if (query[0] == '.') {
+                $el =
+                    doc
+                    .getElementsByClassName(query.substring(1, query.length));
+            }
+            else {
+                $el = doc.getElementsByTagName(query);
+            }
         }
         else {
-            $el = _parent.getElementsByTagName(query);
+            $el = _parent.querySelectorAll(query);
         }
     }
     else {
