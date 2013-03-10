@@ -2594,6 +2594,44 @@ observer.fire('jsonloaded', 'fire2');</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Rollover">
+            <dt>C.Rollover<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var rollover = new C.RollOver({
+    els: C.dom.$$('body'), // htmlエレメントを含んだ配列
+    toggleClass: 'hover', // default: ''
+    over: function() { // default: undefined
+        // write code.
+    },
+    out: function() { // default: undefined
+        // write code.
+    },
+    manual: false // default: false
+});</pre>
+                    <p>対象エレメントに対してロールオーバ処理を設定します。<br />
+                    タッチデバイスの場合、タッチイベントによる処理に変更されます。</p>
+                </div>
+                <ul>
+                    <li id="Rollover_attach">
+                        <h3>attach()</h3>
+                        <div class="detail">
+                            <p>elsに対してロールオーバ処理を設定します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>rollover.attach();</pre>
+                        </div>
+                    </li>
+                    <li id="Rollover_detach">
+                        <h3>detach()</h3>
+                        <div class="detail">
+                            <p>elsに対してロールオーバ処理を解除します。</p>
+<pre>rollover.detach();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Route">
             <dt>C.Route<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
