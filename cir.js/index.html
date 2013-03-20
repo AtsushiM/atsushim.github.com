@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Cool is Right.</h2>
-    <p class="ver">0.8.16</p>
+    <p class="ver">0.8.17</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.16)</span> 機能選択：<a href="optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.8.17)</span> 機能選択：<a href="optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -1114,6 +1114,64 @@ ajax.request({
                 </ul>
             </dd>
         </dl>
+        <dl id="Async">
+            <dt>C.Async</dt>
+            <dd>
+                <div class="sample">
+<pre>var async = new C.Async({
+    waits: 3, // integer || array
+    callback: function(error, args) {
+        // error: undefined || Error
+        // args: array
+    },
+    onprogress: function(progress) {
+        // progress: number
+    }
+});</pre>
+                    <p>非同期処理の処理待ちを簡易に行えるメソッドを提供するクラスです。<br />
+                    waitsオプション分の処理待ちを行ったあと、callbackを実行します。<br />
+                    waitsに配列が渡された場合、lengthの値がwaitsオプションに指定された場合と同じ動作をします。<br />
+                    onprogressは各処理が実行される毎に実行され、progressには0~1の間で進捗度が渡されます。</p>
+                </div>
+                <ul>
+                    <li id="Async_pass">
+                        <h3>pass(<span class="expansion">vars</span>)</h3>
+                        <div class="detail">
+                            <p>処理待ちの完了処理を行います。<br />
+                            waits回pass()を実行すれば、callbackが実行されます。<br />
+                            varsは配列に追加され、callbackの第2引数に渡されます。</p>
+<pre>base.pass('pass');</pre>
+                        </div>
+                    </li>
+                    <li id="Async_miss">
+                        <h3>miss(<span class="expansion">vars</span>)</h3>
+                        <div class="detail">
+                            <p>処理待ちの失敗処理を行います。<br />
+                            即座にcallbackが実行されます。<br />
+                            第一引数にはErrorオブジェクトが渡されます。<br />
+                            varsは配列に追加され、callbackの第2引数に渡されます。</p>
+<pre>base.miss('miss');</pre>
+                        </div>
+                    </li>
+                    <li id="Async_exit">
+                        <h3>exit(<span class="expansion">vars</span>)</h3>
+                        <div class="detail">
+                            <p>実行されたpass()の回数に関係なく、即座にcallbackが実行されます。<br />
+                            事前にmiss()が呼ばれていた場合、callbackは実行されません。<br />
+                            varsは配列に追加され、callbackの第2引数に渡されます。</p>
+<pre>base.exit('exit');</pre>
+                        </div>
+                    </li>
+                    <li id="Async_getProgress">
+                        <h3>getProgress(<span class="expansion">vars</span>)</h3>
+                        <div class="detail">
+                            <p>現在の処理の進捗度を0~1の数値で返します。</p>
+<pre>var progress = async.getProgress();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Audio">
             <dt>C.Audio</dt>
             <dd>
@@ -1945,7 +2003,7 @@ var hashobj = hashquery.getHash();
             </dd>
         </dl>
         <dl id="ImgLoad">
-            <dt>C.ImgLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt>C.ImgLoad<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Async">Async</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var imgload = new C.ImgLoad({
@@ -1965,13 +2023,6 @@ var hashobj = hashquery.getHash();
                     <p>画像をまとめてロードするクラスです。</p>
                 </div>
                 <ul>
-                    <li id="ImgLoad_getProgress">
-                        <h3>getProgress()</h3>
-                        <div class="detail">
-                            <p>読込状況を取得します。</p>
-<pre>var progress = imgload.getProgress(); // Number</pre>
-                        </div>
-                    </li>
                     <li id="ImgLoad_start">
                         <h3>start()</h3>
                         <div class="detail">
@@ -2678,7 +2729,7 @@ observer.fire('jsonloaded', 'fire2');</pre>
             </dd>
         </dl>
         <dl id="ScriptLoad">
-            <dt>C.ScriptLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt>C.ScriptLoad<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Async">Async</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var scriptload = new C.ScriptLoad();</pre>
@@ -3505,6 +3556,7 @@ check = validate.isString('check', {}); // error</pre>
             <li><a href="#validate_">validate</a></li>
             <li><a href="#Ajax">Ajax</a></li>
             <li><a href="#Animation">Animation</a></li>
+            <li><a href="#Async">Async</a></li>
             <li><a href="#Audio">Audio</a></li>
             <li><a href="#Base">Base</a></li>
             <li><a href="#Brush">Brush</a></li>

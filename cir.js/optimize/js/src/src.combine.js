@@ -279,6 +279,12 @@ Global.Dependency = function(config) {
                     'selector',
                     'DataStore',
                     'Observer'
+                ],
+                ScriptLoad: [
+                    'Async'
+                ],
+                ImgLoad: [
+                    'Async'
                 ]
             },
             passive: {
@@ -345,6 +351,10 @@ Global.Dependency = function(config) {
                 ],
                 DeviceOrientation: [
                     'DeviceShake'
+                ],
+                Async: [
+                    'ImgLoad',
+                    'ScriptLoad'
                 ]
             },
             waste: {
