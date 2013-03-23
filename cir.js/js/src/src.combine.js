@@ -78,8 +78,9 @@ DOC.submenu = function(config) {
     var $sub = $('#sub'),
         $footer = $('#footer');
 
-    $(window).on(C.e.RESIZE, subPoint);
-    $(window).on(C.e.LOAD, subPoint);
+    $(window)
+        .on(C.e.RESIZE, subPoint)
+        .on(C.e.LOAD, subPoint);
 
     function subPoint() {
         var winH = this.innerHeight,

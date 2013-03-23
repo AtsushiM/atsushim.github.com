@@ -181,13 +181,10 @@ Global.ChkSrc = function(config) {
 
     return instanse;
 };
-Global.Event = C.klass({
-    extend: C.Event,
-    prop: {
-        createjssrc: 'a',
-        srccreatestart: 'b',
-        srcloaded: 'c'
-    }
+Global.Event = C.Event.extend({
+    createjssrc: 'a',
+    srccreatestart: 'b',
+    srcloaded: 'c'
 });
 Global.Element = function(config) {
     'use strict';
@@ -467,6 +464,8 @@ Global.SrcArea = function(config) {
     arg.chkAll = new Global.ChkAll(arg);
     arg.chkSrc = new Global.ChkSrc(arg);
     arg.srcArea = new Global.SrcArea(arg);
+
+    console.log(arg);
 
     return arg;
 }());

@@ -1,8 +1,5 @@
-Global.Event = C.klass({
-    extend: C.Event,
-    prop: {
-        createjssrc: 'a',
-        srccreatestart: 'b',
-        srcloaded: 'c'
-    }
+Global.Event = C.Event.extend({
+    createjssrc: 'a',
+    srccreatestart: 'b',
+    srcloaded: 'c'
 });

@@ -610,89 +610,29 @@ dom.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
                 </ul>
             </dd>
         </dl>
-        <dl id="extend">
-            <dt>C.extend<span>[ indispensable ]</span></dt>
+        <dl id="Class">
+            <dt>C.lass<span>[ indispensable ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var extend = C.extend;
-function Sample1() {
-}
-Sample1.prototype.test = 'test extend.';
-
-function Sample2() {
-}
-extend(Sample2, Sample1);
-alert(Sample2.prototype.test); //test extend.
-</pre>
-                    <p>プロトタイプを継承するためのメソッドです。<br />
-                    <a href="#klass">C.klass</a>メソッドから呼び出されます。</p>
-                </div>
-            </dd>
-        </dl>
-        <dl id="klass">
-            <dt>C.klass<span>[ indispensable ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var SuperTest = C.klass({
+<pre>var SuperTest = C.lass.extend({
     init: function() { // default: undefind
         console.log('super');
-    }
-    prop: {
-        sample: 'Cool is Right.'
-    }
+    },
+    sample: 'Cool is Right.'
 });
 
-var Test = C.klass({
-    extend: SuperTest, // default: undefind
+var Test = SuperTest.extend({
     init: function(config) {
         console.log(this.sample); // 'Cool is Right.'
-    },
-    prop: {
-        // write method &amp; property
     }
 });</pre>
                     <p>クラス作成用のメソッドです。<br />
+                    C.lass.extend()でクラスを作成します。<br />
                     上記の場合、<br />
                     var test = new Test();<br />
                     でインスタンスを生成できます。<br />
-                    extendオプションに別クラスを指定すれば継承できます。<br />
-                    init,extendオプションは省略可能です。</p>
+                    initは省略可能です。</p>
                 </div>
-                <ul>
-                    <li id="klass_ancestors">
-                        <h3>.ancestors(obj, propname)</h3>
-                        <div class="detail">
-                            <p>klassで作成されたクラスを辿り、propnameに該当するプロパティを配列に入れて返します。<br />
-                            obj._superclass.prototype...のように_superclass.prototypeが尽きるまで遡りチェックを行います。<br />
-                            継承した親クラスのメソッドを取得し、実行したい場合などに便利です。</p>
-<pre>var Test1 = C.klass({
-    extend: C.Base,
-    prop: {
-        test: function() {
-            console.log(1);
-        }
-    }
-});
-var Test2 = C.klass({
-    extend: Test1,
-    prop: {
-        test: function() {
-            console.log(2);
-        }
-    }
-});
-
-var test2 = new Test2();
-var ancestors = C.klass.ancestors(test2, 'test');
-var i = 0;
-var len = ancestors.length;
-
-for (; i < len; i++) {
-    ancestors[i].call(test2);
-} // 2, 1</pre>
-                        </div>
-                    </li>
-                </ul>
             </dd>
         </dl>
         <dl id="mobile_">
@@ -873,17 +813,15 @@ alert(target.sample); // override property</pre>
                             methodsが省略された場合、methodsはownerObjになります。<br />
                             overrideObjが省略された場合、overrideObjはmethodsになります。<br />
                             クラスのメソッドのthisを固定したい場合などに便利です。</p>
-<pre>var Test = C.klass({
+<pre>var Test = C.lass.extend({
     init: function(config) {
         util.owner(this, this, config);
     },
-    prop: {
-        no: 0,
-        test: 'Override Test.',
-        countup: function() {
-            this.no++;
-            console.log(this.no);
-        }
+    no: 0,
+    test: 'Override Test.',
+    countup: function() {
+        this.no++;
+        console.log(this.no);
     }
 });
 var test = new Test({
