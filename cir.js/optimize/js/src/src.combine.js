@@ -465,7 +465,7 @@ Global.SrcArea = function(config) {
     arg.chkSrc = new Global.ChkSrc(arg);
     arg.srcArea = new Global.SrcArea(arg);
 
-    console.log(arg);
+    /* console.log(arg); */
 
     return arg;
 }());

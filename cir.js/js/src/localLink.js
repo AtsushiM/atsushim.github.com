@@ -10,7 +10,7 @@ DOC.localLink = function(config) {
 
         removeClose($href);
         scroll.smooth($href[0], function() {
-            console.log('test');
+            /* console.log('test'); */
             location.hash = $this.attr('href').split('#')[1];
         });
         C.util.eventPrevent(e);
