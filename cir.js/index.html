@@ -623,6 +623,7 @@ dom.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
 
 var Test = SuperTest.extend({
     init: function(config) {
+        this._super();
         console.log(this.sample); // 'Cool is Right.'
     }
 });</pre>
@@ -631,7 +632,8 @@ var Test = SuperTest.extend({
                     上記の場合、<br />
                     var test = new Test();<br />
                     でインスタンスを生成できます。<br />
-                    initは省略可能です。</p>
+                    initは省略可能です。<br />
+                    メソッド内でthis._super()を呼び出した場合、オーバライドした親クラスのメソッドを呼び出します。</p>
                 </div>
             </dd>
         </dl>
