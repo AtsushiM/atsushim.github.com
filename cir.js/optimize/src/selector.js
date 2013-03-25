@@ -3,7 +3,7 @@
 //     checkQuerySelector = /^(.+[\#\.\s\[>:,]|[\[:])/;
 function $base() {}
 
-C['$'] = function(query, _parent /* varless */, $el, instance, len) {
+cir = C['$'] = function(query, _parent /* varless */, $el, instance, len) {
     // var $el,
     //     base,
     //     instance,
