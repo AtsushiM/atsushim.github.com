@@ -144,6 +144,15 @@ $sample.css({
 });</pre>
                         </div>
                     </li>
+                    <li id="selector_delegate">
+                        <h3>.delegate(clsname, eventname, func)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメント内のclassNameにclsnameを持つ要素のeventnameイベントにfuncを登録します。</p>
+<pre>$('#sample').delegate('cir', C.e.CLICK, function() {
+    console.log('Cool is Right.');
+});</pre>
+                        </div>
+                    </li>
                     <li id="selector_find">
                         <h3>.find(selector)</h3>
                         <div class="detail">
@@ -281,6 +290,18 @@ $('#sample2').stop(); // 停止しない</pre>
 <pre>var $sample = $('#sample');
 $sample.toggleClass('sample'); // 追加
 $sample.toggleClass('sample'); // 削除</pre>
+                        </div>
+                    </li>
+                    <li id="selector_undelegate">
+                        <h3>.undelegate(clsname, eventname, <span class="expansion">[func]</span>)</h3>
+                        <div class="detail">
+                            <p>delegateメソッドで登録されたイベントを削除します。<br />
+                            funcが省略された場合、clsname、eventnameで登録されたすべてのイベントが削除されます。</p>
+<pre>var $sample = $('#sample');
+$sample.delegate('cir', C.e.CLICK, function() {
+    console.log('Cool is Right.');
+});
+$sample.undelegate('cir', C.e.CLICK);</pre>
                         </div>
                     </li>
                 </ul>
@@ -451,6 +472,16 @@ var p = dom.create('p', {
 dom.css($sample, {
     width: '100px',
     height: '200px'
+});</pre>
+                        </div>
+                    </li>
+                    <li id="dom_delegate">
+                        <h3>delegate(element, clsname, eventname, func)</h3>
+                        <div class="detail">
+                            <p>element内のclassNameにclsnameを持つ要素のeventnameイベントにfuncを登録します。</p>
+<pre>var $sample = dom.$('#sample');
+dom.delegate($sample, 'cir', C.e.CLICK, function() {
+    console.log('Cool is Right.');
 });</pre>
                         </div>
                     </li>
