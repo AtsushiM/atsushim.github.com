@@ -186,6 +186,15 @@ var html = $sample.html(); // 取得
 $sample.html('Cool is Right.'); // 設定</pre>
                         </div>
                     </li>
+                    <li id="selector_insertBefore">
+                        <h3>.insertBefore(element)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントの先頭にelementを追加します。</p>
+<pre>var $sample = $('#sample');
+var div = C.dom.create('div');
+$sample.insertBefore(div);</pre>
+                        </div>
+                    </li>
                     <li id="selector_off">
                         <h3>.off(eventname, handler)</h3>
                         <div class="detail">
@@ -302,6 +311,15 @@ $sample.delegate('cir', C.e.CLICK, function() {
     console.log('Cool is Right.');
 });
 $sample.undelegate('cir', C.e.CLICK);</pre>
+                        </div>
+                    </li>
+                    <li id="selector_val">
+                        <h3>.val(text)</h3>
+                        <div class="detail">
+                            <p>セレクターで指定されたHTMLエレメントのvalueを取得・設定します。</p>
+<pre>var $sample = $('#sample');
+var value = $sample.val(); // 取得
+$sample.val('Cool is Right.'); // 設定</pre>
                         </div>
                     </li>
                 </ul>
@@ -485,6 +503,13 @@ dom.delegate($sample, 'cir', C.e.CLICK, function() {
 });</pre>
                         </div>
                     </li>
+                    <li id="dom_escape">
+                        <h3>escape(htmltext)</h3>
+                        <div class="detail">
+                            <p>htmltextからタグや特殊文字をエスケープした文字列を返します。</p>
+<pre>var htmltext = dom.escape('Cool & Right.'); // "Cool &amp; Right."</pre>
+                        </div>
+                    </li>
                     <li id="dom_hasClass">
                         <h3>hasClass(element, value)</h3>
                         <div class="detail">
@@ -506,8 +531,17 @@ dom.hide($sample);</pre>
                         <div class="detail">
                             <p>element.innerHTMLを取得・設定します。</p>
 <pre>var $sample = dom.$('#sample');
-var html = dom.innerHTML($sample); // 取得
-dom.innerHTML($sample, 'rewrite innerHTML.'); // 設定</pre>
+var html = dom.html($sample); // 取得
+dom.html($sample, 'rewrite innerHTML.'); // 設定</pre>
+                        </div>
+                    </li>
+                    <li id="dom_insertBefore">
+                        <h3>insertBefore(_parent, element)</h3>
+                        <div class="detail">
+                            <p>_parent内の先頭にelementを追加します。</p>
+<pre>var div = dom.create('div');
+var $sample = dom.$('#sample');
+dom.insertBefore($sample, div);</pre>
                         </div>
                     </li>
                     <li id="dom_off">
@@ -587,6 +621,15 @@ dom.removeClass($sample, 'sample');</pre>
 <pre>var $sample = dom.$('#sample');
 dom.toggleClass($sample, 'sample'); // sampleクラスを追加
 dom.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
+                        </div>
+                    </li>
+                    <li id="dom_val">
+                        <h3>val(element, <span class="expansion">[text]</span>)</h3>
+                        <div class="detail">
+                            <p>element.valueを取得・設定します。</p>
+<pre>var $sample = dom.$('#sample');
+var value = dom.val($sample); // 取得
+dom.val($sample, 'rewrite value.'); // 設定</pre>
                         </div>
                     </li>
                 </ul>
