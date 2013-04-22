@@ -48,7 +48,7 @@ var mobile = new C.Mobile(); // Mobile</pre>
             </dd>
         </dl>
         <dl id="selector">
-            <dt>C.$<span>[ required: <a href="#Tweener">Tweener</a> <a href="#Animation">Animation</a> ]</span></dt>
+            <dt>C.$<span>[ required: <a href="#Tweener">Tweener</a> <a href="#SSAnime">SSAnime</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var $ = C.$;
@@ -78,7 +78,7 @@ $sample.after(div);</pre>
                         <h3>.animate(params, <span class="expansion">[duration]</span>, <span class="expansion">[ease]</span>, <span class="expansion">[callback]</span>)</h3>
                         <div class="detail">
                             <p>セレクターで指定されたHTMLエレメントをアニメーションします。<br />
-                            easeには<a href="#ease">C.ease</a>、もしくは<a href="#cssease">C.cssease</a>の各プロパティ名を指定できます。</p>
+                            easeには<a href="#ease">C.ease</a>、もしくは<a href="#ssease">C.ssease</a>の各プロパティ名を指定できます。</p>
 <pre>var $sample = $('#sample');
 
 $sample.animate({
@@ -322,43 +322,6 @@ var value = $sample.val(); // 取得
 $sample.val('Cool is Right.'); // 設定</pre>
                         </div>
                     </li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="cssease">
-            <dt>C.cssease</dt>
-            <dd>
-                <div class="sample">
-                    <pre>var ease = C.cssease;</pre>
-                    <p>CSSアニメーション用のイージング処理をまとめたオブジェクトです。<br />
-                    主な使い方は<a href="#Animation">C.Animation</a>や<a href="#Transition">C.Transition</a>のeasingオプションに対して参照を渡すことになります。</p>
-                </div>
-                <ul>
-                    <li>linear</li>
-                    <li>inBack</li>
-                    <li>inCirc</li>
-                    <li>inCubic</li>
-                    <li>inExpo</li>
-                    <li>inQuad</li>
-                    <li>inQuart</li>
-                    <li>inQuint</li>
-                    <li>inSine</li>
-                    <li>inOutBack</li>
-                    <li>inOutCirc</li>
-                    <li>inOutCubic</li>
-                    <li>inOutExpo</li>
-                    <li>inOutQuad</li>
-                    <li>inOutQuart</li>
-                    <li>inOutQuint</li>
-                    <li>inOutSine</li>
-                    <li>outBack</li>
-                    <li>outCirc</li>
-                    <li>outCubic</li>
-                    <li>outExpo</li>
-                    <li>outQuad</li>
-                    <li>outQuart</li>
-                    <li>outQuint</li>
-                    <li>outSine</li>
                 </ul>
             </dd>
         </dl>
@@ -724,6 +687,43 @@ var Test = SuperTest.extend({
                 </div>
             </dd>
         </dl>
+        <dl id="ssease">
+            <dt>C.ssease</dt>
+            <dd>
+                <div class="sample">
+                    <pre>var ease = C.ssease;</pre>
+                    <p>CSSアニメーション用のイージング処理をまとめたオブジェクトです。<br />
+                    主な使い方は<a href="#SSAnime">C.SSAnime</a>や<a href="SSTrans#">C.SSTrans</a>のeasingオプションに対して参照を渡すことになります。</p>
+                </div>
+                <ul>
+                    <li>linear</li>
+                    <li>inBack</li>
+                    <li>inCirc</li>
+                    <li>inCubic</li>
+                    <li>inExpo</li>
+                    <li>inQuad</li>
+                    <li>inQuart</li>
+                    <li>inQuint</li>
+                    <li>inSine</li>
+                    <li>inOutBack</li>
+                    <li>inOutCirc</li>
+                    <li>inOutCubic</li>
+                    <li>inOutExpo</li>
+                    <li>inOutQuad</li>
+                    <li>inOutQuart</li>
+                    <li>inOutQuint</li>
+                    <li>inOutSine</li>
+                    <li>outBack</li>
+                    <li>outCirc</li>
+                    <li>outCubic</li>
+                    <li>outExpo</li>
+                    <li>outQuad</li>
+                    <li>outQuart</li>
+                    <li>outQuint</li>
+                    <li>outSine</li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="util">
             <dt>C.util<span>[ indispensable ]</span></dt>
             <dd>
@@ -732,6 +732,21 @@ var Test = SuperTest.extend({
                     <p>様々なクラスから呼び出されるユーティリティオブジェクトです。</p>
                 </div>
                 <ul>
+                    <li id="util_abstractFunction">
+                        <h3>abstractFunction()</h3>
+                        <div class="detail">
+                            <p>呼び出すとエラーになるメソッドです。<br />
+                            <a href="#Class">C.lass</a>などでクラス継承等を行う際、実装を強制したいメソッドに指定するなどの使い方ができます。</p>
+<pre>var SuperClass = C.lass({
+    method: util.abstractFunction
+});
+var Class = SuperClass.extend();
+
+var instance = new Class();
+
+instance.method(); // Classでmethodを実装していないため、エラー表示</pre>
+                        </div>
+                    </li>
                     <li id="util_checkUserAgent">
                         <h3>checkUserAgent(regex, <span class="expansion">[userAgent]</span>)</h3>
                         <div class="detail">
@@ -1097,47 +1112,8 @@ ajax.request({
                 </ul>
             </dd>
         </dl>
-        <dl id="Animation">
-            <dt>C.Animation<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var anime = new C.Animation(C.$('#box')[0], {
-    'margin-left': 100,
-    '-webkit-transform': 'rotate(180deg)'
-}, {
-    duration: 1000, // default: 500
-    manual: false, // default: false
-    ease: 'linear', // default: easeOutExpo
-    onComplete: function(e) {
-        // write code.
-    }
-});</pre>
-                    <p>CSS Animationを指定するためのクラスです。<br />
-                    webkitブラウザかanimationにベンダープリフィックス無しで対応している場合のみ使用出来ます。<br />
-                    条件を満たしていない場合、C.Animation.supportがfalseになります。</p>
-                </div>
-                <ul>
-                    <li id="Animation_start">
-                        <h3>start()</h3>
-                        <div class="detail">
-                            <p>アニメーションを開始します。<br />
-                            インスタンス生成時に自動的に呼び出されます。<br />
-                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
-<pre>anime.start();</pre>
-                        </div>
-                    </li>
-                    <li id="Animation_stop">
-                        <h3>stop()</h3>
-                        <div class="detail">
-                            <p>アニメーションを停止します。</p>
-<pre>anime.stop();</pre>
-                        </div>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
         <dl id="Async">
-            <dt>C.Async</dt>
+            <dt>C.Async<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var async = new C.Async({
@@ -1352,136 +1328,6 @@ brush.draw([
     width: '100%',
     height: 100
 });</pre>
-                        </div>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="Collection">
-            <dt>C.Collection<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Model">Model</a> ]</span><span>[ required: <a href="#DataStore">DataStore</a> <a href="#Observer">Observer</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var collection = new C.Collection({
-    store: new C.SessionStorage(), // default: undefind
-    on: { // default: undefind
-        'change': function(vars) {
-            // write code.
-        },
-        'remove': function() {
-            // write code.
-        },
-        'reset': function() {
-            // write code.
-        },
-        'fail': function(vars) {
-            // write code for validate error.
-        }
-    }
-});</pre>
-                    <p><a href="#Model">Model</a>インスタンスなどのデータを複数保持することを想定したクラスです。<br />
-                    Modelクラスを継承しているため、ほぼModelと同じ感覚で使用出来ます。</p>
-                </div>
-                <ul>
-                    <li id="Collection_add">
-                        <h3>add(value)</h3>
-                        <div class="detail">
-                            <p>インスタンス毎に一意になる連番をキーとしてvalueを保存します。連番が返り値になります。</p>
-<pre>collection.add({
-    cir: 'Cool is Right.'
-});</pre>
-                        </div>
-                    </li>
-                    <li id="Collection_fire">
-                        <h3>fire(key, <span class="expansion">[value]</span>)</h3>
-                        <div class="detail">
-                            <p>onオプション、onメソッドで登録されたイベントを実行します。</p>
-<pre>model.on('change', function(vars) {
-    // write code.
-    console.log(vars); // {cir: 'Cool is Right.'}
-});
-
-observer.fire('change', {
-    cir: 'Cool is Right.'
-});</pre>
-                        </div>
-                    </li>
-                    <li id="Collection_get">
-                        <h3>get(<span class="expansion">[key]</span>)</h3>
-                        <div class="detail">
-                            <p>データを取り出します。</p>
-<pre>model.get('test');</pre>
-                        </div>
-                    </li>
-                    <li id="Collection_off">
-                        <h3>off(key, func)</h3>
-                        <div class="detail">
-                            <p>登録されたイベントを削除します。</p>
-<pre>var func1 = function() {
-    console.log('func1');
-};
-var func2 = function() {
-    console.log('func2');
-};
-
-model.on('change', func1);
-model.on('change', func2);
-
-model.off('change', func1);
-model.fire('change'); // exe func2.</pre>
-                        </div>
-                    </li>
-                    <li id="Collection_on">
-                        <h3>on(key, func)</h3>
-                        <div class="detail">
-                            <p>イベントを登録します。<br />
-                            登録されたイベントはfireメソッドで強制的に呼び出しできます。</p>
-<pre>var func1 = function() {
-    console.log('func1');
-};
-var func2 = function() {
-    console.log('func2');
-};
-
-model.on('change', func1);
-model.on('change', func2);
-
-model.off('change', func1);
-model.fire('change'); // exe func2.</pre>
-                        </div>
-                    </li>
-                    <li id="Collection_prev">
-                        <h3>prev(<span class="expansion">[key]</span>)</h3>
-                        <div class="detail">
-                            <p>保持しているデータの一つ前の状態を返します。<br />
-                            keyを省略した場合、データを纏めたオブジェクトを返します。<br />
-                            changeイベントが発火した場合に前の数値を使用したい場合などに便利です。</p>
-<pre>model.set('test', 12345);
-model.set('test', 23456);
-model.prev('test'); // 12345</pre>
-                        </div>
-                    </li>
-                    <li id="Collection_remove">
-                        <h3>remove(key)</h3>
-                        <div class="detail">
-                            <p>データを削除します。<br />
-                            このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
-<pre>model.remove('test'); // removeイベント実行</pre>
-                        </div>
-                    </li>
-                    <li id="Collection_reset">
-                        <h3>reset(key)</h3>
-                        <div class="detail">
-                            <p>保存された値を全て削除します。<br />
-                            このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
-<pre>model.reset(); // resetイベント実行</pre>
-                        </div>
-                    </li>
-                    <li id="Collection_set">
-                        <h3>set(key, value)</h3>
-                        <div class="detail">
-                            <p>Collectionにデータを保存します。<br />
-                            このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
-<pre>model.set('test', 12345); // changeイベント実行</pre>
                         </div>
                     </li>
                 </ul>
@@ -2676,6 +2522,160 @@ observer.fire('jsonloaded', 'fire2');</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="Ollection">
+            <dt>C.Ollection<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Model">Model</a> ]</span><span>[ required: <a href="#DataStore">DataStore</a> <a href="#Observer">Observer</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var collection = new C.Ollection({
+    store: new C.SessionStorage(), // default: undefind
+    on: { // default: undefind
+        'change': function(vars) {
+            // write code.
+        },
+        'remove': function() {
+            // write code.
+        },
+        'reset': function() {
+            // write code.
+        },
+        'fail': function(vars) {
+            // write code for validate error.
+        }
+    }
+});</pre>
+                    <p><a href="#Model">Model</a>インスタンスなどのデータを複数保持することを想定したクラスです。<br />
+                    Modelクラスを継承しているため、ほぼModelと同じ感覚で使用出来ます。</p>
+                </div>
+                <ul>
+                    <li id="Ollection_add">
+                        <h3>add(value)</h3>
+                        <div class="detail">
+                            <p>インスタンス毎に一意になる連番をキーとしてvalueを保存します。連番が返り値になります。</p>
+<pre>collection.add({
+    cir: 'Cool is Right.'
+});</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_each">
+                        <h3>each(func)</h3>
+                        <div class="detail">
+                            <p>保存されたデータごとにfuncを実行します。</p>
+<pre>collection.each(function(val, key, obj) {
+    // val: setなどで保存したデータ
+    // key: set時に指定したキー名
+    // obj: 保存データすべてを持ったオブジェクト
+});</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_fire">
+                        <h3>fire(key, <span class="expansion">[value]</span>)</h3>
+                        <div class="detail">
+                            <p>onオプション、onメソッドで登録されたイベントを実行します。</p>
+<pre>model.on('change', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('change', {
+    cir: 'Cool is Right.'
+});</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_get">
+                        <h3>get(<span class="expansion">[key]</span>)</h3>
+                        <div class="detail">
+                            <p>データを取り出します。</p>
+<pre>model.get('test');</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_map">
+                        <h3>map(func)</h3>
+                        <div class="detail">
+                            <p>保存されたデータごとにfuncを実行します。funcの返り値が対応する保存されていたデータを上書きします。</p>
+<pre>collection.map(function(val, key, obj) {
+    // val: setなどで保存したデータ
+    // key: set時に指定したキー名
+    // obj: 保存データすべてを持ったオブジェクト
+
+    return val; // returnの値で上書き
+});</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_off">
+                        <h3>off(key, func)</h3>
+                        <div class="detail">
+                            <p>登録されたイベントを削除します。</p>
+<pre>var func1 = function() {
+    console.log('func1');
+};
+var func2 = function() {
+    console.log('func2');
+};
+
+model.on('change', func1);
+model.on('change', func2);
+
+model.off('change', func1);
+model.fire('change'); // exe func2.</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_on">
+                        <h3>on(key, func)</h3>
+                        <div class="detail">
+                            <p>イベントを登録します。<br />
+                            登録されたイベントはfireメソッドで強制的に呼び出しできます。</p>
+<pre>var func1 = function() {
+    console.log('func1');
+};
+var func2 = function() {
+    console.log('func2');
+};
+
+model.on('change', func1);
+model.on('change', func2);
+
+model.off('change', func1);
+model.fire('change'); // exe func2.</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_prev">
+                        <h3>prev(<span class="expansion">[key]</span>)</h3>
+                        <div class="detail">
+                            <p>保持しているデータの一つ前の状態を返します。<br />
+                            keyを省略した場合、データを纏めたオブジェクトを返します。<br />
+                            changeイベントが発火した場合に前の数値を使用したい場合などに便利です。</p>
+<pre>model.set('test', 12345);
+model.set('test', 23456);
+model.prev('test'); // 12345</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_remove">
+                        <h3>remove(key)</h3>
+                        <div class="detail">
+                            <p>データを削除します。<br />
+                            このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
+<pre>model.remove('test'); // removeイベント実行</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_reset">
+                        <h3>reset(key)</h3>
+                        <div class="detail">
+                            <p>保存された値を全て削除します。<br />
+                            このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
+<pre>model.reset(); // resetイベント実行</pre>
+                        </div>
+                    </li>
+                    <li id="Ollection_set">
+                        <h3>set(key, value)</h3>
+                        <div class="detail">
+                            <p>Ollectionにデータを保存します。<br />
+                            このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
+<pre>model.set('test', 12345); // changeイベント実行</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Orientation">
             <dt>C.Orientation<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -3205,6 +3205,90 @@ sound.loop(false); // ループ無し</pre>
                 </ul>
             </dd>
         </dl>
+        <dl id="SSAnime">
+            <dt>C.SSAnime<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var anime = new C.SSAnime(C.$('#box')[0], {
+    'margin-left': 100,
+    '-webkit-transform': 'rotate(180deg)'
+}, {
+    duration: 1000, // default: 500
+    manual: false, // default: false
+    ease: 'linear', // default: easeOutExpo
+    onComplete: function(e) {
+        // write code.
+    }
+});</pre>
+                    <p>CSS Animationを指定するためのクラスです。<br />
+                    webkitブラウザかanimationにベンダープリフィックス無しで対応している場合のみ使用出来ます。<br />
+                    条件を満たしていない場合、C.SSAnime.supportがfalseになります。</p>
+                </div>
+                <ul>
+                    <li id="SSAnime_start">
+                        <h3>start()</h3>
+                        <div class="detail">
+                            <p>アニメーションを開始します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>anime.start();</pre>
+                        </div>
+                    </li>
+                    <li id="SSAnime_stop">
+                        <h3>stop()</h3>
+                        <div class="detail">
+                            <p>アニメーションを停止します。</p>
+<pre>anime.stop();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="SSTrans">
+            <dt>C.SSTrans<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var transition = new C.SSTrans(
+    element,
+    {
+        width: 100,
+        height: 100,
+        '-webkit-transform': 'rotate(180deg)'
+    },
+    {
+        duration: 1000, // default: 500
+        manual: false, // default: false
+        ease: 'linear', // default: easeOutExpo
+        onComplete: function() {
+            // write code.
+        }
+    }
+);</pre>
+                    <p>CSS Trasitionを指定するためのクラスです。<br />
+                    webkitブラウザかtransitionにベンダープリフィックス無しで対応している場合のみ使用出来ます。<br />
+                    条件を満たしていない場合、C.Trasition.supportがfalseになります。</p>
+                </div>
+                <ul>
+                    <li id="Trasition_start">
+                        <h3>start()</h3>
+                        <div class="detail">
+                            <p>アニメーションを開始します。<br />
+                            インスタンス生成時に自動的に呼び出されます。<br />
+                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>trasition.start();</pre>
+                        </div>
+                    </li>
+                    <li id="Trasition_stop">
+                        <h3>stop()</h3>
+                        <div class="detail">
+                            <p>アニメーションを停止します。<br />
+                            CSS Trasitionは途中で停止する手段が無いため、実質callbackが実行されないだけとなります。</p>
+<pre>trasition.stop();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
         <dl id="Surrogate">
             <dt>C.Surrogate<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -3371,51 +3455,6 @@ timer.countDown(); // start timer.</pre>
                         <div class="detail">
                             <p>タイマーを停止します。</p>
 <pre>timer.stop();</pre>
-                        </div>
-                    </li>
-                </ul>
-            </dd>
-        </dl>
-        <dl id="Transition">
-            <dt>C.Transition<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var transition = new C.Transition(
-    element,
-    {
-        width: 100,
-        height: 100,
-        '-webkit-transform': 'rotate(180deg)'
-    },
-    {
-        duration: 1000, // default: 500
-        manual: false, // default: false
-        ease: 'linear', // default: easeOutExpo
-        onComplete: function() {
-            // write code.
-        }
-    }
-);</pre>
-                    <p>CSS Trasitionを指定するためのクラスです。<br />
-                    webkitブラウザかtransitionにベンダープリフィックス無しで対応している場合のみ使用出来ます。<br />
-                    条件を満たしていない場合、C.Trasition.supportがfalseになります。</p>
-                </div>
-                <ul>
-                    <li id="Trasition_start">
-                        <h3>start()</h3>
-                        <div class="detail">
-                            <p>アニメーションを開始します。<br />
-                            インスタンス生成時に自動的に呼び出されます。<br />
-                            呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
-<pre>trasition.start();</pre>
-                        </div>
-                    </li>
-                    <li id="Trasition_stop">
-                        <h3>stop()</h3>
-                        <div class="detail">
-                            <p>アニメーションを停止します。<br />
-                            CSS Trasitionは途中で停止する手段が無いため、実質callbackが実行されないだけとなります。</p>
-<pre>trasition.stop();</pre>
                         </div>
                     </li>
                 </ul>
@@ -3696,22 +3735,20 @@ check = validate.isString('check', {}); // error</pre>
     <div id="sub">
         <ul>
             <li><a href="#selector">$</a></li>
-            <li><a href="#cssease">cssease</a></li>
             <li><a href="#dom">dom</a></li>
             <li><a href="#e">e</a></li>
             <li><a href="#ease">ease</a></li>
             <li><a href="#Class">Class</a></li>
             <li><a href="#mobile_">mobile</a></li>
             <li><a href="#pc_">pc</a></li>
+            <li><a href="#ssease">ssease</a></li>
             <li><a href="#util">util</a></li>
             <li><a href="#validate_">validate</a></li>
             <li><a href="#Ajax">Ajax</a></li>
-            <li><a href="#Animation">Animation</a></li>
             <li><a href="#Async">Async</a></li>
             <li><a href="#Audio">Audio</a></li>
             <li><a href="#Base">Base</a></li>
             <li><a href="#Brush">Brush</a></li>
-            <li><a href="#Collection">Collection</a></li>
             <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#Datetime">Datetime</a></li>
             <li><a href="#Deferred">Deferred</a></li>
@@ -3733,6 +3770,7 @@ check = validate.isString('check', {}); // error</pre>
             <li><a href="#Mobile">Mobile</a></li>
             <li><a href="#Movie">Movie</a></li>
             <li><a href="#Observer">Observer</a></li>
+            <li><a href="#Ollection">Ollection</a></li>
             <li><a href="#Orientation">Orientation</a></li>
             <li><a href="#PC">PC</a></li>
             <li><a href="#PreRender">PreRender</a></li>
@@ -3743,10 +3781,11 @@ check = validate.isString('check', {}); // error</pre>
             <li><a href="#ServerMeta">ServerMeta</a></li>
             <li><a href="#SessionStorage">SessionStorage</a></li>
             <li><a href="#Sound">Sound</a></li>
+            <li><a href="#SSAnime">SSAnime</a></li>
+            <li><a href="#SSTrans">SSTrans</a></li>
             <li><a href="#Surrogate">Surrogate</a></li>
             <li><a href="#Throttle">Throttle</a></li>
             <li><a href="#Timer">Timer</a></li>
-            <li><a href="#Transition">Transition</a></li>
             <li><a href="#Tweener">Tweener</a></li>
             <li><a href="#Twitter">Twitter</a></li>
             <li><a href="#Validate">Validate</a></li>
