@@ -205,6 +205,35 @@ function owner(ownerObj, methods, overrideObj /* varless */, i) {
     return overrideObj;
 }
 
+function binarySearch(arg) {
+    arg = arg || NULLOBJ;
+
+    return _binarySearch(
+        arg['low'] || 0,
+        arg['high'] || 0,
+        arg['compare'] || nullFunction,
+        arg['end'] || nullFunction
+    );
+}
+function _binarySearch(low, high, compare, end) {
+    var middle;
+
+    while (TRUE) {
+        middle = Math.floor((low + high) / 2);
+
+        if (low == middle) {
+            return end(middle);
+        }
+
+        if (compare(middle)) {
+            low = middle;
+        }
+        else {
+            high = middle;
+        }
+    }
+}
+
 C['util'] = {
     'win': win,
     'doc': doc,
@@ -233,5 +262,6 @@ C['util'] = {
     'eventStop': eventStop,
     'checkUserAgent': checkUserAgent,
     'proxy': proxy,
-    'owner': owner
+    'owner': owner,
+    'binarySearch': binarySearch
 };

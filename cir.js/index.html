@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Web application development library, 'Cool is Right'.</h2>
-    <p class="ver">0.10.1</p>
+    <p class="ver">0.11.1</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.10.1)</span> 機能選択：<a href="optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.11.1)</span> 機能選択：<a href="optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -745,6 +745,35 @@ var Class = SuperClass.extend();
 var instance = new Class();
 
 instance.method(); // Classでmethodを実装していないため、エラー表示</pre>
+                        </div>
+                    </li>
+                    <li id="util_binarySearch">
+                        <h3>binarySearch({low: number, high: number, compare: function, end: function})</h3>
+                        <div class="detail">
+                            <p>二分探索のアルゴリズムを提供するメソッドです。<br />
+                            開始する最低値、最高値と比較用、探索終了時用の関数を渡すことで二分探索を行います。<br />
+                            compareには探索方向が低くなる場合にtrueを返す関数を指定します。</p>
+<pre>var ary = [],
+    i = 0,
+    len = 100,
+    answer;
+
+for (; i &lt; len; i++) {
+    ary[i] = i;
+}
+
+util.binarySearch({
+    low: 0,
+    high: 100,
+    compare: function(point) {
+        if (point &lt; 50) {
+            return true;
+        }
+    },
+    end: function(point) {
+        answer = point;
+    }
+});</pre>
                         </div>
                     </li>
                     <li id="util_checkUserAgent">
@@ -2028,6 +2057,35 @@ var hashobj = hashquery.getHash();
                             インスタンス生成時に自動的に呼び出されます。<br />
                             呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
 <pre>imgload.start();</pre>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="LimitText">
+            <dt>C.LimitText<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var limittext = new C.LimitText({
+    el: C.dom.$('#sample'),
+    width: 100,
+    height: 100
+});</pre>
+                    <p>対象エレメントの代入できる限界のテキストを調べるメソッドを持つクラスです。</p>
+                </div>
+                <ul>
+                    <li id="LimitText_getLimitFontSize">
+                        <h3>getLimitFontSize(text)</h3>
+                        <div class="detail">
+                            <p>textをel.innerHTMLに代入した場合、width,heightの値を超えない限界のフォントサイズを返します。8px以下になった場合、数値は0になります。</p>
+<pre>limittext.getLimitFontSize('Cool is Right.'); // Number</pre>
+                        </div>
+                    </li>
+                    <li id="LimitText_getLimitTextLength">
+                        <h3>getLimitTextLength(text)</h3>
+                        <div class="detail">
+                            <p>textをel.innerHTMLに代入した場合、width,heightの値を超えない限界のテキスト長を返します。</p>
+<pre>limittext.getLimitTextLength('Cool is Right.'); // Number</pre>
                         </div>
                     </li>
                 </ul>

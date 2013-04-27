@@ -1,106 +1,114 @@
 C['LimitText'] = classExtendBase({
+    _minfontsize: 8,
     _copyAppend: function(text) {
+        html(this._copyel, text);
         append(parent(this._el), this._copyel);
     },
     _copyRemove: function() {
-        html(this._copyel, '');
+        html(this._copyel, EMPTY);
         remove(this._copyel);
     },
-    _parseComputed: function(computedPoint) {
-        return +computedPoint.split('px')[0];
-    },
-    _getComputed: function(text) {
-        html(this._copyel, text);
-
-        var computed = computedStyle(this._copyel);
-
-        return {
-            'width': this._parseComputed(computed['width']),
-            'height': this._parseComputed(computed['height']),
-            'font-size': this._parseComputed(computed['font-size'])
-        };
-    },
     'init': function(config) {
+        var el = this._el = config['el'],
+            copyel = this._copyel = create(el.tagName, {
+                'class': attr(el, 'class'),
+                'id': attr(el, 'id'),
+                'style': attr(el, 'style')
+            }),
+            computed = this._computed = computedStyle(copyel);
+
         this._width = config['width'];
         this._height = config['height'];
-        this._el = config['el'];
-        this._copyel = create(this._el.tagName, {
-            'class': attr(this._el, 'class'),
-            'id': attr(this._el, 'id'),
-            'style': attr(this._el, 'style')
-        });
 
-        css(this._copyel, {
+        css(copyel, {
             'position': 'fixed',
-            /* 'top': '-9999px', */
-            'top': '0',
-            'left': '0',
+            'top': 0,
+            'left': 0,
             'visibility': 'hidden'
         });
 
-        this._copyAppend();
-        this._fontsize = this._getComputed('a')['font-size'];
+        this._copyAppend(0);
+        this._fontsize = +splitSuffix(computed['fontSize'])[2];
         this._copyRemove();
+    },
+    _limitCheck: function() {
+        if (
+            +splitSuffix(this._computed['width'])[2] <= this._width &&
+            +splitSuffix(this._computed['height'])[2] <= this._height
+        ) {
+            return TRUE;
+        }
+
+        return FALSE;
     },
     'getLimitFontSize': function(text) {
-        text = '' + text;
+        text = EMPTY + text;
 
-        var flg = true,
-            computed,
-            size = this._fontsize,
-            limitsize = 8;
+        var that = this,
+            high = that._fontsize,
+            answer;
 
-        css(this._copyel, {
-            'font-size': size
+        css(that._copyel, {
+            'fontSize': high
         });
-        this._copyAppend();
 
-        while (flg && size >= limitsize) {
-            computed = this._getComputed(text);
+        that._copyAppend(text);
 
-            if (
-                computed['width'] <= this._width &&
-                computed['height'] <= this._height
-            ) {
-                flg = false;
-            }
-            else {
-                size--;
-                css(this._copyel, {
-                    'font-size': size
-                });
-            }
+        if (that._limitCheck()) {
+            answer = high;
+        }
+        else {
+            _binarySearch(
+                that._minfontsize - 1,
+                high,
+                function(point) {
+                    css(that._copyel, {
+                        'fontSize': point
+                    });
+                    return that._limitCheck();
+                },
+                function(point) {
+                    answer = point;
+                }
+            );
         }
 
-        this._copyRemove();
+        that._copyRemove();
 
-        return size;
+        if (answer < that._minfontsize) {
+            answer = 0;
+        }
+
+        return answer;
     },
     'getLimitTextLength': function(text) {
-        text = '' + text;
+        text = EMPTY + text;
 
-        var orgtext = text,
-            flg = true,
-            computed;
+        var that = this,
+            len = text.length,
+            answer;
 
-        this._copyAppend();
+        that._copyAppend(text);
 
-        while (flg && text !== '') {
-            computed = this._getComputed(text);
-
-            if (
-                computed['width'] <= this._width &&
-                computed['height'] <= this._height
-            ) {
-                flg = false;
-            }
-            else {
-                text = text.slice(0, text.length - 1);
-            }
+        if (that._limitCheck()) {
+            answer = len;
+        }
+        else {
+            _binarySearch(
+                0,
+                len,
+                function(point) {
+                    html(that._copyel, text.slice(0, point));
+                    return that._limitCheck();
+                },
+                function(point) {
+                    answer = point;
+                }
+            );
         }
 
-        this._copyRemove();
+        that._copyRemove();
 
-        return text.length;
+        return answer;
     }
 });
