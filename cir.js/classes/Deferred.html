@@ -1,0 +1,51 @@
+<li id="Deferred_done">
+    <h3 class="method">done(function)</h3>
+    <div class="detail">
+        <p>遅延処理を登録します。</p>
+<pre>deferred.done(function() {
+    // write code.
+})
+.done(function() {
+    // write code.
+});
+
+deferre.resolve(); // まとめて実行
+
+deferred.done(function() {
+    // write code.
+}); // resolve()後は即座に実行
+</pre>
+    </div>
+</li>
+<li id="Deferred_isResolve">
+    <h3 class="method">isResolve()</h3>
+    <div class="detail">
+        <p>遅延処理が実行済みかどうかBooleanで返します。</p>
+<pre>if (!deferred.isResolve()) {
+    alert('No Resolve.');
+}
+deferred.resolve();
+if (deferred.isResolve()) {
+    alert('Resolve.');
+}</pre>
+    </div>
+</li>
+<li id="Deferred_resolve">
+    <h3 class="method">resolve()</h3>
+    <div class="detail">
+        <p>登録された遅延処理を実行します。</p>
+<pre>deferred.done(function() {
+    // write code.
+})
+.done(function() {
+    // write code.
+});
+
+deferre.resolve(); // まとめて実行
+
+deferred.done(function() {
+    // write code.
+}); // resolve()後は即座に実行
+</pre>
+    </div>
+</li>

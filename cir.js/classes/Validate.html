@@ -1,0 +1,61 @@
+<li id="Validate_displayError">
+    <h3 class="method">displayError(key, text)</h3>
+    <div class="detail">
+        <p>levelオプションに合わせてエラー表示を行います。</p>
+<pre>validate('test', 'Test'); // Validate Error: test is Test.</pre>
+    </div>
+</li>
+<li id="Validate_isArray">
+    <h3 class="method">isArray(key, vars)</h3>
+    <div class="detail">
+        <p>varsがArrayの場合はtrueを返し、そうでない場合エラー表示します。</p>
+<pre>var check;
+check = validate.isArray('check', []); // true
+check = validate.isArray('check', {}); // error</pre>
+    </div>
+</li>
+<li id="Validate_isBoolean">
+    <h3 class="method">isBoolean(key, vars)</h3>
+    <div class="detail">
+        <p>varsがBooleanの場合はtrueを返し、そうでない場合エラー表示します。</p>
+<pre>var check;
+check = validate.isBoolean('check', false); // true
+check = validate.isBoolean('check', {}); // error</pre>
+    </div>
+</li>
+<li id="Validate_isFunction">
+    <h3 class="method">isFunction(key, vars)</h3>
+    <div class="detail">
+        <p>varsがFunctionの場合はtrueを返し、そうでない場合エラー表示します。</p>
+<pre>var check;
+check = validate.isFunction('check', function() {}); // true
+check = validate.isFunction('check', {}); // error</pre>
+    </div>
+</li>
+<li id="Validate_isNumber">
+    <h3 class="method">isNumber(key, vars)</h3>
+    <div class="detail">
+        <p>varsがNumberの場合はtrueを返し、そうでない場合エラー表示します。</p>
+<pre>var check;
+check = validate.isNumber('check', 1); // true
+check = validate.isNumber('check', {}); // error</pre>
+    </div>
+</li>
+<li id="Validate_isObject">
+    <h3 class="method">isObject(key, vars)</h3>
+    <div class="detail">
+        <p>varsがObjectの場合はtrueを返し、そうでない場合エラー表示します。</p>
+<pre>var check;
+check = validate.isObject('check', {}); // true
+check = validate.isObject('check', []); // error</pre>
+    </div>
+</li>
+<li id="Validate_isString">
+    <h3 class="method">isString(key, vars)</h3>
+    <div class="detail">
+        <p>varsがStringの場合はtrueを返し、そうでない場合エラー表示します。</p>
+<pre>var check;
+check = validate.isString('check', ''); // true
+check = validate.isString('check', {}); // error</pre>
+    </div>
+</li>

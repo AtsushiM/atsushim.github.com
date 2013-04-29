@@ -1,0 +1,76 @@
+<li id="Brush_draw">
+    <h3 class="method">draw([{image: element, x: number, y: number}])</h3>
+    <div class="detail">
+        <p>canvasに対してimageをdrawImageします。<br />
+        imageにはimgエレメントかcanvasエレメントを指定できます。<br />
+        引数の配列の順に上に重なっていきます。<br />
+        canvasに描画されている場合、消去してから追加されます。</p>
+<pre>var $prerender = C.$('.prerender');
+brush.draw([
+    {image: $prerender[0], x: 0, y: 0},
+    {image: $prerender[1], x: 100, y: 0},
+    {image: $prerender[2], x: 0, y: 100}
+]);</pre>
+    </div>
+</li>
+<li id="Brush_pigment">
+    <h3 class="method">pigment({src: string, width: number, height: number, <span class="expansion">[x: number]</span>, <span class="expansion">[y: number]</span>, onload: function})</h3>
+    <div class="detail">
+        <p>drawメソッドの引数を作成するメソッドです。<br />
+        srcオプションで指定された画像を読み込んだcanvasエレメントとx,yオプションを指定されたオブジェクトが返ります。</p>
+<pre>var pigment = brush.pigment({
+    src: '/img/canvas.png',
+    width: 100,
+    height: 100,
+    x: 100, // default: 0
+    y: 50, // default: 0
+    onload: function(canvas, img) {
+        // write code.
+    }
+}); // {image: canvasElement, x: 100, y: 50}</pre>
+    </div>
+</li>
+<li id="Brush_pigments">
+    <h3 class="method">pigments({name: {src: string, width: number, height: number, <span class="expansion">[x: number]</span>, <span class="expansion">[y: number]</span>, onload: function}}, <span class="expansion">[callback]</span>)</h3>
+    <div class="detail">
+        <p>drawメソッドの引数を作成するメソッドです。<br />
+        pigmentメソッドの返り値をnameをキーにしたオブジェクトで返します。<br />
+        画像の読み込み完了時、callbackを実行します。</p>
+<pre>var pigments = brush.pigments({
+    char: {
+        src: '/img/char.png',
+        width: 100,
+        height: 100,
+        onload: function(canvas, img) {
+            // write code.
+        }
+    },
+    bg: {
+        src: '/img/bg.png',
+        width: 100,
+        height: 100,
+        onload: function(canvas, img) {
+            // write code.
+        }
+    },
+}, function(ret) {
+    // ret === pigments
+
+    brush.draw([
+        pigments.bg,
+        pigments.char
+    ]);
+}); // { char: {image: canavsElement, x:0, y:0}, bg: {image: canavsElement, x:0, y:0} }
+</pre>
+    </div>
+</li>
+<li id="Brush_setSize">
+    <h3 class="method">setSize({<span class="expansion">[width: string]</span>, <span class="expansion">[height: string]</span>})</h3>
+    <div class="detail">
+        <p>canvasのwidth,heightを調整します。</p>
+<pre>brush.setSize({
+    width: '100%',
+    height: 100
+});</pre>
+    </div>
+</li>

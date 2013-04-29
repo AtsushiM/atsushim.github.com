@@ -1,0 +1,59 @@
+<li id="HashQuery_getHash">
+    <h3 class="method">getHash()</h3>
+    <div class="detail">
+        <p>location.hashから値を取得します。</p>
+<pre>location.hash = 'hashName?cir=Cool%20is%20Right.&id=123';
+var hashobj = hashquery.getHash();
+/*
+{
+    mode: 'hashName',
+    contents: {
+        cir: 'Cool is Right.',
+        id: 123
+    }
+}
+*/</pre>
+    </div>
+</li>
+<li id="HashQuery_makeHash">
+    <h3 class="method">makeHash({mode: string, contents: {key: val}})</h3>
+    <div class="detail">
+        <p>location.hashに設定するための値を作成します。</p>
+<pre>var hashtxt = hashquery.makeHash({
+    mode: 'hashName',
+    contents: {
+        cir: 'Cool is Right.',
+        id: 123
+    }
+}); // hashName?cir=Cool%20is%20Right.&id=123</pre>
+    </div>
+</li>
+<li id="HashQuery_parseHash">
+    <h3 class="method">parseHash(querystring)</h3>
+    <div class="detail">
+        <p>クエリーストリング形式の文字列をオブジェクトに変換します。</p>
+<pre>var hashvar = hashquery.parseHash('#hashName?cir=Cool%20is%20Right.&id=123');
+/*
+{
+    mode: 'hashName',
+    contents: {
+        cir: 'Cool is Right.',
+        id: 123
+    }
+}
+*/</pre>
+    </div>
+</li>
+<li id="HashQuery_setHash">
+    <h3 class="method">setHash({mode: string, contents: {key: val}})</h3>
+    <div class="detail">
+        <p>location.hashに値を設定します。</p>
+<pre>var hashtxt = hashquery.setHash({
+    mode: 'hashName',
+    contents: {
+        cir: 'Cool is Right.',
+        id: 123
+    }
+}); // location.hash = '#hashName?cir=Cool%20is%20Right.&id=123'</pre>
+    </div>
+</li>

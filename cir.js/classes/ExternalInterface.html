@@ -1,0 +1,47 @@
+<li id="ExternalInterface_addCallback">
+    <h3 class="method">addCallback(name, function)</h3>
+    <div class="detail">
+        <p>ウェブビューからネイティブにメソッドを提供します。<br />
+        iOSの場合はlocation.hashに#メソッド名?変数1=値&amp;変数2=値...<br />
+        Androidの場合も同様にメソッドに'メソッド名?変数1=値&amp;変数2=値...'
+        を引数として渡せばメソッドを呼び出します。</p>
+<pre>external.addCallback('webviewMethod', function(vars) {
+    // write code.
+    console.log(vars); // {text: 'Coll is Right.'}
+});
+
+// iOSモードの場合
+location.hash = 'webviewMethod?text=Cool%20is%20Right.';</pre>
+    </div>
+</li>
+<li id="ExternalInterface_call">
+    <h3 class="method">call({mode: string, vars: {key: val}})</h3>
+    <div class="detail">
+        <p>ネイティブ側から提供されたメソッドを実行します。<br />
+        iOSの場合はlocation.hashに特定の形式の文字列を設定します。<br />
+        Androidの場合、インスタンス生成時に渡したオブジェクト内のメソッドを呼び出します。</p>
+<pre>external.call({
+    mode: 'nativeMethod', // ネイティブ側の呼び出す機能名
+    vars: {
+        str: 'Cool is Right.',
+        num: 123
+    }
+});
+// iOSの場合、location.hashに [ #nativeMethod?str=%22Cool%20is%20Right.%22&num=123 ]
+// Androidの場合、関数の引数に"nativeMethod?str=%22Cool%20is%20Right.%22&num=123"</pre>
+    </div>
+</li>
+<li id="ExternalInterface_removeCallback">
+    <h3 class="method">removeCallback(name)</h3>
+    <div class="detail">
+        <p>addCallbackで登録したメソッドを削除します。</p>
+<pre>external.addCallback('webviewMethod', function(vars) {
+    // write code.
+    console.log(vars); // {text: 'Coll is Right.'}
+}); // 登録
+external.removeCallback('webviewMethod'); // 削除
+
+// iOSモードの場合
+location.hash = 'webviewMethod?text=Cool%20is%20Right.'; // 削除しているため呼び出されない</pre>
+    </div>
+</li>

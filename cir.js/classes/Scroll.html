@@ -1,0 +1,46 @@
+<li id="Scroll_kill">
+    <h3 class="method">kill()</h3>
+    <div class="detail">
+        <p>ブラウザスクロールを不可にします。</p>
+<pre>scroll.kill(); // スクロールを停止</pre>
+    </div>
+</li>
+<li id="Scroll_revival">
+    <h3 class="method">revival()</h3>
+    <div class="detail">
+        <p>ブラウザスクロールを可能にします。</p>
+<pre>scroll.revival(); // スクロールを停止</pre>
+    </div>
+</li>
+<li id="Scroll_smooth">
+    <h3 class="method">smooth(target, callback)</h3>
+    <div class="detail">
+        <p>スムーズスクロールで移動します。<br />
+        targetには数値かHTMLエレメントが指定出来ます。</p>
+<pre>scroll.smooth(0); // ページトップへ
+scroll.smooth(C.dom.$('#test'), function() {
+    // write code.
+}); // #testの位置へ</pre>
+    </div>
+</li>
+<li id="Scroll_to">
+    <h3 class="method">to(num)</h3>
+    <div class="detail">
+        <p>スクロール位置を移動します。</p>
+<pre>scroll.to(100); // トップから100pの位置へ</pre>
+    </div>
+</li>
+<li id="Scroll_toBottom">
+    <h3 class="method">toBottom()</h3>
+    <div class="detail">
+        <p>スクロール位置を一番下にします。</p>
+<pre>scroll.toBottom();</pre>
+    </div>
+</li>
+<li id="Scroll_toTop">
+    <h3 class="method">toTop()</h3>
+    <div class="detail">
+        <p>スクロール位置を一番上にします。</p>
+<pre>scroll.toTop();</pre>
+    </div>
+</li>

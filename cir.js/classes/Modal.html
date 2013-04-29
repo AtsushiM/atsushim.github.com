@@ -1,0 +1,26 @@
+<li id="Modal_close">
+    <h3 class="method">close()</h3>
+    <div class="detail">
+        <p>モーダルを閉じます。</p>
+<pre>modal.close();</pre>
+    </div>
+</li>
+<li id="Modal_inner">
+    <h3 class="method">inner(<span class="expansion">[html]</span>)</h3>
+    <div class="detail">
+        <p>モーダルで表示するHTMLを設定します。<br />
+        htmlを省略した場合、初期化時に渡したhtmlオプションの内容を表示します。<br />
+        モーダルを閉じずに内容だけ入れ替えたい場合に便利です。</p>
+<pre>modal.inner('&lt;div&gt;&lt;p&gt;Cool is Right.&lt;/p&gt;&lt;p class="close"&gt;close&lt;/p&gt;&lt;/div&gt;');</pre>
+    </div>
+</li>
+<li id="Modal_open">
+    <h3 class="method">open(<span class="expansion">[html]</span>)</h3>
+    <div class="detail">
+        <p>モーダルを表示します。<br />
+        htmlを省略した場合、初期化時に渡したhtmlオプションの内容を表示します。<br />
+        インスタンス生成時に自動的に呼び出されます。<br />
+        呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
+<pre>modal.open('&lt;div&gt;&lt;p&gt;Cool is Right.&lt;/p&gt;&lt;p class="close"&gt;close&lt;/p&gt;&lt;/div&gt;');</pre>
+    </div>
+</li>

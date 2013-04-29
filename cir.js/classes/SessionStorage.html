@@ -1,0 +1,50 @@
+<li id="SessionStorage_get">
+    <h3 class="method">get(<span class="expansion">[key]</span>)</h3>
+    <div class="detail">
+        <p>値を取得します。</p>
+<pre>sessionStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';
+var cir = storage.get('cir'); // {c: 'Cool', i: 'is', r: 'Right'}
+
+cir = storage.get(); // まとめて取得
+/*
+    cir == {cir: {c: 'Cool', i: 'is', r: 'Right'}}
+*/
+</pre>
+    </div>
+</li>
+<li id="SessionStorage_remove">
+    <h3 class="method">remove(key)</h3>
+    <div class="detail">
+        <p>値を削除します。</p>
+<pre>storage.set('cir', 'Cool is Right.'); // 追加
+storage.remove('cir'); // 削除
+
+var cir = storage.get('cir'); // null</pre>
+    </div>
+</li>
+<li id="SessionStorage_reset">
+    <h3 class="method">reset()</h3>
+    <div class="detail">
+        <p>保存された値を全て削除します。<br />
+        namespaceオプションが指定されない場合はsessionStorage全体が削除されます。</p>
+<pre>storage.set('txt', 'Cool is Right.');
+storage.set('num', 123);
+
+storage.reset();
+
+var txt = storage.get('txt'); // null
+var num = storage.get('num'); // null</pre>
+    </div>
+</li>
+<li id="SessionStorage_set">
+    <h3 class="method">set(key, value)</h3>
+    <div class="detail">
+        <p>値を保存します。<br />
+        保存される値はStringに変換されます。</p>
+<pre>storage.set('cir', {
+    c: 'Cool',
+    i: 'is',
+    r: 'Right'
+}); // sessionStorage.cir = '{"c":"Cool","i":"is","r":"Right"}';</pre>
+    </div>
+</li>

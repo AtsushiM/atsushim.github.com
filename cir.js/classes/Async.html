@@ -1,0 +1,35 @@
+<li id="Async_pass">
+    <h3 class="method">pass(<span class="expansion">vars</span>)</h3>
+    <div class="detail">
+        <p>処理待ちの完了処理を行います。<br />
+        waits回pass()を実行すれば、callbackが実行されます。<br />
+        varsは配列に追加され、callbackの第2引数に渡されます。</p>
+<pre>base.pass('pass');</pre>
+    </div>
+</li>
+<li id="Async_miss">
+    <h3 class="method">miss(<span class="expansion">vars</span>)</h3>
+    <div class="detail">
+        <p>処理待ちの失敗処理を行います。<br />
+        即座にcallbackが実行されます。<br />
+        第一引数にはErrorオブジェクトが渡されます。<br />
+        varsは配列に追加され、callbackの第2引数に渡されます。</p>
+<pre>base.miss('miss');</pre>
+    </div>
+</li>
+<li id="Async_exit">
+    <h3 class="method">exit(<span class="expansion">vars</span>)</h3>
+    <div class="detail">
+        <p>実行されたpass()の回数に関係なく、即座にcallbackが実行されます。<br />
+        事前にmiss()が呼ばれていた場合、callbackは実行されません。<br />
+        varsは配列に追加され、callbackの第2引数に渡されます。</p>
+<pre>base.exit('exit');</pre>
+    </div>
+</li>
+<li id="Async_getProgress">
+    <h3 class="method">getProgress(<span class="expansion">vars</span>)</h3>
+    <div class="detail">
+        <p>現在の処理の進捗度を0~1の数値で返します。</p>
+<pre>var progress = async.getProgress();</pre>
+    </div>
+</li>

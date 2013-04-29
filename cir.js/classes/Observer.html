@@ -1,0 +1,64 @@
+<li id="Observer_fire">
+    <h3 class="method">fire(<span class="expansion">[vars]</span>)</h3>
+    <div class="detail">
+        <p>onメソッドで登録されたイベントを実行します。</p>
+<pre>observer.on('jsonloaded', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('jsonloaded', {
+    cir: 'Cool is Right.'
+});</pre>
+    </div>
+</li>
+<li id="Observer_off">
+    <h3 class="method">off(key, <span class="expansion">[func]</span>)</h3>
+    <div class="detail">
+        <p>登録されたイベントを削除します。</p>
+<pre>var func1 = function() {
+    console.log('func1');
+};
+var func2 = function() {
+    console.log('func2');
+};
+
+observer.on('jsonloaded', func1);
+observer.on('jsonloaded', func2);
+
+observer.off('jsonloaded', func1);
+
+observer.fire('jsonloaded'); // exe func2.
+
+observer.off('jsonloaded'); // remove 'jsonloaded' event.</pre>
+    </div>
+</li>
+<li id="Observer_on">
+    <h3 class="method">on(key, func)</h3>
+    <div class="detail">
+        <p>イベントを登録します。<br />
+        登録されたイベントはfireメソッドで呼び出されます。</p>
+<pre>observer.on('jsonloaded', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('jsonloaded', {
+    cir: 'Cool is Right.'
+});</pre>
+    </div>
+</li>
+<li id="Observer_one">
+    <h3 class="method">one(key, func)</h3>
+    <div class="detail">
+        <p>一度だけ実行されるイベントを登録します。<br />
+        登録されたイベントはfireメソッドで呼び出されます。</p>
+<pre>var func = observer.one('jsonloaded', function(vars){
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('jsonloaded', 'fire1');
+observer.fire('jsonloaded', 'fire2');</pre>
+    </div>
+</li>

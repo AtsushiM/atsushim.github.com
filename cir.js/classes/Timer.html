@@ -1,0 +1,55 @@
+<li id="Timer_countDown">
+    <h3 class="method">countDown()</h3>
+    <div class="detail">
+        <p>カウントダウンを開始します。</p>
+<pre>timer.countDown();</pre>
+    </div>
+</li>
+<li id="Timer_getLimit">
+    <h3 class="method">getLimit()</h3>
+    <div class="detail">
+        <p>リミット(秒)を取得します。</p>
+<pre>var limit = timer.getLimit();</pre>
+    </div>
+</li>
+<li id="Timer_getProgress">
+    <h3 class="method">getProgress()</h3>
+    <div class="detail">
+        <p>経過%を0~1の間の数値で返します。</p>
+<pre>var progress = timer.getProgress();</pre>
+    </div>
+</li>
+<li id="Timer_getTime">
+    <h3 class="method">getTime()</h3>
+    <div class="detail">
+        <p>templateオプションに合わせた現在秒数を取得します。</p>
+<pre>var time = timer.getTime();</pre>
+    </div>
+</li>
+<li id="Timer_setTimeup">
+    <h3 class="method">setTimeup(function)</h3>
+    <div class="detail">
+        <p>リミットに到達した場合に実行されるontimeupオプションを設定します。</p>
+<pre>timer.setTimeup(function(time) {
+    // write code.
+    console.log(time);
+});</pre>
+    </div>
+</li>
+<li id="Timer_setUpdate">
+    <h3 class="method">setUpdate(function)</h3>
+    <div class="detail">
+        <p>intervalオプションごとに実行されるonupdateオプションを設定します。</p>
+<pre>timer.setUpdate(function(time) {
+    // write code.
+    console.log(time);
+});</pre>
+    </div>
+</li>
+<li id="Timer_stop">
+    <h3 class="method">stop()</h3>
+    <div class="detail">
+        <p>タイマーを停止します。</p>
+<pre>timer.stop();</pre>
+    </div>
+</li>

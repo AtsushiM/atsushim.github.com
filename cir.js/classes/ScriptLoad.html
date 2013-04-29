@@ -1,0 +1,25 @@
+<li id="ScriptLoad_request">
+    <h3 class="method">request({src, <span class="expansion">[callback]</span>})</h3>
+    <div class="detail">
+        <p>jsファイルの動的読み込みを行います。</p>
+<pre>scriptload.request({
+    src: '/js/dynamic.js',
+    callback: function() {
+        // write code.
+    }
+});</pre>
+    </div>
+</li>
+<li id="ScriptLoad_requests">
+    <h3 class="method">requests([{src, <span class="expansion">[callback]</span>}], <span class="expansion">[callback]</span>)</h3>
+    <div class="detail">
+        <p>複数ファイルの動的読み込みを行います。</p>
+<pre>scriptload.requests([
+    { src: '/js/c.js', callback: function() { /* write code. */}},
+    { src: '/js/i.js', callback: function() { /* write code. */}},
+    { src: '/js/r.js', callback: function() { /* write code. */}}
+], function(scripts) {
+    // callback.
+});</pre>
+    </div>
+</li>

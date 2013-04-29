@@ -1,4 +1,4 @@
-SRC = namespace_start.js init.js localLink.js submenu.js toggle.js namespace_end.js
+SRC = namespace_start.js init.js splitLoad.js localLink.js submenu.js toggle.js namespace_end.js
 COMBINE = src.combine.js
 COMPRESS = ../main.js
 

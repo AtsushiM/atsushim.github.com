@@ -1,0 +1,60 @@
+<li id="ServerMeta_acceptRanges">
+    <h3 class="method">acceptRanges()</h3>
+    <div class="detail">
+        <p>サーバーからAccept-Rangesを取得します。</p>
+<pre>var acceptRanges = server.acceptRanges();</pre>
+    </div>
+</li>
+<li id="ServerMeta_connection">
+    <h3 class="method">connection()</h3>
+    <div class="detail">
+        <p>サーバーからConnectionを取得します。</p>
+<pre>var connection = server.connection();</pre>
+    </div>
+</li>
+<li id="ServerMeta_contentLength">
+    <h3 class="method">contentLength()</h3>
+    <div class="detail">
+        <p>サーバーからContent-Lengthを取得します。</p>
+<pre>var contentLength = server.ContentLength();</pre>
+    </div>
+</li>
+<li id="ServerMeta_contentType">
+    <h3 class="method">contentType()</h3>
+    <div class="detail">
+        <p>サーバーからContent-Typeを取得します。</p>
+<pre>var contentType = server.contentType();</pre>
+    </div>
+</li>
+<li id="ServerMeta_date">
+    <h3 class="method">date(callback)</h3>
+    <div class="detail">
+        <p>サーバから日付を取得します。<br />
+        このメソッドのみ、非同期で実行されるためcallbackが必要です</p>
+<pre>server.date(function(date) {
+    // write code.
+    console.log(date);
+});</pre>
+    </div>
+</li>
+<li id="ServerMeta_keepAlive">
+    <h3 class="method">keepAlive()</h3>
+    <div class="detail">
+        <p>サーバーからKeep-Aliveを取得します。</p>
+<pre>var keepAlive = server.keepAlive();</pre>
+    </div>
+</li>
+<li id="ServerMeta_lastModified">
+    <h3 class="method">lastModified()</h3>
+    <div class="detail">
+        <p>サーバーからLast-Modifiedを取得します。</p>
+<pre>var lastModified = server.lastModified();</pre>
+    </div>
+</li>
+<li id="ServerMeta_server">
+    <h3 class="method">server()</h3>
+    <div class="detail">
+        <p>サーバーからServerを取得します。</p>
+<pre>var _server = server.server();</pre>
+    </div>
+</li>

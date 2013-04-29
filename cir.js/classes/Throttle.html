@@ -1,0 +1,26 @@
+<li id="Throttle_lock">
+    <h3 class="method">lock()</h3>
+    <div class="detail">
+        <p>処理リクエストを受け付けなくします。</p>
+<pre>throttle.lock();
+throttle.request('Cool is Right.'); // 実行されない</pre>
+    </div>
+</li>
+<li id="Throttle_request">
+    <h3 class="method">request(<span class="expansion">[vars]</span>)</h3>
+    <div class="detail">
+        <p>処理をリクエストします。<br />
+        waittimeオプションだけ連続実行をできなくします。</p>
+<pre>throttle.request('Cool is Right.');
+throttle.request('Hot is Right.'); // 連続実行出来ない</pre>
+    </div>
+</li>
+<li id="Throttle_unlock">
+    <h3 class="method">unlock()</h3>
+    <div class="detail">
+        <p>処理リクエストを受け付けるようにします。</p>
+<pre>throttle.lock();
+throttle.unlock();
+throttle.request('Cool is Right.'); // 実行される</pre>
+    </div>
+</li>

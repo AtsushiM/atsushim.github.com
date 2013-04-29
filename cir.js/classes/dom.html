@@ -1,0 +1,255 @@
+<li id="dom__">
+    <h3 class="method">$(selector)</h3>
+    <div class="detail">
+        <p>document.querySelectorのショートハンドです。</p>
+<pre>var $ = dom.$;
+var $p = $('p'); // HTML Element</pre>
+    </div>
+</li>
+<li id="dom___">
+    <h3 class="method">$$(selector)</h3>
+    <div class="detail">
+        <p>document.querySelectorAllのショートハンドです。<br />
+        返り値はNodeListではなくArrayに変換されています。</p>
+<pre>var $$ = dom.$$;
+var $$p = $$('p'); // array</pre>
+    </div>
+</li>
+<li id="dom__child">
+    <h3 class="method">$child(selector, element)</h3>
+    <div class="detail">
+        <p>element.querySelectorのショートハンドです。</p>
+<pre>var $child = dom.$child;
+var $p = $child('p', document.body); // HTML Element</pre>
+    </div>
+</li>
+<li id="dom___child">
+    <h3 class="method">$$child(selector, element)</h3>
+    <div class="detail">
+        <p>element.querySelectorAllのショートハンドです。<br />
+        返り値はNodeListではなくArrayに変換されています。</p>
+<pre>var $$child = dom.$$child;
+var $$p = $$('p', document.body); // array</pre>
+    </div>
+</li>
+<li id="dom__id">
+    <h3 class="method">$id(selector)</h3>
+    <div class="detail">
+        <p>document.getElementByIdのショートハンドです。</p>
+<pre>var $id = dom.$id;
+var $sample = $id('sample'); // HTML Element</pre>
+    </div>
+</li>
+<li id="dom_addClass">
+    <h3 class="method">addClass(element, value)</h3>
+    <div class="detail">
+        <p>elementのclassにvalueを追加します。</p>
+<pre>var $sample = dom.$('#sample');
+el.addClass($sample, 'sample');</pre>
+    </div>
+</li>
+<li id="dom_attr">
+    <h3 class="method">attr(element, property, <span class="expansion">[value]</span>)</h3>
+    <div class="detail">
+        <p>elementの属性の取得、設定を行います。</p>
+<pre>var $img = dom.$('#img');
+var src = dom.attr($img, 'src'); // src取得
+dom.attr($img, 'src', '/img/test.png'); // src設定
+dom.attr($img, {
+    width: '100px',
+    height: '100px'
+}); // まとめて設定</pre>
+    </div>
+</li>
+<li id="dom_after">
+    <h3 class="method">after(element, addElement)</h3>
+    <div class="detail">
+        <p>elementの後ろにaddElementを追加します。</p>
+<pre>var div = dom.create('div');
+var $sample = dom.$('#sample');
+dom.after($sample, div);</pre>
+    </div>
+</li>
+<li id="dom_append">
+    <h3 class="method">append(_parent, element)</h3>
+    <div class="detail">
+        <p>_parentに対してelementを追加します。</p>
+<pre>var div = dom.create('div');
+var $sample = dom.$('#sample');
+dom.append($sample, div);</pre>
+    </div>
+</li>
+<li id="dom_before">
+    <h3 class="method">before(element, addElement)</h3>
+    <div class="detail">
+        <p>elementの前にaddElementを追加します。</p>
+<pre>var div = dom.create('div');
+var $sample = dom.$('#sample');
+dom.before($sample, div);</pre>
+    </div>
+</li>
+<li id="dom_computedStyle">
+    <h3 class="method">computedStyle(element)</h3>
+    <div class="detail">
+        <p>elementに適用されているcssのスタイルを取得する。<br />
+        (style属性に適用されていないものも取得する)</p>
+<pre>var $sample = dom.$('#sample');
+var computed = dom.computedStyle($sample);
+var width = computed.width;
+var height = computed.getPropertyValue('height');</pre>
+    </div>
+</li>
+<li id="dom_create">
+    <h3 class="method">create(tagname, <span class="expansion">[attr]</span>)</h3>
+    <div class="detail">
+        <p>document.createElementのエイリアスです。</p>
+<pre>var div = dom.create('div'); // div element
+var p = dom.create('p', {
+    width: 100,
+    height: 100
+}); // set attr</pre>
+    </div>
+</li>
+<li id="dom_css">
+    <h3 class="method">css(element, object)</h3>
+    <div class="detail">
+        <p>element.styleにobjectの内容を反映します。</p>
+<pre>var $sample = dom.$('#sample');
+dom.css($sample, {
+    width: '100px',
+    height: '200px'
+});</pre>
+    </div>
+</li>
+<li id="dom_delegate">
+    <h3 class="method">delegate(element, clsname, eventname, func)</h3>
+    <div class="detail">
+        <p>element内のclassNameにclsnameを持つ要素のeventnameイベントにfuncを登録します。</p>
+<pre>var $sample = dom.$('#sample');
+dom.delegate($sample, 'cir', C.e.CLICK, function() {
+    console.log('Cool is Right.');
+});</pre>
+    </div>
+</li>
+<li id="dom_hasClass">
+    <h3 class="method">hasClass(element, value)</h3>
+    <div class="detail">
+        <p>elementのclassにvalueがあるかBooleanで返します。</p>
+<pre>var $sample = dom.$('#sample');
+var check = dom.hasClass($sample, 'sample'); // boolean</pre>
+    </div>
+</li>
+<li id="dom_hide">
+    <h3 class="method">hide(element)</h3>
+    <div class="detail">
+        <p>element.style.displayに'none'を指定します。</p>
+<pre>var $sample = dom.$('#sample');
+dom.hide($sample);</pre>
+    </div>
+</li>
+<li id="dom_html">
+    <h3 class="method">html(element, <span class="expansion">[text]</span>)</h3>
+    <div class="detail">
+        <p>element.innerHTMLを取得・設定します。</p>
+<pre>var $sample = dom.$('#sample');
+var html = dom.html($sample); // 取得
+dom.html($sample, 'rewrite innerHTML.'); // 設定</pre>
+    </div>
+</li>
+<li id="dom_insertBefore">
+    <h3 class="method">insertBefore(_parent, element)</h3>
+    <div class="detail">
+        <p>_parent内の先頭にelementを追加します。</p>
+<pre>var div = dom.create('div');
+var $sample = dom.$('#sample');
+dom.insertBefore($sample, div);</pre>
+    </div>
+</li>
+<li id="dom_off">
+    <h3 class="method">off(element, eventname, handler)</h3>
+    <div class="detail">
+        <p>element.removeEventListnerを実行します。</p>
+<pre>var $sample = dom.$('#sample');
+var func = function() {
+    alert('sample click!');
+};
+dom.on($sample, C.e.CLICK, func); // 追加
+dom.off($sample, C.e.CLICK, func); // 削除</pre>
+    </div>
+</li>
+<li id="dom_on">
+    <h3 class="method">on(element, eventname, handler)</h3>
+    <div class="detail">
+        <p>element.addEventListnerを実行します。</p>
+<pre>var $sample = dom.$('#sample');
+dom.on($sample, C.e.CLICK, function() {
+    alert('sample click!');
+});</pre>
+    </div>
+</li>
+<li id="dom_parent">
+    <h3 class="method">parent(element)</h3>
+    <div class="detail">
+        <p>elementの親エレメントを取得します。</p>
+<pre>var $parent = dom.$('#sample').parent();</pre>
+    </div>
+</li>
+<li id="dom_show">
+    <h3 class="method">show(element)</h3>
+    <div class="detail">
+        <p>element.style.displayに'block'を指定します。</p>
+<pre>var $sample = dom.$('#sample');
+dom.show($sample);</pre>
+    </div>
+</li>
+<li id="dom_reflow">
+    <h3 class="method">reflow(<span class="expansion">[el]</span>)</h3>
+    <div class="detail">
+        <p>表示を再描画(リフロー)します。<br />
+        elが指定されなかった場合、document.body以下をリフローします。</p>
+<pre>dom.reflow();</pre>
+    </div>
+</li>
+<li id="dom_remove">
+    <h3 class="method">remove(element)</h3>
+    <div class="detail">
+        <p>elementの削除を行います。</p>
+<pre>dom.remove(element); // 削除</pre>
+    </div>
+</li>
+<li id="dom_removeAttr">
+    <h3 class="method">removeAttr(element, property)</h3>
+    <div class="detail">
+        <p>elementの属性の削除行います。</p>
+<pre>var $img = dom.$('#img');
+dom.attr($img, 'witdh', '100%'); // 設定
+dom.removeAttr($img, 'width'); // 削除</pre>
+    </div>
+</li>
+<li id="dom_removeClass">
+    <h3 class="method">removeClass(element, value)</h3>
+    <div class="detail">
+        <p>elementのclassからvalueを削除します。</p>
+<pre>var $sample = dom.$('#sample');
+dom.removeClass($sample, 'sample');</pre>
+    </div>
+</li>
+<li id="dom_toggleClass">
+    <h3 class="method">toggleClass(element, value)</h3>
+    <div class="detail">
+        <p>elementのclassにvalueがある場合は削除を、<br />
+        無い場合は追加します。</p>
+<pre>var $sample = dom.$('#sample');
+dom.toggleClass($sample, 'sample'); // sampleクラスを追加
+dom.toggleClass($sample, 'sample'); // sampleクラスを削除</pre>
+    </div>
+</li>
+<li id="dom_val">
+    <h3 class="method">val(element, <span class="expansion">[text]</span>)</h3>
+    <div class="detail">
+        <p>element.valueを取得・設定します。</p>
+<pre>var $sample = dom.$('#sample');
+var value = dom.val($sample); // 取得
+dom.val($sample, 'rewrite value.'); // 設定</pre>
+    </div>
+</li>

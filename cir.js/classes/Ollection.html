@@ -1,0 +1,126 @@
+<li id="Ollection_add">
+    <h3 class="method">add(value)</h3>
+    <div class="detail">
+        <p>インスタンス毎に一意になる連番をキーとしてvalueを保存します。連番が返り値になります。</p>
+<pre>collection.add({
+    cir: 'Cool is Right.'
+});</pre>
+    </div>
+</li>
+<li id="Ollection_each">
+    <h3 class="method">each(func)</h3>
+    <div class="detail">
+        <p>保存されたデータごとにfuncを実行します。</p>
+<pre>collection.each(function(val, key, obj) {
+    // val: setなどで保存したデータ
+    // key: set時に指定したキー名
+    // obj: 保存データすべてを持ったオブジェクト
+});</pre>
+    </div>
+</li>
+<li id="Ollection_fire">
+    <h3 class="method">fire(key, <span class="expansion">[value]</span>)</h3>
+    <div class="detail">
+        <p>onオプション、onメソッドで登録されたイベントを実行します。</p>
+<pre>model.on('change', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('change', {
+    cir: 'Cool is Right.'
+});</pre>
+    </div>
+</li>
+<li id="Ollection_get">
+    <h3 class="method">get(<span class="expansion">[key]</span>)</h3>
+    <div class="detail">
+        <p>データを取り出します。</p>
+<pre>model.get('test');</pre>
+    </div>
+</li>
+<li id="Ollection_map">
+    <h3 class="method">map(func)</h3>
+    <div class="detail">
+        <p>保存されたデータごとにfuncを実行します。funcの返り値が対応する保存されていたデータを上書きします。</p>
+<pre>collection.map(function(val, key, obj) {
+    // val: setなどで保存したデータ
+    // key: set時に指定したキー名
+    // obj: 保存データすべてを持ったオブジェクト
+
+    return val; // returnの値で上書き
+});</pre>
+    </div>
+</li>
+<li id="Ollection_off">
+    <h3 class="method">off(key, func)</h3>
+    <div class="detail">
+        <p>登録されたイベントを削除します。</p>
+<pre>var func1 = function() {
+    console.log('func1');
+};
+var func2 = function() {
+    console.log('func2');
+};
+
+model.on('change', func1);
+model.on('change', func2);
+
+model.off('change', func1);
+model.fire('change'); // exe func2.</pre>
+    </div>
+</li>
+<li id="Ollection_on">
+    <h3 class="method">on(key, func)</h3>
+    <div class="detail">
+        <p>イベントを登録します。<br />
+        登録されたイベントはfireメソッドで強制的に呼び出しできます。</p>
+<pre>var func1 = function() {
+    console.log('func1');
+};
+var func2 = function() {
+    console.log('func2');
+};
+
+model.on('change', func1);
+model.on('change', func2);
+
+model.off('change', func1);
+model.fire('change'); // exe func2.</pre>
+    </div>
+</li>
+<li id="Ollection_prev">
+    <h3 class="method">prev(<span class="expansion">[key]</span>)</h3>
+    <div class="detail">
+        <p>保持しているデータの一つ前の状態を返します。<br />
+        keyを省略した場合、データを纏めたオブジェクトを返します。<br />
+        changeイベントが発火した場合に前の数値を使用したい場合などに便利です。</p>
+<pre>model.set('test', 12345);
+model.set('test', 23456);
+model.prev('test'); // 12345</pre>
+    </div>
+</li>
+<li id="Ollection_remove">
+    <h3 class="method">remove(key)</h3>
+    <div class="detail">
+        <p>データを削除します。<br />
+        このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
+<pre>model.remove('test'); // removeイベント実行</pre>
+    </div>
+</li>
+<li id="Ollection_reset">
+    <h3 class="method">reset(key)</h3>
+    <div class="detail">
+        <p>保存された値を全て削除します。<br />
+        このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
+<pre>model.reset(); // resetイベント実行</pre>
+    </div>
+</li>
+<li id="Ollection_set">
+    <h3 class="method">set(key, value)</h3>
+    <div class="detail">
+        <p>Ollectionにデータを保存します。<br />
+        このメソッドを実行した場合、onオプション,もしくはonメソッドで登録したイベントを実行します。</p>
+<pre>model.set('test', 12345); // changeイベント実行</pre>
+    </div>
+</li>

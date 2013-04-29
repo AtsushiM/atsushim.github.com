@@ -1,0 +1,321 @@
+<li id="util_abstractFunction">
+    <h3 class="method">abstractFunction()</h3>
+    <div class="detail">
+        <p>呼び出すとエラーになるメソッドです。<br />
+        <a href="#Class">C.lass</a>などでクラス継承等を行う際、実装を強制したいメソッドに指定するなどの使い方ができます。</p>
+<pre>var SuperClass = C.lass({
+    method: util.abstractFunction
+});
+var Class = SuperClass.extend();
+
+var instance = new Class();
+
+instance.method(); // Classでmethodを実装していないため、エラー表示</pre>
+    </div>
+</li>
+<li id="util_binarySearch">
+    <h3 class="method">binarySearch({low: number, high: number, compare: function, end: function})</h3>
+    <div class="detail">
+        <p>二分探索のアルゴリズムを提供するメソッドです。<br />
+        開始する最低値、最高値と比較用、探索終了時用の関数を渡すことで二分探索を行います。<br />
+        compareには探索方向が低くなる場合にtrueを返す関数を指定します。</p>
+<pre>var ary = [],
+    i = 0,
+    len = 100,
+    answer;
+
+for (; i &lt; len; i++) {
+    ary[i] = i;
+}
+
+util.binarySearch({
+    low: 0,
+    high: 100,
+    compare: function(point) {
+        if (point &lt; 50) {
+            return true;
+        }
+    },
+    end: function(point) {
+        answer = point;
+    }
+});</pre>
+    </div>
+</li>
+<li id="util_checkUserAgent">
+    <h3 class="method">checkUserAgent(regex, <span class="expansion">[userAgent]</span>)</h3>
+    <div class="detail">
+        <p>userAgentに対してregexで正規表現を行い、結果をBooleanで返します。<br />
+        userAgentが省略された場合、window.navigator.userAgentに対して正規表現でチェックを行います。</p>
+<pre>var check = util.checkUserAgent(/iPhone|iPad|iPod/i); // boolean</pre>
+    </div>
+</li>
+<li id="util_escape">
+    <h3 class="method">escape(htmltext)</h3>
+    <div class="detail">
+        <p>htmltextからタグや特殊文字をエスケープした文字列を返します。</p>
+<pre>var htmltext = util.escape('Cool & Right.'); // "Cool &amp; Right."</pre>
+    </div>
+</li>
+<li id="util_eventPrevent">
+    <h3 class="method">eventPrevent(e)</h3>
+    <div class="detail">
+        <p>e.preventDefault()を実行し、falseを返すメソッドです。<br />
+        ブラウザのデフォルトの動作を停止させたい場合などに使えます。</p>
+<pre>C.dom.on(util.doc, C.e.TOUCHMOVE, util.eventPrevent);</pre>
+    </div>
+</li>
+<li id="util_eventStop">
+    <h3 class="method">eventStop(e)</h3>
+    <div class="detail">
+        <p>e.stopPropagation()を実行し、falseを返すメソッドです。<br />
+        ブラウザのイベント伝播を停止させたい場合などに使えます。</p>
+<pre>C.dom.on(util.doc, C.e.CLICK, util.eventStop);</pre>
+    </div>
+</li>
+<li id="util_is">
+    <h3 class="method">is(type, vars)</h3>
+    <div class="detail">
+        <p>varsがtypeで指定された形式になっているかBooleanで返します。</p>
+<pre>var check;
+check = util.is('String', ''); // true
+check = util.is('Number', '123'); // false</pre>
+    </div>
+</li>
+<li id="util_isArray">
+    <h3 class="method">isArray(vars)</h3>
+    <div class="detail">
+        <p>varsがArrayかBooleanで返します。</p>
+<pre>var check;
+check = util.isArray([]); // true
+check = util.isArray([1, 2, 3]); // true
+check = util.isArray({}); // false</pre>
+    </div>
+</li>
+<li id="util_isBoolean">
+    <h3 class="method">isBoolean(vars)</h3>
+    <div class="detail">
+        <p>varsがBooleanかBooleanで返します。</p>
+<pre>var check;
+check = util.isBoolean(true); // true
+check = util.isBoolean(false); // true
+check = util.isBoolean(1); // false</pre>
+    </div>
+</li>
+<li id="util_isDefined">
+    <h3 class="method">isDefined(vars)</h3>
+    <div class="detail">
+        <p>varsがundefinedでない場合trueを、undefinedの場合falseを返します。</p>
+<pre>var check;
+check = util.isDefined(true); // true
+check = util.isDefined(false); // true
+check = util.isDefined(1); // true
+check = util.isDefined(undefined); // false</pre>
+    </div>
+</li>
+<li id="util_isFunction">
+    <h3 class="method">isFunction(vars)</h3>
+    <div class="detail">
+        <p>varsがFunctionかBooleanで返します。</p>
+<pre>var check;
+check = util.isFunction((function() {})); // true
+check = util.isFunction(12); // false</pre>
+    </div>
+</li>
+<li id="util_isNumber">
+    <h3 class="method">isNumber(vars)</h3>
+    <div class="detail">
+        <p>varsがNumberかBooleanで返します。</p>
+<pre>var check;
+check = util.isNumber(123); // true
+check = util.isNumber('123'); // false</pre>
+    </div>
+</li>
+<li id="util_isObject">
+    <h3 class="method">isObject(vars)</h3>
+    <div class="detail">
+        <p>varsがObjectかBooleanで返します。</p>
+<pre>var check;
+check = util.isObject({}); // true
+check = util.isObjext(''); // false</pre>
+    </div>
+</li>
+<li id="util_isString">
+    <h3 class="method">isString(vars)</h3>
+    <div class="detail">
+        <p>varsがStringかBooleanで返します。</p>
+<pre>var check;
+check = util.isString(''); // true
+check = util.isString(12); // false</pre>
+    </div>
+</li>
+<li id="util_isTouchable">
+    <h3 class="method">isTouchable()</h3>
+    <div class="detail">
+        <p>ブラウザがtouchイベントに対応してるかどうか、Booleanで返します。</p>
+<pre>var check;
+check = util.isTouchable(); // boolean</pre>
+    </div>
+</li>
+<li id="util_makeQueryString">
+    <h3 class="method">makeQueryString(object)</h3>
+    <div class="detail">
+        <p>オブジェクトのプロパティをクエリーストリング形式に変換します。</p>
+<pre>var hashquery = util.makeQueryString({
+    c: 'Cool',
+    i: 'is',
+    r: 'Right'
+}); // c=Cool&i=is&r=Right</pre>
+    </div>
+</li>
+<li id="util_nullFunction">
+    <h3 class="method">nullFunction()</h3>
+    <div class="detail">
+        <p>何もしないメソッドです。<br />
+        メソッドの引数で渡すcallbackが必須でない場合等で使うと効果的です。</p>
+<pre>function anyAction(callback) {
+    // any action...
+    callback();
+}
+anyAction(util.nullFunction); // anyActionは常にcallbackを必要とするのでnullFunctionを渡し処理の簡略</pre>
+    </div>
+</li>
+<li id="util_override">
+    <h3 class="method">override(targetObj, varObj)</h3>
+    <div class="detail">
+        <p>targetObjに対してvarObjのプロパティを上書きします。<br />
+        返り値は上書きされたtargetObjになります。</p>
+<pre>var target = {};
+var over = {sample: 'override property'};
+util.override(target, over);
+alert(target.sample); // override property</pre>
+    </div>
+</li>
+<li id="util_owner">
+    <h3 class="method">owner(ownerObj, <span class="expansion">[methods]</span>, <span class="expansion">[overrideObj]</span>)</h3>
+    <div class="detail">
+        <p>methods内のすべてのメソッドのthisをownerObjに固定し、上書きを行います。<br />
+        overrideObjが指定された場合、overrideObjを新しいメソッドで上書きし、その後ownerObjに適用されます。<br />
+        methodsが省略された場合、methodsはownerObjになります。<br />
+        overrideObjが省略された場合、overrideObjはmethodsになります。<br />
+        クラスのメソッドのthisを固定したい場合などに便利です。</p>
+<pre>var Test = C.lass.extend({
+    init: function(config) {
+        util.owner(this, this, config);
+    },
+    no: 0,
+    test: 'Override Test.',
+    countup: function() {
+        this.no++;
+        console.log(this.no);
+    }
+});
+var test = new Test({
+    test: 'Cool is Right.'
+});
+console.log(test.test); // 'Cool is Right.'
+setInterval(test.countup, 1000);</pre>
+    </div>
+</li>
+<li id="util_pageTop">
+    <h3 class="method">pageTop()</h3>
+    <div class="detail">
+        <p>ページ上部へスクロールを移動させます。<br />
+        iPhoneなどのスマートフォンの場合、スクロールバーを表示しません。</p>
+<pre>util.pageTop();</pre>
+    </div>
+</li>
+<li id="util_parseQueryString">
+    <h3 class="method">parseQueryString(string)</h3>
+    <div class="detail">
+        <p>クエリーストリング形式のテキストをオブジェクトに変換します。</p>
+<pre>var hashquery = util.makeQueryString({
+    c: 'Cool',
+    i: 'is',
+    r: 'Right'
+}); // c=Cool&i=is&r=Right
+location.hash = hashquery;
+
+var obj = util.parseQueryString(location.hash);
+alert(obj.c + ' ' + obj.i + ' ' + obj.r + '!');</pre>
+    </div>
+</li>
+<li id="util_proxy">
+    <h3 class="method">proxy(target, func)</h3>
+    <div class="detail">
+        <p>funcのthisをtargetにします。</p>
+<pre>var obj = {
+    prop: 'cir.js'
+};
+var func = function() {
+    console.log(this.prop);
+};
+func(); // undefind
+var proxyfunc = util.proxy(obj, func);
+ret(); // 'cir.js'</pre>
+    </div>
+</li>
+<li id="util_replaceAll">
+    <h3 class="method">replaceAll(targetext, needle, replacetext)</h3>
+    <div class="detail">
+        <p>targettext内にあるneedleを全てreplacetextに書き換えます。</p>
+<pre>var text = util.replaceAll('cir.js', 'cir', 'Cool is Right');
+alert(text); // Cool is Right.js
+
+text = util.relaceAll(text, 's', 'a');
+alert(text); // Cool ia Right.ja</pre>
+    </div>
+</li>
+<li id="util_template">
+    <h3 class="method">template(templatetxt, replaceObj)</h3>
+    <div class="detail">
+        <p>templatetxt内の<%= key %>、<%- key %>をreplaceObjの値で置換します。<br />
+        <%= key %>の場合、エスケープされた文字に置換されます。</p>
+<pre>var templatetxt = '&lt;p class="name"&gt;<%= name %>&lt;/p&gt;';
+var innerhtml = util.template(templatetxt, {
+    name: 'John Doe'
+}); // '&lt;p class="name"&gt;John Doe&lt;/p&gt;'</pre>
+    </div>
+</li>
+<li id="util_typeCast">
+    <h3 class="method">typeCast(string)</h3>
+    <div class="detail">
+        <p>渡された文字列を内容に合わせて型変換します。</p>
+<pre>var obj = '{"a":"objtext"}';
+var num = '123';
+var boolTrue = 'true';
+var boolFalse = 'false';
+var str = 'sample';
+
+obj = util.typeCast(obj); // { a: 'objtext'}
+num = util.typeCast(num); // 123
+boolTrue = util.typeCast(boolTrue); // true
+boolFalse = util.typeCast(boolFalse); // false
+str = util.typeCast(str); // 'sample'</pre>
+    </div>
+</li>
+<li id="util_unescape">
+    <h3 class="method">unescape(htmltext)</h3>
+    <div class="detail">
+        <p>htmltextからエスケープした文字列を通常の文字に戻します。</p>
+<pre>var htmltext = util.unescape('Cool &amp; Right.'); // "Cool & Right."</pre>
+    </div>
+</li>
+<li id="util_windowOpen">
+    <h3 class="method">windowOpen(url, <span class="expansion">[ windowname ]</span>, <span class="expansion">[ option ]</span>)</h3>
+    <div class="detail">
+        <p>新しいウィンドウを開きます</p>
+<pre>var subwindow = util.windowOpen('/sub.html', 'sub', {
+    width: 100,
+    height: 100,
+    left: 100,
+    top: 100,
+    menubar: true,
+    toolbar: true,
+    location: true,
+    status: true,
+    resizable: true,
+    scrollbars: true
+});</pre>
+    </div>
+</li>

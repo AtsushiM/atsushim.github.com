@@ -1,0 +1,36 @@
+<li id="Base_dispose">
+    <h3 class="method">dispose()</h3>
+    <div class="detail">
+        <p>インスタンスが使用しているメモリを解放します。<br />
+        インスタンスのプロパティとメソッドを全て削除します。<br />
+        メモリが解放されるタイミングはブラウザのガベージコレクションに依存します。<br />
+        Baseを継承したクラスでdisposeメソッドに何か処理を追加したい場合、disposeInternalメソッドを作成すればdispose実行時に呼び出されます。<br />
+        例えばsetIntervalなどのタイマーや追加したエレメントの削除などが考えられます。</p>
+<pre>base.dispose();</pre>
+    </div>
+</li>
+<li id="Base_contract">
+    <h3 class="method">contract(element, eventname, handler)</h3>
+    <div class="detail">
+        <p>element.addEventListnerを実行します。<br />
+        このメソッドは紐付けた引数と一意になる値を返します。<br />
+        この返り値をuncontractメソッドに渡せば登録したイベントを削除します。<br />
+        このメソッドで登録したイベントはdisposeメソッド実行時に自動的に削除されます。</p>
+<pre>var $sample = el.$('#sample');
+var contractid = base.contract($sample, C.e.CLICK, function() {
+    alert('sample click!');
+}); // イベント登録
+base.uncontract(contractid); // イベント削除</pre>
+    </div>
+</li>
+<li id="Base_uncontract">
+    <h3 class="method">uncontract(id)</h3>
+    <div class="detail">
+        <p>contractメソッドの返り値を元にelement.removeEventListnerを実行します。</p>
+<pre>var $sample = el.$('#sample');
+var contractid = base.contract($sample, C.e.CLICK, function() {
+    alert('sample click!');
+}); // イベント登録
+base.uncontract(contractid); // イベント削除</pre>
+    </div>
+</li>
