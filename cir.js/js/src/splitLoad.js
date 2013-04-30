@@ -63,7 +63,7 @@
         var $selector = C.$('#' + id + ' .load');
 
         new C.Ajax({
-            url: './classes/' + id + '.html',
+            url: '/cir.js/classes/' + id + '.html',
             callback: function(ret) {
                 /* setTimeout(function() { */
                     $selector
