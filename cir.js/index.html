@@ -182,6 +182,23 @@ var Test = SuperTest.extend({
                 <ul class="load"></ul>
             </dd>
         </dl>
+        <dl id="Anvas">
+            <dt class="cls">C.Anvas<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var anvas = new C.Anvas({
+    canvas: canvasElement,
+    width: 100,
+    height: 100
+});</pre>
+                    <p>canvasエレメントに対して、複数のimg・canvasエレメントをdrawImageするクラスです。<br />
+                    煩雑になりがちなcanvasの扱いを簡略化します。<br />
+                    ブラウザがCanvasに対応している場合のみ使用可能です。<br />
+                    使用できない場合、C.Anvas.supportがfalseになります。</p>
+                </div>
+                <ul class="load"></ul>
+            </dd>
+        </dl>
         <dl id="Async">
             <dt class="cls">C.Async<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -232,23 +249,6 @@ var Test = SuperTest.extend({
 <pre>var base = new C.Base({});</pre>
                     <p>ほぼ全てのクラスに継承されている基底クラスです。<br />
                     このクラスで宣言されているメソッドは他のほぼ全てのクラスで使用出来ます。</p>
-                </div>
-                <ul class="load"></ul>
-            </dd>
-        </dl>
-        <dl id="Anvas">
-            <dt class="cls">C.Anvas<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var brush = new C.Anvas({
-    canvas: canvasElement,
-    width: 100,
-    height: 100
-});</pre>
-                    <p>canvasエレメントに対して、複数のimg・canvasエレメントをdrawImageするクラスです。<br />
-                    煩雑になりがちなcanvasの扱いを簡略化します。<br />
-                    ブラウザがCanvasに対応している場合のみ使用可能です。<br />
-                    使用できない場合、C.Anvas.supportがfalseになります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -1138,10 +1138,10 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#util">util</a></li>
             <li><a href="#validate_">validate</a></li>
             <li><a href="#Ajax">Ajax</a></li>
+            <li><a href="#Anvas">Anvas</a></li>
             <li><a href="#Async">Async</a></li>
             <li><a href="#Audio">Audio</a></li>
             <li><a href="#Base">Base</a></li>
-            <li><a href="#Anvas">Anvas</a></li>
             <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#Datetime">Datetime</a></li>
             <li><a href="#Deferred">Deferred</a></li>

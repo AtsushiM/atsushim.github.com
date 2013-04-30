@@ -99,7 +99,7 @@ header {
 
 #main {
     float: right;
-    width: 80%;
+    width: 75%;
 
     .first {
         margin: 0 15px 15px 0;
@@ -303,7 +303,6 @@ header {
         }
     }
 
-/* キーフレームを使ったローディングのくるくる回るアニメーション */
 @-moz-keyframes spinPulse {
     0% { -moz-transform:rotate(160deg); opacity:0; box-shadow:0 0 1px #2187e7;}
     50% { -moz-transform:rotate(145deg); opacity:1; }
@@ -326,7 +325,7 @@ header {
 
 #sub {
     float: left;
-    width: 20%;
+    width: 25%;
     position: fixed;
     font-size: 14px;
 
