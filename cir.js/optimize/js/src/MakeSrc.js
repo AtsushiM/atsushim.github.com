@@ -16,7 +16,7 @@ Global.MakeSrc = function(config) {
                     target;
 
                 for (; i < len; i++) {
-                    key = el.srcs[i].value;
+                    key = '/cir.js/optimize/' + el.srcs[i].value;
 
                     if (srcs[key]) {
                         target = $(el.srcs[i]).parent().find('.name');
