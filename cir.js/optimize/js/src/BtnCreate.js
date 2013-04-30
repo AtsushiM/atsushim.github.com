@@ -26,7 +26,7 @@ Global.BtnCreate = function(config) {
                     if (el.srcs[i].checked) {
                         count++;
                         ajax.jssrc({
-                            src: '/cir.js/optimize' + el.srcs[i].value,
+                            src: '/cir.js/optimize/' + el.srcs[i].value,
                             result: srcs,
                             callback: callback
                         });
