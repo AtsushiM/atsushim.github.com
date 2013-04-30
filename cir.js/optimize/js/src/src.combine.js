@@ -70,7 +70,7 @@ Global.BtnCreate = function(config) {
                     if (el.srcs[i].checked) {
                         count++;
                         ajax.jssrc({
-                            src: el.srcs[i].value,
+                            src: '/cir.js/optimize' + el.srcs[i].value,
                             result: srcs,
                             callback: callback
                         });
@@ -402,8 +402,7 @@ Global.MakeSrc = function(config) {
                             optimizedname += target.html() + ' ';
                         }
                         /* optimizedname += ''; */
-                        src += encodeURIComponent(
-                                '/cir.js/optimize/' + srcs[key]);
+                        src += encodeURIComponent(srcs[key]);
                     }
                 }
 

@@ -25,8 +25,7 @@ Global.MakeSrc = function(config) {
                             optimizedname += target.html() + ' ';
                         }
                         /* optimizedname += ''; */
-                        src += encodeURIComponent(
-                                '/cir.js/optimize/' + srcs[key]);
+                        src += encodeURIComponent(srcs[key]);
                     }
                 }
 
