@@ -35,10 +35,10 @@ Global.MakeSrc = function(config) {
                     src: src,
                     callback: function(data) {
                         observer.fire(e.createjssrc,
-                            srcs['src/clouser_start.js'] +
+                            srcs['/cir.js/optimize/src/clouser_start.js'] +
                             optimizedname +
                             data +
-                            srcs['src/clouser_end.js']);
+                            srcs['/cir.js/optimize/src/clouser_end.js']);
                     }
                 });
 
