@@ -236,11 +236,11 @@ var Test = SuperTest.extend({
                 <ul class="load"></ul>
             </dd>
         </dl>
-        <dl id="Brush">
-            <dt class="cls">C.Brush<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+        <dl id="Anvas">
+            <dt class="cls">C.Anvas<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var brush = new C.Brush({
+<pre>var brush = new C.Anvas({
     canvas: canvasElement,
     width: 100,
     height: 100
@@ -248,7 +248,7 @@ var Test = SuperTest.extend({
                     <p>canvasエレメントに対して、複数のimg・canvasエレメントをdrawImageするクラスです。<br />
                     煩雑になりがちなcanvasの扱いを簡略化します。<br />
                     ブラウザがCanvasに対応している場合のみ使用可能です。<br />
-                    使用できない場合、C.Brush.supportがfalseになります。</p>
+                    使用できない場合、C.Anvas.supportがfalseになります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -1141,7 +1141,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Async">Async</a></li>
             <li><a href="#Audio">Audio</a></li>
             <li><a href="#Base">Base</a></li>
-            <li><a href="#Brush">Brush</a></li>
+            <li><a href="#Anvas">Anvas</a></li>
             <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#Datetime">Datetime</a></li>
             <li><a href="#Deferred">Deferred</a></li>
