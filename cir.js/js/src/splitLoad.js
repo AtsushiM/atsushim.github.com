@@ -46,6 +46,7 @@
             'Base',
             'Async',
             'Anvas',
+            'AnimeFrame',
             'Ajax',
             'util',
             'ssease',

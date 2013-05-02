@@ -102,6 +102,7 @@ DOC.init = function(config) {
             'Base',
             'Async',
             'Anvas',
+            'AnimeFrame',
             'Ajax',
             'util',
             'ssease',
