@@ -59,6 +59,16 @@ var $p = $('p');</pre>
                 <ul class="load"></ul>
             </dd>
         </dl>
+        <dl id="animeframe_">
+            <dt class="cls">C.animeframe<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+                    <pre>var frame = C.animeframe;</pre>
+                    <p>requestAnimationFrameのラップクラスです。<br />
+                    このオブジェクトは<a href="#AnimeFrame">C.AnimeFrame</a>クラスを使用して設定されます。</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="dom">
             <dt class="cls">C.dom<span>[ indispensable ]</span></dt>
             <dd>
@@ -178,6 +188,38 @@ var Test = SuperTest.extend({
                     <pre>var ajax = new C.Ajax();</pre>
                     <p>Ajax処理を行うクラスです。<br />
                     インスタンス生成時にrequestメソッドと同じ形式の引数を渡すとrequestメソッドを呼び出します。</p>
+                </div>
+                <ul class="load"></ul>
+            </dd>
+        </dl>
+        <dl id="AnimeFrame">
+            <dt class="cls">C.AnimeFrame<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var frame = new C.AnimeFrame();</pre>
+                    <p>requestAnimationFrameのラップクラスです。</p>
+                </div>
+                <ul class="load"></ul>
+            </dd>
+        </dl>
+        <dl id="Async">
+            <dt class="cls">C.Async<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var async = new C.Async({
+    waits: 3, // integer || array
+    callback: function(error, args) {
+        // error: undefined || Error
+        // args: array
+    },
+    onprogress: function(progress) {
+        // progress: number
+    }
+});</pre>
+                    <p>非同期処理の処理待ちを簡易に行えるメソッドを提供するクラスです。<br />
+                    waitsオプション分の処理待ちを行ったあと、callbackを実行します。<br />
+                    waitsに配列が渡された場合、lengthの値がwaitsオプションに指定された場合と同じ動作をします。<br />
+                    onprogressは各処理が実行される毎に実行され、progressには0~1の間で進捗度が渡されます。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -1138,6 +1180,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#util">util</a></li>
             <li><a href="#validate_">validate</a></li>
             <li><a href="#Ajax">Ajax</a></li>
+            <li><a href="#AnimeFrame">AnimeFrame</a></li>
             <li><a href="#Anvas">Anvas</a></li>
             <li><a href="#Async">Async</a></li>
             <li><a href="#Audio">Audio</a></li>

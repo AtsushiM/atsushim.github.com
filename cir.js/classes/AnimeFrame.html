@@ -1,0 +1,20 @@
+<li id="AnimeFrame_request">
+    <h3 class="method">request(callback)</h3>
+    <div class="detail">
+        <p>callbackをアニメーションするタイミングで実行します。タイミングはブラウザ依存です。<br />
+        ブラウザがrequestAnimationFrameに対応していない場合、自動的にsetTimeoutを代用します。</p>
+<pre>frame.request(function(){
+    // write code.
+});</pre>
+    </div>
+</li>
+<li id="AnimeFrame_cancel">
+    <h3 class="method">cancel(id)</h3>
+    <div class="detail">
+        <p>requestメソッドの返り値を引数に、アニメーションの実行をキャンセルします。</p>
+<pre>var id = frame.request(function(){
+    // write code.
+});
+frame.cancel(id);</pre>
+    </div>
+</li>
