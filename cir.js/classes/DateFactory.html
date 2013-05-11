@@ -1,0 +1,18 @@
+<li id="DateFactory_format">
+    <h3 class="method">format(formattext, <span class="expansion">[datetext || msec || date]</span>)</h3>
+    <div class="detail">
+        <p>formattextに沿った日付テキストを返します。formattextはPHPのdate_formatから主要なものをほぼ踏襲しています。</p>
+<pre>var datetext = dateFactory.format('%Y/%m/%d %H:%i:%s', 1356969723000); // 2013/01/01 01:02:03</pre>
+    </div>
+</li>
+<li id="DateFactory_make">
+    <h3 class="method">make(<span class="expansion">[datetext || msec || date]</span>)</h3>
+    <div class="detail">
+        <p>日付テキストかミリ秒、もしくはDateインスタンスを引数に渡した場合、Dateインスタンスを返します。</p>
+<pre>var date1 = dateFactory.make('2013-01-01'); // 2013/01/01 00:00:00
+var date2 = dateFactory.make('2013-01-01T01:02:03'); // 2013/01/01 01:02:03
+var date3 = dateFactory.make('2013/01/01 01:02:03+09:00'); // 2013/01/01 01:02:03
+var date4 = dateFactory.make(1356969723000); // 2013/01/01 01:02:03
+var date5 = dateFactory.make(new Date(1356969723000)); // 2013/01/01 01:02:03</pre>
+    </div>
+</li>

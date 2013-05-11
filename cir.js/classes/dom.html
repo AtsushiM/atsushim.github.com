@@ -234,6 +234,20 @@ dom.removeAttr($img, 'width'); // 削除</pre>
 dom.removeClass($sample, 'sample');</pre>
     </div>
 </li>
+<li id="dom_toElement">
+    <h3 class="method">toElement(tagtext)</h3>
+    <div class="detail">
+        <p>タグ形式のストリングをHTML要素に変換します。"&lt;p&gt;A&lt;/p&gt;&lt;p&gt;B&lt;/p&gt;"のように複数タグが渡された場合、"&lt;p&gt;A&lt;/p&gt;"のみを渡した場合と同じ返り値となります。</p>
+<pre>var el = dom.toElement('&lt;div id="cir"&gt;&lt;p class="test"&gt;Documents&lt;/p&gt;&lt;/div&gt;');</pre>
+    </div>
+</li>
+<li id="dom_toElements">
+    <h3 class="method">toElements(tagtext)</h3>
+    <div class="detail">
+        <p>タグ形式のストリングをHTML要素に変換し、配列に入れ返します。</p>
+<pre>var els = dom.toElements('&lt;p&gt;A&lt;/p&gt;&lt;p&gt;B&lt;/p&gt;&lt;p&gt;C&lt;/p&gt;'); //Array </pre>
+    </div>
+</li>
 <li id="dom_toggleClass">
     <h3 class="method">toggleClass(element, value)</h3>
     <div class="detail">

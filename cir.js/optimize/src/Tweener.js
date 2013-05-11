@@ -102,7 +102,7 @@ Tweener = C['Tweener'] = classExtendBase({
     },
     'stop': function() {
         Tweener.Items = [];
-        clearInterval(Tweener.timerId);
+        clearTimeout(Tweener.timerId);
         Tweener.timerId = NULL;
     }
 });

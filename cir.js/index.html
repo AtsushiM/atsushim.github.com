@@ -306,17 +306,14 @@ var Test = SuperTest.extend({
                 <ul class="load"></ul>
             </dd>
         </dl>
-        <dl id="Datetime">
-            <dt class="cls">C.Datetime</dt>
+        <dl id="DateFactory">
+            <dt class="cls">C.DateFactory<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var date1 = new C.Datetime('2013-01-01'); // 2013/01/01 00:00:00
-var date2 = new C.Datetime('2013-01-01T01:02:03'); // 2013/01/01 01:02:03
-var date3 = new C.Datetime('2013/01/01 01:02:03+09:00'); // 2013/01/01 01:02:03</pre>
-                    <p>サーバサイドでよく使われるDatetime形式のテキストをjavascriptのDate型に変換するクラスです。<br />
-                    Datetime形式のテキストをnew Dateしても正しい日付が帰ってこない端末・ブラウザが有り、<br />
-                    それらに対応する必要が有る場合はこのクラスをお使いください。</p>
+<pre>var dateFactory = new C.DateFactory();</pre>
+                    <p>Dateインスタンスや日付テキストなどを作成するクラスです。</p>
                 </div>
+                <ul class="load"></ul>
             </dd>
         </dl>
         <dl id="Deferred">
@@ -1186,7 +1183,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Audio">Audio</a></li>
             <li><a href="#Base">Base</a></li>
             <li><a href="#DataStore">DataStore</a></li>
-            <li><a href="#Datetime">Datetime</a></li>
+            <li><a href="#DateFactory">DateFactory</a></li>
             <li><a href="#Deferred">Deferred</a></li>
             <li><a href="#DeviceMotion">DeviceMotion</a></li>
             <li><a href="#DeviceOrientation">DeviceOrientation</a></li>

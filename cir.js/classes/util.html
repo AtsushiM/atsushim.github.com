@@ -277,6 +277,15 @@ var innerhtml = util.template(templatetxt, {
 }); // '&lt;p class="name"&gt;John Doe&lt;/p&gt;'</pre>
     </div>
 </li>
+<li id="util_toArray">
+    <h3 class="method">toArray(obj)</h3>
+    <div class="detail">
+        <p>lengthプロパティを持ったオブジェクトを配列に変換します。</p>
+<pre>var ary1 = util.toArray({length: 2, 0: 0, 1: 1}); // [0, 1]
+var ary2 = util.toArray({length: 3, 0: 0, 2: 2}); // [0, undefind, 2]</pre>
+    </div>
+</li>
+
 <li id="util_typeCast">
     <h3 class="method">typeCast(string)</h3>
     <div class="detail">
