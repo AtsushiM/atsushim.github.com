@@ -10,6 +10,7 @@ Global.Dependency = function(config) {
                 selector_methods_animate: [
                     'selector',
                     'selector_methods',
+                    'AnimeFrame',
                     'Tweener',
                     'Animation'
                 ],
@@ -50,6 +51,9 @@ Global.Dependency = function(config) {
                     'Audio',
                     'Video'
                 ],
+                Tweener: [
+                    'AnimeFrame'
+                ],
                 LocalStorage: [
                     'WebStorage'
                 ],
@@ -57,13 +61,13 @@ Global.Dependency = function(config) {
                     'WebStorage'
                 ],
                 DeviceMotion: [
-                    'DeviceAction'
+                    'WindowAction'
                 ],
                 DeviceOrientation: [
-                    'DeviceAction'
+                    'WindowAction'
                 ],
                 DeviceShake: [
-                    'DeviceAction',
+                    'WindowAction',
                     'DeviceMotion',
                     'DeviceOrientation'
                 ],
@@ -111,6 +115,10 @@ Global.Dependency = function(config) {
                 Tweener: [
                     'selector_methods_animate'
                 ],
+                AnimeFrame: [
+                    'Tweener',
+                    'selector_methods_animate'
+                ],
                 Embed: [
                     'Audio',
                     'Video',
@@ -137,7 +145,7 @@ Global.Dependency = function(config) {
                     'LocalStorage',
                     'SessionStorage'
                 ],
-                DeviceAction: [
+                WindowAction: [
                     'DeviceMotion',
                     'DeviceOrientation',
                     'DeviceShake'
@@ -164,7 +172,7 @@ Global.Dependency = function(config) {
                     'Sound',
                     'Movie'
                 ],
-                DeviceAction: [
+                WindowAction: [
                     'DeviceMotion',
                     'DeviceOrientation',
                     'DeviceShake'
