@@ -241,28 +241,6 @@ var Test = SuperTest.extend({
                 <ul class="load"></ul>
             </dd>
         </dl>
-        <dl id="Async">
-            <dt class="cls">C.Async<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var async = new C.Async({
-    waits: 3, // integer || array
-    callback: function(error, args) {
-        // error: undefined || Error
-        // args: array
-    },
-    onprogress: function(progress) {
-        // progress: number
-    }
-});</pre>
-                    <p>非同期処理の処理待ちを簡易に行えるメソッドを提供するクラスです。<br />
-                    waitsオプション分の処理待ちを行ったあと、callbackを実行します。<br />
-                    waitsに配列が渡された場合、lengthの値がwaitsオプションに指定された場合と同じ動作をします。<br />
-                    onprogressは各処理が実行される毎に実行され、progressには0~1の間で進捗度が渡されます。</p>
-                </div>
-                <ul class="load"></ul>
-            </dd>
-        </dl>
         <dl id="Audio">
             <dt class="cls">C.Audio</dt>
             <dd>
