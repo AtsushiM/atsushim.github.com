@@ -81,10 +81,16 @@ Global.Dependency = function(config) {
                     'Observer'
                 ],
                 ScriptLoad: [
-                    'Async'
+                    'Progress'
                 ],
                 ImgLoad: [
-                    'Async'
+                    'Progress'
+                ],
+                Async: [
+                    'ExeQueue'
+                ],
+                Sync: [
+                    'ExeQueue'
                 ]
             },
             passive: {
@@ -156,9 +162,13 @@ Global.Dependency = function(config) {
                 DeviceOrientation: [
                     'DeviceShake'
                 ],
-                Async: [
+                Progress: [
                     'ImgLoad',
                     'ScriptLoad'
+                ],
+                ExeQueue: [
+                    'Async',
+                    'Sync'
                 ]
             },
             waste: {
@@ -176,6 +186,10 @@ Global.Dependency = function(config) {
                     'DeviceMotion',
                     'DeviceOrientation',
                     'DeviceShake'
+                ],
+                ExeQueue: [
+                    'Async',
+                    'Sync'
                 ]
             }
         };

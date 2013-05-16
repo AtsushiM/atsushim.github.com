@@ -1,53 +1,53 @@
-<li id="Async_start">
+<li id="Sync_start">
     <h3 class="method">start()</h3>
     <div class="detail">
         <p>タスクを開始します。</p>
-<pre>async.start();</pre>
+<pre>task.start();</pre>
     </div>
 </li>
-<li id="Async_resetQueue">
+<li id="Sync_resetQueue">
     <h3 class="method">resetQueue(<span class="expansion">[ queue ]</span>)</h3>
     <div class="detail">
         <p>キューをインスタンス生成時の状態にリセットします。queueが渡された場合、その値を初期値に設定します。</p>
-<pre>async.resetQueue([function() {
+<pre>task.resetQueue([function() {
     // write code.
 }]);</pre>
     </div>
 </li>
-<li id="Async_setQueue">
+<li id="Sync_setQueue">
     <h3 class="method">setQueue(queue)</h3>
     <div class="detail">
         <p>キューを書き換えます。</p>
-<pre>async.setQueue([function() {
+<pre>task.setQueue([function() {
     // write code.
 }]);</pre>
     </div>
 </li>
-<li id="Async_getQueue">
+<li id="Sync_getQueue">
     <h3 class="method">getQueue(queue)</h3>
     <div class="detail">
         <p>キューを取得します。</p>
-<pre>async.getQueue(); // Array</pre>
+<pre>task.getQueue(); // Array</pre>
     </div>
 </li>
-<li id="Async_addTask">
+<li id="Sync_addTask">
     <h3 class="method">addTask(task, <span class="expansion">[ priority ]</span>)</h3>
     <div class="detail">
         <p>タスクを追加します。priorityが指定されなかった場合、キューの最後に追加されます。priorityは整数で指定し、0に近いほど優先度が上がります。</p>
-<pre>async.addQueue(function() {
+<pre>task.addQueue(function() {
     // write code.
 }, 0); // 最優先でタスクを登録</pre>
     </div>
 </li>
-<li id="Async_removeTask">
+<li id="Sync_removeTask">
     <h3 class="method">removeTask(task)</h3>
     <div class="detail">
         <p>タスクを削除します。</p>
 <pre>var action = function() {
     // write code.
 };
-async.addTask(action);
-async.removeTask(action);
+task.addTask(action);
+task.removeTask(action);
 </pre>
     </div>
 </li>

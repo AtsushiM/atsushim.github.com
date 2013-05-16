@@ -202,28 +202,6 @@ var Test = SuperTest.extend({
                 <ul class="load"></ul>
             </dd>
         </dl>
-        <dl id="Async">
-            <dt class="cls">C.Async<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var async = new C.Async({
-    waits: 3, // integer || array
-    callback: function(error, args) {
-        // error: undefined || Error
-        // args: array
-    },
-    onprogress: function(progress) {
-        // progress: number
-    }
-});</pre>
-                    <p>非同期処理の処理待ちを簡易に行えるメソッドを提供するクラスです。<br />
-                    waitsオプション分の処理待ちを行ったあと、callbackを実行します。<br />
-                    waitsに配列が渡された場合、lengthの値がwaitsオプションに指定された場合と同じ動作をします。<br />
-                    onprogressは各処理が実行される毎に実行され、progressには0~1の間で進捗度が渡されます。</p>
-                </div>
-                <ul class="load"></ul>
-            </dd>
-        </dl>
         <dl id="Anvas">
             <dt class="cls">C.Anvas<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -237,6 +215,48 @@ var Test = SuperTest.extend({
                     煩雑になりがちなcanvasの扱いを簡略化します。<br />
                     ブラウザがCanvasに対応している場合のみ使用可能です。<br />
                     使用できない場合、C.Anvas.supportがfalseになります。</p>
+                </div>
+                <ul class="load"></ul>
+            </dd>
+        </dl>
+        <dl id="Async">
+            <dt class="cls">C.Async<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var result = [];
+var async = new C.Async({
+    queue: [
+        function() {
+            result.push(1);
+        },
+        function(done) {
+            setTimeout(function(){
+                result.push(2);
+                done();
+            }, 100);
+        },
+        new C.Async({
+            queue: [
+                function() {
+                    result.push(3);
+                }
+            ],
+            oncomplete: function() {
+                result.push(4);
+            }
+        })
+    ],
+    onprogress: function() {
+        // write code.
+    },
+    oncomplete: function() {
+        // result = [1, 3, 4, 2];
+    }
+});
+
+async.start();</pre>
+                <p>queueに設定された関数を非同期実行するクラスです。queueに入れた関数に引数が宣言されている場合、第一引数に渡された関数を実行すれば次タスクが開始します。<br />
+                queueに<a href="#Sync">Sync</a>インスタンス、<a href="#Async">Async</a>インスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -495,7 +515,7 @@ var fontWhite = new C.FontImg({
             </dd>
         </dl>
         <dl id="ImgLoad">
-            <dt class="cls">C.ImgLoad<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Async">Async</a> ]</span></dt>
+            <dt class="cls">C.ImgLoad<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Progress">Progress</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var imgload = new C.ImgLoad({
@@ -753,6 +773,28 @@ C.$('.open').on(C.e.CLICK, function() {
                 <ul class="load"></ul>
             </dd>
         </dl>
+        <dl id="Progress">
+            <dt class="cls">C.Progress<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var async = new C.Progress({
+    waits: 3, // integer || array
+    oncomplete: function(error, args) {
+        // error: undefined || Error
+        // args: array
+    },
+    onprogress: function(progress) {
+        // progress: number
+    }
+});</pre>
+                    <p>非同期処理の処理待ちを簡易に行えるメソッドを提供するクラスです。<br />
+                    waitsオプション分の処理待ちを行ったあと、oncompleteを実行します。<br />
+                    waitsに配列が渡された場合、lengthの値がwaitsオプションに指定された場合と同じ動作をします。<br />
+                    onprogressは各処理が実行される毎に実行され、progressには0~1の間で進捗度が渡されます。</p>
+                </div>
+                <ul class="load"></ul>
+            </dd>
+        </dl>
         <dl id="Rollover">
             <dt class="cls">C.Rollover<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -802,7 +844,7 @@ C.$('.open').on(C.e.CLICK, function() {
             </dd>
         </dl>
         <dl id="ScriptLoad">
-            <dt class="cls">C.ScriptLoad<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Async">Async</a> ]</span></dt>
+            <dt class="cls">C.ScriptLoad<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Progress">Progress</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var scriptload = new C.ScriptLoad();</pre>
@@ -952,12 +994,12 @@ surrogate.request('Cool is Right.');</pre>
                 <ul class="load"></ul>
             </dd>
         </dl>
-        <dl id="Task">
-            <dt class="cls">C.Task<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+        <dl id="Sync">
+            <dt class="cls">C.Sync<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var result = [];
-var task = new C.Task({
+var task = new C.Sync({
     queue: [
         function() {
             result.push(1);
@@ -968,7 +1010,7 @@ var task = new C.Task({
                 done();
             }, 100);
         },
-        new C.Task({
+        new C.Sync({
             queue: [
                 function() {
                     result.push(3);
@@ -989,7 +1031,7 @@ var task = new C.Task({
 
 task.start();</pre>
                 <p>queueに設定された関数を順次実行するクラスです。queueに入れた関数に引数が宣言されている場合、第一引数に渡された関数を実行すれば次タスクが開始します。<br />
-                queueにTaskインスタンスを入れた場合、Taskインスタンスのqueueの処理が全て完了後、次のタスクが開始します。</p>
+                queueに<a href="#Sync">Sync</a>インスタンス、<a href="#Async">Async</a>インスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -1228,6 +1270,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Orientation">Orientation</a></li>
             <li><a href="#PC">PC</a></li>
             <li><a href="#PreRender">PreRender</a></li>
+            <li><a href="#Progress">Progress</a></li>
             <li><a href="#Rollover">Rollover</a></li>
             <li><a href="#Route">Route</a></li>
             <li><a href="#ScriptLoad">ScriptLoad</a></li>
@@ -1238,7 +1281,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#SSAnime">SSAnime</a></li>
             <li><a href="#SSTrans">SSTrans</a></li>
             <li><a href="#Surrogate">Surrogate</a></li>
-            <li><a href="#Task">Task</a></li>
+            <li><a href="#Sync">Sync</a></li>
             <li><a href="#Throttle">Throttle</a></li>
             <li><a href="#Timer">Timer</a></li>
             <li><a href="#Tweener">Tweener</a></li>
