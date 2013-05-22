@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Web application development library, 'Cool is Right'.</h2>
-    <p class="ver">0.14.2</p>
+    <p class="ver">0.14.6</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.14.2)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.14.6)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -220,7 +220,7 @@ var Test = SuperTest.extend({
             </dd>
         </dl>
         <dl id="Async">
-            <dt class="cls">C.Async<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt class="cls">C.Async<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var result = [];
@@ -621,7 +621,7 @@ C.$('.open').on(C.e.CLICK, function() {
         },
         test2: C.validate.isString
     },
-    on: { // default: undefind
+    events: { // default: undefind
         'change': function(vars) {
             // write code.
         },
@@ -995,7 +995,7 @@ surrogate.request('Cool is Right.');</pre>
             </dd>
         </dl>
         <dl id="Sync">
-            <dt class="cls">C.Sync<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt class="cls">C.Sync<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var result = [];

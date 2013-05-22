@@ -87,10 +87,12 @@ Global.Dependency = function(config) {
                     'Progress'
                 ],
                 Async: [
-                    'ExeQueue'
+                    'ExeQueue',
+                    'Observer'
                 ],
                 Sync: [
-                    'ExeQueue'
+                    'ExeQueue',
+                    'Observer'
                 ]
             },
             passive: {
@@ -107,7 +109,9 @@ Global.Dependency = function(config) {
                     'Model'
                 ],
                 Observer: [
-                    'Model'
+                    'Model',
+                    'Async',
+                    'Sync'
                 ],
                 HashQuery: [
                     'ExternalInterface',
