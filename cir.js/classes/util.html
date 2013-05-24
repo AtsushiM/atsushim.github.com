@@ -62,7 +62,7 @@ util.binarySearch({
     <div class="detail">
         <p>e.preventDefault()を実行し、falseを返すメソッドです。<br />
         ブラウザのデフォルトの動作を停止させたい場合などに使えます。</p>
-<pre>C.dom.on(util.doc, C.e.TOUCHMOVE, util.eventPrevent);</pre>
+<pre>C.dom.on(C.dom.doc, C.e.TOUCHMOVE, util.eventPrevent);</pre>
     </div>
 </li>
 <li id="util_eventStop">
@@ -70,7 +70,7 @@ util.binarySearch({
     <div class="detail">
         <p>e.stopPropagation()を実行し、falseを返すメソッドです。<br />
         ブラウザのイベント伝播を停止させたい場合などに使えます。</p>
-<pre>C.dom.on(util.doc, C.e.CLICK, util.eventStop);</pre>
+<pre>C.dom.on(C.dom.doc, C.e.CLICK, util.eventStop);</pre>
     </div>
 </li>
 <li id="util_is">
