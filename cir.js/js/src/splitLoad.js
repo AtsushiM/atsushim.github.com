@@ -69,7 +69,7 @@
 
         new C.Ajax({
             url: '/cir.js/classes/' + id + '.html',
-            callback: function(ret) {
+            oncomplete: function(ret) {
                 /* setTimeout(function() { */
                     $selector
                         .removeClass('load')
