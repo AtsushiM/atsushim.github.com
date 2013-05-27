@@ -7,20 +7,17 @@ Global.Ajax = function(config) {
     var Mine = Global.Ajax,
         instanse = {
             jssrc: function(vars) {
-                var ajax = new C.Ajax();
-
-                ajax.request({
-                    url: vars.src + '?update=' + Date.now(),
-                    callback: function(data) {
-                        /* vars.result[vars.src] = encodeURIComponent(data); */
-                        vars.result[vars.src] = data;
-                        vars.callback();
-                    }
-                });
+                var ajax = new C.Ajax({
+                        url: vars.src + '?update=' + Date.now(),
+                        oncomplete: function(data) {
+                            /* vars.result[vars.src] = encodeURIComponent(data); */
+                            vars.result[vars.src] = data;
+                            vars.callback();
+                        }
+                    });
             },
             closurecompiler: function(vars) {
-                var ajax = new C.Ajax(),
-                    url = 'http://closure-compiler.appspot.com/compile',
+                var url = 'http://closure-compiler.appspot.com/compile',
                     level = 'compilation_level=ADVANCED_OPTIMIZATIONS',
                     format = 'output_format=text',
                     info = 'output_info=compiled_code',
@@ -29,11 +26,11 @@ Global.Ajax = function(config) {
                 query = level + '&' + format + '&' + info + '&' +
                     '&js_code=' + vars.src;
 
-                ajax.request({
+                new C.Ajax({
                     url: url,
                     type: 'POST',
                     query: query,
-                    callback: function(data) {
+                    oncomplete: function(data) {
                         vars.callback(data);
                     }
                 });
@@ -281,18 +278,31 @@ Global.Dependency = function(config) {
                     'DataStore',
                     'Observer'
                 ],
+                Ajax: [
+                    'Observer'
+                ],
+                PreRender: [
+                    'Observer'
+                ],
+                WindowLoad: [
+                    'Observer'
+                ],
                 ScriptLoad: [
+                    'ElementLoad',
+                    'Observer',
                     'Progress'
                 ],
                 ImgLoad: [
+                    'ElementLoad',
+                    'Observer',
                     'Progress'
                 ],
                 Async: [
-                    'ExeQueue',
+                    'AbstractTask',
                     'Observer'
                 ],
                 Sync: [
-                    'ExeQueue',
+                    'AbstractTask',
                     'Observer'
                 ]
             },
@@ -310,6 +320,11 @@ Global.Dependency = function(config) {
                     'Model'
                 ],
                 Observer: [
+                    'Ajax',
+                    'PreRender',
+                    'WindowLoad',
+                    'ScriptLoad',
+                    'ImgLoad',
                     'Model',
                     'Async',
                     'Sync'
@@ -371,7 +386,7 @@ Global.Dependency = function(config) {
                     'ImgLoad',
                     'ScriptLoad'
                 ],
-                ExeQueue: [
+                AbstractTask: [
                     'Async',
                     'Sync'
                 ]
@@ -392,9 +407,13 @@ Global.Dependency = function(config) {
                     'DeviceOrientation',
                     'DeviceShake'
                 ],
-                ExeQueue: [
+                AbstractTask: [
                     'Async',
                     'Sync'
+                ],
+                ElementLoad: [
+                    'ImgLoad',
+                    'ScriptLoad'
                 ]
             }
         };

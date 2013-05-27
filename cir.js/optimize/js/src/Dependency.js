@@ -80,18 +80,31 @@ Global.Dependency = function(config) {
                     'DataStore',
                     'Observer'
                 ],
+                Ajax: [
+                    'Observer'
+                ],
+                PreRender: [
+                    'Observer'
+                ],
+                WindowLoad: [
+                    'Observer'
+                ],
                 ScriptLoad: [
+                    'ElementLoad',
+                    'Observer',
                     'Progress'
                 ],
                 ImgLoad: [
+                    'ElementLoad',
+                    'Observer',
                     'Progress'
                 ],
                 Async: [
-                    'ExeQueue',
+                    'AbstractTask',
                     'Observer'
                 ],
                 Sync: [
-                    'ExeQueue',
+                    'AbstractTask',
                     'Observer'
                 ]
             },
@@ -109,6 +122,11 @@ Global.Dependency = function(config) {
                     'Model'
                 ],
                 Observer: [
+                    'Ajax',
+                    'PreRender',
+                    'WindowLoad',
+                    'ScriptLoad',
+                    'ImgLoad',
                     'Model',
                     'Async',
                     'Sync'
@@ -170,7 +188,7 @@ Global.Dependency = function(config) {
                     'ImgLoad',
                     'ScriptLoad'
                 ],
-                ExeQueue: [
+                AbstractTask: [
                     'Async',
                     'Sync'
                 ]
@@ -191,9 +209,13 @@ Global.Dependency = function(config) {
                     'DeviceOrientation',
                     'DeviceShake'
                 ],
-                ExeQueue: [
+                AbstractTask: [
                     'Async',
                     'Sync'
+                ],
+                ElementLoad: [
+                    'ImgLoad',
+                    'ScriptLoad'
                 ]
             }
         };
