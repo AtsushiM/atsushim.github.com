@@ -3,7 +3,11 @@
     <div class="detail">
         <p>読み込みを開始します。<br />
         インスタンス生成時に自動的に呼び出されます。<br />
-        呼び出しをしたくない場合、manualオプションをtrueにしてください。</p>
-<pre>imgload.start();</pre>
+        呼び出しをしたくない場合、manualオプションをtrueにしてください。<br />
+        startイベントが呼び出されます。</p>
+<pre>imgload.on('start', function(){
+    // write code.
+});
+imgload.start();</pre>
     </div>
 </li>

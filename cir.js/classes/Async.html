@@ -1,26 +1,14 @@
-<li id="Async_start">
-    <h3 class="method">start()</h3>
+<li id="Async_addTask">
+    <h3 class="method">addTask(task, <span class="expansion">[ priority ]</span>)</h3>
     <div class="detail">
-        <p>タスクを開始します。</p>
-<pre>async.start();</pre>
-    </div>
-</li>
-<li id="Async_resetQueue">
-    <h3 class="method">resetQueue(<span class="expansion">[ queue ]</span>)</h3>
-    <div class="detail">
-        <p>キューをインスタンス生成時の状態にリセットします。queueが渡された場合、その値を初期値に設定します。</p>
-<pre>async.resetQueue([function() {
+        <p>タスクを追加します。priorityが指定されなかった場合、キューの最後に追加されます。priorityは整数で指定し、0に近いほど優先度が上がります。<br />
+        changeイベントを呼び出します。</p>
+<pre>async.on('change', function() {
     // write code.
-}]);</pre>
-    </div>
-</li>
-<li id="Async_setQueue">
-    <h3 class="method">setQueue(queue)</h3>
-    <div class="detail">
-        <p>キューを書き換えます。</p>
-<pre>async.setQueue([function() {
+});
+async.addQueue(function() {
     // write code.
-}]);</pre>
+}, 0); // 最優先でタスクを登録</pre>
     </div>
 </li>
 <li id="Async_getQueue">
@@ -30,24 +18,105 @@
 <pre>async.getQueue(); // Array</pre>
     </div>
 </li>
-<li id="Async_addTask">
-    <h3 class="method">addTask(task, <span class="expansion">[ priority ]</span>)</h3>
+<li id="Async_pause">
+    <h3 class="method">pause()</h3>
     <div class="detail">
-        <p>タスクを追加します。priorityが指定されなかった場合、キューの最後に追加されます。priorityは整数で指定し、0に近いほど優先度が上がります。</p>
-<pre>async.addQueue(function() {
+        <p>キューの処理を一時停止します。<br />
+        pasuseイベントを呼び出します。</p>
+<pre>async.on('pause', function() {
     // write code.
-}, 0); // 最優先でタスクを登録</pre>
+});
+async.pause();</pre>
+    </div>
+</li>
+<li id="Async_setQueue">
+    <h3 class="method">setQueue(queue)</h3>
+    <div class="detail">
+        <p>キューを書き換えます。<br />
+        changeイベントを呼び出します。</p>
+<pre>async.on('change', function() {
+    // write code.
+});
+async.setQueue([function() {
+    // write code.
+}]);</pre>
+    </div>
+</li>
+<li id="Async_start">
+    <h3 class="method">start()</h3>
+    <div class="detail">
+        <p>タスクを開始します。<br />
+        startイベントを呼び出します。</p>
+<pre>async.on('start', function() {
+    // write code.
+});
+async.start();</pre>
+    </div>
+</li>
+<li id="Async_stop">
+    <h3 class="method">stop()</h3>
+    <div class="detail">
+        <p>タスクを停止します。<br />
+        キューは空になります。<br />
+        stopイベントを呼び出します。</p>
+<pre>async.on('stop', function() {
+    // write code.
+});
+async.stop();</pre>
     </div>
 </li>
 <li id="Async_removeTask">
     <h3 class="method">removeTask(task)</h3>
     <div class="detail">
-        <p>タスクを削除します。</p>
+        <p>タスクを削除します。<br />
+        changeイベントを呼び出します。</p>
 <pre>var action = function() {
     // write code.
 };
 async.addTask(action);
-async.removeTask(action);
-</pre>
+
+async.on('change', function() {
+    // write code.
+});
+
+async.removeTask(action);</pre>
+    </div>
+</li>
+<li id="Async_resetQueue">
+    <h3 class="method">resetQueue(<span class="expansion">[ queue ]</span>)</h3>
+    <div class="detail">
+        <p>キューをインスタンス生成時の状態にリセットします。queueが渡された場合、その値を初期値に設定します。<br />
+        resetイベントを呼び出します。</p>
+<pre>async.on('reset', function() {
+    // write code.
+});
+async.resetQueue([function() {
+    // write task.
+}]);</pre>
+    </div>
+</li>
+<li id="Async_restart">
+    <h3 class="method">restart(<span class="expansion">[ queue ]</span>)</h3>
+    <div class="detail">
+        <p>キューをインスタンス生成時の状態にリセットします。queueが渡された場合、その値を初期値に設定します。<br />
+        その後startメソッドを実行します。</p>
+<pre>async.on('reset', function() {
+    // write code.
+});
+async.on('start', function() {
+    // write code.
+});
+async.restart();</pre>
+    </div>
+</li>
+<li id="Async_resume">
+    <h3 class="method">resume()</h3>
+    <div class="detail">
+        <p>キューの処理を再開します。<br />
+        resumeイベントを呼び出します。</p>
+<pre>async.on('resume', function() {
+    // write code.
+});
+async.resume();</pre>
     </div>
 </li>

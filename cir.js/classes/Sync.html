@@ -1,53 +1,122 @@
-<li id="Sync_start">
-    <h3 class="method">start()</h3>
+<li id="Sync_addTask">
+    <h3 class="method">addTask(task, <span class="expansion">[ priority ]</span>)</h3>
     <div class="detail">
-        <p>タスクを開始します。</p>
-<pre>task.start();</pre>
-    </div>
-</li>
-<li id="Sync_resetQueue">
-    <h3 class="method">resetQueue(<span class="expansion">[ queue ]</span>)</h3>
-    <div class="detail">
-        <p>キューをインスタンス生成時の状態にリセットします。queueが渡された場合、その値を初期値に設定します。</p>
-<pre>task.resetQueue([function() {
+        <p>タスクを追加します。priorityが指定されなかった場合、キューの最後に追加されます。priorityは整数で指定し、0に近いほど優先度が上がります。<br />
+        changeイベントを呼び出します。</p>
+<pre>sync.on('change', function() {
     // write code.
-}]);</pre>
-    </div>
-</li>
-<li id="Sync_setQueue">
-    <h3 class="method">setQueue(queue)</h3>
-    <div class="detail">
-        <p>キューを書き換えます。</p>
-<pre>task.setQueue([function() {
+});
+sync.addQueue(function() {
     // write code.
-}]);</pre>
+}, 0); // 最優先でタスクを登録</pre>
     </div>
 </li>
 <li id="Sync_getQueue">
     <h3 class="method">getQueue(queue)</h3>
     <div class="detail">
         <p>キューを取得します。</p>
-<pre>task.getQueue(); // Array</pre>
+<pre>sync.getQueue(); // Array</pre>
     </div>
 </li>
-<li id="Sync_addTask">
-    <h3 class="method">addTask(task, <span class="expansion">[ priority ]</span>)</h3>
+<li id="Sync_pause">
+    <h3 class="method">pause()</h3>
     <div class="detail">
-        <p>タスクを追加します。priorityが指定されなかった場合、キューの最後に追加されます。priorityは整数で指定し、0に近いほど優先度が上がります。</p>
-<pre>task.addQueue(function() {
+        <p>キューの処理を一時停止します。<br />
+        pasuseイベントを呼び出します。</p>
+<pre>sync.on('pause', function() {
     // write code.
-}, 0); // 最優先でタスクを登録</pre>
+});
+sync.pause();</pre>
+    </div>
+</li>
+<li id="Sync_setQueue">
+    <h3 class="method">setQueue(queue)</h3>
+    <div class="detail">
+        <p>キューを書き換えます。<br />
+        changeイベントを呼び出します。</p>
+<pre>sync.on('change', function() {
+    // write code.
+});
+sync.setQueue([function() {
+    // write code.
+}]);</pre>
+    </div>
+</li>
+<li id="Sync_start">
+    <h3 class="method">start()</h3>
+    <div class="detail">
+        <p>タスクを開始します。<br />
+        startイベントを呼び出します。</p>
+<pre>sync.on('start', function() {
+    // write code.
+});
+sync.start();</pre>
+    </div>
+</li>
+<li id="Sync_stop">
+    <h3 class="method">stop()</h3>
+    <div class="detail">
+        <p>タスクを停止します。<br />
+        キューは空になります。<br />
+        stopイベントを呼び出します。</p>
+<pre>sync.on('stop', function() {
+    // write code.
+});
+sync.stop();</pre>
     </div>
 </li>
 <li id="Sync_removeTask">
     <h3 class="method">removeTask(task)</h3>
     <div class="detail">
-        <p>タスクを削除します。</p>
+        <p>タスクを削除します。<br />
+        changeイベントを呼び出します。</p>
 <pre>var action = function() {
     // write code.
 };
-task.addTask(action);
-task.removeTask(action);
-</pre>
+sync.addTask(action);
+
+sync.on('change', function() {
+    // write code.
+});
+
+sync.removeTask(action);</pre>
+    </div>
+</li>
+<li id="Sync_resetQueue">
+    <h3 class="method">resetQueue(<span class="expansion">[ queue ]</span>)</h3>
+    <div class="detail">
+        <p>キューをインスタンス生成時の状態にリセットします。queueが渡された場合、その値を初期値に設定します。<br />
+        resetイベントを呼び出します。</p>
+<pre>sync.on('reset', function() {
+    // write code.
+});
+sync.resetQueue([function() {
+    // write task.
+}]);</pre>
+    </div>
+</li>
+<li id="Sync_restart">
+    <h3 class="method">restart(<span class="expansion">[ queue ]</span>)</h3>
+    <div class="detail">
+        <p>キューをインスタンス生成時の状態にリセットします。queueが渡された場合、その値を初期値に設定します。<br />
+        その後startメソッドを実行します。</p>
+<pre>sync.on('reset', function() {
+    // write code.
+});
+sync.on('start', function() {
+    // write code.
+});
+sync.restart();</pre>
+    </div>
+</li>
+<li id="Sync_resume">
+    <h3 class="method">resume()</h3>
+    <div class="detail">
+        <p>キューの処理を再開します。<br />
+        resumeイベントを呼び出します。</p>
+<pre>sync.on('resume', function() {
+    // write code.
+});
+sync.resume();</pre>
     </div>
 </li>

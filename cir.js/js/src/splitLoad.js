@@ -1,6 +1,7 @@
 // splitLoad
 (function() {
     var load = [
+            'WindowLoad',
             'XML',
             'View',
             'Validate',

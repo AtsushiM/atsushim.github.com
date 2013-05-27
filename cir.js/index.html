@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Web application development library, 'Cool is Right'.</h2>
-    <p class="ver">0.14.8</p>
+    <p class="ver">0.15.1</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.14.8)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
+            ep class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 0.15.1)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -182,12 +182,43 @@ var Test = SuperTest.extend({
             </dd>
         </dl>
         <dl id="Ajax">
-            <dt class="cls">C.Ajax<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt class="cls">C.Ajax<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var ajax = new C.Ajax();</pre>
-                    <p>Ajax処理を行うクラスです。<br />
-                    インスタンス生成時にrequestメソッドと同じ形式の引数を渡すとrequestメソッドを呼び出します。</p>
+<pre>var ajax = new C.Ajax({
+    url: '/news',
+    manual: true, // default: false
+    oncomplete: function(data) {
+        // write code.
+        console.log(data);
+    },
+    onerror: function(data) {
+        // write code.
+        console.log(data);
+    }
+}); // newsの内容を取得
+
+ajax.start(); // manualにtrueが指定された場合、明示的にstartしなければリクエストが発生しない
+
+var ajax = new C.Ajax({
+    url: '/archive',
+    dataType: 'json',
+    query: {
+        date: 20120101
+    },
+    cache: true,
+    oncomplete: function(data) {
+        // write code.
+        console.log(data);
+    }
+}); // archive?date=20120101の内容をJSON形式、キャッシュ有効で取得</pre>
+                    <p>Ajaxでリクエストを行います。<br />
+                    typeオプションを省略した場合、自動的にGETでリクエストを行います。<br />
+                    dataTypeオプションに'json'を指定した場合、jsonメソッドの呼び出しを行います。<br />
+                    queryオプションにはajax処理に渡したい値をオブジェクト形式で指定できます。<br />
+                    cacheオプションはデフォルトでfalseになっており、常に最新の情報を取得します。<br />
+                    オプションでon~を指定した場合、イベントとして登録されます。<br />
+                    デフォルトで自動的に呼び出されるイベントはcomplete,error,start,stopとなります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -256,7 +287,9 @@ var async = new C.Async({
 
 async.start();</pre>
                 <p>queueに設定された関数を非同期実行するクラスです。queueに入れた関数に引数が宣言されている場合、第一引数に渡された関数を実行すれば次タスクが開始します。<br />
-                queueに<a href="#Sync">Sync</a>インスタンス、<a href="#Async">Async</a>インスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。</p>
+                queueに<a href="#Sync">Sync</a>インスタンス、<a href="#Async">Async</a>インスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。<br />
+                オプションでon~を指定した場合、イベントとして登録されます。<br />
+                デフォルトで自動的に呼び出されるイベントはcomplete,progress,start,stop,pause,resume,reset,changeとなります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -515,7 +548,7 @@ var fontWhite = new C.FontImg({
             </dd>
         </dl>
         <dl id="ImgLoad">
-            <dt class="cls">C.ImgLoad<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Progress">Progress</a> ]</span></dt>
+            <dt class="cls">C.ImgLoad<span>[ extend: <a href="#Observer">Observer</a> ]</span><span>[ required: <a href="#Progress">Progress</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var imgload = new C.ImgLoad({
@@ -528,11 +561,13 @@ var fontWhite = new C.FontImg({
     onprogress: function(num) {
         // write code.
     },
-    onload: function() {
+    oncomplete: function() {
         // write code.
     }
 });</pre>
-                    <p>画像をまとめてロードするクラスです。</p>
+                    <p>画像をまとめてロードするクラスです。<br />
+                    オプションでon~を指定した場合、イベントとして登録されます。<br />
+                    デフォルトで自動的に呼び出されるイベントはcomplete,progress,startとなります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -758,7 +793,7 @@ C.$('.open').on(C.e.CLICK, function() {
             </dd>
         </dl>
         <dl id="PreRender">
-            <dt class="cls">C.PreRender<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt class="cls">C.PreRender<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var render = new C.PreRender({
@@ -771,13 +806,15 @@ C.$('.open').on(C.e.CLICK, function() {
     guesslimit: 10, // default: 30
     looptime: 10, // default: 100
     loopblur: 5, // default: 20
-    onrendered: function() {
+    oncomplete: function() {
         // write code.
     }
 });</pre>
                     <p>HTMLエレメントは初めて画面上に表示される際にかなりの負荷がかかります。<br />
                     (※display: none; や opacity: 0;、もしくは画面外にpositionで設置するなど)<br />
-                    ゲームなどでは負荷が邪魔になる場合も有るため、これらの要素の上に不透明な背景を持つエレメントをpositionで設置し、PreRenderクラスで予め表示しておくことが有効です。</p>
+                    ゲームなどでは負荷が邪魔になる場合も有るため、これらの要素の上に不透明な背景を持つエレメントをpositionで設置し、PreRenderクラスで予め表示しておくことが有効です。<br />
+                    オプションでon~を指定した場合、イベントとして登録されます。<br />
+                    デフォルトで自動的に呼び出されるイベントはcomplete,startとなります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -853,12 +890,26 @@ C.$('.open').on(C.e.CLICK, function() {
             </dd>
         </dl>
         <dl id="ScriptLoad">
-            <dt class="cls">C.ScriptLoad<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Progress">Progress</a> ]</span></dt>
+            <dt class="cls">C.ScriptLoad<span>[ extend: <a href="#Observer">Observer</a> ]</span><span>[ required: <a href="#Progress">Progress</a> ]</span></dt>
             <dd>
                 <div class="sample">
-                    <pre>var scriptload = new C.ScriptLoad();</pre>
+<pre>var scriptload = new C.ScriptLoad({
+    manual: false, // default: false
+    srcs: [
+        '/js/test1.js',
+        '/js/test2.js',
+        '/js/test3.js'
+    ],
+    onprogress: function(num) {
+        // write code.
+    },
+    oncomplete: function() {
+        // write code.
+    }
+});</pre>
                     <p>scriptファイルを動的に読み込むメソッドを提供するクラスです。<br />
-                    インスタンス生成時にrequestsメソッドと同じ形式の引数を渡すとrequestsメソッドを呼び出します。</p>
+                    オプションでon~を指定した場合、イベントとして登録されます。<br />
+                    デフォルトで自動的に呼び出されるイベントはcomplete,progress,startとなります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -1017,7 +1068,7 @@ surrogate.request('Cool is Right.');</pre>
             <dd>
                 <div class="sample">
 <pre>var result = [];
-var task = new C.Sync({
+var sync = new C.Sync({
     queue: [
         function() {
             result.push(1);
@@ -1047,9 +1098,11 @@ var task = new C.Sync({
     }
 });
 
-task.start();</pre>
-                <p>queueに設定された関数を順次実行するクラスです。queueに入れた関数に引数が宣言されている場合、第一引数に渡された関数を実行すれば次タスクが開始します。<br />
-                queueに<a href="#Sync">Sync</a>インスタンス、<a href="#Async">Async</a>インスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。</p>
+sync.start();</pre>
+                    <p>queueに設定された関数を順次実行するクラスです。queueに入れた関数に引数が宣言されている場合、第一引数に渡された関数を実行すれば次タスクが開始します。<br />
+                    queueに<a href="#Sync">Sync</a>インスタンス、<a href="#Async">Async</a>インスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。<br />
+                    オプションでon~を指定した場合、イベントとして登録されます。<br />
+                    デフォルトで自動的に呼び出されるイベントはcomplete,progress,start,stop,pause,resume,reset,changeとなります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -1223,13 +1276,16 @@ timer.countDown(); // start timer.</pre>
             <dt class="cls">C.WindowLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var load = new C.WindowLod({
-    onload: function() {
+<pre>var winload = new C.WindowLod({
+    oncomplete: function() {
         // write code.
     }
 });</pre>
-                    <p>画像を含むページの読み込みが完了したタイミングでonloadを実行するクラスです。</p>
+                <p>画像を含むページの読み込みが完了したタイミングでを実行するクラスです。<br />
+                オプションでon~を指定した場合、イベントとして登録されます。<br />
+                デフォルトで自動的に呼び出されるイベントはcomplete,startとなります。</p>
                 </div>
+                <ul class="load"></ul>
             </dd>
         </dl>
         <dl id="XML">

@@ -57,6 +57,7 @@ DOC.init = function(config) {
 // splitLoad
 (function() {
     var load = [
+            'WindowLoad',
             'XML',
             'View',
             'Validate',

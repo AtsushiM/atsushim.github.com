@@ -1,62 +1,24 @@
-<li id="Ajax_abort">
-    <h3 class="method">abort()</h3>
+<li id="Ajax_start">
+    <h3 class="method">start()</h3>
     <div class="detail">
-        <p>request.jsonメソッドでリクエストした処理を停止します。</p>
-<pre>ajax.request({
-    url: '/news',
-    callback: function(data) {
-        alert('Not Run!');
-    }
+        <p>リクエストを開始します。<br />
+        インスタンス生成時に自動的に呼び出されます。<br />
+        呼び出しをしたくない場合、manualオプションをtrueにしてください。<br />
+        startイベントを呼び出します。</p>
+<pre>ajax.on('start', function() {
+    // write code.
 });
-ajax.abort(); // 直前のrequest処理を停止</pre>
+ajax.start();</pre>
     </div>
 </li>
-<li id="Ajax_json">
-    <h3 class="method">json({url, <span class="expansion">[type: 'GET' || 'POST']</span>, <span class="expansion">[query]</span>, <span class="expansion">[cash]</span>, <span class="expansion">[callback]</span>, <span class="expansion">[error]</span>})</h3>
+<li id="Ajax_stop">
+    <h3 class="method">stop()</h3>
     <div class="detail">
-        <p>AjaxでJSONに対するリクエストを行います。<br />
-        オプションは全てrequestメソッドと同じですが、<br />
-        callbackの引数はJSON.parseでオブジェクト化されたものになります。</p>
-<pre>ajax.json({
-    url: '/news.json',
-    callback: function(data) {
-        // write code.
-        console.log(data);
-    }
-}); // news.jsonの内容を取得</pre>
-    </div>
-</li>
-<li id="Ajax_request">
-    <h3 class="method">request({url, <span class="expansion">[type: 'GET' || 'POST']</span>, <span class="expansion">[dataType]</span>, <span class="expansion">[query]</span>, <span class="expansion">[cash]</span>, <span class="expansion">[callback]</span>, <span class="expansion">[error]</span>})</h3>
-    <div class="detail">
-        <p>Ajaxでリクエストを行います。<br />
-        typeオプションを省略した場合、自動的にGETでリクエストを行います。<br />
-        dataTypeオプションに'json'を指定した場合、jsonメソッドの呼び出しを行います。<br />
-        queryオプションにはajax処理に渡したい値をオブジェクト形式で指定できます。<br />
-        cashオプションはデフォルトでfalseになっており、常に最新の情報を取得します。</p>
-<pre>ajax.request({
-    url: '/news',
-    callback: function(data) {
-        // write code.
-        console.log(data);
-    },
-    error: function(data) {
-        // write code.
-        console.log(data);
-    }
-}); // newsの内容を取得
-
-ajax.request({
-    url: '/archive',
-    dataType: 'json',
-    query: {
-        date: 20120101
-    },
-    cash: true,
-    callback: function(data) {
-        // write code.
-        console.log(data);
-    }
-}); // archive?date=20120101の内容をJSON形式、キャッシュ有効で取得</pre>
+        <p>リクエストを停止します。<br />
+        stopイベントを呼び出します。</p>
+<pre>ajax.on('stop', function() {
+    // write code.
+});
+ajax.stop();</pre>
     </div>
 </li>
