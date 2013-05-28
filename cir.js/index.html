@@ -1254,11 +1254,12 @@ timer.countDown(); // start timer.</pre>
             <dd>
                 <div class="sample">
 <pre>var winload = new C.WindowLod({
+    manual: false, // default: false
     oncomplete: function() {
         // write code.
     }
 });</pre>
-                <p>画像を含むページの読み込みが完了したタイミングでを実行するクラスです。<br />
+                <p>画像を含むページの読み込みが完了したタイミングでcompleteイベントを実行するクラスです。<br />
                 オプションでon~を指定した場合、イベントとして登録されます。<br />
                 デフォルトで自動的に呼び出されるイベントはcomplete,startとなります。</p>
                 </div>
