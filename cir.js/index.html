@@ -287,7 +287,8 @@ var async = new C.Async({
 
 async.start();</pre>
                 <p>queueに設定された関数を非同期実行するクラスです。queueに入れた関数に引数が宣言されている場合、第一引数に渡された関数を実行すれば次タスクが開始します。<br />
-                queueに<a href="#Sync">Sync</a>インスタンス、<a href="#Async">Async</a>インスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。<br />
+                queueに<a href="#Sync">Sync</a>、<a href="#Async">Async</a>のインスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。<br />
+                <a href="#Ajax">Ajax</a>、<a href="#ImgLoad">ImgLoad</a>、<a href="#PreRender">PreRender</a>、<a href="#ScriptLoad">ScriptLoad</a>、<a href="#SSAnime">SSAnime</a>、<a href="#SSTrans">SSTrans</a>、<a href="#Tweener">Tweener</a>、<a href="#WindowLoad">WindowLoad</a>でも同様の処理となります。<br />
                 オプションでon~を指定した場合、イベントとして登録されます。<br />
                 デフォルトで自動的に呼び出されるイベントはcomplete,progress,start,stop,pause,resume,reset,changeとなります。</p>
                 </div>
@@ -343,16 +344,6 @@ async.start();</pre>
                 <div class="sample">
 <pre>var dateFactory = new C.DateFactory();</pre>
                     <p>Dateインスタンスや日付テキストなどを作成するクラスです。</p>
-                </div>
-                <ul class="load"></ul>
-            </dd>
-        </dl>
-        <dl id="Deferred">
-            <dt class="cls">C.Deferred<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-                    <pre>var deferred = new C.Deferred();</pre>
-                    <p>遅延処理を簡易に実行するためのメソッドを提供するクラスです。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -512,27 +503,6 @@ var fontWhite = new C.FontImg({
     }
 });</pre>
                     <p>指定したcriterion(fps)ごとにenterframeを実行するクラスです。</p>
-                </div>
-                <ul class="load"></ul>
-            </dd>
-        </dl>
-        <dl id="Handle">
-            <dt class="cls">C.Handle<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var handle = new C.Handle({
-    el: C.$('#sample')[0],
-    events: {
-        click: function(e) {
-            // write code.
-        },
-        mouseover: function(e) {
-            // write code.
-        }
-    },
-    manual: false // default: false
-});</pre>
-                    <p>対象エレメントに対してaddEventListner,removeEventListnerを纏めて実行するクラスです。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -994,7 +964,7 @@ var storage_cir = new C.SessionStorage({
             </dd>
         </dl>
         <dl id="SSAnime">
-            <dt class="cls">C.SSAnime<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt class="cls">C.SSAnime<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var anime = new C.SSAnime(C.$('#box')[0], {
@@ -1010,13 +980,15 @@ var storage_cir = new C.SessionStorage({
 });</pre>
                     <p>CSS Animationを指定するためのクラスです。<br />
                     webkitブラウザかanimationにベンダープリフィックス無しで対応している場合のみ使用出来ます。<br />
-                    条件を満たしていない場合、C.SSAnime.supportがfalseになります。</p>
+                    条件を満たしていない場合、C.SSAnime.supportがfalseになります。<br />
+                    オプションでon~を指定した場合、イベントとして登録されます。<br />
+                    デフォルトで自動的に呼び出されるイベントはcomplete,start,stopとなります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
         </dl>
         <dl id="SSTrans">
-            <dt class="cls">C.SSTrans<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt class="cls">C.SSTrans<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var transition = new C.SSTrans(
@@ -1037,7 +1009,9 @@ var storage_cir = new C.SessionStorage({
 );</pre>
                     <p>CSS Trasitionを指定するためのクラスです。<br />
                     webkitブラウザかtransitionにベンダープリフィックス無しで対応している場合のみ使用出来ます。<br />
-                    条件を満たしていない場合、C.Trasition.supportがfalseになります。</p>
+                    条件を満たしていない場合、C.Trasition.supportがfalseになります。<br />
+                    オプションでon~を指定した場合、イベントとして登録されます。<br />
+                    デフォルトで自動的に呼び出されるイベントはcomplete,start,stopとなります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -1101,6 +1075,7 @@ var sync = new C.Sync({
 sync.start();</pre>
                     <p>queueに設定された関数を順次実行するクラスです。queueに入れた関数に引数が宣言されている場合、第一引数に渡された関数を実行すれば次タスクが開始します。<br />
                     queueに<a href="#Sync">Sync</a>インスタンス、<a href="#Async">Async</a>インスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。<br />
+                    <a href="#Ajax">Ajax</a>、<a href="#ImgLoad">ImgLoad</a>、<a href="#PreRender">PreRender</a>、<a href="#ScriptLoad">ScriptLoad</a>、<a href="#SSAnime">SSAnime</a>、<a href="#SSTrans">SSTrans</a>、<a href="#Tweener">Tweener</a>、<a href="#WindowLoad">WindowLoad</a>でも同様の処理となります。<br />
                     オプションでon~を指定した場合、イベントとして登録されます。<br />
                     デフォルトで自動的に呼び出されるイベントはcomplete,progress,start,stop,pause,resume,reset,changeとなります。</p>
                 </div>
@@ -1151,7 +1126,7 @@ timer.countDown(); // start timer.</pre>
             </dd>
         </dl>
         <dl id="Tweener">
-            <dt class="cls">C.Tweener<span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#AnimeFrame">AnimeFrame</a> ]</span></dt>
+            <dt class="cls">C.Tweener<span>[ extend: <a href="#Observer">Observer</a> ]</span><span>[ required: <a href="#AnimeFrame">AnimeFrame</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var tweener = new C.Tweener(
@@ -1184,7 +1159,9 @@ timer.countDown(); // start timer.</pre>
     }
 );</pre>
                     <p>シンプルなアニメーション用クラスです。<br />
-                    easeオプションにC.easeの各メソッドを指定すれば、様々なイージング処理をさせることが可能です</p>
+                    easeオプションにC.easeの各メソッドを指定すれば、様々なイージング処理をさせることが可能です<br />
+                    オプションでon~を指定した場合、イベントとして登録されます。<br />
+                    デフォルトで自動的に呼び出されるイベントはcomplete,start,stopとなります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -1273,7 +1250,7 @@ timer.countDown(); // start timer.</pre>
             </dd>
         </dl>
         <dl id="WindowLoad">
-            <dt class="cls">C.WindowLoad<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt class="cls">C.WindowLoad<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var winload = new C.WindowLod({
@@ -1321,7 +1298,6 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Base">Base</a></li>
             <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#DateFactory">DateFactory</a></li>
-            <li><a href="#Deferred">Deferred</a></li>
             <li><a href="#DeviceMotion">DeviceMotion</a></li>
             <li><a href="#DeviceOrientation">DeviceOrientation</a></li>
             <li><a href="#DeviceShake">DeviceShake</a></li>
@@ -1331,7 +1307,6 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Facebook">Facebook</a></li>
             <li><a href="#FontImg">FontImg</a></li>
             <li><a href="#FPS">FPS</a></li>
-            <li><a href="#Handle">Handle</a></li>
             <li><a href="#HashQuery">HashQuery</a></li>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#LimitText">LimitText</a></li>
