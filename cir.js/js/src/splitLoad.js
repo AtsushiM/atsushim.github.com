@@ -7,7 +7,6 @@
             'Validate',
             'Twitter',
             'Tweener',
-            'Timer',
             'Throttle',
             'Sync',
             'Surrogate',

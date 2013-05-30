@@ -159,7 +159,7 @@ C.require('C.Test2', 'src/js/Test2.js', function(Test2) {
     // Test2 === C.Test2
 });</pre>
                     <p>必要なクラスやメソッド、オブジェクトなどのチェック、読み込みを行うメソッドです。<br />
-                    第1引数のみ指定した場合、window以下からチェックを行い存在していればその値を、指定なければエラーを発生させます。<br />
+                    第1引数のみ指定した場合、window以下からチェックを行い存在していればその値を、していなければエラーを発生させます。<br />
                     第2引数を指定した場合、ファイルの同期読み込みを行い値を返します。<br />
                     第3引数に関数を指定した場合、ファイルは非同期に読み込まれ、関数の第一引数に値が渡されます。</p>
                 </div>
@@ -1122,29 +1122,6 @@ throttle.request('Cool is Right.');</pre>
                 <ul class="load"></ul>
             </dd>
         </dl>
-        <dl id="Timer">
-            <dt class="cls">C.Timer<span class="beta">[ Beta ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var timer = new C.Timer({
-    template: 'xxx.xxx',
-    limit: 20, // sec
-    interval: 0.05, // sec
-    onupdate: function(time) {
-        // write code.
-        console.log(time);
-    },
-    ontimeup: function(time) {
-        // write code.
-    }
-});
-
-timer.countDown(); // start timer.</pre>
-                    <p>タイマー処理を行うクラスです。</p>
-                </div>
-                <ul class="load"></ul>
-            </dd>
-        </dl>
         <dl id="Tweener">
             <dt class="cls">C.Tweener<span>[ extend: <a href="#Observer">Observer</a> ]</span><span>[ required: <a href="#AnimeFrame">AnimeFrame</a> ]</span></dt>
             <dd>
@@ -1357,7 +1334,6 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Surrogate">Surrogate</a></li>
             <li><a href="#Sync">Sync</a></li>
             <li><a href="#Throttle">Throttle</a></li>
-            <li><a href="#Timer">Timer</a></li>
             <li><a href="#Tweener">Tweener</a></li>
             <li><a href="#Twitter">Twitter</a></li>
             <li><a href="#Validate">Validate</a></li>

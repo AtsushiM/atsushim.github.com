@@ -63,7 +63,6 @@ DOC.init = function(config) {
             'Validate',
             'Twitter',
             'Tweener',
-            'Timer',
             'Throttle',
             'Sync',
             'Surrogate',
