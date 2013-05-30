@@ -149,6 +149,22 @@ var Test = SuperTest.extend({
                 </div>
             </dd>
         </dl>
+        <dl id="require">
+            <dt class="cls">C.require<span>[ required: <a href="#Ajax">Ajax</a> <a href="#ScriptLoad">ScriptLoad</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var Base = C.require('C.Base'); // Base === C.Base
+var Test1 = C.require('C.Test1', 'src/js/Test1.js'); // Test1 === C.Test1
+C.require('C.Test2', 'src/js/Test2.js', function(Test2) {
+    // Test2 === C.Test2
+});</pre>
+                    <p>必要なクラスやメソッド、オブジェクトなどのチェック、読み込みを行うメソッドです。<br />
+                    第1引数のみ指定した場合、window以下からチェックを行い存在していればその値を、指定なければエラーを発生させます。<br />
+                    第2引数を指定した場合、ファイルの同期読み込みを行い値を返します。<br />
+                    第3引数に関数を指定した場合、ファイルは非同期に読み込まれ、関数の第一引数に値が渡されます。</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="ssease">
             <dt class="cls">C.ssease</dt>
             <dd>
@@ -1292,6 +1308,7 @@ timer.countDown(); // start timer.</pre>
             <li><a href="#Class">Class</a></li>
             <li><a href="#mobile_">mobile</a></li>
             <li><a href="#pc_">pc</a></li>
+            <li><a href="#require">require</a></li>
             <li><a href="#ssease">ssease</a></li>
             <li><a href="#util">util</a></li>
             <li><a href="#validate_">validate</a></li>
