@@ -188,6 +188,7 @@ var Test = SuperTest.extend({
 <pre>var ajax = new C.Ajax({
     url: '/news',
     manual: true, // default: false
+    sync: false, // default: undefined
     oncomplete: function(data) {
         // write code.
         console.log(data);
