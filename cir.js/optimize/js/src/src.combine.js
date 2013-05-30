@@ -212,6 +212,13 @@ Global.Dependency = function(config) {
                     'Tweener',
                     'Animation'
                 ],
+                require: [
+                    'ElementLoad',
+                    'Observer',
+                    'Progress',
+                    'Ajax',
+                    'ScriptLoad'
+                ],
                 ExternalInterface: [
                     'HashQuery',
                     'ExternalInterface_Android',
@@ -316,10 +323,17 @@ Global.Dependency = function(config) {
                     'selector_methods_animate',
                     'View'
                 ],
+                Ajax: [
+                    'require'
+                ],
+                ScriptLoad: [
+                    'require'
+                ],
                 DataStore: [
                     'Model'
                 ],
                 Observer: [
+                    'require',
                     'Ajax',
                     'PreRender',
                     'WindowLoad',
@@ -383,6 +397,7 @@ Global.Dependency = function(config) {
                     'DeviceShake'
                 ],
                 Progress: [
+                    'require',
                     'ImgLoad',
                     'ScriptLoad'
                 ],
