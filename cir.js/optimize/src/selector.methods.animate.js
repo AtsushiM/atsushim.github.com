@@ -1,8 +1,8 @@
 /* (function() { */
-// var selector_Animation = C['SSAnime'] || NULLOBJ,
+// var selector_Animation = SSAnime || NULLOBJ,
 //     selector_csssupport = selector_Animation['support'],
 //     selector_EASE = NULLOBJ;
-selector_Animation = C['SSAnime'] || NULLOBJ,
+selector_Animation = SSAnime || NULLOBJ,
 selector_csssupport = selector_Animation['support'],
 selector_EASE = NULLOBJ;
 
@@ -37,10 +37,11 @@ $_methods['stop'] = function(/* varless */ that, i) {
     return that;
 };
 
-function selector_animate(el, params, duration, ease, callback) {
-    var style = el.style,
-        anime,
-        option;
+function selector_animate(el, params, duration, ease, callback/* varless */, style, anime, option) {
+    // var style = el.style,
+    //     anime,
+    //     option;
+    style = el.style;
 
     if (isFunction(duration)) {
         callback = duration;

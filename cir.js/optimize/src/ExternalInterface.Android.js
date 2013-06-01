@@ -1,4 +1,4 @@
-ExternalAndroid = classExtend(C['HashQuery'], {
+ExternalAndroid = classExtend(HashQuery, {
     'init': function(config) {
         // this._android = config['android'];
         // this._externalObj = config['externalObj'];
@@ -7,12 +7,12 @@ ExternalAndroid = classExtend(C['HashQuery'], {
     'call': function(conf) {
         this._config['android'][conf['mode']](this['makeHash'](conf));
     },
-    'addCallback': function(name, func /* varless */, mine) {
-        /* var mine = this; */
-        mine = this;
+    'addCallback': function(name, func /* varless */, that) {
+        /* var that = this; */
+        that = this;
 
-        mine._config['externalObj'][name] = function(vars) {
-            func(mine['parseHash'](vars)['vars']);
+        that._config['externalObj'][name] = function(vars) {
+            func(that['parseHash'](vars)['vars']);
         };
     },
     'removeCallback': function(name) {

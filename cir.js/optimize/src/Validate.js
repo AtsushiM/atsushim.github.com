@@ -1,19 +1,19 @@
-C['Validate'] = classExtendBase({
+Validate = C['Validate'] = classExtendBase({
     _check: function(is, key, value, txt) {
         if (is(value)) {
             return TRUE;
         }
         this['displayError'](key, txt);
     },
-    'init': function(config /* varless */, mine) {
-        mine = this;
+    'init': function(config /* varless */, that) {
+        that = this;
 
         config = config || {};
 
-        /* mine._level = config['level'] || 'warn'; */
-        mine._level = config['level'];
+        /* that._level = config['level'] || 'warn'; */
+        that._level = config['level'];
 
-        owner(mine, mine, config);
+        owner(that, that, config);
     },
     'displayError': function(key, text) {
         text = 'Validate Error:' + key + ' is ' + text + '.';
@@ -51,4 +51,4 @@ C['Validate'] = classExtendBase({
         return this._check(isArray, key, value, 'Array');
     }
 });
-C['validate'] = new C['Validate']();
+C['validate'] = new Validate();

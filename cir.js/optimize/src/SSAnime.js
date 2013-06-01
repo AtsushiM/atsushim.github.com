@@ -1,23 +1,25 @@
-(function() {
-var ret = checkCSSAnimTranCheck([
+/* (function() { */
+var ssanime_ret = checkCSSAnimTranCheck([
         'animation',
         'webkitAnimation'
     ], 'Animation'),
-    support = ret.support,
-    prefix = ret.prefix,
-    css_prefix = ret.css_prefix,
-    event_key = ret.event_key,
-    sheet = ret.sheet,
-That = C['SSAnime'] =
-classExtendObserver({
-    _off: function() {
-        var el = this._el,
-            end = this._end;
+    ssanime_prefix = ssanime_ret.prefix,
+    ssanime_css_prefix = ssanime_ret.css_prefix,
+    ssanime_event_key = ssanime_ret.event_key,
+    ssanime_sheet = ssanime_ret.sheet;
 
-        off(el, event_key + 'End', end);
+SSAnime = C['SSAnime'] =
+classExtendObserver({
+    _off: function(/* varless */el, end) {
+        // var el = this._el,
+        //     end = this._end;
+        el = this._el,
+        end = this._end;
+
+        off(el, ssanime_event_key + 'End', end);
         off(el, 'animationend', end);
     },
-    'init': function(el, property, option /* varless */, that) {
+    'init': function(el, property, option /* varless */, that, duration, ease, i, prop) {
         that = this;
 
         that['_super']();
@@ -30,14 +32,18 @@ classExtendObserver({
 
         that._el = el;
 
-        That['id']++;
-        that._id = 'ciranim' + That['id'];
+        SSAnime['id']++;
+        that._id = 'ciranim' + SSAnime['id'];
 
-        var duration = option['duration'] || That['duration'],
-            // easeOutExpo
-            ease = option['ease'] || csseaseOutExpo,
-            i,
-            prop = {};
+        // var duration = option['duration'] || SSAnime['duration'],
+        //     // easeOutExpo
+        //     ease = option['ease'] || csseaseOutExpo,
+        //     i,
+        //     prop = {};
+        duration = option['duration'] || SSAnime['duration'],
+        // easeOutExpo
+        ease = option['ease'] || csseaseOutExpo,
+        prop = {};
 
         for (i in property) {
             prop[i] = property[i];
@@ -54,15 +60,15 @@ classExtendObserver({
             ';'
         );
 
-        sheet.insertRule(
-            '@' + css_prefix + 'keyframes ' + that._id + '{to' + prop + '}',
-            sheet.cssRules.length);
+        ssanime_sheet.insertRule(
+            '@' + ssanime_css_prefix + 'keyframes ' + that._id + '{to' + prop + '}',
+            ssanime_sheet.cssRules.length);
 
         if (!isArray(ease)) {
             ease = [ease];
         }
 
-        addCSSRule(that._id, css_prefix, duration, ease);
+        SSAnime_addCSSRule(that._id, ssanime_css_prefix, duration, ease);
 
         if (!option['manual']) {
             that['start']();
@@ -80,26 +86,26 @@ classExtendObserver({
         that._fire_start();
 
         that._end = endaction;
-        on(el, event_key + 'End', endaction);
+        on(el, ssanime_event_key + 'End', endaction);
         on(el, 'animationend', endaction);
 
         addClass(el, that._id);
 
         function endaction(e) {
-            var rule = sheet.cssRules,
+            var rule = ssanime_sheet.cssRules,
                 len = rule.length,
                 name;
 
             that._off();
 
 
-            if (prefix == 'webkit') {
+            if (ssanime_prefix == 'webkit') {
                 for (; len--;) {
                     name = rule[len].name ||
                         (EMPTY + rule[len].selectorText).split('.')[1];
 
                     if (name == that._id) {
-                        sheet.deleteRule(len);
+                        ssanime_sheet.deleteRule(len);
                     }
                 }
                 removeClass(el, that._id);
@@ -109,22 +115,26 @@ classExtendObserver({
             that._fire_complete(e);
         }
     },
-    'stop': function() {
-        var stopobj = {};
+    'stop': function(/* varless */stopobj) {
+        /* var stopobj = {}; */
+        stopobj = {};
 
         this['fire']('stop');
 
-        stopobj[css_prefix + 'animation-play-state'] = 'paused';
+        stopobj[ssanime_css_prefix + 'animation-play-state'] = 'paused';
 
         css(this._el, stopobj);
         this._off();
     }
-}, support);
+}, ssanime_ret.support);
 
-function addCSSRule(id, css_prefix, duration, eases) {
-    var i = 0,
-        len = eases.length,
-        rule = EMPTY;
+function SSAnime_addCSSRule(id, css_prefix, duration, eases/* varless */, i, len, rule) {
+    // var i = 0,
+    //     len = eases.length,
+    //     rule = EMPTY;
+    i = 0,
+    len = eases.length,
+    rule = EMPTY;
 
     for (; i < len; i++) {
         rule += css_prefix + 'animation:' +
@@ -133,9 +143,9 @@ function addCSSRule(id, css_prefix, duration, eases) {
                 eases[i] + ' 0s 1 normal both;';
     }
 
-    sheetAddCSSRule(sheet, id, rule);
+    sheetAddCSSRule(ssanime_sheet, id, rule);
 }
 
-That['id'] = 0;
-That['duration'] = 500;
-}());
+SSAnime['id'] = 0;
+SSAnime['duration'] = 500;
+/* }()); */
