@@ -69,6 +69,17 @@ var $p = $('p');</pre>
                 </div>
             </dd>
         </dl>
+        <dl id="calc_">
+            <dt class="cls">C.calc<span>[ required: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var calc = C.calc;</pre>
+                    <p>四則演算のメソッドを提供するクラスです。<br />
+                    浮動小数点の計算による丸め誤差を回避して計算します。<br />
+                    このオブジェクトは<a href="#Calc">C.Calc</a>クラスを使用して設定されます。</p>
+                </div>
+            </dd>
+        </dl>
         <dl id="dom">
             <dt class="cls">C.dom<span>[ indispensable ]</span></dt>
             <dd>
@@ -363,6 +374,20 @@ async.start();</pre>
                 <ul class="load"></ul>
             </dd>
         </dl>
+        <dl id="Calc">
+            <dt class="cls">C.Calc<span>[ required: <a href="#Base">Base</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var calc = new C.Calc({
+    fewdigit: 8 // default: 8
+});</pre>
+                    <p>四則演算のメソッドを提供するクラスです。<br />
+                    浮動小数点の計算による丸め誤差を回避して計算します。<br />
+                    fewdigitオプションは小数点以下、何位まで計算するか決定します。</p>
+                </div>
+                <ul class="load"></ul>
+            </dd>
+        </dl>
         <dl id="DataStore">
             <dt class="cls">C.DataStore<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -604,6 +629,22 @@ var storage_cir = new C.LocalStorage({
                     <p>localStorageの操作を行います。<br />
                     オブジェクトを保存・取り出しを行う際、自動的に適切な形に変換されます。<br />
                     namespaceオプションを指定した場合、localStorage中で適切な切り分けを行います。</p>
+                </div>
+                <ul class="load"></ul>
+            </dd>
+        </dl>
+        <dl id="LowPassFilter">
+            <dt class="cls">C.LowPassFilter<span>[ extend: <a href="#Calc">Calc</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var lpfilter = new C.LowPassFilter({
+    before: 100, // default: 0
+    rate: 0.5 // default: 0.1
+});</pre>
+                <p>端末の傾きなど、誤差が含まれる値を滑らかにするクラスです。<br />
+                直前の値と現在の値を特定の割合で計算することで値を丸め込みます。<br />
+                beforeオプションには初期値を設定します。<br />
+                rateは現在の数値の何割を使うかを指定します。1からrateを引いた値が直前の値に対して乗算される値になります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -916,7 +957,7 @@ C.$('.open').on(C.e.CLICK, function() {
         // write code.
     }
 });</pre>
-                    <p>scriptファイルを動的に読み込むメソッドを提供するクラスです。<br />
+                    <p>scriptファイルを動的に読み込むクラスです。<br />
                     オプションでon~を指定した場合、イベントとして登録されます。<br />
                     デフォルトで自動的に呼び出されるイベントはcomplete,progress,startとなります。</p>
                 </div>
@@ -1298,6 +1339,7 @@ throttle.request('Cool is Right.');</pre>
     <div id="sub">
         <ul>
             <li><a href="#selector">$</a></li>
+            <li><a href="#calc_">calc</a></li>
             <li><a href="#dom">dom</a></li>
             <li><a href="#e">e</a></li>
             <li><a href="#ease">ease</a></li>
@@ -1315,6 +1357,7 @@ throttle.request('Cool is Right.');</pre>
             <li><a href="#Async">Async</a></li>
             <li><a href="#Audio">Audio</a></li>
             <li><a href="#Base">Base</a></li>
+            <li><a href="#Calc">Calc</a></li>
             <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#DateFactory">DateFactory</a></li>
             <li><a href="#DeviceMotion">DeviceMotion</a></li>
@@ -1330,6 +1373,7 @@ throttle.request('Cool is Right.');</pre>
             <li><a href="#ImgLoad">ImgLoad</a></li>
             <li><a href="#LimitText">LimitText</a></li>
             <li><a href="#LocalStorage">LocalStorage</a></li>
+            <li><a href="#LowPassFilter">LowPassFilter</a></li>
             <li><a href="#Modal">Modal</a></li>
             <li><a href="#Model">Model</a></li>
             <li><a href="#Mobile">Mobile</a></li>

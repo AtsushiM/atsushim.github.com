@@ -1,0 +1,35 @@
+<li id="LowPassFilter_forecast">
+    <h3 class="method">forecast(num)</h3>
+    <div class="detail">
+        <p>直前の計算結果を使用してnumの値を丸めたものを返します。</p>
+<pre>lpfilter.forecast(100);</pre>
+    </div>
+</li>
+<li id="LowPassFilter_getBefore">
+    <h3 class="method">getBefore()</h3>
+    <div class="detail">
+        <p>直前の計算結果を返します。</p>
+<pre>lpfilter.getBefore();</pre>
+    </div>
+</li>
+<li id="LowPassFilter_getRate">
+    <h3 class="method">getRate()</h3>
+    <div class="detail">
+        <p>渡された数値を使う割合を返します。</p>
+<pre>lpfilter.getRate();</pre>
+    </div>
+</li>
+<li id="LowPassFilter_setBefore">
+    <h3 class="method">setBefore(num)</h3>
+    <div class="detail">
+        <p>直前の計算結果の値を設定します。次回のclacメソッドの実行結果に影響します。</p>
+<pre>lpfilter.setBefore(100);</pre>
+    </div>
+</li>
+<li id="LowPassFilter_setRate">
+    <h3 class="method">setRate(rate)</h3>
+    <div class="detail">
+        <p>渡された数値を使う割合を設定します。0.1以上、1未満を指定してください。</p>
+<pre>lpfilter.setRate(0.1);</pre>
+    </div>
+</li>

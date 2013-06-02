@@ -113,6 +113,9 @@ Global.Dependency = function(config) {
                 Sync: [
                     'AbstractTask',
                     'Observer'
+                ],
+                LowPassFilter: [
+                    'Calc'
                 ]
             },
             passive: {
@@ -206,6 +209,9 @@ Global.Dependency = function(config) {
                 AbstractTask: [
                     'Async',
                     'Sync'
+                ],
+                Calc: [
+                    'LowPassFilter'
                 ]
             },
             waste: {
