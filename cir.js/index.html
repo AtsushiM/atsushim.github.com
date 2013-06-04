@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Web application development library, 'Cool is Right'.</h2>
-    <p class="ver">1.1.1</p>
+    <p class="ver">1.2.0</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 1.1.1)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 1.2.0)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -165,7 +165,7 @@ var testspace3 = C.namespace('C.testspace1', function(){
                     <p>名前空間の作成、設定を行うメソッドです。<br />
                     第一引数は作成する名前空間をストリングで指定します。<br />
                     第二引数を指定した場合、名前空間自体に使用します。<br />
-                    すでに名前空間に値が存在した場合、第二引数と差し替えたあと、元からあった値が持つプロパティを上書きします。</p>
+                    すでに名前空間に値が存在した場合、第二引数と差し替えたあと、元からあった値が持つプロパティを追加します。</p>
                 </div>
             </dd>
         </dl>
@@ -202,6 +202,23 @@ C.require('C.Test2', 'src/js/Test2.js', function(Test2) {
                     <pre>var ease = C.ssease;</pre>
                     <p>CSSアニメーション用のイージング処理をまとめたオブジェクトです。<br />
                     主な使い方は<a href="#SSAnime">C.SSAnime</a>や<a href="SSTrans#">C.SSTrans</a>のeasingオプションに対して参照を渡すことになります。</p>
+                </div>
+                <ul class="load"></ul>
+            </dd>
+        </dl>
+        <dl id="template">
+            <dt class="cls">C.template</dt>
+            <dd>
+                <div class="sample">
+<pre>var str = C.template('before <%- test1 %> <%= test2 %> <% if(test3) { %><%= test3 %><% } %> after', {
+    test1: 'Cool',
+    test2: '&amp;',
+    test3: 'Right'
+});</pre>
+                    <p>軽量なテンプレートエンジンメソッドです。<br />
+                    第一引数に渡されたストリングを第二匹数のオブジェクトの値を使って書き換えます。<br />
+                    第二引数は省略可能で、その場合は第一引数をそのまま返します。<br />
+                    <%- any %>は値をそのまま、<%= any %>は値をエスケープします。<% jscode %>はifやforなど、jsのコードを記述できます。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -1349,6 +1366,7 @@ throttle.request('Cool is Right.');</pre>
             <li><a href="#pc_">pc</a></li>
             <li><a href="#require">require</a></li>
             <li><a href="#ssease">ssease</a></li>
+            <li><a href="#template">template</a></li>
             <li><a href="#util">util</a></li>
             <li><a href="#validate_">validate</a></li>
             <li><a href="#Ajax">Ajax</a></li>

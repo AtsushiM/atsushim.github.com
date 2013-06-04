@@ -52,6 +52,7 @@
             'AnimeFrame',
             'Ajax',
             'util',
+            'template',
             'ssease',
             'ease',
             'dom',

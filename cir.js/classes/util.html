@@ -266,17 +266,6 @@ text = util.relaceAll(text, 's', 'a');
 alert(text); // Cool ia Right.ja</pre>
     </div>
 </li>
-<li id="util_template">
-    <h3 class="method">template(templatetxt, replaceObj)</h3>
-    <div class="detail">
-        <p>templatetxt内の<%= key %>、<%- key %>をreplaceObjの値で置換します。<br />
-        <%= key %>の場合、エスケープされた文字に置換されます。</p>
-<pre>var templatetxt = '&lt;p class="name"&gt;<%= name %>&lt;/p&gt;';
-var innerhtml = util.template(templatetxt, {
-    name: 'John Doe'
-}); // '&lt;p class="name"&gt;John Doe&lt;/p&gt;'</pre>
-    </div>
-</li>
 <li id="util_toArray">
     <h3 class="method">toArray(obj)</h3>
     <div class="detail">

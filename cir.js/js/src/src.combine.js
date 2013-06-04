@@ -108,6 +108,7 @@ DOC.init = function(config) {
             'AnimeFrame',
             'Ajax',
             'util',
+            'template',
             'ssease',
             'ease',
             'dom',
