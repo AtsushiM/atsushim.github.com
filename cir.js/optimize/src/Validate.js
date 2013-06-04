@@ -1,4 +1,4 @@
-Validate = C['Validate'] = classExtendBase({
+system_temp = C['Validate'] = classExtendBase({
     _check: function(is, key, value, txt) {
         if (is(value)) {
             return TRUE;
@@ -21,11 +21,10 @@ Validate = C['Validate'] = classExtendBase({
         switch (this.level) {
             case 'log':
                 console.log(text);
+            case 'off':
                 return FALSE;
             case 'error':
                 throw new Error(text);
-            case 'off':
-                return FALSE;
             /* case 'warn': */
             /* default: */
         }
@@ -51,4 +50,4 @@ Validate = C['Validate'] = classExtendBase({
         return this._check(isArray, key, value, 'Array');
     }
 });
-C['validate'] = new Validate();
+C['validate'] = new system_temp();
