@@ -40,8 +40,8 @@
             <dt class="cls">C<span>[ namespaece ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var ajax = new C.Ajax(); // Ajax
-var mobile = new C.Mobile(); // Mobile</pre>
+<pre>var sync = new C.Sync(); // 同期処理
+var async = new C.Async(); // 非同期処理</pre>
                     <p>CIR.jsのネームスペースです。<br />
                     すべてのクラス、メソッドはC以下に存在します。</p>
                 </div>
@@ -66,17 +66,6 @@ var $p = $('p');</pre>
                     <pre>var frame = C.animeframe;</pre>
                     <p>requestAnimationFrameのラップクラスです。<br />
                     このオブジェクトは<a href="#AnimeFrame">C.AnimeFrame</a>クラスを使用して設定されます。</p>
-                </div>
-            </dd>
-        </dl>
-        <dl id="calc_">
-            <dt class="cls">C.calc<span>[ required: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var calc = C.calc;</pre>
-                    <p>四則演算のメソッドを提供するクラスです。<br />
-                    浮動小数点の計算による丸め誤差を回避して計算します。<br />
-                    このオブジェクトは<a href="#Calc">C.Calc</a>クラスを使用して設定されます。</p>
                 </div>
             </dd>
         </dl>
@@ -140,16 +129,6 @@ var Test = SuperTest.extend({
                 </div>
             </dd>
         </dl>
-        <dl id="mobile_">
-            <dt class="cls">C.mobile<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-                    <pre>var mobile = C.mobile;</pre>
-                    <p>モバイル端末用のユーティリティクラスです。<br />
-                    このオブジェクトは<a href="#Mobile">C.Mobile</a>クラスを使用して設定されます。</p>
-                </div>
-            </dd>
-        </dl>
         <dl id="namespace">
             <dt class="cls">C.namespace</dt>
             <dd>
@@ -166,16 +145,6 @@ var testspace3 = C.namespace('C.testspace1', function(){
                     第一引数は作成する名前空間をストリングで指定します。<br />
                     第二引数を指定した場合、名前空間自体に使用します。<br />
                     すでに名前空間に値が存在した場合、第二引数と差し替えたあと、元からあった値が持つプロパティを追加します。</p>
-                </div>
-            </dd>
-        </dl>
-        <dl id="pc_">
-            <dt class="cls">C.pc<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-                    <pre>var pc = C.pc;</pre>
-                    <p>モバイル端末用のユーティリティクラスです。<br />
-                    このオブジェクトは<a href="#PC">C.PC</a>クラスを使用して設定されます。</p>
                 </div>
             </dd>
         </dl>
@@ -201,7 +170,7 @@ C.require('C.Test2', 'src/js/Test2.js', function(Test2) {
                 <div class="sample">
                     <pre>var ease = C.ssease;</pre>
                     <p>CSSアニメーション用のイージング処理をまとめたオブジェクトです。<br />
-                    主な使い方は<a href="#SSAnime">C.SSAnime</a>や<a href="SSTrans#">C.SSTrans</a>のeasingオプションに対して参照を渡すことになります。</p>
+                    主な使い方は<a href="#SSAnime">C.SSAnime</a>のeasingオプションに対して参照を渡すことになります。</p>
                 </div>
                 <ul class="load"></ul>
             </dd>
@@ -352,7 +321,7 @@ var async = new C.Async({
 async.start();</pre>
                 <p>queueに設定された関数を非同期実行するクラスです。queueに入れた関数に引数が宣言されている場合、第一引数に渡された関数を実行すれば次タスクが開始します。<br />
                 queueに<a href="#Sync">Sync</a>、<a href="#Async">Async</a>のインスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。<br />
-                <a href="#Ajax">Ajax</a>、<a href="#ImgLoad">ImgLoad</a>、<a href="#PreRender">PreRender</a>、<a href="#ScriptLoad">ScriptLoad</a>、<a href="#SSAnime">SSAnime</a>、<a href="#SSTrans">SSTrans</a>、<a href="#Tweener">Tweener</a>、<a href="#WindowLoad">WindowLoad</a>でも同様の処理となります。<br />
+                <a href="#Ajax">Ajax</a>、<a href="#ImgLoad">ImgLoad</a>、<a href="#PreRender">PreRender</a>、<a href="#ScriptLoad">ScriptLoad</a>、<a href="#SSAnime">SSAnime</a>、<a href="#Tweener">Tweener</a>、<a href="#WindowLoad">WindowLoad</a>でも同様の処理となります。<br />
                 オプションでon~を指定した場合、イベントとして登録されます。<br />
                 デフォルトで自動的に呼び出されるイベントはcomplete,progress,start,stop,pause,resume,reset,changeとなります。</p>
                 </div>
@@ -1084,35 +1053,6 @@ var storage_cir = new C.SessionStorage({
                 <ul class="load"></ul>
             </dd>
         </dl>
-        <dl id="SSTrans">
-            <dt class="cls">C.SSTrans<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var transition = new C.SSTrans(
-    element,
-    {
-        width: 100,
-        height: 100,
-        '-webkit-transform': 'rotate(180deg)'
-    },
-    {
-        duration: 1000, // default: 500
-        manual: false, // default: false
-        ease: 'linear', // default: easeOutExpo
-        oncomplete: function() {
-            // write code.
-        }
-    }
-);</pre>
-                    <p>CSS Trasitionを指定するためのクラスです。<br />
-                    webkitブラウザかtransitionにベンダープリフィックス無しで対応している場合のみ使用出来ます。<br />
-                    条件を満たしていない場合、C.Trasition.supportがfalseになります。<br />
-                    オプションでon~を指定した場合、イベントとして登録されます。<br />
-                    デフォルトで自動的に呼び出されるイベントはcomplete,start,stopとなります。</p>
-                </div>
-                <ul class="load"></ul>
-            </dd>
-        </dl>
         <dl id="Surrogate">
             <dt class="cls">C.Surrogate<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -1172,7 +1112,7 @@ var sync = new C.Sync({
 sync.start();</pre>
                     <p>queueに設定された関数を順次実行するクラスです。queueに入れた関数に引数が宣言されている場合、第一引数に渡された関数を実行すれば次タスクが開始します。<br />
                     queueに<a href="#Sync">Sync</a>インスタンス、<a href="#Async">Async</a>インスタンスを入れた場合、インスタンスのqueueの処理が全て完了後、次のタスクが開始します。<br />
-                    <a href="#Ajax">Ajax</a>、<a href="#ImgLoad">ImgLoad</a>、<a href="#PreRender">PreRender</a>、<a href="#ScriptLoad">ScriptLoad</a>、<a href="#SSAnime">SSAnime</a>、<a href="#SSTrans">SSTrans</a>、<a href="#Tweener">Tweener</a>、<a href="#WindowLoad">WindowLoad</a>でも同様の処理となります。<br />
+                    <a href="#Ajax">Ajax</a>、<a href="#ImgLoad">ImgLoad</a>、<a href="#PreRender">PreRender</a>、<a href="#ScriptLoad">ScriptLoad</a>、<a href="#SSAnime">SSAnime</a>、<a href="#Tweener">Tweener</a>、<a href="#WindowLoad">WindowLoad</a>でも同様の処理となります。<br />
                     オプションでon~を指定した場合、イベントとして登録されます。<br />
                     デフォルトで自動的に呼び出されるイベントはcomplete,progress,start,stop,pause,resume,reset,changeとなります。</p>
                 </div>
@@ -1356,19 +1296,15 @@ throttle.request('Cool is Right.');</pre>
     <div id="sub">
         <ul>
             <li><a href="#selector">$</a></li>
-            <li><a href="#calc_">calc</a></li>
             <li><a href="#dom">dom</a></li>
             <li><a href="#e">e</a></li>
             <li><a href="#ease">ease</a></li>
             <li><a href="#Class">Class</a></li>
-            <li><a href="#mobile_">mobile</a></li>
             <li><a href="#namespace">namespace</a></li>
-            <li><a href="#pc_">pc</a></li>
             <li><a href="#require">require</a></li>
             <li><a href="#ssease">ssease</a></li>
             <li><a href="#template">template</a></li>
             <li><a href="#util">util</a></li>
-            <li><a href="#validate_">validate</a></li>
             <li><a href="#Ajax">Ajax</a></li>
             <li><a href="#AnimeFrame">AnimeFrame</a></li>
             <li><a href="#Anvas">Anvas</a></li>
@@ -1412,7 +1348,6 @@ throttle.request('Cool is Right.');</pre>
             <li><a href="#SessionStorage">SessionStorage</a></li>
             <li><a href="#Sound">Sound</a></li>
             <li><a href="#SSAnime">SSAnime</a></li>
-            <li><a href="#SSTrans">SSTrans</a></li>
             <li><a href="#Surrogate">Surrogate</a></li>
             <li><a href="#Sync">Sync</a></li>
             <li><a href="#Throttle">Throttle</a></li>

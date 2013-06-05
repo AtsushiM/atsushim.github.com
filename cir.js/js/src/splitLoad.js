@@ -10,7 +10,6 @@
             'Throttle',
             'Sync',
             'Surrogate',
-            'SSTrans',
             'SSAnime',
             'Sound',
             'SessionStorage',

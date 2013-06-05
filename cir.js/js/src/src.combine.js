@@ -66,7 +66,6 @@ DOC.init = function(config) {
             'Throttle',
             'Sync',
             'Surrogate',
-            'SSTrans',
             'SSAnime',
             'Sound',
             'SessionStorage',
