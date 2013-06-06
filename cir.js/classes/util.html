@@ -50,6 +50,24 @@ util.binarySearch({
 <pre>var check = util.checkUserAgent(/iPhone|iPad|iPod/i); // boolean</pre>
     </div>
 </li>
+<li id="util_copyArray">
+    <h3 class="method">copyArray(array)</h3>
+    <div class="detail">
+        <p>arrayが配列だった場合、シャローコピーされた配列を返します。<br />
+        配列以外だった場合、arrayをそのまま返します。</p>
+<pre>var orgary = [1, 2, 3];
+var copyary = C.util.copyArray(orgary); // orgary !== copyary</pre>
+    </div>
+</li>
+<li id="util_copyObject">
+    <h3 class="method">copyObject(obj)</h3>
+    <div class="detail">
+        <p>objがオブジェクトだった場合、シャローコピーされたオブジェクトを返します。<br />
+        オブジェクト以外だった場合、objをそのまま返します。</p>
+<pre>var orgobj = { test: 1 };
+var copyobj = C.util.copyObj(orgobj); // orgobj !== copyobj</pre>
+    </div>
+</li>
 <li id="util_escape">
     <h3 class="method">escape(htmltext)</h3>
     <div class="detail">
