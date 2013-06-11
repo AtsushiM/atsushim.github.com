@@ -56,6 +56,20 @@ model.off('change', func1);
 model.fire('change'); // exe func2.</pre>
     </div>
 </li>
+<li id="Model_one">
+    <h3 class="method">one(key, func)</h3>
+    <div class="detail">
+        <p>一度だけ実行されるイベントを登録します。<br />
+        登録されたイベントはfireメソッドで呼び出されます。</p>
+<pre>var func = observer.one('jsonloaded', function(vars){
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.fire('jsonloaded', 'fire1');
+observer.fire('jsonloaded', 'fire2');</pre>
+    </div>
+</li>
 <li id="Model_prev">
     <h3 class="method">prev(<span class="expansion">[key]</span>)</h3>
     <div class="detail">
