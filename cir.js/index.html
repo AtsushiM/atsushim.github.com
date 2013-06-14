@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Web application development library, 'Cool is Right'.</h2>
-    <p class="ver">1.2.9</p>
+    <p class="ver">1.3.1</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 1.2.9)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 1.3.1)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -336,6 +336,17 @@ async.start();</pre>
                     ブラウザがAudio要素に対応している場合のみ使用出来ます。<br />
                     条件を満たしていない場合、C.Audio.supportがfalseになります。</p>
                 </div>
+            </dd>
+        </dl>
+        <dl id="BackForwardCache">
+            <dt class="cls">C.BackForwardCache</dt>
+            <dd>
+                <div class="sample">
+<pre>var bfc = new C.BackForwardCache();</pre>
+                <p>ブラウザのバック機能(history.back()など)が実行された場合、戻ったページでjsの状態が保存されている場合があります。<br />
+                このBackForwardCacheは便利な反面、意図しない動作をする場合があり、この機能を無効化したい場合に使用するクラスです。</p>
+                </div>
+                <ul class="load"></ul>
             </dd>
         </dl>
         <dl id="Base">
@@ -1299,6 +1310,7 @@ throttle.request('Cool is Right.');</pre>
             <li><a href="#Anvas">Anvas</a></li>
             <li><a href="#Async">Async</a></li>
             <li><a href="#Audio">Audio</a></li>
+            <li><a href="#BackForwardCache">BackForwardCache</a></li>
             <li><a href="#Base">Base</a></li>
             <li><a href="#Calc">Calc</a></li>
             <li><a href="#DataStore">DataStore</a></li>

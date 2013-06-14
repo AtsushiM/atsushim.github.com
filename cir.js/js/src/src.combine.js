@@ -102,6 +102,7 @@ DOC.init = function(config) {
             'DataStore',
             'Calc',
             'Base',
+            'BackForwardCache',
             'Async',
             'Anvas',
             'AnimeFrame',

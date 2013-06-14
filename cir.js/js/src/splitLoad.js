@@ -46,6 +46,7 @@
             'DataStore',
             'Calc',
             'Base',
+            'BackForwardCache',
             'Async',
             'Anvas',
             'AnimeFrame',
