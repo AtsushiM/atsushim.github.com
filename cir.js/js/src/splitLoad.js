@@ -18,7 +18,6 @@
             'ScriptLoad',
             'Router',
             'Rollover',
-            'Progress',
             'PreRender',
             'PC',
             'Orientation',

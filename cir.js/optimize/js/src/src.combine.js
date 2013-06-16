@@ -215,7 +215,6 @@ Global.Dependency = function(config) {
                 require: [
                     'ElementLoad',
                     'Observer',
-                    'Progress',
                     'Ajax',
                     'ScriptLoad'
                 ],
@@ -296,13 +295,11 @@ Global.Dependency = function(config) {
                 ],
                 ScriptLoad: [
                     'ElementLoad',
-                    'Observer',
-                    'Progress'
+                    'Observer'
                 ],
                 ImgLoad: [
                     'ElementLoad',
-                    'Observer',
-                    'Progress'
+                    'Observer'
                 ],
                 Async: [
                     'AbstractTask',
@@ -398,11 +395,6 @@ Global.Dependency = function(config) {
                 ],
                 DeviceOrientation: [
                     'DeviceShake'
-                ],
-                Progress: [
-                    'require',
-                    'ImgLoad',
-                    'ScriptLoad'
                 ],
                 AbstractTask: [
                     'Async',

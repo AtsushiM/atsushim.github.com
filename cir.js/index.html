@@ -339,7 +339,7 @@ async.start();</pre>
             </dd>
         </dl>
         <dl id="BackForwardCache">
-            <dt class="cls">C.BackForwardCache</dt>
+            <dt class="cls">C.BackForwardCache<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var bfc = new C.BackForwardCache();</pre>
@@ -361,7 +361,7 @@ async.start();</pre>
             </dd>
         </dl>
         <dl id="Calc">
-            <dt class="cls">C.Calc<span>[ required: <a href="#Base">Base</a> ]</span></dt>
+            <dt class="cls">C.Calc<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var calc = new C.Calc({
@@ -565,7 +565,7 @@ var fontWhite = new C.FontImg({
             </dd>
         </dl>
         <dl id="ImgLoad">
-            <dt class="cls">C.ImgLoad<span>[ extend: <a href="#Observer">Observer</a> ]</span><span>[ required: <a href="#Progress">Progress</a> ]</span></dt>
+            <dt class="cls">C.ImgLoad<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var imgload = new C.ImgLoad({
@@ -852,28 +852,6 @@ C.$('.open').on(C.e.CLICK, function() {
                 <ul class="load"></ul>
             </dd>
         </dl>
-        <dl id="Progress">
-            <dt class="cls">C.Progress<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
-            <dd>
-                <div class="sample">
-<pre>var async = new C.Progress({
-    waits: 3, // integer || array
-    oncomplete: function(error, args) {
-        // error: undefined || Error
-        // args: array
-    },
-    onprogress: function(progress) {
-        // progress: number
-    }
-});</pre>
-                    <p>非同期処理の処理待ちを簡易に行えるメソッドを提供するクラスです。<br />
-                    waitsオプション分の処理待ちを行ったあと、oncompleteを実行します。<br />
-                    waitsに配列が渡された場合、lengthの値がwaitsオプションに指定された場合と同じ動作をします。<br />
-                    onprogressは各処理が実行される毎に実行され、progressには0~1の間で進捗度が渡されます。</p>
-                </div>
-                <ul class="load"></ul>
-            </dd>
-        </dl>
         <dl id="Rollover">
             <dt class="cls">C.Rollover<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
@@ -926,7 +904,7 @@ C.$('.open').on(C.e.CLICK, function() {
             </dd>
         </dl>
         <dl id="ScriptLoad">
-            <dt class="cls">C.ScriptLoad<span>[ extend: <a href="#Observer">Observer</a> ]</span><span>[ required: <a href="#Progress">Progress</a> ]</span></dt>
+            <dt class="cls">C.ScriptLoad<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var scriptload = new C.ScriptLoad({
@@ -1339,7 +1317,6 @@ throttle.request('Cool is Right.');</pre>
             <li><a href="#Parallel">Parallel</a></li>
             <li><a href="#PC">PC</a></li>
             <li><a href="#PreRender">PreRender</a></li>
-            <li><a href="#Progress">Progress</a></li>
             <li><a href="#Rollover">Rollover</a></li>
             <li><a href="#Router">Router</a></li>
             <li><a href="#ScriptLoad">ScriptLoad</a></li>
