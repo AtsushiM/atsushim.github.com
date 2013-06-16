@@ -42,8 +42,6 @@ ElementLoad = classExtendObserver({
         function countup() {
             j++;
 
-            console.log(j, i);
-
             that._fire_progress(j / i);
 
             if (i == j) {
