@@ -4,12 +4,21 @@
         <p>canvasに対してimageをdrawImageします。<br />
         imageにはimgエレメントかcanvasエレメントを指定できます。<br />
         引数の配列の順に上に重なっていきます。<br />
-        canvasに描画されている場合、消去してから追加されます。</p>
+        canvasに描画されている場合、消去してから追加されます。<br />
+        renderプロパティを指定した場合、canvasへのレンダリングを独自に作成出来ます。<br />
+        これらのオブジェクトはpigment,pigmentsメソッドでも作成出来ます。</p>
 <pre>var $prerender = C.$('.prerender');
 anvas.draw([
     {image: $prerender[0], x: 0, y: 0},
     {image: $prerender[1], x: 100, y: 0},
-    {image: $prerender[2], x: 0, y: 100}
+    {
+        image: $prerender[2], x: 0, y: 100,
+        render: function(ctx, instance) {
+            // instance === anvas
+
+            ctx.drawImage(this.image, this.x, thix.y);
+        }
+    }
 ]);</pre>
     </div>
 </li>
@@ -18,7 +27,7 @@ anvas.draw([
     <div class="detail">
         <p>drawメソッドの引数を作成するメソッドです。<br />
         srcオプションで指定された画像を読み込んだcanvasエレメントとx,yオプションを指定されたオブジェクトが返ります。</p>
-<pre>var pigment = anvas.pigment({
+<pre>var pigment1 = anvas.pigment({
     src: '/img/canvas.png',
     width: 100,
     height: 100,
@@ -27,7 +36,18 @@ anvas.draw([
     onload: function(canvas, img) {
         // write code.
     }
-}); // {image: canvasElement, x: 100, y: 50}</pre>
+}); // {image: canvasElement, x: 100, y: 50}
+
+var pigment2 = anvas.pigment({
+    arg1: 'arg1',
+    arg2: 'arg2',
+    render: function(ctx, instance) {
+        // instance === anvas
+
+        // this.arg1 === 'arg1'
+        // this.arg2 === 'arg2'
+    }
+});</pre>
     </div>
 </li>
 <li id="Anvas_pigments">
