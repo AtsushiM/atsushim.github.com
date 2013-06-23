@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Web application development library, 'Cool is Right'.</h2>
-    <p class="ver">1.4.3</p>
+    <p class="ver">1.5.1</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 1.4.3)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 1.5.1)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -374,11 +374,11 @@ async.start();</pre>
                 <ul class="load"></ul>
             </dd>
         </dl>
-        <dl id="DataStore">
-            <dt class="cls">C.DataStore<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+        <dl id="Storage">
+            <dt class="cls">C.Storage<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
             <dd>
                 <div class="sample">
-<pre>var store = new C.DataStore();</pre>
+<pre>var store = new C.Storage();</pre>
                     <p>一時的な情報を保存するためのクラスです。<br />
                     ブラウザのリロードなどが行われた場合、初期化されます。</p>
                 </div>
@@ -671,7 +671,7 @@ C.$('.open').on(C.e.CLICK, function() {
             </dd>
         </dl>
         <dl id="Model">
-            <dt class="cls">C.Model<span>[ extend: <a href="#Observer">Observer</a> ]</span><span>[ required: <a href="#DataStore">DataStore</a> ]</span></dt>
+            <dt class="cls">C.Model<span>[ extend: <a href="#Observer">Observer</a> ]</span><span>[ required: <a href="#Storage">Storage</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var model = new C.Model({
@@ -716,7 +716,7 @@ C.$('.open').on(C.e.CLICK, function() {
                     <p>MVCのModelを担当するクラスです。<br />
                     <a href="#View">C.View</a>と連携することで大規模なアプリを作成する際にも読みやすいコードを書くことが可能です。<br />
                     storeオプションにはデータを保持するインスタンスを設定します。<br />
-                    省略した場合<a href="#DataStore">C.DataStore</a>が指定されます。設定できる値は<a href="#localStorage">C.LocalStorage</a>、もしくは<a href="#SessionStorage">C.SessionStorage</a>のインスタンスです。<br />
+                    省略した場合<a href="#Storage">C.Storage</a>が指定されます。設定できる値は<a href="#localStorage">C.LocalStorage</a>、もしくは<a href="#SessionStorage">C.SessionStorage</a>のインスタンスです。<br />
                     defaultsオプションに指定された値は保持されるデータの初期値になります。<br />
                     validateオプションは値が登録・変更された時、条件式で偽になる値を返した場合、failイベントが発生します。<br />
                     onオプションは保持しているデータに変更があった場合、各メソッドが実行されます。</p>
@@ -763,7 +763,7 @@ C.$('.open').on(C.e.CLICK, function() {
             </dd>
         </dl>
         <dl id="Ollection">
-            <dt class="cls">C.Ollection<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Model">Model</a> ]</span><span>[ required: <a href="#DataStore">DataStore</a> <a href="#Observer">Observer</a> ]</span></dt>
+            <dt class="cls">C.Ollection<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Model">Model</a> ]</span><span>[ required: <a href="#Storage">Storage</a> <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var collection = new C.Ollection({
@@ -1291,7 +1291,6 @@ throttle.request('Cool is Right.');</pre>
             <li><a href="#BackForwardCache">BackForwardCache</a></li>
             <li><a href="#Base">Base</a></li>
             <li><a href="#Calc">Calc</a></li>
-            <li><a href="#DataStore">DataStore</a></li>
             <li><a href="#DateFactory">DateFactory</a></li>
             <li><a href="#DeviceMotion">DeviceMotion</a></li>
             <li><a href="#DeviceOrientation">DeviceOrientation</a></li>
@@ -1326,6 +1325,7 @@ throttle.request('Cool is Right.');</pre>
             <li><a href="#SessionStorage">SessionStorage</a></li>
             <li><a href="#Sound">Sound</a></li>
             <li><a href="#SSAnime">SSAnime</a></li>
+            <li><a href="#Storage">Storage</a></li>
             <li><a href="#Surrogate">Surrogate</a></li>
             <li><a href="#Sync">Sync</a></li>
             <li><a href="#Throttle">Throttle</a></li>

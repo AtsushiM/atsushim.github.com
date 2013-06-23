@@ -281,7 +281,7 @@ Global.Dependency = function(config) {
                 ],
                 Model: [
                     'selector',
-                    'DataStore',
+                    'Storage',
                     'Observer'
                 ],
                 Ajax: [
@@ -329,7 +329,7 @@ Global.Dependency = function(config) {
                 ScriptLoad: [
                     'require'
                 ],
-                DataStore: [
+                Storage: [
                     'Model'
                 ],
                 Observer: [

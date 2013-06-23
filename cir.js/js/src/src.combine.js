@@ -98,7 +98,7 @@ DOC.init = function(config) {
             'DeviceOrientation',
             'DeviceMotion',
             'DateFactory',
-            'DataStore',
+            'Storage',
             'Calc',
             'Base',
             'BackForwardCache',

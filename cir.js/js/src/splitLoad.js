@@ -42,7 +42,7 @@
             'DeviceOrientation',
             'DeviceMotion',
             'DateFactory',
-            'DataStore',
+            'Storage',
             'Calc',
             'Base',
             'BackForwardCache',

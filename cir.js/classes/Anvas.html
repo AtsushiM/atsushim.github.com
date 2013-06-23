@@ -1,25 +1,12 @@
 <li id="Anvas_draw">
-    <h3 class="method">draw([{image: element, x: number, y: number}])</h3>
+    <h3 class="method">draw({image: element, x: number, y: number])</h3>
     <div class="detail">
         <p>canvasに対してimageをdrawImageします。<br />
-        imageにはimgエレメントかcanvasエレメントを指定できます。<br />
-        引数の配列の順に上に重なっていきます。<br />
-        canvasに描画されている場合、消去してから追加されます。<br />
-        renderプロパティを指定した場合、canvasへのレンダリングを独自に作成出来ます。<br />
-        これらのオブジェクトはpigment,pigmentsメソッドでも作成出来ます。</p>
+        imageにはimgエレメントかcanvasエレメントを指定できます。</p>
 <pre>var $prerender = C.$('.prerender');
-anvas.draw([
-    {image: $prerender[0], x: 0, y: 0},
-    {image: $prerender[1], x: 100, y: 0},
-    {
-        image: $prerender[2], x: 0, y: 100,
-        render: function(ctx, instance) {
-            // instance === anvas
-
-            ctx.drawImage(this.image, this.x, thix.y);
-        }
-    }
-]);</pre>
+anvas.draw(
+    {image: $prerender[0], x: 0, y: 0}
+);</pre>
     </div>
 </li>
 <li id="Anvas_pigment">
@@ -82,6 +69,29 @@ var pigment2 = anvas.pigment({
     ]);
 }); // { char: {image: canavsElement, x:0, y:0}, bg: {image: canavsElement, x:0, y:0} }
 </pre>
+    </div>
+</li>
+<li id="Anvas_render">
+    <h3 class="method">render([{image: element, x: number, y: number}])</h3>
+    <div class="detail">
+        <p>引数で渡された配列の各要素ごとにdrawメソッドを実行します。<br />
+        引数の配列の順に上に重なっていきます。<br />
+        canvasに描画されている場合、消去してから追加されます。<br />
+        renderプロパティを指定した場合、canvasへのレンダリングを独自に作成出来ます。<br />
+        これらのオブジェクトはpigment,pigmentsメソッドでも作成出来ます。</p>
+<pre>var $prerender = C.$('.prerender');
+anvas.render([
+    {image: $prerender[0], x: 0, y: 0},
+    {image: $prerender[1], x: 100, y: 0},
+    {
+        image: $prerender[2], x: 0, y: 100,
+        render: function(ctx, instance) {
+            // instance === anvas
+
+            ctx.drawImage(this.image, this.x, thix.y);
+        }
+    }
+]);</pre>
     </div>
 </li>
 <li id="Anvas_setSize">
