@@ -86,10 +86,10 @@ $sample.css({
     </div>
 </li>
 <li id="selector_delegate">
-    <h3 class="method">.delegate(clsname, eventname, func)</h3>
+    <h3 class="method">.delegate(selector, eventname, func)</h3>
     <div class="detail">
-        <p>セレクターで指定されたHTMLエレメント内のclassNameにclsnameを持つ要素のeventnameイベントにfuncを登録します。</p>
-<pre>$('#sample').delegate('cir', C.e.CLICK, function() {
+        <p>セレクターで指定されたHTMLエレメント内からselectorに当てはまる要素に対してeventnameイベントにfuncを登録します。</p>
+<pre>$('#sample').delegate('.cir', C.e.CLICK, function() {
     console.log('Cool is Right.');
 });</pre>
     </div>

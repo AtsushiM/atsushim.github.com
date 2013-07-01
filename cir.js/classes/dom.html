@@ -122,11 +122,11 @@ dom.css($sample, {
     </div>
 </li>
 <li id="dom_delegate">
-    <h3 class="method">delegate(element, clsname, eventname, func)</h3>
+    <h3 class="method">delegate(element, selector, eventname, func)</h3>
     <div class="detail">
-        <p>element内のclassNameにclsnameを持つ要素のeventnameイベントにfuncを登録します。</p>
+        <p>element内からselectorに当てはまる要素に対してeventnameイベントにfuncを登録します。</p>
 <pre>var $sample = dom.$('#sample');
-dom.delegate($sample, 'cir', C.e.CLICK, function() {
+dom.delegate($sample, '.cir', C.e.CLICK, function() {
     console.log('Cool is Right.');
 });</pre>
     </div>

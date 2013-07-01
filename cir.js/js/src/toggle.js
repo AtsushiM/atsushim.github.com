@@ -3,7 +3,7 @@ DOC.toggle = function(config) {
 
     var $main = $('#main');
 
-    $main.delegate('cls', C.e.CLICK, function() {
+    $main.delegate('.cls', C.e.CLICK, function() {
         var $parent = $(this).parent();
 
         if ($parent.hasClass(clsClose)) {
@@ -13,7 +13,7 @@ DOC.toggle = function(config) {
         return addClose($parent);
     });
 
-    $main.delegate('method', C.e.CLICK, function() {
+    $main.delegate('.method', C.e.CLICK, function() {
         var $parent = $(this).parent();
 
         if (!$parent.hasClass(clsOpen)) {
