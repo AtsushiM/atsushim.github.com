@@ -19,6 +19,7 @@
             'Router',
             'Rollover',
             'PreRender',
+            'Parallax',
             'PC',
             'Orientation',
             'Ollection',

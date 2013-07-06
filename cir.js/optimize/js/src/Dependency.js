@@ -50,7 +50,8 @@ Global.Dependency = function(config) {
                     'Video'
                 ],
                 Modal: [
-                    'Scroll'
+                    'Scroll',
+                    'Observer'
                 ],
                 Media: [
                     'Embed',
@@ -113,17 +114,25 @@ Global.Dependency = function(config) {
                 ],
                 LowPassFilter: [
                     'Calc'
+                ],
+                Parallax: [
+                    'Observer',
+                    'Scroll',
+                    'selector',
+                    'selector_methods'
                 ]
             },
             passive: {
                 selector: [
                     'selector_methods',
                     'selector_methods_animate',
-                    'View'
+                    'View',
+                    'Parallax'
                 ],
                 selector_methods: [
                     'selector_methods_animate',
-                    'View'
+                    'View',
+                    'Parallax'
                 ],
                 Ajax: [
                     'require'
@@ -143,7 +152,9 @@ Global.Dependency = function(config) {
                     'ImgLoad',
                     'Model',
                     'Async',
-                    'Sync'
+                    'Sync',
+                    'Scroll',
+                    'Modal'
                 ],
                 HashQuery: [
                     'ExternalInterface',
@@ -175,7 +186,8 @@ Global.Dependency = function(config) {
                     'Movie'
                 ],
                 Scroll: [
-                    'Modal'
+                    'Modal',
+                    'Parallax'
                 ],
                 Audio: [
                     'Sound'

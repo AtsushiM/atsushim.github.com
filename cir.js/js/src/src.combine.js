@@ -75,6 +75,7 @@ DOC.init = function(config) {
             'Router',
             'Rollover',
             'PreRender',
+            'Parallax',
             'PC',
             'Orientation',
             'Ollection',

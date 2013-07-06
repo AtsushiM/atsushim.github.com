@@ -20,7 +20,7 @@
 <header id="header">
     <h1>CIR.js</h1>
     <h2>Web application development library, 'Cool is Right'.</h2>
-    <p class="ver">1.5.5</p>
+    <p class="ver">1.6.3</p>
     <ul class="sns">
         <li class="facebook"><div class="fb-like" data-href="http://atsushim.github.com/cir.js/" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div></li>
         <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://atsushim.github.com/cir.js/" data-width="auto">Tweet</a></li>
@@ -33,7 +33,7 @@
             <p class="lead">CIR.jsはWeb&amp;ハイブリッドアプリ開発用のライブラリです。<br />
             ほとんどの機能は使わない場合排除可能で、<a href="optimize">カスタマイズ</a>できます。</p>
             <p class="environment">動作環境：モダンな環境なら大体OK.(ただしIEを除く)</p>
-            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 1.5.5)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
+            <p class="download">ダウンロード：<a href="https://github.com/AtsushiM/cir.js" target="_blank" class="src">GitHub</a><span>(ver 1.6.3)</span> 機能選択：<a href="/cir.js/optimize">Optimize</a></p>
         </div>
 
         <dl id="c">
@@ -646,7 +646,7 @@ var storage_cir = new C.LocalStorage({
             </dd>
         </dl>
         <dl id="Modal">
-            <dt class="cls">C.Modal<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Base">Base</a> ]</span><span>[ required: <a href="#Scroll">Scroll</a> ]</span></dt>
+            <dt class="cls">C.Modal<span class="beta">[ Beta ]</span><span>[ extend: <a href="#Scroll">Scroll</a> ]</span></dt>
             <dd>
                 <div class="sample">
 <pre>var modal = new C.Modal({
@@ -806,6 +806,47 @@ C.$('.open').on(C.e.CLICK, function() {
                 <ul class="load"></ul>
             </dd>
         </dl>
+        <dl id="Parallax">
+            <dt class="cls">C.Parallax<span>[ extend: <a href="#Scroll">Scroll</a> ]</span><span>[ required: <a href="#selector">$</a> ]</span></dt>
+            <dd>
+                <div class="sample">
+<pre>var parallax = new C.Parallax({
+    switcher: function(y, beforeY) {
+        if (y &lt; 800) {
+            // return event-name
+            return 'moveHoge';
+        }
+
+        var events = [];
+
+        if (y &gt; 400) {
+            events.push('moveHoge', 'moveFuga');
+        }
+        if (y &gt; 700) {
+            events.push('moveHogeFuga');
+        }
+
+        return events;
+    },
+    onmoveHoge: function(y, beforeY) {
+        console.log('hogehoge');
+    },
+    onmoveFuga: function(y, beforeY) {
+        console.log('fugafuga');
+    },
+    manual: false // default: undefined
+});
+
+parallax.on('moveHogeFuga', function(y, beforeY) {
+    console.log('hogefuga');
+});</pre>
+                    <p>シンプルなパララックス演出用クラスです。<br />
+                    オプションでon~を指定した場合、イベントとして登録されます。<br />
+                    switcherオプションにはイベント名を返す関数を指定します。</p>
+                </div>
+                <ul class="load"></ul>
+            </dd>
+        </dl>
         <dl id="Parallel">
             <dt class="cls">C.Parallel<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
@@ -929,7 +970,7 @@ C.$('.open').on(C.e.CLICK, function() {
             </dd>
         </dl>
         <dl id="Scroll">
-            <dt class="cls">C.Scroll<span>[ extend: <a href="#Base">Base</a> ]</span></dt>
+            <dt class="cls">C.Scroll<span>[ extend: <a href="#Observer">Observer</a> ]</span></dt>
             <dd>
                 <div class="sample">
                     <pre>var scroll = new C.Scroll();</pre>
@@ -1314,6 +1355,7 @@ throttle.request('Cool is Right.');</pre>
             <li><a href="#Ollection">Ollection</a></li>
             <li><a href="#Orientation">Orientation</a></li>
             <li><a href="#Parallel">Parallel</a></li>
+            <li><a href="#Parallax">Parallax</a></li>
             <li><a href="#PC">PC</a></li>
             <li><a href="#PreRender">PreRender</a></li>
             <li><a href="#Rollover">Rollover</a></li>
