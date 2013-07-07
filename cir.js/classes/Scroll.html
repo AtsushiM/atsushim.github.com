@@ -1,8 +1,22 @@
+<li id="Scroll_checkBottom">
+    <h3 class="method">checkBottom(<span class="expansion">[offset]</span>)</h3>
+    <div class="detail">
+        <p>スクロールがページ下部まで到達しているかbooleanで返します。offsetに数値が渡された場合、ページ下部から数値の範囲にスクロール位置があればtrueを返します。</p>
+<pre>scroll.checkBottom(); // boolean</pre>
+    </div>
+</li>
 <li id="Scroll_kill">
     <h3 class="method">kill()</h3>
     <div class="detail">
         <p>ブラウザスクロールを不可にします。</p>
 <pre>scroll.kill(); // スクロールを停止</pre>
+    </div>
+</li>
+<li id="Scroll_percent">
+    <h3 class="method">percent(<span class="expansion">[{low: number, high: number, now: number}]</span>)</h3>
+    <div class="detail">
+        <p>現在のスクロール位置を0~1で返します。low,high,nowを渡した場合、それらを使用して値を計算します。</p>
+<pre>scroll.percent(); // ページ全体のスクロール位置</pre>
     </div>
 </li>
 <li id="Scroll_revival">
@@ -12,11 +26,18 @@
 <pre>scroll.revival(); // スクロールを停止</pre>
     </div>
 </li>
-<li id="Scroll_scrollY">
-    <h3 class="method">scrollY()</h3>
+<li id="Scroll_scrollLimit">
+    <h3 class="method">scrollLimit()</h3>
+    <div class="detail">
+        <p>scrollTop()で返される値の限界を取得します。</p>
+<pre>scroll.scrollTop(); // Number</pre>
+    </div>
+</li>
+<li id="Scroll_scrollTop">
+    <h3 class="method">scrollTop()</h3>
     <div class="detail">
         <p>現在のY軸のスクロール位置を取得します。</p>
-<pre>scroll.scrollY(); // Number</pre>
+<pre>scroll.scrollTop(); // Number</pre>
     </div>
 </li>
 <li id="Scroll_smooth">
