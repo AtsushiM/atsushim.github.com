@@ -1,54 +1,43 @@
-<li id="Scroll_checkBottom">
-    <h3 class="method">checkBottom(<span class="expansion">[offset]</span>)</h3>
+<li id="Scroll_getLimit">
+    <h3 class="method">getLimit()</h3>
+    <div class="detail">
+        <p>getTop()で返される値の限界を取得します。</p>
+<pre>scroll.getLimit(); // Number</pre>
+    </div>
+</li>
+<li id="Scroll_getRatio">
+    <h3 class="method">getRatio(<span class="expansion">[{low: number, high: number, now: number}]</span>)</h3>
+    <div class="detail">
+        <p>現在のスクロール位置を0~1で返します。low,high,nowを渡した場合、それらを使用して値を計算します。</p>
+<pre>scroll.getRatio(); // ページ全体のスクロール位置</pre>
+    </div>
+</li>
+<li id="Scroll_getY">
+    <h3 class="method">getY()</h3>
+    <div class="detail">
+        <p>現在のY軸のスクロール位置を取得します。</p>
+<pre>scroll.getY(); // Number</pre>
+    </div>
+</li>
+<li id="Scroll_isBottom">
+    <h3 class="method">isBottom(<span class="expansion">[offset]</span>)</h3>
     <div class="detail">
         <p>スクロールがページ下部まで到達しているかbooleanで返します。offsetに数値が渡された場合、ページ下部から数値の範囲にスクロール位置があればtrueを返します。</p>
-<pre>scroll.checkBottom(); // boolean</pre>
+<pre>scroll.isBottom(); // boolean</pre>
     </div>
 </li>
 <li id="Scroll_kill">
     <h3 class="method">kill()</h3>
     <div class="detail">
-        <p>ブラウザスクロールを不可にします。</p>
+        <p>ユーザー操作によるブラウザスクロールを不可にします。</p>
 <pre>scroll.kill(); // スクロールを停止</pre>
-    </div>
-</li>
-<li id="Scroll_percent">
-    <h3 class="method">percent(<span class="expansion">[{low: number, high: number, now: number}]</span>)</h3>
-    <div class="detail">
-        <p>現在のスクロール位置を0~1で返します。low,high,nowを渡した場合、それらを使用して値を計算します。</p>
-<pre>scroll.percent(); // ページ全体のスクロール位置</pre>
     </div>
 </li>
 <li id="Scroll_revival">
     <h3 class="method">revival()</h3>
     <div class="detail">
-        <p>ブラウザスクロールを可能にします。</p>
+        <p>ユーザー操作によるブラウザスクロールを可能にします。</p>
 <pre>scroll.revival(); // スクロールを停止</pre>
-    </div>
-</li>
-<li id="Scroll_scrollLimit">
-    <h3 class="method">scrollLimit()</h3>
-    <div class="detail">
-        <p>scrollTop()で返される値の限界を取得します。</p>
-<pre>scroll.scrollTop(); // Number</pre>
-    </div>
-</li>
-<li id="Scroll_scrollTop">
-    <h3 class="method">scrollTop()</h3>
-    <div class="detail">
-        <p>現在のY軸のスクロール位置を取得します。</p>
-<pre>scroll.scrollTop(); // Number</pre>
-    </div>
-</li>
-<li id="Scroll_smooth">
-    <h3 class="method">smooth(target, callback)</h3>
-    <div class="detail">
-        <p>スムーズスクロールで移動します。<br />
-        targetには数値かHTMLエレメントが指定出来ます。</p>
-<pre>scroll.smooth(0); // ページトップへ
-scroll.smooth(C.dom.$('#test'), function() {
-    // write code.
-}); // #testの位置へ</pre>
     </div>
 </li>
 <li id="Scroll_to">
@@ -63,6 +52,17 @@ scroll.smooth(C.dom.$('#test'), function() {
     <div class="detail">
         <p>スクロール位置を一番下にします。</p>
 <pre>scroll.toBottom();</pre>
+    </div>
+</li>
+<li id="Scroll_toSmooth">
+    <h3 class="method">toSmooth(target, callback)</h3>
+    <div class="detail">
+        <p>スムーズスクロールで移動します。<br />
+        targetには数値かHTMLエレメントが指定出来ます。</p>
+<pre>scroll.toSmooth(0); // ページトップへ
+scroll.toSmooth(C.dom.$('#test'), function() {
+    // write code.
+}); // #testの位置へ</pre>
     </div>
 </li>
 <li id="Scroll_toTop">
