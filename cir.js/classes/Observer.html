@@ -1,7 +1,59 @@
-<li id="Observer_fire">
-    <h3 class="method">fire(<span class="expansion">[vars]</span>)</h3>
+<li id="Observer_addChild">
+    <h3 class="method">addChild(instance)</h3>
     <div class="detail">
-        <p>onメソッドで登録されたイベントを実行します。</p>
+        <p>Observer、もしくはObserverを継承したクラスのインスタンスを子として登録します。登録された子はイベント伝播の対象になります。</p>
+<pre>var observer2 = new C.Observer();
+observer.addChild(observer2);</pre>
+    </div>
+</li>
+<li id="Observer_bubble">
+    <h3 class="method">bubble(event, <span class="expansion">[vars]</span>)</h3>
+    <div class="detail">
+        <p>fireメソッドのエイリアスです。イベントはバブリングで伝播されます。</p>
+<pre>observer.on('jsonloaded', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+var observer2 = new C.Observer();
+
+observer2.on('jsonloaded', function() {
+    // write code.
+});
+
+observer.addChild(observer2);
+
+observer2.bubble('jsonloaded', {
+    cir: 'Cool is Right.'
+});</pre>
+    </div>
+</li>
+<li id="Observer_capture">
+    <h3 class="method">capture(event, <span class="expansion">[vars]</span>)</h3>
+    <div class="detail">
+        <p>イベントをキャプチャリングで伝播します。</p>
+<pre>observer.on('jsonloaded', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+var observer2 = new C.Observer();
+
+observer2.on('jsonloaded', function() {
+    // write code.
+});
+
+observer.addChild(observer2);
+
+observer.capture('jsonloaded', {
+    cir: 'Cool is Right.'
+});</pre>
+    </div>
+</li>
+<li id="Observer_fire">
+    <h3 class="method">fire(event, <span class="expansion">[vars]</span>)</h3>
+    <div class="detail">
+        <p>onメソッドで登録されたイベントを実行します。イベントはバブリングで伝播されます。</p>
 <pre>observer.on('jsonloaded', function(vars) {
     // write code.
     console.log(vars); // {cir: 'Cool is Right.'}
@@ -60,5 +112,32 @@ observer.fire('jsonloaded', {
 
 observer.fire('jsonloaded', 'fire1');
 observer.fire('jsonloaded', 'fire2');</pre>
+    </div>
+</li>
+<li id="Observer_only">
+    <h3 class="method">only(event, <span class="expansion">[vars]</span>)</h3>
+    <div class="detail">
+        <p>onメソッドで登録されたイベントを実行します。イベントは伝播されません。</p>
+<pre>observer.on('jsonloaded', function(vars) {
+    // write code.
+    console.log(vars); // {cir: 'Cool is Right.'}
+});
+
+observer.only('jsonloaded', {
+    cir: 'Cool is Right.'
+});</pre>
+    </div>
+</li>
+<li id="Observer_removeChild">
+    <h3 class="method">removeChild(<span class="expansion">[instance]</span>)</h3>
+    <div class="detail">
+        <p>Observer、もしくはObserverを継承したクラスのインスタンスを子から解除します。解除された子はイベント伝播の対象から外れます。<br />
+        instanceを省略した場合、すべての子を解除します。</p>
+<pre>var observer2 = new C.Observer();
+observer.addChild(observer2);
+
+// write code.
+
+observer.removeChild(observer2);</pre>
     </div>
 </li>
