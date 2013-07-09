@@ -89,10 +89,17 @@ observer.off('jsonloaded'); // remove 'jsonloaded' event.</pre>
     <h3 class="method">on(key, func)</h3>
     <div class="detail">
         <p>イベントを登録します。<br />
-        登録されたイベントはfireメソッドで呼び出されます。</p>
-<pre>observer.on('jsonloaded', function(vars) {
+        funcに渡される引数の最後に、伝播を管理する為のメソッドを持つオブジェクトが追加されます。</p>
+<pre>observer.on('jsonloaded', function(vars, e) {
     // write code.
     console.log(vars); // {cir: 'Cool is Right.'}
+
+    /*
+    e.preventDefault(); // 現在のインスタンスのイベント実行を停止する
+    e.stopPropagation(); // イベント伝播を停止する
+
+    return false; // イベントの実行もイベント伝播も停止する
+    */
 });
 
 observer.fire('jsonloaded', {
