@@ -146,7 +146,7 @@ DOC.localLink = function(config) {
             $href = $($this.attr('href'));
 
         removeClose($href);
-        scroll.smooth($href[0], function() {
+        scroll.toSmooth($href[0], function() {
             /* console.log('test'); */
             location.hash = $this.attr('href').split('#')[1];
         });
