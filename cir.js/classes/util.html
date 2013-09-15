@@ -284,6 +284,19 @@ text = util.relaceAll(text, 's', 'a');
 alert(text); // Cool ia Right.ja</pre>
     </div>
 </li>
+<li id="util_size">
+
+    <h3 class="method">size(obj, <span class="expansion">[w], [h]</span>)</h3>
+    <div class="detail">
+        <p>objのwidth, heightを{w, h}で返します。w, hを指定した場合、それぞれの値をwidth, heightに指定します。<br />
+        wのみ指定した場合は、hにwと同じ値を指定したものとして扱います。</p>
+<pre>var el = document.querySelector('#test');
+
+util.size(el, 100, '100%');
+
+var size = util.size(el); // {w: 100, h: '100%'}</pre>
+    </div>
+</li>
 <li id="util_toArray">
     <h3 class="method">toArray(obj)</h3>
     <div class="detail">
