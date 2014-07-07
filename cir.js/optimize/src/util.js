@@ -185,6 +185,19 @@ function eventStop(e) {
     e.stopPropagation();
     return FALSE;
 }
+function size(obj, w, h) {
+    if (!isDefined(w)) {
+        return {
+            'w': obj[label_w],
+            'h': obj[label_h]
+        };
+    }
+    if (!isDefined(h)) {
+        h = w;
+    }
+    obj[label_w] = w;
+    obj[label_h] = h;
+}
 function checkUserAgent(pattern, ua) {
     return !!(ua || navigator.userAgent).match(pattern);
 }
@@ -283,6 +296,7 @@ C['util'] = {
     'abstraceFunction': abstraceFunction,
     'eventPrevent': eventPrevent,
     'eventStop': eventStop,
+    'size': size,
     'checkUserAgent': checkUserAgent,
     'proxy': proxy,
     'owner': owner,

@@ -1255,6 +1255,7 @@ throttle.request('Cool is Right.');</pre>
     },
     render: function() {
         this.el.find('.test').html('count: ' + this.model.get('test'));
+        this.reattach(); // eventsの対象になるようなhtmlの動的変更をした場合は呼び出す
     },
     click: function(e) {
         this.model.set('test', this.model.get('test') + 1);

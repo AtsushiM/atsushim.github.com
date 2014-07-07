@@ -16,8 +16,8 @@ Observer = C['Omposite'] = C['Observer'] = classExtendBase({
     'one': function(key, func /* varless */, that, wrap) {
         /* var that = this; */
         that = this;
-        wrap = function(vars) {
-            func.apply(that, vars);
+        wrap = function() {
+            func.apply(that, arguments);
             that['off'](key, wrap);
         };
 
@@ -54,7 +54,7 @@ Observer = C['Omposite'] = C['Observer'] = classExtendBase({
 
         return delete observed[key];
     },
-    'fire': Observer_bubble,
+    'emit': Observer_bubble,
     'bubble': Observer_bubble,
     'capture': function() {
         var that = this,
